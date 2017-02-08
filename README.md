@@ -5,7 +5,5 @@ This application was developed by the following people.
   Thomas Chate 
   Lillie Hog
   Luke Jackson
-  Pawel Szymczyk
-  Greg Lindert
-  Thomasz Szelachowski
+
   
