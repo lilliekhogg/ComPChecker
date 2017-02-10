@@ -1,4 +1,7 @@
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -207,13 +210,46 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddCompActionPerformed
 
     private void btnViewBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildActionPerformed
-        this.setVisible(false);
-        new CreateBuild().setVisible(true);
+            Build build = new Build();
+        ResultSet rs =build.findUserBuilds(currentUser);
+        
+        try{
+        if(!rs.isBeforeFirst()) {    
+    System.out.println("You have no previous builds."); 
+}else{
+        System.out.println("Builds detected"); 
+         ArrayList<String> buildnames = new ArrayList<>();
+         
+         while(rs.next()){
+         buildnames.add(rs.getString("name"));
+         
+        
+
+         
+     
+         }
+         Object[] options = buildnames.toArray();
+         Object value = JOptionPane.showInputDialog(null, 
+                                           "Build Choice", 
+                                           "Chose your Build", 
+                                            JOptionPane.QUESTION_MESSAGE, 
+                                            null,
+                                            options, 
+                                            options[0]);
+
+         
+         
+        }
+        
+        
+        }catch(SQLException err) {
+            System.out.println(err.getMessage());   //Prints out SQL error 
+        }
     }//GEN-LAST:event_btnViewBuildActionPerformed
 
     private void btnCreateBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBuildActionPerformed
         this.setVisible(false);
-        new CreateBuild().setVisible(true);
+        new EditBuild(currentUser, null).setVisible(true);
     }//GEN-LAST:event_btnCreateBuildActionPerformed
 
     private void btnCreateAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccActionPerformed
