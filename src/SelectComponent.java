@@ -69,6 +69,19 @@ public class SelectComponent extends javax.swing.JDialog {
             columns.add("Size");
             columns.add("Sticks");
             columns.add("Type");
+        } else if (type == "GPU") {
+
+            columns.add("Series");
+            columns.add("Chipset");
+            columns.add("Memory");
+            columns.add("CoreClock");
+
+        } else if (type == "Storage") {
+            columns.add("Series");
+            columns.add("HHD");
+            columns.add("Speed");
+            columns.add("Capacity");
+
         }
 
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
@@ -120,9 +133,9 @@ public class SelectComponent extends javax.swing.JDialog {
 
                     model.addRow(new Object[]{make, mdl, price, socket, size, slots, maxRAM});
                 }
-            } else if (type =="RAM"){
-            
-             query = ("Select P.PartID, P.Make, P.Model, P.Price, Speed, SizeGB, Sticks, type FROM RAM JOIN Part AS P on RAM.ID=P.PartID");
+            } else if (type == "RAM") {
+
+                query = ("Select P.PartID, P.Make, P.Model, P.Price, Speed, SizeGB, Sticks, type FROM RAM JOIN Part AS P on RAM.ID=P.PartID");
 
                 stmt.executeQuery(query);
                 ResultSet rs = stmt.getResultSet();
@@ -137,22 +150,56 @@ public class SelectComponent extends javax.swing.JDialog {
                     String RAMtype = rs.getString("type");
 
                     model.addRow(new Object[]{make, mdl, price, speed, size, sticks, RAMtype});
+
                 }
-            
-            
-            
-            
-            
-            
-            
-            
-            
+            } else if (type == "GPU") {
+
+                query = ("Select P.PartID, P.Make, P.Model, P.Price, Series, Chipset, Memory, CoreClock FROM GPU JOIN Part AS P on GPU.ID=P.PartID");
+
+                stmt.executeQuery(query);
+                ResultSet rs = stmt.getResultSet();
+
+                while (rs.next()) {
+                    make = rs.getString("Make");
+                    mdl = rs.getString("Model");
+                    price = rs.getDouble("Price");
+                    String series = rs.getString("Series");
+                    String chipset = rs.getString("Chipset");
+                    int memory = rs.getInt("Memory");
+                    double clock = rs.getFloat("CoreClock");
+
+                    model.addRow(new Object[]{make, mdl, price, series, chipset, memory, clock});
+
+                }
+            } else if (type == "Storage") {
+                query = ("Select P.PartID, P.Make, P.Model, P.Price, Series, HHD, Speed, CapacityGB FROM Storage JOIN Part AS P on Storage.ID=P.PartID");
+
+                stmt.executeQuery(query);
+                ResultSet rs = stmt.getResultSet();
+
+                while (rs.next()) {
+                    make = rs.getString("Make");
+                    mdl = rs.getString("Model");
+                    price = rs.getDouble("Price");
+                    String series = rs.getString("Series");
+                    boolean HHD = rs.getBoolean("HHD");
+                    int speed = rs.getInt("Speed");
+                    int capacity = rs.getInt("CapacityGB");
+
+                    String storageType;
+                    if (HHD == true) {
+                        storageType = "HDD";
+
+                    } else {
+                        storageType = "SSD";
+                    }
+
+                    model.addRow(new Object[]{make, mdl, price, series, storageType, speed, capacity});
+
+                }
+
             }
-            
-            
-            
-            
-            
+
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
@@ -276,14 +323,21 @@ public class SelectComponent extends javax.swing.JDialog {
             form.CPU = ID;
             form.btnProcessor.setText(thismake + " " + thismodel);
 
-        }
-        else if (partType == "Motherboard") {
+        } else if (partType == "Motherboard") {
             form.motherboard = ID;
             form.btnMotherboard.setText(thismake + " " + thismodel);
         } else if (partType == "RAM") {
             form.RAM = ID;
             form.btnRAM.setText(thismake + " " + thismodel);
-        } 
+        } else if (partType == "GPU") {
+            form.GPU = ID;
+            form.btnGraphics.setText(thismake + " " + thismodel);
+        } else if (partType == "Storage"){
+        form.storage = ID;
+        form.btnStorage.setText(thismake + " " + thismodel);
+        
+        
+        }
 
         this.setVisible(false);
 

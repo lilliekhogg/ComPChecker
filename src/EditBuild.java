@@ -292,22 +292,37 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void btnStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStorageActionPerformed
         // TODO add your handling code here:
+         myPart = "Storage";
+        SelectComponent frm = new SelectComponent(myPart, this); //
+        frm.setVisible(true);
     }//GEN-LAST:event_btnStorageActionPerformed
 
     private void btnCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaseActionPerformed
         // TODO add your handling code here:
+        myPart = "Case";
+        SelectComponent frm = new SelectComponent(myPart, this); //
+        frm.setVisible(true);
     }//GEN-LAST:event_btnCaseActionPerformed
 
     private void btnPowerSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPowerSupActionPerformed
         // TODO add your handling code here:
+        myPart = "PSU";
+        SelectComponent frm = new SelectComponent(myPart, this); //
+        frm.setVisible(true);
     }//GEN-LAST:event_btnPowerSupActionPerformed
 
     private void btnCoolingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoolingActionPerformed
         // TODO add your handling code here:
+        myPart = "Cooler";
+        SelectComponent frm = new SelectComponent(myPart, this); //
+        frm.setVisible(true);
     }//GEN-LAST:event_btnCoolingActionPerformed
 
     private void btnAccessoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessoriesActionPerformed
         // TODO add your handling code here:
+         myPart = "Accessory";
+        SelectComponent frm = new SelectComponent(myPart, this); //
+        frm.setVisible(true);
     }//GEN-LAST:event_btnAccessoriesActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
