@@ -43,6 +43,7 @@ public class SelectComponent extends javax.swing.JDialog {
     /**
      *
      * @param type
+     * @param form1
      */
     public SelectComponent(String type, EditBuild form1) {
         partType = type;
@@ -373,6 +374,10 @@ public class SelectComponent extends javax.swing.JDialog {
     pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     *
+     * @return
+     */
     public int getID() {
         int column1 = 0;
         int column2 = 1;

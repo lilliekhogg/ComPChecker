@@ -233,32 +233,20 @@ public class EditBuild extends javax.swing.JFrame {
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         name = txtboxName.getText();
 
-        Connection con = DatabaseConnection.establishConnection();
-
-        try {
-            //SQL query for inserting data into account table
-            String query = "INSERT INTO Build (Account, Motherboard, CPU, RAM,Storage,GPU,PSU,PCCase,Cooler,Accessory,name)"
-                    + "values (?,?,?,?,?,?,?,?,?,?,?)";
-
-            PreparedStatement statement = con.prepareStatement(query);
-
-            //setting user inputs into sql query
-            statement.setString(1, user);
-            statement.setInt(2, motherboard);
-            statement.setInt(3, CPU);
-            statement.setInt(4, RAM);
-            statement.setInt(5, storage);
-            statement.setInt(6, GPU);
-            statement.setInt(7, PSU);
-            statement.setInt(8, PCCase);
-            statement.setInt(9, cooler);
-            statement.setInt(10, accessory);
-            statement.setString(11, name);
-            statement.execute();
-        } catch (SQLException err) {
-            System.out.println(err.getMessage());   //Prints out SQL error 
-        }
-
+    Build build = new Build();
+    build.CPU = CPU;
+    build.motherboard = motherboard;
+    build.RAM = RAM;
+    build.GPU = GPU;
+    build.PCCase = PCCase;
+    build.PSU = PSU;
+    build.cooler = cooler;
+    build.accessory = accessory;
+    build.name = name;
+    build.storage = storage;
+    build.user = user;
+         
+    build.SaveBuild();
 
     }//GEN-LAST:event_btnConfirmActionPerformed
 

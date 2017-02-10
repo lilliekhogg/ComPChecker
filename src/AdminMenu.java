@@ -263,6 +263,7 @@ public class AdminMenu extends javax.swing.JFrame {
         String[] choices = {"Build 1", "Build 2", "Build 3"};
         
         new EditBuild(currentUser, null).setVisible(true);
+        this.setVisible(false);
         //Need build names here to be pulled from DB7
         
         
