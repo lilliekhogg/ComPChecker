@@ -256,7 +256,7 @@ public class EditBuild extends javax.swing.JFrame {
             statement.setString(11, name);
             statement.execute();
         } catch (SQLException err) {
-
+            System.out.println(err.getMessage());   //Prints out SQL error 
         }
 
 
@@ -271,7 +271,11 @@ public class EditBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProcessorActionPerformed
 
     private void btnRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAMActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        myPart = "RAM";
+        SelectComponent frm = new SelectComponent(myPart, this); //
+        frm.setVisible(true);
+
     }//GEN-LAST:event_btnRAMActionPerformed
 
     private void btnMotherboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMotherboardActionPerformed
@@ -281,6 +285,9 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void btnGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraphicsActionPerformed
         // TODO add your handling code here:
+        myPart = "GPU";
+        SelectComponent frm = new SelectComponent(myPart, this); //
+        frm.setVisible(true);
     }//GEN-LAST:event_btnGraphicsActionPerformed
 
     private void btnStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStorageActionPerformed
@@ -344,17 +351,17 @@ public class EditBuild extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAccessories;
+    public javax.swing.JButton btnAccessories;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnCase;
+    public javax.swing.JButton btnCase;
     private javax.swing.JButton btnConfirm;
-    private javax.swing.JButton btnCooling;
-    private javax.swing.JButton btnGraphics;
-    private javax.swing.JButton btnMotherboard;
+    public javax.swing.JButton btnCooling;
+    public javax.swing.JButton btnGraphics;
+    public javax.swing.JButton btnMotherboard;
     private javax.swing.JButton btnPowerSup;
     public javax.swing.JButton btnProcessor;
-    private javax.swing.JButton btnRAM;
-    private javax.swing.JButton btnStorage;
+    public javax.swing.JButton btnRAM;
+    public javax.swing.JButton btnStorage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JTextField txtboxName;

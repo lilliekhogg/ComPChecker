@@ -64,6 +64,11 @@ public class SelectComponent extends javax.swing.JDialog {
             columns.add("Form Factor");
             columns.add("RAM Slots");
             columns.add("Max RAM");
+        } else if (type == "RAM") {
+            columns.add("Speed");
+            columns.add("Size");
+            columns.add("Sticks");
+            columns.add("Type");
         }
 
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
@@ -115,7 +120,39 @@ public class SelectComponent extends javax.swing.JDialog {
 
                     model.addRow(new Object[]{make, mdl, price, socket, size, slots, maxRAM});
                 }
+            } else if (type =="RAM"){
+            
+             query = ("Select P.PartID, P.Make, P.Model, P.Price, Speed, SizeGB, Sticks, type FROM RAM JOIN Part AS P on RAM.ID=P.PartID");
+
+                stmt.executeQuery(query);
+                ResultSet rs = stmt.getResultSet();
+
+                while (rs.next()) {
+                    make = rs.getString("Make");
+                    mdl = rs.getString("Model");
+                    price = rs.getDouble("Price");
+                    int speed = rs.getInt("Speed");
+                    int size = rs.getInt("SizeGB");
+                    int sticks = rs.getInt("Sticks");
+                    String RAMtype = rs.getString("type");
+
+                    model.addRow(new Object[]{make, mdl, price, speed, size, sticks, RAMtype});
+                }
+            
+            
+            
+            
+            
+            
+            
+            
+            
             }
+            
+            
+            
+            
+            
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
@@ -237,9 +274,16 @@ public class SelectComponent extends javax.swing.JDialog {
         System.out.println(ID);
         if (partType == "CPU") {
             form.CPU = ID;
+            form.btnProcessor.setText(thismake + " " + thismodel);
+
         }
-        
-        form.btnProcessor.setText(thismake + " " + thismodel);
+        else if (partType == "Motherboard") {
+            form.motherboard = ID;
+            form.btnMotherboard.setText(thismake + " " + thismodel);
+        } else if (partType == "RAM") {
+            form.RAM = ID;
+            form.btnRAM.setText(thismake + " " + thismodel);
+        } 
 
         this.setVisible(false);
 
