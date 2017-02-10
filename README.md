@@ -3,7 +3,7 @@ CompPChecker is a desktop application for building PCs; the application will che
 
 This application was developed by the following people.
   Thomas Chate 
-  Lillie Hog
+  Lillie Hogg
   Luke Jackson
 
   
