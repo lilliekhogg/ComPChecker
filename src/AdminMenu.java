@@ -261,14 +261,22 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnEditBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBuildActionPerformed
         String[] choices = {"Build 1", "Build 2", "Build 3"};
-        //Need build names here to be pulled from DB
-        String input = (String) JOptionPane.showInputDialog(null, "Which build would you like to edit?",
+        
+        new EditBuild(currentUser, null).setVisible(true);
+        //Need build names here to be pulled from DB7
+        
+        
+        
+        /*String input = (String) JOptionPane.showInputDialog(null, "Which build would you like to edit?",
                 "Edit Build", JOptionPane.QUESTION_MESSAGE, null, // Use
                 // default
                 // icon
                 choices, // Array of choices
                 choices[0]); // Initial choice
-        switch (input) {
+        
+               new EditBuild(currentUser, input).setVisible(true);
+        
+       switch (input) {
 
             case "Build 1":
                 this.setVisible(false);
@@ -285,6 +293,8 @@ public class AdminMenu extends javax.swing.JFrame {
                 new EditBuild(currentUser, input).setVisible(true);
                 break;
         }
+        */
+    //
     }//GEN-LAST:event_btnEditBuildActionPerformed
 
     private void btnEditAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAccActionPerformed

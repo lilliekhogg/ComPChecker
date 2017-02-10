@@ -25,7 +25,7 @@ public class SelectComponent extends javax.swing.JDialog {
     int motherboardID;
     String thismake;
     String thismodel;
-
+    String partType;
     EditBuild form;
 
     /**
@@ -45,6 +45,7 @@ public class SelectComponent extends javax.swing.JDialog {
      * @param type
      */
     public SelectComponent(String type, EditBuild form1) {
+        partType = type;
         form = form1;
         initComponents();
         this.setTitle("Select Component");     //Adds a title to the frame
@@ -234,7 +235,10 @@ public class SelectComponent extends javax.swing.JDialog {
         //temp save part, change button label to part text
         int ID = getID();
         System.out.println(ID);
-        form.CPU = ID;
+        if (partType == "CPU") {
+            form.CPU = ID;
+        }
+        
         form.btnProcessor.setText(thismake + " " + thismodel);
 
         this.setVisible(false);

@@ -1,9 +1,13 @@
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Luke
@@ -11,7 +15,17 @@
 public class EditBuild extends javax.swing.JFrame {
 
     String myPart = "";
+    int motherboard;
     int CPU;
+    int RAM;
+    int storage;
+    int GPU;
+    int PSU;
+    int PCCase;
+    int cooler;
+    int accessory;
+    String name;
+    String user;
 
     /**
      * Creates new form EditBuild
@@ -25,6 +39,7 @@ public class EditBuild extends javax.swing.JFrame {
     }
 
     EditBuild(UserAccount currentUser, String Build) {
+        user = currentUser.getUsername();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
@@ -44,7 +59,7 @@ public class EditBuild extends javax.swing.JFrame {
         btnProcessor = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnRAM = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtboxName = new javax.swing.JTextField();
         btnMotherboard = new javax.swing.JButton();
         btnGraphics = new javax.swing.JButton();
         btnStorage = new javax.swing.JButton();
@@ -170,7 +185,7 @@ public class EditBuild extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtboxName, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(162, 162, 162))
         );
         layout.setVerticalGroup(
@@ -181,7 +196,7 @@ public class EditBuild extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtboxName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnProcessor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -216,14 +231,41 @@ public class EditBuild extends javax.swing.JFrame {
     }
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        getPart();
+        name = txtboxName.getText();
+
+        Connection con = DatabaseConnection.establishConnection();
+
+        try {
+            //SQL query for inserting data into account table
+            String query = "INSERT INTO Build (Account, Motherboard, CPU, RAM,Storage,GPU,PSU,PCCase,Cooler,Accessory,name)"
+                    + "values (?,?,?,?,?,?,?,?,?,?,?)";
+
+            PreparedStatement statement = con.prepareStatement(query);
+
+            //setting user inputs into sql query
+            statement.setString(1, user);
+            statement.setInt(2, motherboard);
+            statement.setInt(3, CPU);
+            statement.setInt(4, RAM);
+            statement.setInt(5, storage);
+            statement.setInt(6, GPU);
+            statement.setInt(7, PSU);
+            statement.setInt(8, PCCase);
+            statement.setInt(9, cooler);
+            statement.setInt(10, accessory);
+            statement.setString(11, name);
+            statement.execute();
+        } catch (SQLException err) {
+
+        }
+
+
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void btnProcessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessorActionPerformed
         myPart = "CPU";
-        SelectComponent frm = new SelectComponent(myPart,this); //
+        SelectComponent frm = new SelectComponent(myPart, this); //
         frm.setVisible(true);
-        
 
 
     }//GEN-LAST:event_btnProcessorActionPerformed
@@ -234,7 +276,7 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void btnMotherboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMotherboardActionPerformed
         myPart = "Motherboard";
-        new SelectComponent(myPart,this).setVisible(true);
+        new SelectComponent(myPart, this).setVisible(true);
     }//GEN-LAST:event_btnMotherboardActionPerformed
 
     private void btnGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraphicsActionPerformed
@@ -314,7 +356,7 @@ public class EditBuild extends javax.swing.JFrame {
     private javax.swing.JButton btnRAM;
     private javax.swing.JButton btnStorage;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JTextField txtboxName;
     // End of variables declaration//GEN-END:variables
 }
