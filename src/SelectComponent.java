@@ -82,6 +82,17 @@ public class SelectComponent extends javax.swing.JDialog {
             columns.add("Speed");
             columns.add("Capacity");
 
+        } else if (type == "PSU") {
+            columns.add("Series");
+            columns.add("Modular");
+
+        } else if (type == "Cooler") {
+            columns.add("Min RPM");
+            columns.add("Max RPM");
+
+        } else if (type == "Accessory"){
+          columns.add("Description");
+        
         }
 
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
@@ -195,6 +206,84 @@ public class SelectComponent extends javax.swing.JDialog {
                     }
 
                     model.addRow(new Object[]{make, mdl, price, series, storageType, speed, capacity});
+
+                }
+
+            } else if (type == "Case") {
+
+                query = ("Select P.PartID, P.Make, P.Model, P.Price, Height, Width, CDepth, Colour, Motherboard FROM PCCase JOIN Part AS P on PCCase.ID=P.PartID");
+
+                stmt.executeQuery(query);
+                ResultSet rs = stmt.getResultSet();
+
+                while (rs.next()) {
+                    make = rs.getString("Make");
+                    mdl = rs.getString("Model");
+                    price = rs.getDouble("Price");
+                    int height = rs.getInt("Height");
+                    int width = rs.getInt("Width");
+                    int CDepth = rs.getInt("CDepth");
+                    String colour = rs.getString("Colour");
+                    String motherboard = rs.getString("Motherboard");
+
+                    model.addRow(new Object[]{make, mdl, price, height, width, CDepth, colour, motherboard});
+
+                }
+
+            } else if (type == "PSU") {
+                query = ("Select P.PartID, P.Make, P.Model, P.Price, Wattage, Modular FROM PSU JOIN Part AS P on PSU.ID=P.PartID");
+                stmt.executeQuery(query);
+                ResultSet rs = stmt.getResultSet();
+                while (rs.next()) {
+                    make = rs.getString("Make");
+                    mdl = rs.getString("Model");
+                    price = rs.getDouble("Price");
+                    int wattage = rs.getInt("Wattage");
+                    boolean modular = rs.getBoolean("Modular");
+
+                    String modularity;
+
+                    if (modular == true) {
+
+                        modularity = "Yes";
+                    } else {
+                        modularity = "No";
+
+                    }
+
+                    model.addRow(new Object[]{make, mdl, price, wattage, modularity});
+
+                }
+
+            } else if (type == "Cooler") {
+
+                query = ("Select P.PartID, P.Make, P.Model, P.Price, MinRPM, MaxRPM FROM Cooler JOIN Part AS P on Cooler.ID=P.PartID");
+                stmt.executeQuery(query);
+                ResultSet rs = stmt.getResultSet();
+
+                while (rs.next()) {
+                    make = rs.getString("Make");
+                    mdl = rs.getString("Model");
+                    price = rs.getDouble("Price");
+                    int MinRPM = rs.getInt("MinRPM");
+                    int MaxRPM = rs.getInt("MaxRPM");
+
+                    model.addRow(new Object[]{make, mdl, price, MinRPM, MaxRPM});
+
+                }
+            } else if (type == "Accessory") {
+                query = ("Select P.PartID, P.Make, P.Model, P.Price, Description FROM Accessory JOIN Part AS P on Accessory.ID=P.PartID");
+
+                stmt.executeQuery(query);
+                ResultSet rs = stmt.getResultSet();
+
+                while (rs.next()) {
+                    make = rs.getString("Make");
+                    mdl = rs.getString("Model");
+                    price = rs.getDouble("Price");
+                    String description = rs.getString("Description");
+
+                    model.addRow(new Object[]{make, mdl, price, description});
 
                 }
 
@@ -332,11 +421,24 @@ public class SelectComponent extends javax.swing.JDialog {
         } else if (partType == "GPU") {
             form.GPU = ID;
             form.btnGraphics.setText(thismake + " " + thismodel);
-        } else if (partType == "Storage"){
-        form.storage = ID;
-        form.btnStorage.setText(thismake + " " + thismodel);
-        
-        
+        } else if (partType == "Storage") {
+            form.storage = ID;
+            form.btnStorage.setText(thismake + " " + thismodel);
+
+        } else if (partType == "Case") {
+            form.PCCase = ID;
+            form.btnCase.setText(thismake + " " + thismodel);
+        } else if (partType == "PSU") {
+            form.PSU = ID;
+            form.btnPowerSup.setText(thismake + " " + thismodel);
+
+        } else if (partType == "Cooler") {
+            form.cooler = ID;
+            form.btnCooling.setText(thismake + " " + thismodel);
+        } else if (partType == "Accessory") {
+            form.accessory = ID;
+            form.btnAccessories.setText(thismake + " " + thismodel);
+
         }
 
         this.setVisible(false);

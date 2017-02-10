@@ -373,7 +373,7 @@ public class EditBuild extends javax.swing.JFrame {
     public javax.swing.JButton btnCooling;
     public javax.swing.JButton btnGraphics;
     public javax.swing.JButton btnMotherboard;
-    private javax.swing.JButton btnPowerSup;
+    public javax.swing.JButton btnPowerSup;
     public javax.swing.JButton btnProcessor;
     public javax.swing.JButton btnRAM;
     public javax.swing.JButton btnStorage;
