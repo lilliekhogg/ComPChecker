@@ -23,6 +23,10 @@ public class SelectComponent extends javax.swing.JDialog {
      */
     int cpuID;
     int motherboardID;
+    String thismake;
+    String thismodel;
+
+    EditBuild form;
 
     /**
      *
@@ -40,8 +44,8 @@ public class SelectComponent extends javax.swing.JDialog {
      *
      * @param type
      */
-    public SelectComponent(String type) {
-
+    public SelectComponent(String type, EditBuild form1) {
+        form = form1;
         initComponents();
         this.setTitle("Select Component");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
@@ -206,16 +210,18 @@ public class SelectComponent extends javax.swing.JDialog {
 
         try {
             Statement stmt = (Statement) con.createStatement();
-            String query = "SELECT PartID FROM Part WHERE Model ='" + model + "' && Make = '" + make + "'";
+            String query = "SELECT PartID, Model, Make FROM Part WHERE Model ='" + model + "' && Make = '" + make + "'";
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
+                thismake = rs.getString("Make");
+                thismodel = rs.getString("Model");
                 partID = rs.getInt("PartID");
             }
             return partID;
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
-           
+
         }
         return 0;
     }
@@ -227,9 +233,12 @@ public class SelectComponent extends javax.swing.JDialog {
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         //temp save part, change button label to part text
         int ID = getID();
-        
+        System.out.println(ID);
+        form.CPU = ID;
+        form.btnProcessor.setText(thismake + " " + thismodel);
+
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

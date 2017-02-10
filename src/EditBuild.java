@@ -11,6 +11,7 @@
 public class EditBuild extends javax.swing.JFrame {
 
     String myPart = "";
+    int CPU;
 
     /**
      * Creates new form EditBuild
@@ -220,8 +221,7 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void btnProcessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessorActionPerformed
         myPart = "CPU";
-        SelectComponent frm = new SelectComponent(myPart); //
-        this.setVisible(false);
+        SelectComponent frm = new SelectComponent(myPart,this); //
         frm.setVisible(true);
         
 
@@ -234,7 +234,7 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void btnMotherboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMotherboardActionPerformed
         myPart = "Motherboard";
-        new SelectComponent(myPart).setVisible(true);
+        new SelectComponent(myPart,this).setVisible(true);
     }//GEN-LAST:event_btnMotherboardActionPerformed
 
     private void btnGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraphicsActionPerformed
@@ -310,7 +310,7 @@ public class EditBuild extends javax.swing.JFrame {
     private javax.swing.JButton btnGraphics;
     private javax.swing.JButton btnMotherboard;
     private javax.swing.JButton btnPowerSup;
-    private javax.swing.JButton btnProcessor;
+    public javax.swing.JButton btnProcessor;
     private javax.swing.JButton btnRAM;
     private javax.swing.JButton btnStorage;
     private javax.swing.JLabel jLabel1;
