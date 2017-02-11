@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author Luke
  */
-public class EditBuild extends javax.swing.JFrame {
+public class ViewBuild extends javax.swing.JFrame {
 
     String myPart = "";
     int motherboard;
@@ -32,16 +32,28 @@ public class EditBuild extends javax.swing.JFrame {
      */
     Build build = new Build();
 
-    public EditBuild() {
+    public ViewBuild(Build build) {
         initComponents();
-        this.setTitle("Edit Build");     //Adds a title to the frame
+        this.setTitle("View Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
+        
+        CPU = build.CPU;
+        motherboard = build.motherboard;
+        RAM = build.RAM;
+        storage = build.storage;
+        GPU = build.GPU;
+        PSU = build.PSU;
+        PCCase = build.PCCase;
+        cooler = build.cooler;
+        accessory = build.accessory;
+        name = build.name;
+        user = build.user;
     }
 
-    EditBuild(UserAccount currentUser, String Build) {
+    ViewBuild(UserAccount currentUser, String Build) {
         user = currentUser.getUsername();
         initComponents();
-        this.setTitle("Edit Build");     //Adds a title to the frame
+        this.setTitle("View Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
     }
 
@@ -54,6 +66,8 @@ public class EditBuild extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnCancel = new javax.swing.JButton();
+        btnConfirm = new javax.swing.JButton();
         btnProcessor = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnRAM = new javax.swing.JButton();
@@ -68,6 +82,22 @@ public class EditBuild extends javax.swing.JFrame {
         btnAccessories = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnCancel.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancel.setText("✘");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+
+        btnConfirm.setBackground(new java.awt.Color(0, 255, 0));
+        btnConfirm.setText("✔");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
 
         btnProcessor.setText("Processor");
         btnProcessor.addActionListener(new java.awt.event.ActionListener() {
@@ -148,6 +178,11 @@ public class EditBuild extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                         .addComponent(btnProcessor, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +227,11 @@ public class EditBuild extends javax.swing.JFrame {
                 .addComponent(btnCooling)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAccessories)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -203,68 +242,53 @@ public class EditBuild extends javax.swing.JFrame {
         return myPart;
     }
 
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+
+
+    }//GEN-LAST:event_btnConfirmActionPerformed
+
     private void btnProcessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessorActionPerformed
-        myPart = "CPU";
-        SelectComponent frm = new SelectComponent(myPart, this); //
-        frm.setVisible(true);
+ 
 
 
     }//GEN-LAST:event_btnProcessorActionPerformed
 
     private void btnRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAMActionPerformed
-        // TODO add your handling code here
-        myPart = "RAM";
-        SelectComponent frm = new SelectComponent(myPart, this); //
-        frm.setVisible(true);
+    
 
     }//GEN-LAST:event_btnRAMActionPerformed
 
     private void btnMotherboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMotherboardActionPerformed
-        myPart = "Motherboard";
-        new SelectComponent(myPart, this).setVisible(true);
+   
     }//GEN-LAST:event_btnMotherboardActionPerformed
 
     private void btnGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraphicsActionPerformed
-        // TODO add your handling code here:
-        myPart = "GPU";
-        SelectComponent frm = new SelectComponent(myPart, this); //
-        frm.setVisible(true);
+
     }//GEN-LAST:event_btnGraphicsActionPerformed
 
     private void btnStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStorageActionPerformed
-        // TODO add your handling code here:
-         myPart = "Storage";
-        SelectComponent frm = new SelectComponent(myPart, this); //
-        frm.setVisible(true);
+
     }//GEN-LAST:event_btnStorageActionPerformed
 
     private void btnCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaseActionPerformed
-        // TODO add your handling code here:
-        myPart = "Case";
-        SelectComponent frm = new SelectComponent(myPart, this); //
-        frm.setVisible(true);
+
     }//GEN-LAST:event_btnCaseActionPerformed
 
     private void btnPowerSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPowerSupActionPerformed
-        // TODO add your handling code here:
-        myPart = "PSU";
-        SelectComponent frm = new SelectComponent(myPart, this); //
-        frm.setVisible(true);
+
     }//GEN-LAST:event_btnPowerSupActionPerformed
 
     private void btnCoolingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoolingActionPerformed
-        // TODO add your handling code here:
-        myPart = "Cooler";
-        SelectComponent frm = new SelectComponent(myPart, this); //
-        frm.setVisible(true);
+
     }//GEN-LAST:event_btnCoolingActionPerformed
 
     private void btnAccessoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessoriesActionPerformed
-        // TODO add your handling code here:
-         myPart = "Accessory";
-        SelectComponent frm = new SelectComponent(myPart, this); //
-        frm.setVisible(true);
+
     }//GEN-LAST:event_btnAccessoriesActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,7 +327,9 @@ public class EditBuild extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAccessories;
+    private javax.swing.JButton btnCancel;
     public javax.swing.JButton btnCase;
+    private javax.swing.JButton btnConfirm;
     public javax.swing.JButton btnCooling;
     public javax.swing.JButton btnGraphics;
     public javax.swing.JButton btnMotherboard;

@@ -236,9 +236,13 @@ public class AdminMenu extends javax.swing.JFrame {
                                             null,
                                             options, 
                                             options[0]);
-
          
          
+          String buildname = value.toString();
+        build =  build.loadBuild(currentUser, buildname);
+         
+        new ViewBuild(build).setVisible(true);
+        
         }
         
         
