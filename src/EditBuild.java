@@ -328,9 +328,9 @@ public class EditBuild extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
-            new AdminMenu(currentUser, null).setVisible(true);
+            new AdminMenu(currentUser).setVisible(true);
         } else
-            new MainMenu(currentUser, null).setVisible(true);
+            new MainMenu(currentUser).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

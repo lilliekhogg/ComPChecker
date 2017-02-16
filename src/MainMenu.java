@@ -9,6 +9,8 @@
  * @author Luke
  */
 public class MainMenu extends javax.swing.JFrame {
+    
+    UserAccount user;
 
     /**
      * Creates new form AdminMenu
@@ -19,12 +21,11 @@ public class MainMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
-    MainMenu(UserAccount currentUser, Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     MainMenu(UserAccount user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        initComponents();
+        this.setTitle("Main Menu");     //Adds a title to the frame
+        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        //user = user;     //Assigns the user variable passed to this method to a new var
     }
 
     /**
