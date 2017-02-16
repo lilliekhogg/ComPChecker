@@ -313,7 +313,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 new AddGPU(currentUser).setVisible(true);
                 break;
             
-            case "PCCase":
+            case "Case":
                 this.setVisible(false);
                 new AddPCCase(currentUser).setVisible(true);
                 break;
