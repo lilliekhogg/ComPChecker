@@ -27,6 +27,16 @@ public class CPU {
      *
      * @param make
      */
+    public String getMake(){
+     return make;   
+    }
+        
+    public String getModel(){
+     return model;   
+    }
+        
+    
+    
     public void setMake(String make) {
 
         this.make = make;
@@ -97,7 +107,6 @@ public class CPU {
             statement.setInt(4, 1);
             statement.execute();
 
-
             return true;
 
         } catch (SQLException err) {
@@ -106,5 +115,41 @@ public class CPU {
         }
 
     }
-  
+
+    public CPU getCPU(int id) {
+
+        Connection con = DatabaseConnection.establishConnection();
+
+        try {
+
+            String query = "SELECT * FROM CPU WHERE ID ='" + id + "' JOIN Part ON PartID = CPU.'" + id +"'";
+            PreparedStatement statement = con.prepareStatement(query);
+
+            statement.executeQuery(query);
+            ResultSet rs = statement.getResultSet();
+            int partID = 0;
+            CPU cpu = new CPU();
+            while (rs.next()) {
+                cpu.make = rs.getString("Make");
+                cpu.model = rs.getString("Model");
+                
+            }
+
+            statement = con.prepareStatement(query);
+
+            statement.setInt(1, partID);
+            statement.setFloat(2, this.speed);
+            statement.setInt(3, this.cores);
+            statement.setInt(4, 1);
+            statement.execute();
+
+            return cpu;
+
+        } catch (SQLException err) {
+            return null;
+
+        }
+
+    }
+
 }

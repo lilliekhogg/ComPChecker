@@ -294,7 +294,8 @@ public class SelectComponent extends javax.swing.JDialog {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

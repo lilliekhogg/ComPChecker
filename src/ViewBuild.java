@@ -16,7 +16,7 @@ public class ViewBuild extends javax.swing.JFrame {
 
     String myPart = "";
     int motherboard;
-    int CPU;
+    int  cpuID;
     int RAM;
     int storage;
     int GPU;
@@ -40,7 +40,7 @@ public class ViewBuild extends javax.swing.JFrame {
         this.setTitle("View Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
         
-        CPU = build.CPU;
+        cpuID = build.CPU;
         motherboard = build.motherboard;
         RAM = build.RAM;
         storage = build.storage;
@@ -51,10 +51,6 @@ public class ViewBuild extends javax.swing.JFrame {
         accessory = build.accessory;
         name = build.name;
         user = build.user;
-        
-      
-        
-        
         
         
     }

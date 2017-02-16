@@ -218,7 +218,6 @@ public class CreateBuild extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     public static void infoBox(String infoMessage, String titleBar) {
         JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
     }
@@ -234,7 +233,8 @@ public class CreateBuild extends javax.swing.JFrame {
 
     private void btnProcessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessorActionPerformed
         myPart = "CPU";
-        new SelectComponent(myPart,this).setVisible(true);
+        SelectComponent frm = new SelectComponent(myPart, this); //
+        frm.setVisible(true);
 
     }//GEN-LAST:event_btnProcessorActionPerformed
 
