@@ -164,7 +164,7 @@ public class LogIn extends javax.swing.JFrame {
 
                 frm.setVisible(true);
             } else {
-                user_menu frm = new user_menu(user); //opens general user form
+                MainMenu frm = new MainMenu(user); //opens general user form
                 this.setVisible(false);
                 frm.setVisible(true);
 
