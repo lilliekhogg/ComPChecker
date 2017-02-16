@@ -164,7 +164,7 @@ public class AddPSU extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        // sets inputs to the form when the save button is actioned
        PSU psu = new PSU();
 
         String make = comboMake.getSelectedItem().toString();
@@ -185,7 +185,7 @@ public class AddPSU extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        // cancels form and return to admin menu
          this.setVisible(false);
         new AdminMenu().setVisible(true);
         
@@ -195,7 +195,7 @@ public class AddPSU extends javax.swing.JFrame {
     
     
    private void populateMakes() {
-
+       ////method provides make types within combobox
         comboMake.removeAllItems();
         ResultSet rs;
         Make make = new Make();

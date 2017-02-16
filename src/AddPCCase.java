@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Lillie Hogg
  */
 public class AddPCCase extends javax.swing.JFrame {
 
@@ -190,7 +190,7 @@ public class AddPCCase extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        // saves user inputs when the save button is actioned
         PCCase pccase = new PCCase();
 
         String make = comboMake.getSelectedItem().toString();
@@ -216,14 +216,14 @@ public class AddPCCase extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        // cancels form and returns to admin menu when button is actioned
         this.setVisible(false);
         new AdminMenu().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     
     private void populateMakes() {
-
+        //method provides make types within combobox
         comboMake.removeAllItems();
         ResultSet rs;
         Make make = new Make();

@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Lillie Hogg
  */
 public class Accessory {
     
@@ -21,6 +21,8 @@ public class Accessory {
     double price;
     String description;
    
+    
+    //setting inputs
     public void setMake(String make){
         this.make = make;
     }

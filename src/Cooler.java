@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Lillie Hogg
  */
 public class Cooler {
     
@@ -44,12 +44,12 @@ public class Cooler {
     }
     
      public boolean saveCooler() {
-        
+        //saving user inputs to the database
         
         Connection con = DatabaseConnection.establishConnection();
 
         try {
-//Inserts data into part table.
+        //Inserts data into part table.
             String query = "INSERT INTO Part  (Price,Model,Make,PartType) VALUES (?,?,?,?)";
 
             PreparedStatement statement = con.prepareStatement(query);

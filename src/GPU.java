@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author up718528
+ * @author Lillie Hogg
  */
 public class GPU {
     
@@ -61,7 +61,7 @@ public class GPU {
     
     
     public boolean saveGPU() {
-
+        //saving user inputs to the database
         Connection con = DatabaseConnection.establishConnection();
 
         try {

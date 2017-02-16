@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Lillie Hogg
  */
 public class AddAccessory extends javax.swing.JFrame {
 
@@ -154,9 +154,9 @@ public class AddAccessory extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        // method gets inputs from user and sets inputs when save button is clicked
         Accessory accessory = new Accessory();
-
+        
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
         double price = Double.parseDouble(txtFieldPrice.getText());
@@ -175,12 +175,13 @@ public class AddAccessory extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        // cancels the form and returns to admin menu
         this.setVisible(false);
         new AdminMenu().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     
+    //provides the make types in the make combo box
     private void populateMakes() {
 
         comboMake.removeAllItems();

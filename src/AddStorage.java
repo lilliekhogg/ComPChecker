@@ -3,6 +3,7 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import static javax.xml.bind.DatatypeConverter.parseBoolean;
 import static javax.xml.bind.DatatypeConverter.parseString;
 
 /*
@@ -188,32 +189,16 @@ public class AddStorage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        // sets inputs to the form when the save button is actioned
         Storage storage = new Storage();
         String make = comboMake.getSelectedItem().toString();
-        String text = txtFieldSeries.getText();
         String model = txtFieldModel.getText();
         String series = txtFieldSeries.getText();
-        double price = 0;
-        boolean HHD = false;
-        int speed = 0;
-        int capacity = 0;
-
-        if (text != null && !text.isEmpty()) {
-            speed = parseInt(text);
-        }
-        text = txtFieldPrice.getText();
-        if (text != null && !text.isEmpty()) {
-            price = parseDouble(text);
-        }
-        text = txtFieldCapacity.getText();
-        if (text != null && !text.isEmpty()) {
-            capacity = parseInt(text);
-        }
-        text = txtFieldSeries.getText();
-        if(text != null && !text.isEmpty()){
-            series = parseString(text);
-        }
+        double price = Double.parseDouble(txtFieldPrice.getText());
+        int speed = parseInt(txtFieldSpeed.getText());
+        int capacity = parseInt(txtFieldSpeed.getText());
+        boolean HHD = parseBoolean(txtFieldHHD.getText());
+        
 
         storage.make = make;
         storage.model = model;
@@ -223,18 +208,18 @@ public class AddStorage extends javax.swing.JFrame {
         storage.series = series;
         storage.price = price;
         
-        
+        storage.saveStorage();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        // cancels form and return to admin menu
          this.setVisible(false);
-        new AdminMenu().setVisible(true);
+         new AdminMenu().setVisible(true);
         
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void populateMakes() {
-
+        //method provides make types within combobox
         comboMake.removeAllItems();
         ResultSet rs;
         Make make = new Make();

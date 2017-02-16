@@ -13,7 +13,7 @@ import static javax.xml.bind.DatatypeConverter.parseString;
 
 /**
  *
- * @author up718528
+ * @author Lillie Hogg
  */
 public class AddGPU extends javax.swing.JFrame {
 
@@ -195,7 +195,7 @@ public class AddGPU extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFieldSeriesActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        // sets the users inputs when the save button is actioned
         
         GPU gpu = new GPU();
         String make = comboMake.getSelectedItem().toString();
@@ -222,12 +222,13 @@ public class AddGPU extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        // cancels the form and returns to admin menu when button is actioned
         this.setVisible(false);
         new AdminMenu().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     
+    //adds make types to the form combo box
      private void populateMakes() {
 
         comboMake.removeAllItems();

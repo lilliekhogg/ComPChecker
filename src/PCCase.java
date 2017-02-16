@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Lillie Hogg
  */
 public class PCCase {
  
@@ -26,6 +26,7 @@ public class PCCase {
     String motherboard;
     
     
+    //sets inputs into the database
     public void setMake(String make){
         this.make = make;
     }
@@ -61,7 +62,7 @@ public class PCCase {
     
      public boolean savePCCase() {
         
-        
+        //saving user inputs to the database
         Connection con = DatabaseConnection.establishConnection();
 
         try {
@@ -85,7 +86,7 @@ public class PCCase {
             while (rs.next()) {
                 partID = rs.getInt("PartID");
             }
-//Inserts data in Motherboard table.
+            //Inserts data in Motherboard table.
             query = "INSERT INTO PCCase values (?,?,?,?,?,?)";
              statement = con.prepareStatement(query);
             statement.setInt(1, partID);

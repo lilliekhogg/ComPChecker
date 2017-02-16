@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Lillie Hogg
  */
 public class AddCooler extends javax.swing.JFrame {
 
@@ -159,7 +159,7 @@ public class AddCooler extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
+        // retrieves the users inputs when and sets them when save button is actioned
         Cooler cooler = new Cooler();
 
         String make = comboMake.getSelectedItem().toString();
@@ -181,7 +181,7 @@ public class AddCooler extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        // cancels the addcooler form and returns to admin menu
         this.setVisible(false);
         new AdminMenu().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed

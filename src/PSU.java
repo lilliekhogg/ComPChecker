@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Lillie Hogg
  */
 public class PSU {
     
@@ -22,7 +22,7 @@ public class PSU {
     int wattage;
     boolean modular;
     
-    
+    //sets inputs into the form
 public void setMake (String make){
     this.make = make;
 }
