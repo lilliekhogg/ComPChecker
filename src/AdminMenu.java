@@ -279,6 +279,8 @@ public class AdminMenu extends javax.swing.JFrame {
         switch (input) {
 
             case "Accessory":
+                this.setVisible(false);
+                new AddAccessory(currentUser).setVisible(true);
                 break;
 
             case "CPU":
@@ -294,6 +296,31 @@ public class AdminMenu extends javax.swing.JFrame {
             case "RAM":
                 this.setVisible(false);
                 new addRAM(currentUser).setVisible(true);
+                break;
+                
+             case "PSU":
+                this.setVisible(false);
+                new AddPSU(currentUser).setVisible(true);
+                break;
+            
+            case "Cooler":
+                this.setVisible(false);
+                new AddCooler(currentUser).setVisible(true);
+                break;
+            
+            case "GPU":
+                this.setVisible(false);
+                new AddGPU(currentUser).setVisible(true);
+                break;
+            
+            case "PCCase":
+                this.setVisible(false);
+                new AddPCCase(currentUser).setVisible(true);
+                break;
+                
+            case "Storage":
+                this.setVisible(false);
+                new AddStorage(currentUser).setVisible(true);
                 break;
 
         }
