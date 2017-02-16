@@ -66,6 +66,8 @@ public class EditBuild extends javax.swing.JFrame {
         btnCooling = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         btnAccessories = new javax.swing.JButton();
+        btnConfirm = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,6 +139,17 @@ public class EditBuild extends javax.swing.JFrame {
             }
         });
 
+        btnConfirm.setBackground(new java.awt.Color(0, 255, 0));
+        btnConfirm.setText("✔");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
+
+        btnCancel.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancel.setText("✘");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,7 +170,11 @@ public class EditBuild extends javax.swing.JFrame {
                         .addComponent(btnCase, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnPowerSup, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnCooling, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAccessories, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAccessories, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel1)
@@ -192,7 +209,11 @@ public class EditBuild extends javax.swing.JFrame {
                 .addComponent(btnCooling)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAccessories)
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -233,7 +254,7 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void btnStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStorageActionPerformed
         // TODO add your handling code here:
-         myPart = "Storage";
+        myPart = "Storage";
         SelectComponent frm = new SelectComponent(myPart, this); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnStorageActionPerformed
@@ -261,10 +282,28 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void btnAccessoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessoriesActionPerformed
         // TODO add your handling code here:
-         myPart = "Accessory";
+        myPart = "Accessory";
         SelectComponent frm = new SelectComponent(myPart, this); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnAccessoriesActionPerformed
+
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        getPart();
+        Build build = new Build();
+        build.CPU = CPU;
+        build.motherboard = motherboard;
+        build.RAM = RAM;
+        build.GPU = GPU;
+        build.PCCase = PCCase;
+        build.PSU = PSU;
+        build.cooler = cooler;
+        build.accessory = accessory;
+        build.name = name;
+        build.storage = storage;
+        build.user = user;
+
+        build.SaveBuild();
+    }//GEN-LAST:event_btnConfirmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,7 +342,9 @@ public class EditBuild extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAccessories;
+    private javax.swing.JButton btnCancel;
     public javax.swing.JButton btnCase;
+    private javax.swing.JButton btnConfirm;
     public javax.swing.JButton btnCooling;
     public javax.swing.JButton btnGraphics;
     public javax.swing.JButton btnMotherboard;

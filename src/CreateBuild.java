@@ -234,7 +234,7 @@ public class CreateBuild extends javax.swing.JFrame {
 
     private void btnProcessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessorActionPerformed
         myPart = "CPU";
-        new SelectComponent(myPart).setVisible(true);
+        new SelectComponent(myPart,this).setVisible(true);
 
     }//GEN-LAST:event_btnProcessorActionPerformed
 

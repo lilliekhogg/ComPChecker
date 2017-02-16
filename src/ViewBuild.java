@@ -27,6 +27,9 @@ public class ViewBuild extends javax.swing.JFrame {
     String name;
     String user;
 
+    
+    
+    
     /**
      * Creates new form EditBuild
      */
@@ -48,6 +51,12 @@ public class ViewBuild extends javax.swing.JFrame {
         accessory = build.accessory;
         name = build.name;
         user = build.user;
+        
+      
+        
+        
+        
+        
     }
 
     ViewBuild(UserAccount currentUser, String Build) {
