@@ -26,7 +26,7 @@ public class SelectComponent extends javax.swing.JDialog {
     String thismake;
     String thismodel;
     String partType;
-    EditBuild form;
+    ManageBuild form;
 
     /**
      *
@@ -45,7 +45,7 @@ public class SelectComponent extends javax.swing.JDialog {
      * @param type
      * @param form1
      */
-    public SelectComponent(String type, EditBuild form1) {
+    public SelectComponent(String type, ManageBuild form1) {
         partType = type;
         form = form1;
         initComponents();

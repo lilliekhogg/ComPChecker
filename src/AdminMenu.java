@@ -54,6 +54,7 @@ public class AdminMenu extends javax.swing.JFrame {
         btnEditBuild = new javax.swing.JButton();
         btnEditAccs = new javax.swing.JButton();
         btnEditComp = new javax.swing.JButton();
+        btnLogOut = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -129,6 +130,13 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
+        btnLogOut.setText("Log out");
+        btnLogOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogOutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,7 +164,10 @@ public class AdminMenu extends javax.swing.JFrame {
                             .addComponent(btnEditBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnViewBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCreateBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(103, 103, 103))))
+                        .addGap(103, 103, 103))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnLogOut)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +192,9 @@ public class AdminMenu extends javax.swing.JFrame {
                     .addComponent(btnViewBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAddMake, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addComponent(btnLogOut)
+                .addContainerGap())
         );
 
         pack();
@@ -224,7 +237,7 @@ public class AdminMenu extends javax.swing.JFrame {
           String buildname = value.toString();
         build =  build.loadBuild(currentUser, buildname);
          
-        new ViewBuild(build).setVisible(true);
+        new ManageBuild(build).setVisible(true);
         
         }
         
@@ -236,7 +249,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnCreateBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBuildActionPerformed
         this.setVisible(false);
-        new EditBuild(currentUser, null).setVisible(true);
+        new ManageBuild(currentUser, null).setVisible(true);
     }//GEN-LAST:event_btnCreateBuildActionPerformed
 
     private void btnCreateAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccActionPerformed
@@ -312,7 +325,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private void btnEditBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBuildActionPerformed
         String[] choices = {"Build 1", "Build 2", "Build 3"};
         
-        new EditBuild(currentUser, null).setVisible(true);
+        new ManageBuild(currentUser, null).setVisible(true);
         this.setVisible(false);
         //Need build names here to be pulled from DB7
         
@@ -358,6 +371,11 @@ public class AdminMenu extends javax.swing.JFrame {
     private void btnEditCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCompActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditCompActionPerformed
+
+    private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
+        this.setVisible(false);
+        new LogIn().setVisible(true);
+    }//GEN-LAST:event_btnLogOutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,6 +423,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnEditAccs;
     private javax.swing.JButton btnEditBuild;
     private javax.swing.JButton btnEditComp;
+    private javax.swing.JToggleButton btnLogOut;
     private javax.swing.JButton btnNewComponent;
     private javax.swing.JButton btnViewBuild;
     private javax.swing.JLabel lblAdminMenu;

@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author Luke
  */
-public class EditBuild extends javax.swing.JFrame {
+public class ManageBuild extends javax.swing.JFrame {
 
     String myPart = "";
     int motherboard;
@@ -34,18 +34,22 @@ public class EditBuild extends javax.swing.JFrame {
      */
     Build build = new Build();
 
-    public EditBuild() {
+    public ManageBuild() {
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
     }
 
-    EditBuild(UserAccount currentUser, String Build) {
+    ManageBuild(UserAccount currentUser, String Build) {
         username = currentUser.getUsername();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
         //currentUser = currentUser;
+    }
+
+    ManageBuild(Build build) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -350,20 +354,21 @@ public class EditBuild extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EditBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EditBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EditBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EditBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManageBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditBuild().setVisible(true);
+                new ManageBuild().setVisible(true);
             }
         });
     }

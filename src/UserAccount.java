@@ -32,7 +32,7 @@ public class UserAccount {
 
         return username;
     }
-    
+
     /**
      *
      * @param enteredUname
@@ -43,10 +43,10 @@ public class UserAccount {
         //Checks entered username and password against ones stored in database.
         Connection con = DatabaseConnection.establishConnection();
         String dbUname, dbPassword;
-        
+
         try {
             Statement stmt = (Statement) con.createStatement();
-            String query = ("SELECT ID, Password, accountType FROM Account WHERE ID='" + enteredUname+"'");
+            String query = ("SELECT ID, Password, accountType FROM Account WHERE ID='" + enteredUname + "'");
 
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
@@ -75,84 +75,70 @@ public class UserAccount {
     }
 
     /**
-     * checks whether password entered into GUI is equal to password
-     * stored in the database.
+     * checks whether password entered into GUI is equal to password stored in
+     * the database.
      *
      * @param username
      * @param password
      * @return
      */
-    public boolean checkPassword(String username, String password){
-            // this statement establishes the connection between netbeans and the vm
-           Connection con = DatabaseConnection.establishConnection();
-           String user = username;
-           String enteredPassword = password;
-            try {
+    public boolean checkPassword(String username, String password) {
+        // this statement establishes the connection between netbeans and the vm
+        Connection con = DatabaseConnection.establishConnection();
+        String user = username;
+        String enteredPassword = password;
+        try {
             Statement stmt = (Statement) con.createStatement();
-            String query = ("SELECT ID, Password FROM Account WHERE ID='" + user+"'");
+            String query = ("SELECT ID, Password FROM Account WHERE ID='" + user + "'");
 
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
 
             while (rs.next()) {
-                   String dbPassword = rs.getString("Password");
-                   if(dbPassword == enteredPassword){
-                   return true;
-                   
-                   }else{
-                       return false;
-                       
-                   }
-                       
-                       
-                   
-            
+                String dbPassword = rs.getString("Password");
+                if (dbPassword == enteredPassword) {
+                    return true;
+
+                } else {
+                    return false;
 
                 }
-            
 
             }
 
-        catch (SQLException err) {
+        } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
             return false;
         }
-        
-        
-        
-         return false;
-            }
-   
-    
-    
+
+        return false;
+    }
+
     /**
      * Enables user to change password in the GUI and new password is then
-     * accepted through connected database. 
-     * 
+     * accepted through connected database.
+     *
      * @param username
      * @param newPassword
      * @return
      */
-    
-    public void changePassword(String username, String newPassword){
-    Connection con = DatabaseConnection.establishConnection();
-    String user = username;
-    String password = newPassword;
-    try {
-    
-       //SQL query - changes password where the username is equal to input, entered by user.
-       String query = ("UPDATE Account SET Password '" + password + "' WHERE Username = '" + username +"' ;  ");
-       PreparedStatement statement = con.prepareStatement(query);
-    
- 
+    public void changePassword(String username, String newPassword) {
+        Connection con = DatabaseConnection.establishConnection();
+        String user = username;
+        String password = newPassword;
+        try {
+
+            //SQL query - changes password where the username is equal to input, entered by user.
+            String query = ("UPDATE Account SET Password '" + password + "' WHERE Username = '" + username + "' ;  ");
+            PreparedStatement statement = con.prepareStatement(query);
+
+        } catch (SQLException err) { //error message
+
+        }
+
+        // setting the users data entered below
     }
-    catch(SQLException err){ //error message
-        
-    
-    }
-    
-    // setting the users data entered below
-    }
+
     /**
      *
      * @param username
@@ -222,6 +208,7 @@ public class UserAccount {
 
     /**
      * checking the availability of a username in the database.
+     *
      * @param username
      * @return
      */
@@ -237,52 +224,48 @@ public class UserAccount {
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
-               availability = rs.getInt("COUNT(*)");
-               if(availability == 1){ //username is already taken
-                   return false;
-               }else{
-                return true; //username is available
-               }
+                availability = rs.getInt("COUNT(*)");
+                if (availability == 1) { //username is already taken
+                    return false;
+                } else {
+                    return true; //username is available
+                }
             }
-            
+
         } catch (SQLException err) {
 
             System.out.println(err.getMessage());
             return false;
         }
         return false;
-    }    
-    
+    }
+
     /**
      * saves the users details into the database
      */
-    public void saveUser(){
-    
-        //connecting to the vm
-    Connection con = DatabaseConnection.establishConnection();
-    
-    try {
-        //SQL query for inserting data into account table
-       String query = "INSERT INTO Account values (?,?,?,?,?,?)"; 
-          
-       PreparedStatement statement = con.prepareStatement(query);
-       
-       //setting user inputs into sql query
-       statement.setString(1,username);
-       statement.setString(2, password);
-       statement.setString(3, fName);
-       statement.setString(4, sName);
-       statement.setString(5,email);
-       statement.setBoolean(6, type);
-       statement.execute();
-    }
-    catch(SQLException err){
-        
-    
-    }
-    
-    }
-    
-    
-}
+    public void saveUser() {
 
+        //connecting to the vm
+        Connection con = DatabaseConnection.establishConnection();
+
+        try {
+            //SQL query for inserting data into account table
+            String query = "INSERT INTO Account values (?,?,?,?,?,?)";
+
+            PreparedStatement statement = con.prepareStatement(query);
+
+            //setting user inputs into sql query
+            statement.setString(1, username);
+            statement.setString(2, password);
+            statement.setString(3, fName);
+            statement.setString(4, sName);
+            statement.setString(5, email);
+            statement.setBoolean(6, type);
+            statement.execute();
+        } catch (SQLException err) {
+
+        }
+
+    }
+
+}
