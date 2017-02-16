@@ -269,7 +269,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnNewComponentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewComponentActionPerformed
         // TODO add your handling code here:
-        String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Make", "Motherboard", "Case", "PSU", "RAM", "Storage"};
+        String[] choices = {"Accessory", "CPU", "Cooler", "GPU","Motherboard", "Case", "PSU", "RAM", "Storage"};
         String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being added?",
                 "New Part", JOptionPane.QUESTION_MESSAGE, null, // Use
                 // default
@@ -279,8 +279,6 @@ public class AdminMenu extends javax.swing.JFrame {
         switch (input) {
 
             case "Accessory":
-                this.setVisible(false);
-                new AddAccessory(currentUser).setVisible(true);
                 break;
 
             case "CPU":
@@ -297,35 +295,8 @@ public class AdminMenu extends javax.swing.JFrame {
                 this.setVisible(false);
                 new addRAM(currentUser).setVisible(true);
                 break;
-                
-            case "PSU":
-                this.setVisible(false);
-                new AddPSU(currentUser).setVisible(true);
-                break;
-            
-            case "Cooler":
-                this.setVisible(false);
-                new AddCooler(currentUser).setVisible(true);
-                break;
-            
-            case "GPU":
-                this.setVisible(false);
-                new AddGPU(currentUser).setVisible(true);
-                break;
-            
-            case "PCCase":
-                this.setVisible(false);
-                new AddPCCase(currentUser).setVisible(true);
-                break;
-                
-            case "Storage":
-                this.setVisible(false);
-                new AddStorage(currentUser).setVisible(true);
-                break;
-            
+
         }
-        
-        
     }//GEN-LAST:event_btnNewComponentActionPerformed
 
     private void btnEditBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBuildActionPerformed
