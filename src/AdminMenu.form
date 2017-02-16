@@ -34,9 +34,8 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnEditAcc" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnEditAccs" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnCreateAcc" max="32767" attributes="0"/>
-                          <Component id="btnDeleteAcc" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -74,12 +73,11 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnEditBuild" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnEditAcc" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnEditAccs" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnEditComp" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnDeleteAcc" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnAddComp" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnViewBuild" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
@@ -105,20 +103,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateAccActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnDeleteAcc">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View Accounts"/>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[107, 23]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[107, 23]"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteAccActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAddComp">
@@ -182,12 +166,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditBuildActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnEditAcc">
+    <Component class="javax.swing.JButton" name="btnEditAccs">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Account"/>
+        <Property name="text" type="java.lang.String" value="Edit Accounts"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditAccActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditAccsActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnEditComp">

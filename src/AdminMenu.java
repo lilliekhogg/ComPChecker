@@ -45,7 +45,6 @@ public class AdminMenu extends javax.swing.JFrame {
 
         lblAdminMenu = new javax.swing.JLabel();
         btnCreateAcc = new javax.swing.JButton();
-        btnDeleteAcc = new javax.swing.JButton();
         btnAddComp = new javax.swing.JButton();
         btnCreateBuild = new javax.swing.JButton();
         btnViewBuild = new javax.swing.JButton();
@@ -53,7 +52,7 @@ public class AdminMenu extends javax.swing.JFrame {
         btnAddMake = new javax.swing.JButton();
         btnNewComponent = new javax.swing.JButton();
         btnEditBuild = new javax.swing.JButton();
-        btnEditAcc = new javax.swing.JButton();
+        btnEditAccs = new javax.swing.JButton();
         btnEditComp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,15 +66,6 @@ public class AdminMenu extends javax.swing.JFrame {
         btnCreateAcc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateAccActionPerformed(evt);
-            }
-        });
-
-        btnDeleteAcc.setText("View Accounts");
-        btnDeleteAcc.setMaximumSize(new java.awt.Dimension(107, 23));
-        btnDeleteAcc.setMinimumSize(new java.awt.Dimension(107, 23));
-        btnDeleteAcc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteAccActionPerformed(evt);
             }
         });
 
@@ -125,10 +115,10 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        btnEditAcc.setText("Edit Account");
-        btnEditAcc.addActionListener(new java.awt.event.ActionListener() {
+        btnEditAccs.setText("Edit Accounts");
+        btnEditAccs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditAccActionPerformed(evt);
+                btnEditAccsActionPerformed(evt);
             }
         });
 
@@ -152,9 +142,8 @@ public class AdminMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEditAcc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCreateAcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDeleteAcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnEditAccs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCreateAcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNewComponent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -184,11 +173,10 @@ public class AdminMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditAccs, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEditComp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDeleteAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddComp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnViewBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -198,11 +186,6 @@ public class AdminMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnDeleteAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAccActionPerformed
-        this.setVisible(false);
-        //new DeleteAccount().setVisible(true);
-    }//GEN-LAST:event_btnDeleteAccActionPerformed
 
     private void btnAddCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCompActionPerformed
         this.setVisible(false);
@@ -365,9 +348,12 @@ public class AdminMenu extends javax.swing.JFrame {
     //
     }//GEN-LAST:event_btnEditBuildActionPerformed
 
-    private void btnEditAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAccActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditAccActionPerformed
+    private void btnEditAccsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAccsActionPerformed
+        // TODO add your handling code here
+        new EditAccounts().setVisible(true);
+        
+        
+    }//GEN-LAST:event_btnEditAccsActionPerformed
 
     private void btnEditCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCompActionPerformed
         // TODO add your handling code here:
@@ -416,8 +402,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnAddMake;
     private javax.swing.JButton btnCreateAcc;
     private javax.swing.JButton btnCreateBuild;
-    private javax.swing.JButton btnDeleteAcc;
-    private javax.swing.JButton btnEditAcc;
+    private javax.swing.JButton btnEditAccs;
     private javax.swing.JButton btnEditBuild;
     private javax.swing.JButton btnEditComp;
     private javax.swing.JButton btnNewComponent;

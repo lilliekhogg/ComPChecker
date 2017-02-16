@@ -124,7 +124,6 @@ public class SelectComponent extends javax.swing.JDialog {
                     double speed = rs.getDouble("Speed");
                     int cores = rs.getInt("Cores");
                     boolean graphics = rs.getBoolean("Graphics");
-
                     model.addRow(new Object[]{make, mdl, price, speed, cores, graphics});
 
                 }
