@@ -15,8 +15,11 @@ import javax.swing.JOptionPane;
  */
 public class AddCPU extends javax.swing.JDialog {
 
+    int CPUID;
+
     /**
      * Creates new form AddCPU
+     *
      * @param parent
      * @param modal
      */
@@ -34,6 +37,16 @@ public class AddCPU extends javax.swing.JDialog {
         this.setTitle("Add CPU");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
+    }
+
+    public AddCPU(int ID) {
+
+        initComponents();
+        this.setTitle("Add CPU");     //Adds a title to the frame
+        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        populateMakes();
+        CPUID = ID;
+
     }
 
     AddCPU(UserAccount currentUser) {
@@ -66,6 +79,7 @@ public class AddCPU extends javax.swing.JDialog {
         txtboxPrice = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -103,6 +117,13 @@ public class AddCPU extends javax.swing.JDialog {
             }
         });
 
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,14 +139,16 @@ public class AddCPU extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmboxMake, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtboxModel)
-                        .addComponent(txtboxPrice)
-                        .addComponent(txtboxCores)
-                        .addComponent(txtboxSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cmboxMake, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtboxModel)
+                    .addComponent(txtboxPrice)
+                    .addComponent(txtboxCores)
+                    .addComponent(txtboxSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -154,7 +177,9 @@ public class AddCPU extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(txtboxCores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSave)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(btnEdit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel)
                 .addGap(22, 22, 22))
@@ -195,9 +220,8 @@ public class AddCPU extends javax.swing.JDialog {
         cpu.speed = speed;
         cpu.cores = cores;
         cpu.price = price;
-        
-         cpu.saveCPU();
-         
+
+        cpu.saveCPU();
 
 
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -206,6 +230,33 @@ public class AddCPU extends javax.swing.JDialog {
         this.setVisible(false);
         new AdminMenu().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        CPU cpu = new CPU();
+        String make = cmboxMake.getSelectedItem().toString();
+        String text = txtboxSpeed.getText();
+        String model = txtboxModel.getText();
+        double price = 0;
+
+        float speed = 0;
+        int cores = 0;
+
+        if (text != null && !text.isEmpty()) {
+            speed = Float.parseFloat(text);
+        }
+        text = txtboxCores.getText();
+        if (text != null && !text.isEmpty()) {
+            cores = Integer.parseInt(text);
+        }
+        text = txtboxPrice.getText();
+        if (text != null && !text.isEmpty()) {
+            price = parseDouble(text);
+        }
+        cpu.updateCPU(CPUID, make, model, price, speed, cores, true);
+
+
+    }//GEN-LAST:event_btnEditActionPerformed
 
     private void populateMakes() {
 
@@ -271,17 +322,18 @@ public class AddCPU extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> cmboxMake;
+    public javax.swing.JButton btnEdit;
+    public javax.swing.JButton btnSave;
+    public javax.swing.JComboBox<String> cmboxMake;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtboxCores;
-    private javax.swing.JTextField txtboxModel;
-    private javax.swing.JTextField txtboxPrice;
-    private javax.swing.JTextField txtboxSpeed;
+    public javax.swing.JTextField txtboxCores;
+    public javax.swing.JTextField txtboxModel;
+    public javax.swing.JTextField txtboxPrice;
+    public javax.swing.JTextField txtboxSpeed;
     // End of variables declaration//GEN-END:variables
 }

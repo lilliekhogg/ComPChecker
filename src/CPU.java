@@ -27,16 +27,14 @@ public class CPU {
      *
      * @param make
      */
-    public String getMake(){
-     return make;   
+    public String getMake() {
+        return make;
     }
-        
-    public String getModel(){
-     return model;   
+
+    public String getModel() {
+        return model;
     }
-        
-    
-    
+
     public void setMake(String make) {
 
         this.make = make;
@@ -122,7 +120,7 @@ public class CPU {
 
         try {
 
-            String query = "SELECT * FROM CPU WHERE ID ='" + id + "' JOIN Part ON PartID = CPU.'" + id +"'";
+            String query = "SELECT * FROM CPU WHERE ID ='" + id + "' JOIN Part ON PartID = CPU.'" + id + "'";
             PreparedStatement statement = con.prepareStatement(query);
 
             statement.executeQuery(query);
@@ -132,7 +130,7 @@ public class CPU {
             while (rs.next()) {
                 cpu.make = rs.getString("Make");
                 cpu.model = rs.getString("Model");
-                
+
             }
 
             statement = con.prepareStatement(query);
@@ -148,6 +146,26 @@ public class CPU {
         } catch (SQLException err) {
             return null;
 
+        }
+
+    }
+
+    public void updateCPU(int ID, String newMake, String newModel, double newPrice, float newSpeed, int newCores, boolean newGraphics) {
+        Connection con = DatabaseConnection.establishConnection();
+
+        try {
+
+            String query = "UPDATE CPU SET Speed = '" + newSpeed + "' ,Cores = '" + newCores + "' , Graphics = '" + newGraphics + "' WHERE ID ='" + ID + "'";
+            query = "UPDATE CPU SET Speed = ?, Cores = ?, Graphics = ? WHERE ID = ?";
+            
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setFloat(1 ,newSpeed);
+            statement.setInt(2, newCores);
+            statement.setBoolean(3, newGraphics);
+            statement.setInt(4, ID);
+            statement.executeUpdate(query);
+        } catch (SQLException err) {
+System.out.println(err.getMessage());
         }
 
     }
