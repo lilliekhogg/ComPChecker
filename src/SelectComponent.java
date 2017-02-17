@@ -452,7 +452,6 @@ public class SelectComponent extends javax.swing.JDialog {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.setVisible(false);
-        new AdminMenu().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**

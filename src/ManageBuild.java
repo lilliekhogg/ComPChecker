@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,7 +40,6 @@ public class ManageBuild extends javax.swing.JFrame {
 //        this.setTitle("Edit Build");     //Adds a title to the frame
 //        setLocationRelativeTo(null);
 //    }
-    
     //Contructor for CreateBuild - where a build doesn't need to be passed...
     //... as the user is creating a new one
     ManageBuild(UserAccount user) {
@@ -49,7 +49,7 @@ public class ManageBuild extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         currentUser = user;
     }
-    
+
     //Contructor for EditBuild & Viewbuild - where a build needs to be passed...
     //... as the user is referencing an existing one
     ManageBuild(UserAccount user, Build myBuild) {
@@ -169,6 +169,11 @@ public class ManageBuild extends javax.swing.JFrame {
 
         btnCancel.setBackground(new java.awt.Color(255, 0, 0));
         btnCancel.setText("✘");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Return to Menu");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -324,6 +329,13 @@ public class ManageBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccessoriesActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        saveBuild();
+        //Maybe make uneditable?
+        this.setVisible(false);
+        new ManageBuild(currentUser).setVisible(true);       //Resets components when build is saved
+    }//GEN-LAST:event_btnConfirmActionPerformed
+
+    private void saveBuild() {
         getPart();
         Build build = new Build();
         build.CPU = CPU;
@@ -339,17 +351,33 @@ public class ManageBuild extends javax.swing.JFrame {
         build.user = username;
 
         build.SaveBuild();
-    }//GEN-LAST:event_btnConfirmActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.out.println(currentUser);
+    }
+    
+    private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
             new AdminMenu(currentUser).setVisible(true);
         } else {
             new MainMenu(currentUser).setVisible(true);
         }
+    }
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        returnToMenu();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+
+        String message = "Do you wish to cancel without saving?";
+        int answer = JOptionPane.showConfirmDialog(this, message);
+        if (answer == JOptionPane.YES_OPTION) {
+            // User clicked YES.
+            returnToMenu();
+        } else if (answer == JOptionPane.NO_OPTION) {
+            // User clicked NO.
+            // Nothing happens
+        }
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
