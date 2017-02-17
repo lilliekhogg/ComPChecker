@@ -218,20 +218,30 @@ public class AdminMenu extends javax.swing.JFrame {
 
                 while (rs.next()) {
                     buildnames.add(rs.getString("name"));
-
                 }
-                Object[] options = buildnames.toArray();
-                Object value = JOptionPane.showInputDialog(null,
-                        "Build Choice",
-                        "Chose your Build",
-                        JOptionPane.QUESTION_MESSAGE,
-                        null,
-                        options,
-                        options[0]);
 
-                String buildname = value.toString();
-                build = build.loadBuild(currentUser, buildname);
+                String[] buildArr = new String[buildnames.size()];
+                buildArr = buildnames.toArray(buildArr);
 
+                String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being added?",
+                        "New Part", JOptionPane.QUESTION_MESSAGE, null, buildArr, buildArr[0]);
+                System.out.println(buildArr[0]);
+                System.out.println(buildArr[1]);
+                for (String s : buildArr) {
+                    System.out.println(s);
+                }
+
+//                Object[] options = buildnames.toArray();
+//                Object value = JOptionPane.showInputDialog(null,
+//                        "Build Choice",
+//                        "Chose your Build",
+//                        JOptionPane.QUESTION_MESSAGE,
+//                        null,
+//                        options,
+//                        options[0]);
+//
+//                String buildname = value.toString();
+//                build = build.loadBuild(currentUser, buildname);
                 new ManageBuild(currentUser, build).setVisible(true);
 
             }
@@ -261,11 +271,7 @@ public class AdminMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
         String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being added?",
-                "New Part", JOptionPane.QUESTION_MESSAGE, null, // Use
-                // default
-                // icon
-                choices, // Array of choices
-                choices[0]); // Initial choice
+                "New Part", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
         switch (input) {
 
             case "Accessory":
@@ -277,7 +283,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 AddCPU form = new AddCPU();
                 form.btnEdit.hide();
                 form.setVisible(true);
-                    this.setVisible(false);
+                this.setVisible(false);
                 break;
 
             case "Motherboard":

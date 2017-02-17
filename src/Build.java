@@ -130,7 +130,6 @@ public class Build {
         try {
             Statement stmt = (Statement) con.createStatement();
             String query = ("SELECT ID, name FROM Build WHERE Account='" + user.getUsername() + "'");
-            System.out.println(user.getUsername());
             stmt.executeQuery(query);
             rs = stmt.getResultSet();
 
@@ -148,7 +147,6 @@ public class Build {
         try {
             Statement stmt = (Statement) con.createStatement();
             String query = ("SELECT * From Build WHERE Account = '" + user.getUsername() + "'" + " AND name ='" + name +"'");
-            System.out.println(user.getUsername());
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while(rs.next()){

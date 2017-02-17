@@ -108,6 +108,12 @@ public class ManageBuild extends javax.swing.JFrame {
             }
         });
 
+        txtboxName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtboxNameActionPerformed(evt);
+            }
+        });
+
         btnMotherboard.setText("Motherboard");
         btnMotherboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,7 +352,7 @@ public class ManageBuild extends javax.swing.JFrame {
         build.PSU = PSU;
         build.cooler = cooler;
         build.accessory = accessory;
-        build.name = name;
+        build.name = txtboxName.getText();
         build.storage = storage;
         build.user = username;
 
@@ -378,6 +384,10 @@ public class ManageBuild extends javax.swing.JFrame {
             // Nothing happens
         }
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void txtboxNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtboxNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtboxNameActionPerformed
 
     /**
      * @param args the command line arguments
