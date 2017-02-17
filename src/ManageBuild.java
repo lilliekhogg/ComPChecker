@@ -26,7 +26,7 @@ public class ManageBuild extends javax.swing.JFrame {
     int accessory;
     String name;
     String username;
-    
+
     UserAccount currentUser;
 
     /**
@@ -34,13 +34,25 @@ public class ManageBuild extends javax.swing.JFrame {
      */
     Build build = new Build();
 
-    public ManageBuild() {
+//    public ManageBuild() {
+//        initComponents();
+//        this.setTitle("Edit Build");     //Adds a title to the frame
+//        setLocationRelativeTo(null);
+//    }
+    
+    //Contructor for CreateBuild - where a build doesn't need to be passed...
+    //... as the user is creating a new one
+    ManageBuild(UserAccount user) {
+        username = user.getUsername();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
+        currentUser = user;
     }
-
-    ManageBuild(UserAccount user, String Build) {
+    
+    //Contructor for EditBuild & Viewbuild - where a build needs to be passed...
+    //... as the user is referencing an existing one
+    ManageBuild(UserAccount user, Build myBuild) {
         username = user.getUsername();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
@@ -48,11 +60,7 @@ public class ManageBuild extends javax.swing.JFrame {
         currentUser = user;
     }
 
-    ManageBuild(Build build) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    ManageBuild(UserAccount currentUser) {
+    private ManageBuild() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -338,8 +346,9 @@ public class ManageBuild extends javax.swing.JFrame {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
             new AdminMenu(currentUser).setVisible(true);
-        } else
+        } else {
             new MainMenu(currentUser).setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

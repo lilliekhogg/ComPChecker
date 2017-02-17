@@ -232,7 +232,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 String buildname = value.toString();
                 build = build.loadBuild(currentUser, buildname);
 
-                new ManageBuild(build).setVisible(true);
+                new ManageBuild(currentUser, build).setVisible(true);
 
             }
 
