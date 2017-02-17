@@ -335,10 +335,17 @@ public class ManageBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccessoriesActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        String buildName = txtboxName.getText();
+        
+        if(buildName.isEmpty()){
+        JOptionPane.showMessageDialog(null, "Please complete the build name field.", "Please complete fields", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            
         saveBuild();
         //Maybe make uneditable?
         this.setVisible(false);
         new ManageBuild(currentUser).setVisible(true);       //Resets components when build is saved
+        }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void saveBuild() {
