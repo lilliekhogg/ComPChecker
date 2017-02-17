@@ -40,12 +40,12 @@ public class ManageBuild extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
 
-    ManageBuild(UserAccount currentUser, String Build) {
-        username = currentUser.getUsername();
+    ManageBuild(UserAccount user, String Build) {
+        username = user.getUsername();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
-        //currentUser = currentUser;
+        currentUser = user;
     }
 
     ManageBuild(Build build) {
@@ -334,6 +334,7 @@ public class ManageBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.out.println(currentUser);
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
             new AdminMenu(currentUser).setVisible(true);

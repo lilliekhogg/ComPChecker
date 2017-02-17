@@ -20,8 +20,8 @@ public class AdminMenu extends javax.swing.JFrame {
      * Creates new form AdminMenu
      */
     UserAccount currentUser;    //Now from the menu, this user var can be passed to other forms
-                                //If it needs to be accessed in another form not in the method passed to...
-                                //... then just assign it to a new var again like this (better way to do this?)
+    //If it needs to be accessed in another form not in the method passed to...
+    //... then just assign it to a new var again like this (better way to do this?)
 
     public AdminMenu() {
         initComponents();
@@ -206,43 +206,37 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddCompActionPerformed
 
     private void btnViewBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildActionPerformed
-            Build build = new Build();
-        ResultSet rs =build.findUserBuilds(currentUser);
-        
-        try{
-        if(!rs.isBeforeFirst()) {    
-    System.out.println("You have no previous builds."); 
-}else{
-        System.out.println("Builds detected"); 
-         ArrayList<String> buildnames = new ArrayList<>();
-         
-         while(rs.next()){
-         buildnames.add(rs.getString("name"));
-         
-        
+        Build build = new Build();
+        ResultSet rs = build.findUserBuilds(currentUser);
 
-         
-     
-         }
-         Object[] options = buildnames.toArray();
-         Object value = JOptionPane.showInputDialog(null, 
-                                           "Build Choice", 
-                                           "Chose your Build", 
-                                            JOptionPane.QUESTION_MESSAGE, 
-                                            null,
-                                            options, 
-                                            options[0]);
-         
-         
-          String buildname = value.toString();
-        build =  build.loadBuild(currentUser, buildname);
-         
-        new ManageBuild(build).setVisible(true);
-        
-        }
-        
-        
-        }catch(SQLException err) {
+        try {
+            if (!rs.isBeforeFirst()) {
+                System.out.println("You have no previous builds.");
+            } else {
+                System.out.println("Builds detected");
+                ArrayList<String> buildnames = new ArrayList<>();
+
+                while (rs.next()) {
+                    buildnames.add(rs.getString("name"));
+
+                }
+                Object[] options = buildnames.toArray();
+                Object value = JOptionPane.showInputDialog(null,
+                        "Build Choice",
+                        "Chose your Build",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
+
+                String buildname = value.toString();
+                build = build.loadBuild(currentUser, buildname);
+
+                new ManageBuild(build).setVisible(true);
+
+            }
+
+        } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
     }//GEN-LAST:event_btnViewBuildActionPerformed
@@ -265,7 +259,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnNewComponentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewComponentActionPerformed
         // TODO add your handling code here:
-        String[] choices = {"Accessory", "CPU", "Cooler", "GPU","Motherboard", "Case", "PSU", "RAM", "Storage"};
+        String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
         String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being added?",
                 "New Part", JOptionPane.QUESTION_MESSAGE, null, // Use
                 // default
@@ -293,27 +287,27 @@ public class AdminMenu extends javax.swing.JFrame {
                 this.setVisible(false);
                 new addRAM(currentUser).setVisible(true);
                 break;
-                
-             case "PSU":
+
+            case "PSU":
                 this.setVisible(false);
                 new AddPSU(currentUser).setVisible(true);
                 break;
-            
+
             case "Cooler":
                 this.setVisible(false);
                 new AddCooler(currentUser).setVisible(true);
                 break;
-            
+
             case "GPU":
                 this.setVisible(false);
                 new AddGPU(currentUser).setVisible(true);
                 break;
-            
+
             case "Case":
                 this.setVisible(false);
                 new AddPCCase(currentUser).setVisible(true);
                 break;
-                
+
             case "Storage":
                 this.setVisible(false);
                 new AddStorage(currentUser).setVisible(true);
@@ -324,13 +318,11 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnEditBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBuildActionPerformed
         String[] choices = {"Build 1", "Build 2", "Build 3"};
-        
+
         new ManageBuild(currentUser, null).setVisible(true);
         this.setVisible(false);
         //Need build names here to be pulled from DB7
-        
-        
-        
+
         /*String input = (String) JOptionPane.showInputDialog(null, "Which build would you like to edit?",
                 "Edit Build", JOptionPane.QUESTION_MESSAGE, null, // Use
                 // default
@@ -357,15 +349,15 @@ public class AdminMenu extends javax.swing.JFrame {
                 new EditBuild(currentUser, input).setVisible(true);
                 break;
         }
-        */
-    //
+         */
+        //
     }//GEN-LAST:event_btnEditBuildActionPerformed
 
     private void btnEditAccsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAccsActionPerformed
         // TODO add your handling code here
         new EditAccounts().setVisible(true);
-        
-        
+
+
     }//GEN-LAST:event_btnEditAccsActionPerformed
 
     private void btnEditCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCompActionPerformed
