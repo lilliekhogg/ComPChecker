@@ -289,14 +289,17 @@ public class AdminMenu extends javax.swing.JFrame {
                 String[] buildArr = new String[buildnames.size()];
                 buildArr = buildnames.toArray(buildArr);
 
-                String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being added?",
+                String input = (String) JOptionPane.showInputDialog(null, "Which build would you like to view?",
                         "New Part", JOptionPane.QUESTION_MESSAGE, null, buildArr, buildArr[0]);
                 System.out.println(buildArr[0]);
                 System.out.println(buildArr[1]);
                 for (String s : buildArr) {
                     System.out.println(s);
                 }
-
+                
+                // Tom, I think our code basically was the same, I just ran into
+                // some bugs so changed it in an effort to fix my problem.
+                
 //                Object[] options = buildnames.toArray();
 //                Object value = JOptionPane.showInputDialog(null,
 //                        "Build Choice",
