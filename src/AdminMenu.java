@@ -210,8 +210,65 @@ public class AdminMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCompActionPerformed
-        this.setVisible(false);
-        //new AddComponent().setVisible(true);
+        // TODO add your handling code here:
+        String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
+        String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being editted?",
+                "Edit Component", JOptionPane.QUESTION_MESSAGE, null, // Use
+                // default
+                // icon
+                choices, // Array of choices
+                choices[0]); // Initial choice
+        String myPart;
+        EditComponent frm; //
+        switch (input) {
+
+            case "Accessory":
+                myPart = "Accessory";
+                frm = new EditComponent(myPart); //
+                frm.setVisible(true);
+                break;
+
+            case "CPU":
+                myPart = "CPU";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Motherboard":
+                myPart = "Motherboard";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "RAM":
+                myPart = "RAM";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "PSU":
+                myPart = "PSU";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Cooler":
+                myPart = "Cooler";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "GPU":
+                myPart = "GPU";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Case":
+                myPart = "Case";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Storage":
+                myPart = "Storage";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+        }
     }//GEN-LAST:event_btnAddCompActionPerformed
 
     private void btnViewBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildActionPerformed
@@ -273,7 +330,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private void btnAddMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMakeActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        new AddMake().setVisible(true);
+        new AddMake(currentUser).setVisible(true);
     }//GEN-LAST:event_btnAddMakeActionPerformed
 
     private void btnNewComponentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewComponentActionPerformed
@@ -290,7 +347,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
             case "CPU":
                 AddCPU form = new AddCPU();
-                form.btnEdit.hide();
+                form.btnEdit.hide();        //what's this code for?
                 form.setVisible(true);
                 this.setVisible(false);
                 break;
@@ -302,7 +359,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
             case "RAM":
                 this.setVisible(false);
-                new addRAM(currentUser).setVisible(true);
+                new AddRAM(currentUser).setVisible(true);
                 break;
 
             case "PSU":
@@ -376,66 +433,6 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditAccsActionPerformed
 
     private void btnEditCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCompActionPerformed
-        // TODO add your handling code here:
-        String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
-        String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being editted?",
-                "Edit Component", JOptionPane.QUESTION_MESSAGE, null, // Use
-                // default
-                // icon
-                choices, // Array of choices
-                choices[0]); // Initial choice
-        String myPart;
-        EditComponent frm; //
-        switch (input) {
-
-            case "Accessory":
-                myPart = "Accessory";
-                frm = new EditComponent(myPart); //
-                frm.setVisible(true);
-                break;
-
-            case "CPU":
-                myPart = "CPU";
-                frm = new EditComponent(myPart);
-                frm.setVisible(true);
-                break;
-            case "Motherboard":
-                myPart = "Motherboard";
-                frm = new EditComponent(myPart);
-                frm.setVisible(true);
-                break;
-            case "RAM":
-                myPart = "RAM";
-                frm = new EditComponent(myPart);
-                frm.setVisible(true);
-                break;
-            case "PSU":
-                myPart = "PSU";
-                frm = new EditComponent(myPart);
-                frm.setVisible(true);
-                break;
-            case "Cooler":
-                myPart = "Cooler";
-                frm = new EditComponent(myPart);
-                frm.setVisible(true);
-                break;
-            case "GPU":
-                myPart = "GPU";
-                frm = new EditComponent(myPart);
-                frm.setVisible(true);
-                break;
-            case "Case":
-                myPart = "Case";
-                frm = new EditComponent(myPart);
-                frm.setVisible(true);
-                break;
-            case "Storage":
-                myPart = "Storage";
-                frm = new EditComponent(myPart);
-                frm.setVisible(true);
-                break;
-        }
-
 
     }//GEN-LAST:event_btnEditCompActionPerformed
 

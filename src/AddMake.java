@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
  * @author Tom
  */
 public class AddMake extends javax.swing.JFrame {
+    
+    UserAccount currentUser;
 
     /**
      * Creates new form AddMake
@@ -20,6 +22,13 @@ public class AddMake extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Add Make");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+    }
+
+    AddMake(UserAccount user) {
+        initComponents();
+        this.setTitle("Add Make");     //Adds a title to the frame
+        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        currentUser = user;
     }
 
     /**
@@ -142,7 +151,7 @@ public class AddMake extends javax.swing.JFrame {
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         // show admin menu from make build
         this.setVisible(false);
-        new AdminMenu().setVisible(true);
+        new AdminMenu(currentUser).setVisible(true);
     }//GEN-LAST:event_btnReturnActionPerformed
 
     /**
