@@ -45,7 +45,7 @@ public class ManageBuild extends javax.swing.JFrame {
     ManageBuild(UserAccount user) {
         username = user.getUsername();
         initComponents();
-        this.setTitle("Edit Build");     //Adds a title to the frame
+        this.setTitle("Manage Build");     //Adds a title to the frame - need this to change bassed on option
         setLocationRelativeTo(null);
         currentUser = user;
     }

@@ -55,10 +55,10 @@ public class AdminMenu extends javax.swing.JFrame {
         btnEditAccs = new javax.swing.JButton();
         btnEditComp = new javax.swing.JButton();
         btnLogOut = new javax.swing.JToggleButton();
+        btnViewAccs = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-        setSize(new java.awt.Dimension(600, 400));
 
         lblAdminMenu.setFont(new java.awt.Font("Lato", 0, 24)); // NOI18N
         lblAdminMenu.setText("Admin Menu");
@@ -137,6 +137,13 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
+        btnViewAccs.setText("View Accounts");
+        btnViewAccs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewAccsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,7 +158,8 @@ public class AdminMenu extends javax.swing.JFrame {
                         .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnEditAccs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCreateAcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnCreateAcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnViewAccs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnNewComponent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -189,7 +197,8 @@ public class AdminMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddComp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnViewBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewAccs, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAddMake, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
@@ -258,7 +267,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnCreateAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccActionPerformed
         this.setVisible(false);
-        new CreateAccountAdmin().setVisible(true);
+        new CreateAccountAdmin(currentUser).setVisible(true);
     }//GEN-LAST:event_btnCreateAccActionPerformed
 
     private void btnAddMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMakeActionPerformed
@@ -363,9 +372,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
     private void btnEditAccsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAccsActionPerformed
         // TODO add your handling code here
-        new EditAccounts().setVisible(true);
-
-
+        //new EditAccounts(currentUser).setVisible(true);
     }//GEN-LAST:event_btnEditAccsActionPerformed
 
     private void btnEditCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCompActionPerformed
@@ -437,6 +444,11 @@ public class AdminMenu extends javax.swing.JFrame {
         new LogIn().setVisible(true);
     }//GEN-LAST:event_btnLogOutActionPerformed
 
+    private void btnViewAccsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewAccsActionPerformed
+        //this.setVisible(false);
+        new EditAccounts(currentUser).setVisible(true);
+    }//GEN-LAST:event_btnViewAccsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -485,6 +497,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnEditComp;
     private javax.swing.JToggleButton btnLogOut;
     private javax.swing.JButton btnNewComponent;
+    private javax.swing.JButton btnViewAccs;
     private javax.swing.JButton btnViewBuild;
     private javax.swing.JLabel lblAdminMenu;
     private javax.swing.JLabel lblLogo;
