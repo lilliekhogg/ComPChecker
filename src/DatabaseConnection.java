@@ -34,7 +34,7 @@ public class DatabaseConnection {
 
         try {
  
-            String host = "jdbc:mysql://213.104.129.95:3306/ComPChecker";   //Location of mySQL server
+            String host = "jdbc:mysql://213.104.129.95:3306/INSE";   //Location of mySQL server
             String uName = "root";    //account details for accessing database      
             String uPass = "root";
             Connection con = DriverManager.getConnection(host, uName, uPass);
