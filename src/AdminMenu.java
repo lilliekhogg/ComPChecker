@@ -350,7 +350,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
             case "CPU":
                 AddCPU form = new AddCPU();
-                form.btnEdit.hide();        //what's this code for?
+                form.btnEdit.hide();        //Hides button as saving new component.
                 form.setVisible(true);
                 this.setVisible(false);
                 break;
