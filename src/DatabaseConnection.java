@@ -35,8 +35,8 @@ public class DatabaseConnection {
         try {
  
             String host = "jdbc:mysql://213.104.129.95:3306/INSE";   //Location of mySQL server
-            String uName = "root";    //account details for accessing database      
-            String uPass = "root";
+            String uName = "TLL";    //account details for accessing database      
+            String uPass = "triggered";
             Connection con = DriverManager.getConnection(host, uName, uPass);
             System.out.println("Connected database successfully...");
 
@@ -60,6 +60,29 @@ public class DatabaseConnection {
         
         }
     
+    
+   }
+    
+    
+    public void stressTest(){
+        int counter = 0;
+     while(true){
+         
+         Connection con = DatabaseConnection.establishConnection();
+        try {
+
+            String query = "SELECT * FROM Build;";
+            PreparedStatement statement = con.prepareStatement(query);
+         
+            statement.executeQuery(query);
+            counter = counter + 1;
+            System.out.println(counter);
+        } catch (SQLException err) {
+
+        }
+
+    }
+     }
+        
     }
 
-}
