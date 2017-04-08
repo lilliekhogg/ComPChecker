@@ -43,6 +43,7 @@ public class AdminMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnAddMake1 = new javax.swing.JButton();
         lblAdminMenu = new javax.swing.JLabel();
         btnCreateAcc = new javax.swing.JButton();
         btnAddComp = new javax.swing.JButton();
@@ -57,6 +58,14 @@ public class AdminMenu extends javax.swing.JFrame {
         btnLogOut = new javax.swing.JToggleButton();
         btnViewAccs = new javax.swing.JButton();
         btnViewAccs1 = new javax.swing.JButton();
+        btnCompIssue = new javax.swing.JButton();
+
+        btnAddMake1.setText("Add New Make");
+        btnAddMake1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddMake1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -152,6 +161,13 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
+        btnCompIssue.setText("Add Compatability Issue");
+        btnCompIssue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompIssueActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -178,10 +194,15 @@ public class AdminMenu extends javax.swing.JFrame {
                             .addComponent(btnAddMake, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEditBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnViewBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCreateBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(103, 103, 103))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnEditBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnViewBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnCreateBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(103, 103, 103))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCompIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnLogOut)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -211,8 +232,9 @@ public class AdminMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddMake, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewAccs1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                    .addComponent(btnViewAccs1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCompIssue, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnLogOut)
                 .addContainerGap())
         );
@@ -466,6 +488,95 @@ public class AdminMenu extends javax.swing.JFrame {
         database.stressTest();
     }//GEN-LAST:event_btnViewAccs1ActionPerformed
 
+    private void btnAddMake1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddMake1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddMake1ActionPerformed
+
+    private void btnCompIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompIssueActionPerformed
+        // TODO add your handling code here:
+         String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
+        String partType1 = (String) JOptionPane.showInputDialog(null, "Select the first type of part the first component is",
+                "Compatability Issue", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+        switch (partType1) {
+
+            case "Accessory":
+                partType1 =  "Accessory";
+                break;
+
+            case "CPU":
+               partType1 =  "CPU";
+                break;
+
+            case "Motherboard":
+                 partType1 =  "Motherboard";
+                break;
+
+            case "RAM":
+               partType1 =  "RAM";
+                break;
+
+            case "PSU":
+                partType1 =  "PSU";
+                break;
+
+            case "Cooler":
+                partType1 =  "Cooler";
+                break;
+
+            case "GPU":
+                partType1 =  "GPU";
+                break;
+
+            case "Case":
+                partType1 =  "Case";
+                break;
+
+            case "Storage":
+                partType1 =  "Storage";
+                break;
+    }//GEN-LAST:event_btnCompIssueActionPerformed
+ String partType2 = (String) JOptionPane.showInputDialog(null, "Select the second type of part the first component is",
+                "Compatability Issue", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
+        switch (partType1) {
+
+            case "Accessory":
+                partType1 =  "Accessory";
+                break;
+
+            case "CPU":
+               partType1 =  "CPU";
+                break;
+
+            case "Motherboard":
+                 partType1 =  "Motherboard";
+                break;
+
+            case "RAM":
+               partType1 =  "RAM";
+                break;
+
+            case "PSU":
+                partType1 =  "PSU";
+                break;
+
+            case "Cooler":
+                partType1 =  "Cooler";
+                break;
+
+            case "GPU":
+                partType1 =  "GPU";
+                break;
+
+            case "Case":
+                partType1 =  "Case";
+                break;
+
+            case "Storage":
+                partType1 =  "Storage";
+                break;
+  
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -507,6 +618,8 @@ public class AdminMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddComp;
     private javax.swing.JButton btnAddMake;
+    private javax.swing.JButton btnAddMake1;
+    private javax.swing.JButton btnCompIssue;
     private javax.swing.JButton btnCreateAcc;
     private javax.swing.JButton btnCreateBuild;
     private javax.swing.JButton btnEditAccs;

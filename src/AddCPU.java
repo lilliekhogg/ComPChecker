@@ -54,7 +54,6 @@ public class AddCPU extends javax.swing.JDialog {
         this.setTitle("Add CPU");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
-        System.out.println(currentUser.getUsername());
     }
 
     /**
@@ -222,8 +221,9 @@ public class AddCPU extends javax.swing.JDialog {
         cpu.price = price;
 
         cpu.saveCPU();
-
-
+        JOptionPane.showMessageDialog(null, "CPU added", "CPU Added", JOptionPane.INFORMATION_MESSAGE);
+        this.setVisible(false);
+        new AdminMenu().setVisible(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

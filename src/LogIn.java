@@ -186,9 +186,6 @@ public class LogIn extends javax.swing.JFrame {
 
     private void lblChangePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblChangePasswordMouseClicked
         // displays change password form:
-        ChangePassword frm = new ChangePassword();
-        this.setVisible(false);
-        frm.setVisible(true);
     }//GEN-LAST:event_lblChangePasswordMouseClicked
 
     private void passwordfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordfieldActionPerformed
