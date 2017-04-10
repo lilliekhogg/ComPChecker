@@ -17,7 +17,7 @@ public class RAM {
     String make;
     String model;
     double price;
-    float speed;
+    String speed;
     int size;
     int sticks;
     
@@ -26,7 +26,16 @@ public class RAM {
         this.make = make;
     }
  
-    public void setSpeed(float speed) {
+    public void setModel(String model) {
+
+        this.model = model;
+    }
+    
+    public void setPrice(double price) {
+
+        this.price = price;
+    }
+    public void setSpeed(String speed) {
         this.speed = speed;
 
     }
@@ -40,7 +49,6 @@ public class RAM {
         this.sticks = sticks;
     
     }
-    
     
     
     public boolean saveRAM() {
@@ -72,14 +80,12 @@ public class RAM {
             statement = con.prepareStatement(query);
 
             statement.setInt(1, partID);
-            statement.setFloat(2, this.speed);
+            statement.setString(2, this.speed);
             statement.setInt(3, this.size);
             statement.setInt(4, this.sticks);
             statement.execute();
-
-
+            con.close();
             return true;
-
         } catch (SQLException err) {
             return false;
 

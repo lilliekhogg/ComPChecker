@@ -68,7 +68,6 @@ public class EditComponent extends javax.swing.JDialog {
             columns.add("Speed");
             columns.add("Size");
             columns.add("Sticks");
-            columns.add("Type");
         } else if (type == "GPU") {
 
             columns.add("Series");
@@ -145,7 +144,7 @@ public class EditComponent extends javax.swing.JDialog {
                 }
             } else if (type == "RAM") {
 
-                query = ("Select P.PartID, P.Make, P.Model, P.Price, Speed, SizeGB, Sticks, type FROM RAM JOIN Part AS P on RAM.ID=P.PartID");
+                query = ("Select P.PartID, P.Make, P.Model, P.Price, Speed, SizeGB, Sticks FROM RAM JOIN Part AS P on RAM.ID=P.PartID");
 
                 stmt.executeQuery(query);
                 ResultSet rs = stmt.getResultSet();
@@ -154,12 +153,11 @@ public class EditComponent extends javax.swing.JDialog {
                     make = rs.getString("Make");
                     mdl = rs.getString("Model");
                     price = rs.getDouble("Price");
-                    int speed = rs.getInt("Speed");
+                    String speed = rs.getString("Speed");
                     int size = rs.getInt("SizeGB");
                     int sticks = rs.getInt("Sticks");
-                    String RAMtype = rs.getString("type");
 
-                    model.addRow(new Object[]{make, mdl, price, speed, size, sticks, RAMtype});
+                    model.addRow(new Object[]{make, mdl, price, speed, size, sticks});
 
                 }
             } else if (type == "GPU") {

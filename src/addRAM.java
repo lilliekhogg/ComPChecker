@@ -206,32 +206,34 @@ public class addRAM extends javax.swing.JDialog {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+          // retrieves the users inputs when and sets them when save button is actioned
         RAM ram = new RAM();
+
         String make = comboMake.getSelectedItem().toString();
-        String text = txtFieldSpeed.getText();
         String model = txtFieldModel.getText();
-        double price = 0;
-        int sticks = 0;
-        float speed = 0;
-
-        if (text != null && !text.isEmpty()) {
-            speed = Float.parseFloat(text);
-        }
-        text = txtFieldPrice.getText();
-        if (text != null && !text.isEmpty()) {
-            price = parseDouble(text);
-        }
+        double price = Double.parseDouble(txtFieldPrice.getText());
+        String speed = txtFieldSpeed.getText();
+        int size = Integer.parseInt(txtFieldSize.getText());
+        int sticks = Integer.parseInt(txtFieldSticks.getText());
         
-        text = txtFieldSticks.getText();
-        if(text != null && !text.isEmpty()){
-            sticks = parseInt(text);
-        }
+      
+        ram.setMake(make);
+        ram.setModel(model);
+        ram.setPrice(price);
+        ram.setSpeed(speed);
+        ram.setSize(size);
+        ram.setSticks(sticks);
 
-        ram.make = make;
-        ram.model = model;
-        ram.speed = speed;
-        ram.sticks = sticks;
-        ram.price = price;
+        
+        boolean succesful = ram.saveRAM();
+        if(succesful){
+       this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+       new AdminMenu().setVisible(true);
+        }else{
+         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
+       new AdminMenu().setVisible(true);
+        }
         
         
     }//GEN-LAST:event_btnSaveActionPerformed
