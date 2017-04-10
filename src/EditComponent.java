@@ -26,7 +26,7 @@ public class EditComponent extends javax.swing.JDialog {
     String thismake;
     String thismodel;
     String partType;
-    ManageBuild form;
+    CreateBuild form;
 
     /**
      *

@@ -26,7 +26,7 @@ public class SelectComponent extends javax.swing.JDialog {
     String thismake;
     String thismodel;
     String partType;
-    ManageBuild form;
+    CreateBuild form;
 
     /**
      *
@@ -45,7 +45,7 @@ public class SelectComponent extends javax.swing.JDialog {
      * @param type
      * @param form1
      */
-    public SelectComponent(String type, ManageBuild form1) {
+    public SelectComponent(String type, CreateBuild form1) {
         partType = type;
         form = form1;
         initComponents();
@@ -290,6 +290,10 @@ public class SelectComponent extends javax.swing.JDialog {
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
+    }
+
+    SelectComponent(String myPart, EditBuild aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

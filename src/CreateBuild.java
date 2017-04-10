@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author Luke
  */
-public class ManageBuild extends javax.swing.JFrame {
+public class CreateBuild extends javax.swing.JFrame {
 
     String myPart = "";
     int motherboard;
@@ -35,24 +35,24 @@ public class ManageBuild extends javax.swing.JFrame {
      */
     Build build = new Build();
 
-//    public ManageBuild() {
+//    public CreateBuild() {
 //        initComponents();
 //        this.setTitle("Edit Build");     //Adds a title to the frame
 //        setLocationRelativeTo(null);
 //    }
     //Contructor for CreateBuild - where a build doesn't need to be passed...
     //... as the user is creating a new one
-    ManageBuild(UserAccount user) {
+    CreateBuild(UserAccount user) {
         username = user.getUsername();
         initComponents();
-        this.setTitle("Manage Build");     //Adds a title to the frame - need this to change bassed on option
+        this.setTitle("Create Build");     //Adds a title to the frame - need this to change bassed on option
         setLocationRelativeTo(null);
         currentUser = user;
     }
 
     //Contructor for EditBuild & Viewbuild - where a build needs to be passed...
     //... as the user is referencing an existing one
-    ManageBuild(UserAccount user, Build myBuild) {
+    CreateBuild(UserAccount user, Build myBuild) {
         username = user.getUsername();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
@@ -60,7 +60,7 @@ public class ManageBuild extends javax.swing.JFrame {
         currentUser = user;
     }
 
-    private ManageBuild() {
+    private CreateBuild() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -344,26 +344,26 @@ public class ManageBuild extends javax.swing.JFrame {
         saveBuild();
         //Maybe make uneditable?
         this.setVisible(false);
-        new ManageBuild(currentUser).setVisible(true);       //Resets components when build is saved
+        new CreateBuild(currentUser).setVisible(true);       //Resets components when build is saved
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void saveBuild() {
         getPart();
-        Build build = new Build();
-        build.CPU = CPU;
-        build.motherboard = motherboard;
-        build.RAM = RAM;
-        build.GPU = GPU;
-        build.PCCase = PCCase;
-        build.PSU = PSU;
-        build.cooler = cooler;
-        build.accessory = accessory;
-        build.name = txtboxName.getText();
-        build.storage = storage;
-        build.user = username;
+        Build myBuild = new Build();
+        myBuild.CPU = CPU;
+        myBuild.motherboard = motherboard;
+        myBuild.RAM = RAM;
+        myBuild.GPU = GPU;
+        myBuild.PCCase = PCCase;
+        myBuild.PSU = PSU;
+        myBuild.cooler = cooler;
+        myBuild.accessory = accessory;
+        myBuild.name = txtboxName.getText();
+        myBuild.storage = storage;
+        myBuild.user = username;
 
-        build.SaveBuild();
+        myBuild.SaveBuild();
     }
     
     private void returnToMenu() {
@@ -413,21 +413,23 @@ public class ManageBuild extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManageBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManageBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManageBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManageBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ManageBuild().setVisible(true);
+                new CreateBuild().setVisible(true);
             }
         });
     }
