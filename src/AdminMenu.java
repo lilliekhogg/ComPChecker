@@ -427,7 +427,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewComponentActionPerformed
 
     private void btnEditBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBuildActionPerformed
-        String[] choices = {"Build 1", "Build 2", "Build 3"};
+        //String[] choices = {"Build 1", "Build 2", "Build 3"};
 
         new ManageBuild(currentUser, null).setVisible(true);
         this.setVisible(false);
