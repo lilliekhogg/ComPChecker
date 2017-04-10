@@ -70,7 +70,7 @@ public class Cooler {
                 partID = rs.getInt("PartID");
             }
 //Inserts data in Motherboard table.
-            query = "INSERT INTO Motherboard values (?,?,?)";
+            query = "INSERT INTO Cooler values (?,?,?)";
              statement = con.prepareStatement(query);
             statement.setInt(1, partID);
             statement.setInt(2, minRPM);

@@ -1,6 +1,7 @@
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -176,8 +177,15 @@ public class AddCooler extends javax.swing.JFrame {
         cooler.setMaxRPM(maxRPM);
 
         
-        cooler.saveCooler();
-        
+        boolean succesful = cooler.saveCooler();
+        if(succesful){
+       this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+       new AdminMenu().setVisible(true);
+        }else{
+         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
+       new AdminMenu().setVisible(true);
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
