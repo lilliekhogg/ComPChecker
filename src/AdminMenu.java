@@ -53,7 +53,6 @@ public class AdminMenu extends javax.swing.JFrame {
         btnAddMake = new javax.swing.JButton();
         btnNewComponent = new javax.swing.JButton();
         btnEditBuild = new javax.swing.JButton();
-        btnEditAccs = new javax.swing.JButton();
         btnEditComp = new javax.swing.JButton();
         btnLogOut = new javax.swing.JToggleButton();
         btnViewAccs = new javax.swing.JButton();
@@ -126,13 +125,6 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        btnEditAccs.setText("Edit Accounts");
-        btnEditAccs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditAccsActionPerformed(evt);
-            }
-        });
-
         btnEditComp.setText("Edit Component");
         btnEditComp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +139,7 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        btnViewAccs.setText("View Accounts");
+        btnViewAccs.setText("View & Edit Accounts");
         btnViewAccs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewAccsActionPerformed(evt);
@@ -181,7 +173,6 @@ public class AdminMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEditAccs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCreateAcc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnViewAccs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnViewAccs1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -222,13 +213,12 @@ public class AdminMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditAccs, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditComp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEditComp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewAccs, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddComp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewAccs, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnViewBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddMake, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -426,11 +416,6 @@ public class AdminMenu extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEditBuildActionPerformed
 
-    private void btnEditAccsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAccsActionPerformed
-        // TODO add your handling code here
-        //new EditAccounts(currentUser).setVisible(true);
-    }//GEN-LAST:event_btnEditAccsActionPerformed
-
     private void btnEditCompActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditCompActionPerformed
 
     }//GEN-LAST:event_btnEditCompActionPerformed
@@ -585,7 +570,6 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnCompIssue;
     private javax.swing.JButton btnCreateAcc;
     private javax.swing.JButton btnCreateBuild;
-    private javax.swing.JButton btnEditAccs;
     private javax.swing.JButton btnEditBuild;
     private javax.swing.JButton btnEditComp;
     private javax.swing.JToggleButton btnLogOut;

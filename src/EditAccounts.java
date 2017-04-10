@@ -3,6 +3,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -16,7 +17,7 @@ import javax.swing.table.TableColumn;
  * @author Tom
  */
 public class EditAccounts extends javax.swing.JDialog {
-    
+
     UserAccount currentUser;
 
     /**
@@ -24,7 +25,7 @@ public class EditAccounts extends javax.swing.JDialog {
      */
     public EditAccounts(UserAccount user) {
         initComponents();
-        btnEdit.setEnabled(false); 
+
         this.setTitle("Edit Accounts");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         TableColumn col = new TableColumn();
@@ -49,12 +50,12 @@ public class EditAccounts extends javax.swing.JDialog {
                 String email = rs.getString("Email");
                 boolean type = rs.getBoolean("accountType");
                 String admin;
-                if (type){
-                admin = "Admin";
-                }else{
-                 admin = "General";
+                if (type) {
+                    admin = "Admin";
+                } else {
+                    admin = "General";
                 }
-                  model.addRow(new Object[]{username, fname, sname, email, admin});
+                model.addRow(new Object[]{username, fname, sname, email, admin});
             }
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
@@ -154,6 +155,27 @@ public class EditAccounts extends javax.swing.JDialog {
         int partID = 0;
         int row = jTable.getSelectedRow();
         String username = jTable.getModel().getValueAt(row, 0).toString();
+
+        String[] options = new String[]{"Edit", "Delete", "Make Admin" , "Reset Password", "Cancel"};
+        int response = JOptionPane.showOptionDialog(null, "What would you like to do with the account " + username + "?" , "Title",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[0]);
+        
+        if(response == 0){
+        //edit
+        }else if(response == 1){
+        //Delete
+        
+        }else if(response == 2){
+        //Make Admin
+        UserAccount user = new UserAccount();
+        user.setUsername(username);
+          user.setType(true);
+        user.promoteToAdmin();
+        }else{
+        //Cancel
+                }
+                
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

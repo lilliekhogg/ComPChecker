@@ -44,7 +44,6 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnEditAccs" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnCreateAcc" max="32767" attributes="0"/>
                           <Component id="btnViewAccs" alignment="1" max="32767" attributes="0"/>
                           <Component id="btnViewAccs1" alignment="1" max="32767" attributes="0"/>
@@ -97,14 +96,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnEditBuild" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnEditAccs" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnEditComp" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnViewAccs" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAddComp" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnViewBuild" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnViewAccs" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -197,14 +195,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditBuildActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnEditAccs">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Accounts"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditAccsActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnEditComp">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit Component"/>
@@ -223,7 +213,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnViewAccs">
       <Properties>
-        <Property name="text" type="java.lang.String" value="View Accounts"/>
+        <Property name="text" type="java.lang.String" value="View &amp; Edit Accounts"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewAccsActionPerformed"/>
