@@ -304,7 +304,7 @@ public class AdminMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddCompActionPerformed
 
-    private void btnViewBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildActionPerformed
+    private void buildSelection() {
         Build build = new Build();
         ResultSet rs = build.findUserBuilds(currentUser);
 
@@ -323,34 +323,26 @@ public class AdminMenu extends javax.swing.JFrame {
                 buildArr = buildnames.toArray(buildArr);
 
                 String input = (String) JOptionPane.showInputDialog(null, "Which build would you like to view?",
-                        "New Part", JOptionPane.QUESTION_MESSAGE, null, buildArr, buildArr[0]);
+                        "View Build", JOptionPane.QUESTION_MESSAGE, null, buildArr, buildArr[0]);
                 System.out.println(buildArr[0]);
                 System.out.println(buildArr[1]);
                 for (String s : buildArr) {
                     System.out.println(s);
                 }
-                
-                // Tom, I think our code basically was the same, I just ran into
-                // some bugs so changed it in an effort to fix my problem.
-                
-//                Object[] options = buildnames.toArray();
-//                Object value = JOptionPane.showInputDialog(null,
-//                        "Build Choice",
-//                        "Chose your Build",
-//                        JOptionPane.QUESTION_MESSAGE,
-//                        null,
-//                        options,
-//                        options[0]);
-//
-//                String buildname = value.toString();
-//                build = build.loadBuild(currentUser, buildname);
-                new ManageBuild(currentUser, build).setVisible(true);
-
             }
 
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
+    }
+    
+    private void btnViewBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildActionPerformed
+        
+        buildSelection();
+        
+        this.setVisible(false);
+        new ManageBuild(currentUser).setVisible(true);
+        
     }//GEN-LAST:event_btnViewBuildActionPerformed
 
     private void btnCreateBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBuildActionPerformed
@@ -427,40 +419,11 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewComponentActionPerformed
 
     private void btnEditBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBuildActionPerformed
-        //String[] choices = {"Build 1", "Build 2", "Build 3"};
+        buildSelection();
 
         new ManageBuild(currentUser, null).setVisible(true);
         this.setVisible(false);
-        //Need build names here to be pulled from DB7
 
-        /*String input = (String) JOptionPane.showInputDialog(null, "Which build would you like to edit?",
-                "Edit Build", JOptionPane.QUESTION_MESSAGE, null, // Use
-                // default
-                // icon
-                choices, // Array of choices
-                choices[0]); // Initial choice
-        
-               new EditBuild(currentUser, input).setVisible(true);
-        
-       switch (input) {
-
-            case "Build 1":
-                this.setVisible(false);
-                new EditBuild(currentUser, input).setVisible(true);
-                break;
-
-            case "Build 2":
-                this.setVisible(false);
-                new EditBuild(currentUser, input).setVisible(true);
-                break;
-
-            case "Build 3":
-                this.setVisible(false);
-                new EditBuild(currentUser, input).setVisible(true);
-                break;
-        }
-         */
-        //
     }//GEN-LAST:event_btnEditBuildActionPerformed
 
     private void btnEditAccsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditAccsActionPerformed
