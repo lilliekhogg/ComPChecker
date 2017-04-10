@@ -156,26 +156,27 @@ public class EditAccounts extends javax.swing.JDialog {
         int row = jTable.getSelectedRow();
         String username = jTable.getModel().getValueAt(row, 0).toString();
 
-        String[] options = new String[]{"Edit", "Delete", "Make Admin" , "Reset Password", "Cancel"};
-        int response = JOptionPane.showOptionDialog(null, "What would you like to do with the account " + username + "?" , "Title",
+        String[] options = new String[]{"Edit", "Delete", "Make Admin", "Reset Password", "Cancel"};
+        int response = JOptionPane.showOptionDialog(null, "What would you like to do with the account " + username + "?", "Title",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, options[0]);
-        
-        if(response == 0){
-        //edit
-        }else if(response == 1){
-        //Delete
-        
-        }else if(response == 2){
-        //Make Admin
         UserAccount user = new UserAccount();
         user.setUsername(username);
-          user.setType(true);
-        user.promoteToAdmin();
-        }else{
-        //Cancel
-                }
-                
+        if (response == 0) {
+            //edit
+        } else if (response == 1) {
+            //Delete
+            user.deleteUser();
+ 
+        } else if (response == 2) {
+            //Make Admin
+            user.setType(true);
+            user.promoteToAdmin();
+
+        } else {
+            //Cancel
+        }
+
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

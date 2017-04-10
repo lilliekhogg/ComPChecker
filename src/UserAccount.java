@@ -270,19 +270,44 @@ public class UserAccount {
 
     public boolean promoteToAdmin() {
         Connection con = DatabaseConnection.establishConnection();
-        
+
         try {
 
             String query = "UPDATE Account SET accountType = ? WHERE ID = ?";
             PreparedStatement statement = con.prepareStatement(query);
             statement.setBoolean(1, this.type);
             statement.setString(2, this.username);
-             statement.execute();
-             return true;
+            statement.execute();
+            return true;
         } catch (SQLException err) {
-    System.out.println(err.getMessage());
+            System.out.println(err.getMessage());
         }
         return false;
+    }
+
+    public void deleteUser() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            String query = "DELETE FROM Build WHERE Account = ?";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setString(1, this.username);
+            statement.execute();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+
+        try {
+
+            String query = "DELETE FROM Account WHERE ID = ?";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setString(1, this.username);
+            statement.execute();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+
     }
 
 }
