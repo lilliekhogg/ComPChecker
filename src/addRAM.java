@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class AddRAM extends javax.swing.JDialog {
+public class addRAM extends javax.swing.JDialog {
     
     UserAccount currentUser;
 
     
-    public AddRAM(java.awt.Frame parent, boolean modal, UserAccount user) {
+    public addRAM(java.awt.Frame parent, boolean modal, UserAccount user) {
         super(parent, modal);
         initComponents();
         this.setTitle("Add RAM");     //Adds a title to the frame
@@ -31,14 +31,14 @@ public class AddRAM extends javax.swing.JDialog {
     /**
      * Creates new form addRAM
      */
-    public AddRAM() {
+    public addRAM() {
         initComponents();
         this.setTitle("Add RAM");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
     }
 
-    AddRAM(UserAccount user) {
+    addRAM(UserAccount user) {
         initComponents();
         this.setTitle("Add RAM");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
@@ -276,13 +276,13 @@ public class AddRAM extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(addRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -293,7 +293,7 @@ public class AddRAM extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new AddRAM().setVisible(true);
+                new addRAM().setVisible(true);
             }
         });
     }
