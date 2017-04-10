@@ -35,6 +35,10 @@ public class Build {
     public void setCPU(int cpu) {
         CPU = cpu;
     }
+    
+    public int getCPU() {
+        return CPU;
+    }
 
     /**
      *
@@ -42,6 +46,10 @@ public class Build {
      */
     public void setMotherboard(int mobo) {
         motherboard = mobo;
+    }
+    
+    public int getMotherboard() {
+        return motherboard;
     }
 
     /**
@@ -51,6 +59,10 @@ public class Build {
     public void setRAM(int ram) {
         RAM = RAM;
     }
+    
+    public int getRAM() {
+        return RAM;
+    }
 
     /**
      *
@@ -58,6 +70,10 @@ public class Build {
      */
     public void setGPU(int gpu) {
         GPU = gpu;
+    }
+    
+    public int getGPU() {
+        return GPU;
     }
 
     /**
@@ -67,6 +83,10 @@ public class Build {
     public void setCooler(int Cooler) {
         cooler = Cooler;
     }
+    
+    public int getCooler() {
+        return cooler;
+    }
 
     /**
      *
@@ -74,6 +94,10 @@ public class Build {
      */
     public void setStorage(int store) {
         storage = store;
+    }
+    
+    public int getStorage() {
+        return storage;
     }
 
     /**
@@ -83,6 +107,10 @@ public class Build {
     public void setCase(int PCcase) {
         PCCase = PCcase;
     }
+    
+    public int getCase() {
+        return PCCase;
+    }
 
     /**
      *
@@ -90,6 +118,10 @@ public class Build {
      */
     public void setAccessory(int access) {
         accessory = access;
+    }
+    
+    public int getAccessory() {
+        return accessory;
     }
 
     /**
@@ -146,26 +178,26 @@ public class Build {
 
         try {
             Statement stmt = (Statement) con.createStatement();
-            String query = ("SELECT * From Build WHERE Account = '" + user.getUsername() + "'" + " AND name ='" + name +"'");
+            String query = ("SELECT * From Build WHERE Account = '" + user.getUsername() + "'" + " AND name ='" + name + "'");
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
-            while(rs.next()){
-            this.CPU = rs.getInt("CPU");
-            this.motherboard = rs.getInt("Motherboard");
-            this.RAM = rs.getInt("RAM");
-            this.GPU = rs.getInt("GPU");
-            this.cooler = rs.getInt("Cooler");
-            this.PSU = rs.getInt("PSU");
-            this.storage = rs.getInt("Storage");
-            this.PCCase = rs.getInt("PCCase");
-            this.accessory = rs.getInt("Accessory");
-            this.user = user.getUsername();
-            this.name = name;
-               return this;
+            while (rs.next()) {
+                this.CPU = rs.getInt("CPU");
+                this.motherboard = rs.getInt("Motherboard");
+                this.RAM = rs.getInt("RAM");
+                this.GPU = rs.getInt("GPU");
+                this.cooler = rs.getInt("Cooler");
+                this.PSU = rs.getInt("PSU");
+                this.storage = rs.getInt("Storage");
+                this.PCCase = rs.getInt("PCCase");
+                this.accessory = rs.getInt("Accessory");
+                this.user = user.getUsername();
+                this.name = name;
+                return this;
             }
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
-return null;
+        return null;
     }
 }
