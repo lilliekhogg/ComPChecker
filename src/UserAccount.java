@@ -195,6 +195,19 @@ public class UserAccount {
         return type;
     }
 
+    
+     public String getFName() {
+        return fName;
+    }
+     
+     public String getSName() {
+        return sName;
+    }
+     
+      public String getEmail() {
+        return email;
+    }
+     
     /**
      *
      * @param args
@@ -308,6 +321,54 @@ public class UserAccount {
             System.out.println(err.getMessage());
         }
 
+    }
+    
+    public void populateUser(){
+    Connection con = DatabaseConnection.establishConnection();
+       try {
+           Statement stmt = (Statement) con.createStatement();
+            String query = "SELECT * FROM Account WHERE ID = '" + this.username + "'";
+            stmt.executeQuery(query);
+            ResultSet rs = stmt.getResultSet();
+            
+             while (rs.next()) {
+                    fName = rs.getString("Fname");
+                    sName = rs.getString("sName");
+                    email = rs.getString("Email");
+                    type = rs.getBoolean("accountType");
+
+               
+
+                }
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+    
+    
+    
+    }
+    
+    public void editUser(){
+    Connection con = DatabaseConnection.establishConnection();
+    try{
+    String query = "UPDATE Account SET fName = ?, sName = ?, Email = ?, accountType = ?WHERE ID = ?";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setString(1, this.fName);
+            statement.setString(2, this.sName);
+             statement.setString(3, this.email);
+             statement.setBoolean(4, this.type);
+             statement.setString(5, this.username);
+            statement.execute();
+            
+            
+            
+    }catch(SQLException err){
+      System.out.println(err.getMessage());
+    
+    }
+    
+    
     }
 
 }

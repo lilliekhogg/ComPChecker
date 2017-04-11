@@ -154,8 +154,7 @@ public class EditAccounts extends javax.swing.JDialog {
         int column2 = 1;
         int partID = 0;
         int row = jTable.getSelectedRow();
-        String username = jTable.getModel().getValueAt(row, 0).toString();
-
+        String username = jTable.getModel().getValueAt(row, column1).toString();
         String[] options = new String[]{"Edit", "Delete", "Make Admin", "Reset Password", "Cancel"};
         int response = JOptionPane.showOptionDialog(null, "What would you like to do with the account " + username + "?", "Title",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
@@ -164,6 +163,10 @@ public class EditAccounts extends javax.swing.JDialog {
         user.setUsername(username);
         if (response == 0) {
             //edit
+             this.setVisible(false);
+             
+        EditAccount newForm = new EditAccount(user);
+        newForm.setVisible(true);
         } else if (response == 1) {
             //Delete
             user.deleteUser();
