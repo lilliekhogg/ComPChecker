@@ -352,15 +352,16 @@ public class UserAccount {
     public void editUser(){
     Connection con = DatabaseConnection.establishConnection();
     try{
-    String query = "UPDATE Account SET fName = ?, sName = ?, Email = ?, accountType = ?WHERE ID = ?";
+    String query = "UPDATE Account SET fName = ?, sName = ?, Email = ?, accountType = ? WHERE ID = ?";
             PreparedStatement statement = con.prepareStatement(query);
             statement.setString(1, this.fName);
             statement.setString(2, this.sName);
              statement.setString(3, this.email);
              statement.setBoolean(4, this.type);
              statement.setString(5, this.username);
-            statement.execute();
-            
+            statement.executeUpdate();
+            statement.close();
+            System.out.println(fName  + sName + email + type);
             
             
     }catch(SQLException err){
