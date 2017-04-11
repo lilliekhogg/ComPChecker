@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class EditAccount extends javax.swing.JFrame {
 
-    UserAccount user;
+    UserAccount currentUser;
 
     /**
      * Creates new form CreateAccount
@@ -199,18 +199,18 @@ public class EditAccount extends javax.swing.JFrame {
         String sname = txtboxSurname.toString();
         String email =txtboxEmail.toString();
         
-        user.setFname(fname);
-        user.setSname(sname);
-        user.setEmail(email);
+        currentUser.setFname(fname);
+        currentUser.setSname(sname);
+        currentUser.setEmail(email);
 
         String type = comboboxType.toString();
         if (type == "Admin") {
-            user.setType(true);
+            currentUser.setType(true);
         }else{
-             user.setType(false);
+             currentUser.setType(false);
         }
         
-        user.editUser();
+        currentUser.editUser();
             
             
 
@@ -225,6 +225,15 @@ public class EditAccount extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void returnToMenu() {
+        this.setVisible(false);
+        if (currentUser.getType() == true) {        //User is admin
+            new AdminMenu(currentUser).setVisible(true);
+        } else {
+            new MainMenu(currentUser).setVisible(true);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
