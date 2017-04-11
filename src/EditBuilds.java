@@ -161,7 +161,6 @@ public class EditBuilds extends javax.swing.JDialog {
         myBuild.setName(buildname);
         if (response == 0) {
             //edit
-            //will need to make buildname uneditiable in the new form though.
              this.setVisible(false);
              
         EditBuild newForm = new EditBuild(currentUser);

@@ -162,11 +162,13 @@ public class EditAccounts extends javax.swing.JDialog {
         UserAccount user = new UserAccount();
         user.setUsername(username);
         if (response == 0) {
-            //will need to make username uneditiable in the new form though.
             //edit
              this.setVisible(false);
              
         EditAccount newForm = new EditAccount(user);
+        // would you need to pass another var of currentUser too?
+        // atm if you're an admin and you edit a gen user then you become
+        // logged in as that gen user?
         newForm.setVisible(true);
         } else if (response == 1) {
             //Delete

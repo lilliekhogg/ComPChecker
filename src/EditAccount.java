@@ -61,7 +61,7 @@ public class EditAccount extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
         lblusername1 = new javax.swing.JLabel();
         comboboxType = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnReturnToMenu = new javax.swing.JButton();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -110,10 +110,10 @@ public class EditAccount extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Return to Menu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnReturnToMenu.setText("Return to Menu");
+        btnReturnToMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnReturnToMenuActionPerformed(evt);
             }
         });
 
@@ -148,7 +148,7 @@ public class EditAccount extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1))
+                        .addComponent(btnReturnToMenu))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -181,7 +181,7 @@ public class EditAccount extends javax.swing.JFrame {
                     .addComponent(txtboxEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnReturnToMenu)
                     .addComponent(btnSubmit))
                 .addContainerGap())
         );
@@ -198,7 +198,7 @@ public class EditAccount extends javax.swing.JFrame {
         String fname = txtboxName.getText();
         String sname = txtboxSurname.getText();
         String email = txtboxEmail.getText();
-   UserAccount newUser = new UserAccount();
+        UserAccount newUser = new UserAccount();
         newUser.setFname(fname);
         newUser.setSname(sname);
         newUser.setEmail(email);
@@ -233,9 +233,9 @@ public class EditAccount extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboboxTypeActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnReturnToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnToMenuActionPerformed
+        returnToMenu();
+    }//GEN-LAST:event_btnReturnToMenuActionPerformed
 
     private void returnToMenu() {
         this.setVisible(false);
@@ -282,9 +282,9 @@ public class EditAccount extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReturnToMenu;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JComboBox<String> comboboxType;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFname;
