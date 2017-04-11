@@ -194,25 +194,26 @@ public class EditAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_txtboxNameActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        
-        String fname =txtboxName.toString();
-        String sname = txtboxSurname.toString();
-        String email =txtboxEmail.toString();
-        
-        user.setFname(fname);
-        user.setSname(sname);
-        user.setEmail(email);
 
-        String type = comboboxType.toString();
-        if (type == "Admin") {
-            user.setType(true);
-        }else{
-             user.setType(false);
-        }
+        String fname = txtboxName.getText();
+        String sname = txtboxSurname.getText();
+        String email = txtboxEmail.getText();
+   UserAccount newUser = new UserAccount();
+        newUser.setFname(fname);
+        newUser.setSname(sname);
+        newUser.setEmail(email);
+        System.out.println(fname);
+        String type = comboboxType.getSelectedItem().toString();
         
-        user.editUser();
-            
-            
+        
+        
+        if (type == "Admin") {
+            newUser.setType(true);
+        } else {
+            newUser.setType(false);
+        }
+        System.out.println(fname  + sname + email + type);
+        newUser.editUser();
 
 
     }//GEN-LAST:event_btnSubmitActionPerformed
