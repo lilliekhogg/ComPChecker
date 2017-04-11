@@ -18,8 +18,10 @@ public class EditAccount extends javax.swing.JFrame {
     /**
      * Creates new form CreateAccount
      */
-    public EditAccount(UserAccount currentUser, UserAccount user) {
+    public EditAccount(UserAccount thisCurrentUser, UserAccount selectedUser) {
         initComponents();
+        currentUser = thisCurrentUser;
+        user = selectedUser;
         this.setTitle("Edit Account - Admin");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         txtboxUsername.setEditable(false);
