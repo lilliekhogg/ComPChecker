@@ -7,55 +7,56 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
+ * @author Luke
  * @author Tom
  */
-public class EditAccounts extends javax.swing.JDialog {
+public class EditBuilds extends javax.swing.JDialog {
 
     UserAccount currentUser;
 
     /**
-     * Creates new form EditAccounts
+     * Creates new form EditBuilds
      */
-    public EditAccounts(UserAccount user) {
+    public EditBuilds(UserAccount user) {
         initComponents();
 
-        this.setTitle("Edit Accounts");     //Adds a title to the frame
+        this.setTitle("Edit Builds");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         TableColumn col = new TableColumn();
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         jTable.addColumn(col);
-        model.addColumn("Username");
-        model.addColumn("First Name");
-        model.addColumn("Surname");
-        model.addColumn("Email");
-        model.addColumn("Account Type");
+        model.addColumn("Name");
+        model.addColumn("CPU");
+        model.addColumn("Mobo");
+        model.addColumn("RAM");
+        model.addColumn("GPU");
+        model.addColumn("Storage");
+        model.addColumn("Case");
+        model.addColumn("PSU");
+        model.addColumn("Cooler");
+        model.addColumn("Accessory");
         Connection con = DatabaseConnection.establishConnection();
 
         try {
             Statement stmt = (Statement) con.createStatement();
-            String query = ("Select ID,Fname,Sname,Email,accountType From Account ORDER BY ID ASC");
+            String query = ("Select name,CPU,Motherboard,RAM,GPU,Storage,PCCase,PSU,Cooler,Accessory From Build ORDER BY ID ASC");
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
-                String username = rs.getString("ID");
-                String fname = rs.getString("Fname");
-                String sname = rs.getString("Sname");
-                String email = rs.getString("Email");
-                boolean type = rs.getBoolean("accountType");
-                String admin;
-                if (type) {
-                    admin = "Admin";
-                } else {
-                    admin = "General";
-                }
-                model.addRow(new Object[]{username, fname, sname, email, admin});
+                String buildname = rs.getString("name");
+                String cpu = rs.getString("CPU");
+                String motherboard = rs.getString("Motherboard");
+                String ram = rs.getString("RAM");
+                String gpu = rs.getString("GPU");
+                String storage = rs.getString("Storage");
+                String pccase = rs.getString("PCCase");
+                String psu = rs.getString("PSU");
+                String cooler = rs.getString("Cooler");
+                String accessory = rs.getString("Accessory");
+                
+                model.addRow(new Object[]{buildname, cpu, motherboard, ram, gpu, storage, pccase, psu, cooler, accessory});
             }
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
@@ -63,7 +64,7 @@ public class EditAccounts extends javax.swing.JDialog {
 
     }
 
-    private EditAccounts() {
+    private EditBuilds() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -150,19 +151,15 @@ public class EditAccounts extends javax.swing.JDialog {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        int column1 = 0;
-        //int column2 = 1;  //unused?
-        //int partID = 0;
         int row = jTable.getSelectedRow();
-        String username = jTable.getModel().getValueAt(row, column1).toString();
-        String[] options = new String[]{"Edit", "Delete", "Make Admin", "Reset Password", "Cancel"};
-        int response = JOptionPane.showOptionDialog(null, "What would you like to do with the account " + username + "?", "Title",
+        String buildname = jTable.getModel().getValueAt(row, 0).toString(); // 0 for the column because that's the name column
+        String[] options = new String[]{"Edit", "Delete", "Compare Build", "Share Build", "Cancel"};
+        int response = JOptionPane.showOptionDialog(null, "What would you like to do with this build " + currentUser + "?", "Title",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, options[0]);
         UserAccount user = new UserAccount();
         user.setUsername(username);
         if (response == 0) {
-            //will need to make username uneditiable though.
             //edit
              this.setVisible(false);
              
@@ -218,7 +215,7 @@ public class EditAccounts extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                EditAccounts dialog = new EditAccounts(); //?
+                EditBuilds dialog = new EditBuilds(); //?
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
