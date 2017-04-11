@@ -165,7 +165,7 @@ public class EditAccounts extends javax.swing.JDialog {
             //edit
              this.setVisible(false);
              
-        EditAccount newForm = new EditAccount(user);
+        EditAccount newForm = new EditAccount(currentUser, user);
         // would you need to pass another var of currentUser too?
         // atm if you're an admin and you edit a gen user then you become
         // logged in as that gen user?

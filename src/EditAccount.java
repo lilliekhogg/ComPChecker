@@ -13,11 +13,12 @@ import javax.swing.JOptionPane;
 public class EditAccount extends javax.swing.JFrame {
 
     UserAccount currentUser;
+    UserAccount user;
 
     /**
      * Creates new form CreateAccount
      */
-    public EditAccount(UserAccount user) {
+    public EditAccount(UserAccount currentUser, UserAccount user) {
         initComponents();
         this.setTitle("Edit Account - Admin");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
@@ -205,18 +206,18 @@ public class EditAccount extends javax.swing.JFrame {
         System.out.println(fname);
         String type = comboboxType.getSelectedItem().toString();
         
-        currentUser.setFname(fname);
-        currentUser.setSname(sname);
-        currentUser.setEmail(email);
+        user.setFname(fname);
+        user.setSname(sname);
+        user.setEmail(email);
 
         type = comboboxType.toString();
         if (type == "Admin") {
-            currentUser.setType(true);
+            user.setType(true);
         }else{
-             currentUser.setType(false);
+             user.setType(false);
         }
         
-        currentUser.editUser();
+        user.editUser();
             
         if (type == "Admin") {
             newUser.setType(true);
