@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
  * @author Lillie Hogg
  */
 public class AddCooler extends javax.swing.JFrame {
+        
+    UserAccount currentUser;
 
     /**
      * Creates new form AddCooler
@@ -33,11 +35,12 @@ public class AddCooler extends javax.swing.JFrame {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
-    AddCooler(UserAccount currentUser) {
+    AddCooler(UserAccount user) {
         initComponents();
         populateMakes();
         this.setTitle("Add Cooler");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        currentUser = user;
     }
 
     /**
@@ -212,6 +215,14 @@ public class AddCooler extends javax.swing.JFrame {
 
     }  
     
+    private void returnToMenu() {
+        this.setVisible(false);
+        if (currentUser.getType() == true) {        //User is admin
+            new AdminMenu(currentUser).setVisible(true);
+        } else {
+            new MainMenu(currentUser).setVisible(true);
+        }
+    }
     
     /**
      * @param args the command line arguments

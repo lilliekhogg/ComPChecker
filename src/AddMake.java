@@ -154,6 +154,15 @@ public class AddMake extends javax.swing.JFrame {
         new AdminMenu(currentUser).setVisible(true);
     }//GEN-LAST:event_btnReturnActionPerformed
 
+    private void returnToMenu() {
+        this.setVisible(false);
+        if (currentUser.getType() == true) {        //User is admin
+            new AdminMenu(currentUser).setVisible(true);
+        } else {
+            new MainMenu(currentUser).setVisible(true);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

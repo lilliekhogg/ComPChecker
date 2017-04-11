@@ -74,18 +74,16 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnCancel" pref="140" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnSave" max="32767" attributes="0"/>
-                      <Component id="jLabel4" pref="140" max="32767" attributes="0"/>
-                      <Component id="cmboxMake" max="32767" attributes="0"/>
-                      <Component id="txtboxModel" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtboxPrice" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cmboxSocket" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cmboxFormFactor" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cmboxRAMType" max="32767" attributes="0"/>
-                      <Component id="txtboxSlots" max="32767" attributes="0"/>
-                      <Component id="txtboxmaxRAM" alignment="1" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="btnSave" max="32767" attributes="0"/>
+                  <Component id="jLabel4" pref="140" max="32767" attributes="0"/>
+                  <Component id="cmboxMake" max="32767" attributes="0"/>
+                  <Component id="txtboxModel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtboxPrice" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cmboxSocket" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cmboxFormFactor" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cmboxRAMType" max="32767" attributes="0"/>
+                  <Component id="txtboxSlots" max="32767" attributes="0"/>
+                  <Component id="txtboxmaxRAM" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="135" max="32767" attributes="0"/>
           </Group>

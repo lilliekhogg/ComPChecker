@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class AddCPU extends javax.swing.JDialog {
 
+    UserAccount currentUser;
     int CPUID;
 
     /**
@@ -49,11 +50,12 @@ public class AddCPU extends javax.swing.JDialog {
 
     }
 
-    AddCPU(UserAccount currentUser) {
+    AddCPU(UserAccount user) {
         initComponents();
         this.setTitle("Add CPU");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
+        currentUser = user;
     }
 
     /**
@@ -274,6 +276,15 @@ public class AddCPU extends javax.swing.JDialog {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
 
+    }
+    
+    private void returnToMenu() {
+        this.setVisible(false);
+        if (currentUser.getType() == true) {        //User is admin
+            new AdminMenu(currentUser).setVisible(true);
+        } else {
+            new MainMenu(currentUser).setVisible(true);
+        }
     }
 
     /**

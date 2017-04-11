@@ -16,6 +16,8 @@ import static javax.xml.bind.DatatypeConverter.parseString;
  * @author Lillie Hogg
  */
 public class AddGPU extends javax.swing.JFrame {
+    
+    UserAccount currentUser;
 
     /**
      * 
@@ -36,11 +38,12 @@ public class AddGPU extends javax.swing.JFrame {
         System.out.println(user);
     }
     
-    AddGPU (UserAccount currentUser) {
+    AddGPU (UserAccount user) {
         initComponents();
         this.setTitle("Add GPU");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
+        currentUser = user;
     }
     
 
@@ -247,8 +250,14 @@ public class AddGPU extends javax.swing.JFrame {
 
     }
     
-    
-    
+    private void returnToMenu() {
+        this.setVisible(false);
+        if (currentUser.getType() == true) {        //User is admin
+            new AdminMenu(currentUser).setVisible(true);
+        } else {
+            new MainMenu(currentUser).setVisible(true);
+        }
+    }
     
     /**
      * @param args the command line arguments

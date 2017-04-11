@@ -23,7 +23,7 @@ public class AddAccessory extends javax.swing.JFrame {
      */
     public AddAccessory(java.awt.Frame parent, boolean modal) {
         initComponents();
-        this.setTitle("Add Cooler");     //Adds a title to the frame
+        this.setTitle("Add Accessory");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
     }
@@ -31,14 +31,14 @@ public class AddAccessory extends javax.swing.JFrame {
     public AddAccessory() {
         initComponents();
         populateMakes();
-        this.setTitle("Add Cooler");     //Adds a title to the frame
+        this.setTitle("Add Accessory");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
     AddAccessory(UserAccount user) {
         initComponents();
         populateMakes();
-        this.setTitle("Add Cooler");     //Adds a title to the frame
+        this.setTitle("Add Accessory");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths 
         currentUser = user;
     }

@@ -261,6 +261,15 @@ public class addRAM extends javax.swing.JDialog {
 
     }
     
+     private void returnToMenu() {
+        this.setVisible(false);
+        if (currentUser.getType() == true) {        //User is admin
+            new AdminMenu(currentUser).setVisible(true);
+        } else {
+            new MainMenu(currentUser).setVisible(true);
+        }
+    }
+     
     /**
      * @param args the command line arguments
      */

@@ -13,6 +13,8 @@ import java.sql.SQLException;
  * @author Lillie Hogg
  */
 public class AddPCCase extends javax.swing.JFrame {
+    
+    UserAccount currentUser;
 
     /**
      * Creates new form PCCase
@@ -32,11 +34,12 @@ public class AddPCCase extends javax.swing.JFrame {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
-    AddPCCase(UserAccount currentUser) {
+    AddPCCase(UserAccount user) {
         initComponents();
         populateMakes();
         this.setTitle("Add PCCase");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        currentUser = user;
     }
 
     /**
@@ -238,7 +241,16 @@ public class AddPCCase extends javax.swing.JFrame {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
 
-    }  
+    }
+    
+    private void returnToMenu() {
+        this.setVisible(false);
+        if (currentUser.getType() == true) {        //User is admin
+            new AdminMenu(currentUser).setVisible(true);
+        } else {
+            new MainMenu(currentUser).setVisible(true);
+        }
+    }
     
     /**
      * @param args the command line arguments

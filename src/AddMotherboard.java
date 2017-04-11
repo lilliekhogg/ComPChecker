@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
  * @author Tom
  */
 public class AddMotherboard extends javax.swing.JDialog {
+    
+    UserAccount currentUser;
 
     /**
      * Creates new form AddCPU
@@ -35,11 +37,12 @@ public class AddMotherboard extends javax.swing.JDialog {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
-    AddMotherboard(UserAccount currentUser) {
+    AddMotherboard(UserAccount user) {
         initComponents();
         populateComboBoxes();
         this.setTitle("Add CPU");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        currentUser = user;
     }
 
     /**
@@ -327,6 +330,15 @@ public class AddMotherboard extends javax.swing.JDialog {
         cmboxRAMType.addItem("DDR2");
         cmboxRAMType.addItem("DDR3");
         cmboxRAMType.addItem("DDR4");
+    }
+    
+    private void returnToMenu() {
+        this.setVisible(false);
+        if (currentUser.getType() == true) {        //User is admin
+            new AdminMenu(currentUser).setVisible(true);
+        } else {
+            new MainMenu(currentUser).setVisible(true);
+        }
     }
 
     /**
