@@ -48,7 +48,6 @@
                               <Component id="txtFieldPrice" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" min="-2" pref="141" max="-2" attributes="0"/>
-                          <Component id="btnSave" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -57,7 +56,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
-                      <Component id="btnCancel" min="-2" pref="77" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnCancel" pref="77" max="32767" attributes="0"/>
+                          <Component id="btnSave" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="88" max="32767" attributes="0"/>

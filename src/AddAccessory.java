@@ -16,6 +16,8 @@ import java.sql.SQLException;
  */
 public class AddAccessory extends javax.swing.JFrame {
 
+    UserAccount currentUser;
+    
     /**
      * Creates new form AddAccessory
      */
@@ -33,11 +35,12 @@ public class AddAccessory extends javax.swing.JFrame {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
-    AddAccessory(UserAccount currentUser) {
+    AddAccessory(UserAccount user) {
         initComponents();
         populateMakes();
         this.setTitle("Add Cooler");     //Adds a title to the frame
-        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        setLocationRelativeTo(null);    //Centers the frame in the middle of ths 
+        currentUser = user;
     }
 
     /**
@@ -114,14 +117,15 @@ public class AddAccessory extends javax.swing.JFrame {
                                 .addComponent(comboMake, 0, 79, Short.MAX_VALUE)
                                 .addComponent(txtFieldModel)
                                 .addComponent(txtFieldPrice))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSave)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(163, 163, 163)
-                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -178,8 +182,7 @@ public class AddAccessory extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // cancels the form and returns to admin menu
-        this.setVisible(false);
-        new AdminMenu().setVisible(true);
+        returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     
@@ -200,7 +203,16 @@ public class AddAccessory extends javax.swing.JFrame {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
 
-    }  
+    }
+    
+    private void returnToMenu() {
+        this.setVisible(false);
+        if (currentUser.getType() == true) {        //User is admin
+            new AdminMenu(currentUser).setVisible(true);
+        } else {
+            new MainMenu(currentUser).setVisible(true);
+        }
+    }
     
     /**
      * @param args the command line arguments
