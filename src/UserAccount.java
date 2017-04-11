@@ -356,9 +356,9 @@ public class UserAccount {
             PreparedStatement statement = con.prepareStatement(query);
             statement.setString(1, this.fName);
             statement.setString(2, this.sName);
-             statement.setString(3, this.email);
-             statement.setBoolean(4, this.type);
-             statement.setString(5, this.username);
+            statement.setString(3, this.email);
+            statement.setBoolean(4, this.type);
+            statement.setString(5, this.username);
             statement.executeUpdate();
             statement.close();
             System.out.println(fName  + sName + email + type);

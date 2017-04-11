@@ -123,6 +123,14 @@ public class Build {
     public int getAccessory() {
         return accessory;
     }
+    
+    public void setName(String myName) {
+        name = myName;
+    }
+    
+    public String getName() {
+        return name;
+    }
 
     /**
      *
@@ -153,6 +161,20 @@ public class Build {
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
+    }
+    
+    public void deleteBuild() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            String query = "DELETE FROM Build WHERE name = ?";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setString(1, this.name);
+            statement.execute();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+
     }
 
     public ResultSet findUserBuilds(UserAccount user) {

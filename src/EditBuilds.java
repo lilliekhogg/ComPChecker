@@ -157,22 +157,18 @@ public class EditBuilds extends javax.swing.JDialog {
         int response = JOptionPane.showOptionDialog(null, "What would you like to do with this build " + currentUser + "?", "Title",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, options[0]);
-        UserAccount user = new UserAccount();
-        user.setUsername(username);
+        Build myBuild = new Build();
+        myBuild.setName(buildname);
         if (response == 0) {
             //edit
+            //will need to make buildname uneditiable in the new form though.
              this.setVisible(false);
              
-        EditAccount newForm = new EditAccount(user);
+        EditBuild newForm = new EditBuild(currentUser);
         newForm.setVisible(true);
         } else if (response == 1) {
             //Delete
-            user.deleteUser();
- 
-        } else if (response == 2) {
-            //Make Admin
-            user.setType(true);
-            user.promoteToAdmin();
+            myBuild.deleteBuild();
 
         } else {
             //Cancel

@@ -162,7 +162,7 @@ public class EditAccounts extends javax.swing.JDialog {
         UserAccount user = new UserAccount();
         user.setUsername(username);
         if (response == 0) {
-            //will need to make username uneditiable though.
+            //will need to make username uneditiable in the new form though.
             //edit
              this.setVisible(false);
              
