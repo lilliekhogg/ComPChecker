@@ -199,32 +199,53 @@ public class AddPCCase extends javax.swing.JFrame {
 
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
-        double price = Double.parseDouble(txtFieldPrice.getText());
-        int height = Integer.parseInt(txtFieldHeight.getText());
-        int width = Integer.parseInt(txtFieldWidth.getText());
-        int CDepth = Integer.parseInt(txtFieldCDepth.getText());
+        String pricetest = txtFieldPrice.getText();
+        String heightcheck = txtFieldHeight.getText();
+        String widthcheck = txtFieldWidth.getText();
+        String CDepthcheck = txtFieldCDepth.getText();
         String colour = txtFieldColour.getText();
         String motherboard = txtFieldMotherboard.getText();
-      
-        pccase.setMake(make);
-        pccase.setModel(model);
-        pccase.setPrice(price);
-        pccase.setHeight(height);
-        pccase.setWidth(width);
-        pccase.setCDepth(CDepth);
-        pccase.setColour(colour);
-        pccase.setMotherboard(motherboard);
+
+        //validation of each text box - to ensure data is entered correctly
+         if(model.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (pricetest.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (heightcheck.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter the Height of the case", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (widthcheck.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, the width of the case", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (CDepthcheck.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter the depth of the case", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (colour.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter the colour of case", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (motherboard.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter the compatable motherboard types", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else{ //when input boxes are not empty
+            //parsing variables from strings to required values
+            double price = Double.parseDouble(pricetest);
+            int height = Integer.parseInt(heightcheck);
+            int width = Integer.parseInt(widthcheck);
+            int CDepth = Integer.parseInt(CDepthcheck);
+            
+            //setting the variables so it can be entered into database
+            pccase.setMake(make);
+            pccase.setModel(model);
+            pccase.setPrice(price);
+            pccase.setHeight(height);
+            pccase.setWidth(width);
+            pccase.setCDepth(CDepth);
+            pccase.setColour(colour);
+            pccase.setMotherboard(motherboard);
+            
+            boolean succesful = pccase.savePCCase();
+            if(succesful){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+            new AdminMenu().setVisible(true);
+             }
         
-        boolean succesful = pccase.savePCCase();
-        if(succesful){
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-         }else{
-         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
         }
-        
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
