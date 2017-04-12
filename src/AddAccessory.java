@@ -166,25 +166,49 @@ public class AddAccessory extends javax.swing.JFrame {
         
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
-        double price = Double.parseDouble(txtFieldPrice.getText());
+        String pricetest = txtFieldPrice.getText();
         String description = txtPaneDesc.getText();
         
         
-      
-        accessory.setMake(make);
-        accessory.setModel(model);
-        accessory.setPrice(price);
-        accessory.setDesc (description);
+        if(model.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (pricetest.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (description.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter a description of accessory", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else{ //when input boxes are not empty
+            double price = Double.parseDouble(pricetest);
 
-        boolean validated = accessory.saveAccessory();
-        if(validated){
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Component Created", "Accessory Added", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-         }else{
-         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
+            accessory.setMake(make);
+            accessory.setModel(model);
+            accessory.setPrice(price);
+            accessory.setDesc (description);
+            
+            boolean validated = accessory.saveAccessory();
+            if(validated){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Component Created", "Accessory Added", JOptionPane.INFORMATION_MESSAGE);
+            new AdminMenu().setVisible(true);
+        } 
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
+        
+
+      
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
