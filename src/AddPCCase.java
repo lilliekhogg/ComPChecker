@@ -1,6 +1,7 @@
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -214,7 +215,16 @@ public class AddPCCase extends javax.swing.JFrame {
         pccase.setColour(colour);
         pccase.setMotherboard(motherboard);
         
-        pccase.savePCCase();
+        boolean succesful = pccase.savePCCase();
+        if(succesful){
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+         }else{
+         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+        }
+        
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
