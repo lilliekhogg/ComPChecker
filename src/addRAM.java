@@ -227,12 +227,12 @@ public class addRAM extends javax.swing.JDialog {
         
         boolean succesful = ram.saveRAM();
         if(succesful){
-       this.setVisible(false);
+        this.setVisible(false);
         JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-       new AdminMenu().setVisible(true);
+        new AdminMenu().setVisible(true);
         }else{
-         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
-       new AdminMenu().setVisible(true);
+        JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
         }
         
         
