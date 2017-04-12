@@ -39,7 +39,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="lblLogo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
@@ -53,23 +53,15 @@
                           <Component id="btnNewComponent" max="32767" attributes="0"/>
                           <Component id="lblAdminMenu" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnAddComp" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnEditComp" max="32767" attributes="0"/>
                           <Component id="btnAddMake" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnEditBuild" max="32767" attributes="0"/>
-                                  <Component id="btnCreateBuild" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="btnCompIssue" min="-2" pref="208" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="btnCreateBuild" max="32767" attributes="0"/>
+                          <Component id="btnCompIssue" max="32767" attributes="0"/>
+                          <Component id="btnEditBuild" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnLogOut" min="-2" max="-2" attributes="0"/>
@@ -95,16 +87,14 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnEditBuild" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnEditComp" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnViewAccs" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnAddComp" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="btnAddComp" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAddMake" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnViewAccs1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnCompIssue" alignment="3" min="-2" pref="60" max="-2" attributes="0"/>
+                  <Component id="btnCompIssue" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="btnLogOut" min="-2" max="-2" attributes="0"/>
@@ -132,7 +122,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAddComp">
       <Properties>
-        <Property name="text" type="java.lang.String" value="View Components"/>
+        <Property name="text" type="java.lang.String" value="View &amp; Edit Components"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddCompActionPerformed"/>
@@ -171,18 +161,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnEditBuild">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Vuew &amp; Edit Builds"/>
+        <Property name="text" type="java.lang.String" value="View &amp; Edit Builds"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditBuildActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnEditComp">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Component"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditCompActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnLogOut">
