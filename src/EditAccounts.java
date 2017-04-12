@@ -25,7 +25,7 @@ public class EditAccounts extends javax.swing.JDialog {
      */
     public EditAccounts(UserAccount user) {
         initComponents();
-
+        currentUser = user;
         this.setTitle("Edit Accounts");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         TableColumn col = new TableColumn();
