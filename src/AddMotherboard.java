@@ -243,30 +243,47 @@ public class AddMotherboard extends javax.swing.JDialog {
 
         String make = cmboxMake.getSelectedItem().toString();
         String model = txtboxModel.getText();
-        double price = Double.parseDouble(txtboxPrice.getText());
+        String pricetest = txtboxPrice.getText();
+        String slotscheck = txtboxSlots.getText();
+        String maxRAMcheck = txtboxmaxRAM.getText();
         String socket = cmboxSocket.getSelectedItem().toString();
         String size = cmboxFormFactor.getSelectedItem().toString();
-        int slots = Integer.parseInt(txtboxSlots.getText());
-        int maxRAM = Integer.parseInt(txtboxmaxRAM.getText());
       
-        motherboard.setMake(make);
-        motherboard.setModel(model);
-        motherboard.setPrice(price);
-        motherboard.setSize(size);
-        motherboard.setSocket(socket);
-        motherboard.setRamSlots(slots);
-        motherboard.setMaxRAM(maxRAM);
+        if(model.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (pricetest.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (slotscheck.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter the speed of CPU in GHz", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (maxRAMcheck.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, the number of cores", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (socket.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, the number of cores", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (size.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, the number of cores", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else{ //when input boxes are not empty
+                //parsing variables from strings to required values
+            double price = Double.parseDouble(pricetest);
+            int slots = Integer.parseInt(slotscheck);
+            int maxRAM = Integer.parseInt(maxRAMcheck);
+            
+            motherboard.setMake(make);
+            motherboard.setModel(model);
+            motherboard.setPrice(price);
+            motherboard.setSize(size);
+            motherboard.setSocket(socket);
+            motherboard.setRamSlots(slots);
+            motherboard.setMaxRAM(maxRAM);
+            
+            
+            boolean succesful = motherboard.saveMotherboard();
+            if(succesful){
+            JOptionPane.showMessageDialog(null, "Component added", "Motherboard Added", JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+            new AdminMenu().setVisible(true);
+            }
         
-        
-        boolean validated = motherboard.saveMotherboard();
-        if(validated){
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Component Created", "Motherboard Added", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-         }else{
-         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-        }
+       }
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
