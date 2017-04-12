@@ -195,37 +195,45 @@ public class AddCPU extends javax.swing.JDialog {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        CPU cpu = new CPU();
+           CPU cpu = new CPU();
+
         String make = cmboxMake.getSelectedItem().toString();
-        String text = txtboxSpeed.getText();
         String model = txtboxModel.getText();
-        double price = 0;
-
-        float speed = 0;
-        int cores = 0;
-
-        if (text != null && !text.isEmpty()) {
-            speed = Float.parseFloat(text);
+        String pricetest = txtboxPrice.getText();
+        String speedtest = txtboxSpeed.getText();
+        String corecheck = txtboxCores.getText();
+        //double price
+        //float speed
+        //int core
+ 
+        if(model.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (pricetest.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (speedtest.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter the speed of CPU in GHz", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (corecheck.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, the number of cores", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else{ //when input boxes are not empty
+                //parsing variables from strings to required values
+            double price = Double.parseDouble(pricetest);
+            float speed = Float.parseFloat(speedtest);
+            int cores = Integer.parseInt(corecheck);
+            cpu.make = make;
+            cpu.model = model;
+            cpu.speed = speed;
+            cpu.cores = cores;
+            cpu.price = price;
+            
+            boolean succesful = cpu.saveCPU();
+            if(succesful){
+            JOptionPane.showMessageDialog(null, "CPU added", "CPU Added", JOptionPane.INFORMATION_MESSAGE);
+            this.setVisible(false);
+            new AdminMenu().setVisible(true);
+            }
+        
+        
         }
-        text = txtboxCores.getText();
-        if (text != null && !text.isEmpty()) {
-            cores = Integer.parseInt(text);
-        }
-        text = txtboxPrice.getText();
-        if (text != null && !text.isEmpty()) {
-            price = parseDouble(text);
-        }
-
-        cpu.make = make;
-        cpu.model = model;
-        cpu.speed = speed;
-        cpu.cores = cores;
-        cpu.price = price;
-
-        cpu.saveCPU();
-        JOptionPane.showMessageDialog(null, "CPU added", "CPU Added", JOptionPane.INFORMATION_MESSAGE);
-        this.setVisible(false);
-        new AdminMenu().setVisible(true);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
