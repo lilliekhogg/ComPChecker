@@ -45,9 +45,9 @@
                   <Component id="comboMake" pref="92" max="32767" attributes="0"/>
                   <Component id="txtFieldModel" max="32767" attributes="0"/>
                   <Component id="txtFieldSeries" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtFieldHHD" max="32767" attributes="0"/>
                   <Component id="txtFieldSpeed" max="32767" attributes="0"/>
                   <Component id="txtFieldPrice" max="32767" attributes="0"/>
+                  <Component id="cmBoxHHD" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="120" max="32767" attributes="0"/>
           </Group>
@@ -103,7 +103,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtFieldHHD" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmBoxHHD" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -166,8 +166,6 @@
         <Property name="text" type="java.lang.String" value="HHD:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtFieldHHD">
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="Speed:"/>
@@ -204,6 +202,18 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmBoxHHD">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

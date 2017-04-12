@@ -3,6 +3,7 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static javax.xml.bind.DatatypeConverter.parseBoolean;
 import static javax.xml.bind.DatatypeConverter.parseString;
@@ -59,7 +60,6 @@ public class AddStorage extends javax.swing.JFrame {
         lblSeries = new javax.swing.JLabel();
         txtFieldSeries = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtFieldHHD = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtFieldSpeed = new javax.swing.JTextField();
         txtFieldCapacity = new javax.swing.JTextField();
@@ -68,6 +68,7 @@ public class AddStorage extends javax.swing.JFrame {
         txtFieldPrice = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        cmBoxHHD = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,6 +104,8 @@ public class AddStorage extends javax.swing.JFrame {
             }
         });
 
+        cmBoxHHD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,9 +129,9 @@ public class AddStorage extends javax.swing.JFrame {
                     .addComponent(comboMake, 0, 92, Short.MAX_VALUE)
                     .addComponent(txtFieldModel)
                     .addComponent(txtFieldSeries)
-                    .addComponent(txtFieldHHD)
                     .addComponent(txtFieldSpeed)
-                    .addComponent(txtFieldPrice))
+                    .addComponent(txtFieldPrice)
+                    .addComponent(cmBoxHHD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(120, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -170,7 +173,7 @@ public class AddStorage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtFieldHHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmBoxHHD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -195,29 +198,51 @@ public class AddStorage extends javax.swing.JFrame {
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
         String series = txtFieldSeries.getText();
-        double price = Double.parseDouble(txtFieldPrice.getText());
-        int speed = parseInt(txtFieldSpeed.getText());
-        int capacity = parseInt(txtFieldSpeed.getText());
-        boolean HHD = parseBoolean(txtFieldHHD.getText());
+        String pricetest = txtFieldPrice.getText();
+        String speedcheck = txtFieldSpeed.getText();
+        String capacitytest = txtFieldCapacity.getText();
+        String HHDtest = cmBoxHHD.getSelectedItem().toString();
+
         
 
-        storage.make = make;
-        storage.model = model;
-        storage.speed = speed;
-        storage.capacityGB = capacity;
-        storage.HHD = HHD;
-        storage.series = series;
-        storage.price = price;
+        if(model.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (pricetest.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (series.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter the series", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (speedcheck.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, the speed of the storage", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (capacitytest.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter capacity in GB", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else if (HHDtest.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Error, please enter the type of HHD", "Error!", JOptionPane.INFORMATION_MESSAGE);
+            }else{ //when input boxes are not empty
+            //parsing variables from strings to required values
+            double price = Double.parseDouble(pricetest);
+            int speed = Integer.parseInt(speedcheck);
+            int capacity = Integer.parseInt(capacitytest);
+            boolean HHD = Boolean.parseBoolean(HHDtest);
+            
+            storage.make = make;
+            storage.model = model;
+            storage.speed = speed;
+            storage.capacityGB = capacity;
+            storage.HHD = HHD;
+            storage.series = series;
+            storage.price = price;
+            
+            boolean validated = storage.saveStorage();
+            if(validated){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Component Created", "Storage Added", JOptionPane.INFORMATION_MESSAGE);
+            new AdminMenu().setVisible(true);
+            }
         
-        boolean validated = storage.saveStorage();
-        if(validated){
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Component Created", "Storage Added", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-        }else{
-        JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-        }
+        
+       }
+        
+     
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -241,6 +266,15 @@ public class AddStorage extends javax.swing.JFrame {
             }
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
+        }
+        cmBoxHHD.removeAllItems();
+        ArrayList<String> hhd = new ArrayList<String>();
+        hhd.add("SSD");
+        hhd.add("Hybrid");
+        hhd.add("7200RPM");
+
+        for (int i = 0; i < hhd.size(); i++) {
+            cmBoxHHD.addItem(hhd.get(i));
         }
 
     }
@@ -284,6 +318,7 @@ public class AddStorage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox cmBoxHHD;
     private javax.swing.JComboBox comboMake;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -294,7 +329,6 @@ public class AddStorage extends javax.swing.JFrame {
     private javax.swing.JLabel lblModel;
     private javax.swing.JLabel lblSeries;
     private javax.swing.JTextField txtFieldCapacity;
-    private javax.swing.JTextField txtFieldHHD;
     private javax.swing.JTextField txtFieldModel;
     private javax.swing.JTextField txtFieldPrice;
     private javax.swing.JTextField txtFieldSeries;
