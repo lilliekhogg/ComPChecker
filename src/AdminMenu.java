@@ -48,7 +48,6 @@ public class AdminMenu extends javax.swing.JFrame {
         btnCreateAcc = new javax.swing.JButton();
         btnAddComp = new javax.swing.JButton();
         btnCreateBuild = new javax.swing.JButton();
-        btnViewBuild = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         btnAddMake = new javax.swing.JButton();
         btnNewComponent = new javax.swing.JButton();
@@ -93,15 +92,6 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        btnViewBuild.setText("View Builds");
-        btnViewBuild.setMaximumSize(new java.awt.Dimension(107, 23));
-        btnViewBuild.setMinimumSize(new java.awt.Dimension(107, 23));
-        btnViewBuild.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewBuildActionPerformed(evt);
-            }
-        });
-
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
 
         btnAddMake.setText("Add New Make");
@@ -118,7 +108,7 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
 
-        btnEditBuild.setText("Edit Build");
+        btnEditBuild.setText("Vuew & Edit Builds");
         btnEditBuild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditBuildActionPerformed(evt);
@@ -188,7 +178,6 @@ public class AdminMenu extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnEditBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnViewBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnCreateBuild, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(103, 103, 103))
                             .addGroup(layout.createSequentialGroup()
@@ -216,9 +205,7 @@ public class AdminMenu extends javax.swing.JFrame {
                     .addComponent(btnEditComp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnViewAccs, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddComp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnAddComp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAddMake, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,15 +313,6 @@ public class AdminMenu extends javax.swing.JFrame {
         }
     }
     
-    private void btnViewBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildActionPerformed
-        
-        buildSelection();
-        
-        this.setVisible(false);
-        new CreateBuild(currentUser).setVisible(true);
-        
-    }//GEN-LAST:event_btnViewBuildActionPerformed
-
     private void btnCreateBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBuildActionPerformed
         this.setVisible(false);
         new CreateBuild(currentUser).setVisible(true);
@@ -409,9 +387,9 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewComponentActionPerformed
 
     private void btnEditBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBuildActionPerformed
-        buildSelection();
+        //buildSelection();
 
-        new CreateBuild(currentUser, null).setVisible(true);
+        new EditBuilds(currentUser).setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_btnEditBuildActionPerformed
@@ -576,7 +554,6 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnNewComponent;
     private javax.swing.JButton btnViewAccs;
     private javax.swing.JButton btnViewAccs1;
-    private javax.swing.JButton btnViewBuild;
     private javax.swing.JLabel lblAdminMenu;
     private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
