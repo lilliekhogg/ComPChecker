@@ -2,6 +2,8 @@
 import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 import static javax.xml.bind.DatatypeConverter.parseBoolean;
 
 /*
@@ -168,7 +170,9 @@ public class AddPSU extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // sets inputs to the form when the save button is actioned
-       PSU psu = new PSU();
+
+
+        PSU psu = new PSU();
 
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
@@ -181,8 +185,21 @@ public class AddPSU extends javax.swing.JFrame {
         psu.setPrice(price);
         psu.setWattage(wattage);
         psu.setModular(modular);
+
+        boolean succesful = psu.savePSU();
+        if(succesful){
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+         }else{
+         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+        }
         
-        psu.savePSU();
+        
+        
+        
+        
         
         
     }//GEN-LAST:event_btnSaveActionPerformed
