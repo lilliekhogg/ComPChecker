@@ -257,8 +257,16 @@ public class AddMotherboard extends javax.swing.JDialog {
         motherboard.setRamSlots(slots);
         motherboard.setMaxRAM(maxRAM);
         
-        motherboard.saveMotherboard();
         
+        boolean validated = motherboard.saveMotherboard();
+        if(validated){
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Component Created", "Motherboard Added", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+         }else{
+         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+        }
 
     }//GEN-LAST:event_btnSaveActionPerformed
 

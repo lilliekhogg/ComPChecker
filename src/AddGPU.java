@@ -3,6 +3,7 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import static javax.xml.bind.DatatypeConverter.parseString;
 
 /*
@@ -218,8 +219,16 @@ public class AddGPU extends javax.swing.JFrame {
         gpu.setMemory(memory);
         gpu.setCoreClock(coreclock);
         
-        gpu.saveGPU();
         
+        boolean validated = gpu.saveGPU();
+        if(validated){
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Component Created", "GPU Added", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+         }else{
+         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+        }
        
                             
     }//GEN-LAST:event_btnSaveActionPerformed

@@ -3,6 +3,7 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import static javax.xml.bind.DatatypeConverter.parseBoolean;
 import static javax.xml.bind.DatatypeConverter.parseString;
 
@@ -208,7 +209,15 @@ public class AddStorage extends javax.swing.JFrame {
         storage.series = series;
         storage.price = price;
         
-        storage.saveStorage();
+        boolean validated = storage.saveStorage();
+        if(validated){
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Component Created", "Storage Added", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+        }else{
+        JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

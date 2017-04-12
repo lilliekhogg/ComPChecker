@@ -3,6 +3,7 @@
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -175,9 +176,15 @@ public class AddAccessory extends javax.swing.JFrame {
         accessory.setPrice(price);
         accessory.setDesc (description);
 
-        
-        accessory.saveAccessory();
-        
+        boolean validated = accessory.saveAccessory();
+        if(validated){
+        this.setVisible(false);
+        JOptionPane.showMessageDialog(null, "Component Created", "Accessory Added", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+         }else{
+         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
+        new AdminMenu().setVisible(true);
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
