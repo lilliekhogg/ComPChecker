@@ -254,13 +254,13 @@ public class AddMotherboard extends javax.swing.JDialog {
             }else if (pricetest.isEmpty()){
                 JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
             }else if (slotscheck.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter the speed of CPU in GHz", "Error!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error, please enter the amount of RAM Slots", "Error!", JOptionPane.INFORMATION_MESSAGE);
             }else if (maxRAMcheck.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, the number of cores", "Error!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error, Enter the max number of RAM available", "Error!", JOptionPane.INFORMATION_MESSAGE);
             }else if (socket.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, the number of cores", "Error!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error, Enter the motherboard socket ", "Error!", JOptionPane.INFORMATION_MESSAGE);
             }else if (size.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, the number of cores", "Error!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error, Enter the size", "Error!", JOptionPane.INFORMATION_MESSAGE);
             }else{ //when input boxes are not empty
                 //parsing variables from strings to required values
             double price = Double.parseDouble(pricetest);
