@@ -211,30 +211,43 @@ public class addRAM extends javax.swing.JDialog {
 
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
-        double price = Double.parseDouble(txtFieldPrice.getText());
+        String pricetest = txtFieldPrice.getText();
         String speed = txtFieldSpeed.getText();
-        int size = Integer.parseInt(txtFieldSize.getText());
-        int sticks = Integer.parseInt(txtFieldSticks.getText());
+        String sizecheck = txtFieldSize.getText();
+        String stickscheck = txtFieldSticks.getText();
         
       
-        ram.setMake(make);
-        ram.setModel(model);
-        ram.setPrice(price);
-        ram.setSpeed(speed);
-        ram.setSize(size);
-        ram.setSticks(sticks);
-
+        if(model.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (pricetest.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (sizecheck.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter the RAM size", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (stickscheck.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, the number of sticks provided", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (speed.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter the speed of RAM", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else{ //when input boxes are not empty
+            //parsing variables from strings to required values
+            double price = Double.parseDouble(pricetest);
+            int size = Integer.parseInt(sizecheck);
+            int sticks = Integer.parseInt(stickscheck);
+            
+            ram.setMake(make);
+            ram.setModel(model);
+            ram.setPrice(price);
+            ram.setSpeed(speed);
+            ram.setSize(size);
+            ram.setSticks(sticks);
+            
+            boolean succesful = ram.saveRAM();
+            if(succesful){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+            new AdminMenu().setVisible(true);
+            }
         
-        boolean succesful = ram.saveRAM();
-        if(succesful){
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-        }else{
-        JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-        }
-        
+        }  
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
