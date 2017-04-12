@@ -2,6 +2,7 @@
 import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
 import static javax.xml.bind.DatatypeConverter.parseBoolean;
@@ -67,9 +68,9 @@ public class AddPSU extends javax.swing.JFrame {
         txtFieldModel = new javax.swing.JTextField();
         txtFieldPrice = new javax.swing.JTextField();
         txtFieldWattage = new javax.swing.JTextField();
-        txtFieldModular = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        cmboxModular = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,6 +102,8 @@ public class AddPSU extends javax.swing.JFrame {
             }
         });
 
+        cmboxModular.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,12 +128,11 @@ public class AddPSU extends javax.swing.JFrame {
                             .addComponent(txtFieldModel)
                             .addComponent(txtFieldPrice)
                             .addComponent(txtFieldWattage)
-                            .addComponent(txtFieldModular)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(9, 9, 9)
-                                    .addComponent(btnSave))
-                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(btnSave))
+                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmboxModular, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -155,14 +157,14 @@ public class AddPSU extends javax.swing.JFrame {
                     .addComponent(lblWattage)
                     .addComponent(txtFieldWattage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblModular)
-                    .addComponent(txtFieldModular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(cmboxModular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addComponent(btnSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -171,36 +173,40 @@ public class AddPSU extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // sets inputs to the form when the save button is actioned
 
-
         PSU psu = new PSU();
 
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
-        double price = Double.parseDouble(txtFieldPrice.getText());
-        int wattage = parseInt(txtFieldWattage.getText());
-        boolean modular = parseBoolean(txtFieldModular.getText());
-      
-        psu.setMake(make);
-        psu.setModel(model);
-        psu.setPrice(price);
-        psu.setWattage(wattage);
-        psu.setModular(modular);
-
-        boolean succesful = psu.savePSU();
-        if(succesful){
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-         }else{
-         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-        }
+        String modulartest = cmboxModular.getSelectedItem().toString();
+        String pricetest = txtFieldPrice.getText();
+        String wattagetest = txtFieldWattage.getText();
         
-        
-        
-        
-        
-        
+        //adding validation to PSU for each field
+        if(model.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (pricetest.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (wattagetest.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter wattage greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else{ //when input boxes are not empty
+            double price = Double.parseDouble(pricetest);
+            int wattage = Integer.parseInt(wattagetest);
+            boolean modular = Boolean.parseBoolean(modulartest);
+            
+            psu.setMake(make);
+            psu.setModel(model);
+            psu.setPrice(price);
+            psu.setWattage(wattage);
+            psu.setModular(modular);
+            
+            boolean successful = psu.savePSU();
+           
+            if (successful){
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+                new AdminMenu().setVisible(true);
+            }
+        } 
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -208,10 +214,10 @@ public class AddPSU extends javax.swing.JFrame {
         // cancels form and return to admin menu
          this.setVisible(false);
         new AdminMenu().setVisible(true);
-        
+       
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    
+   
     
     
    private void populateMakes() {
@@ -226,9 +232,21 @@ public class AddPSU extends javax.swing.JFrame {
                 comboMake.addItem(dbMake);
 
             }
-        } catch (SQLException err) {
+        }catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
+        
+        
+        cmboxModular.removeAllItems();
+        ArrayList<String> modular = new ArrayList<String>();
+        modular.add("True");
+        modular.add("False");
+
+        for (int i = 0; i < modular.size(); i++) {
+            cmboxModular.addItem(modular.get(i));
+        }
+        
+ 
 
     }  
     
@@ -279,6 +297,7 @@ public class AddPSU extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox cmboxModular;
     private javax.swing.JComboBox comboMake;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblMake;
@@ -287,7 +306,6 @@ public class AddPSU extends javax.swing.JFrame {
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblWattage;
     private javax.swing.JTextField txtFieldModel;
-    private javax.swing.JTextField txtFieldModular;
     private javax.swing.JTextField txtFieldPrice;
     private javax.swing.JTextField txtFieldWattage;
     // End of variables declaration//GEN-END:variables
