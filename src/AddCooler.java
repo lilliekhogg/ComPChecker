@@ -168,27 +168,37 @@ public class AddCooler extends javax.swing.JFrame {
 
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
-        double price = Double.parseDouble(txtFieldPrice.getText());
-        int minRPM = Integer.parseInt(txtFieldMinRPM.getText());
-        int maxRPM = Integer.parseInt(txtFieldMaxRPM.getText());
+        String pricetest = txtFieldPrice.getText();
+        String minRPMcheck = txtFieldMinRPM.getText();
+        String maxRPMcheck = txtFieldMaxRPM.getText();
         
-      
-        cooler.setMake(make);
-        cooler.setModel(model);
-        cooler.setPrice(price);
-        cooler.setMinRPM(minRPM);
-        cooler.setMaxRPM(maxRPM);
+        if(model.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (pricetest.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (minRPMcheck.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter a Minimum RPM", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (maxRPMcheck.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter a Maximum RPM", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else{ //when input boxes are not empty
+            double price = Double.parseDouble(pricetest);
+            int minRPM = Integer.parseInt(minRPMcheck);
+            int maxRPM = Integer.parseInt(maxRPMcheck);
+            
+            cooler.setMake(make);
+            cooler.setModel(model);
+            cooler.setPrice(price);
+            cooler.setMinRPM(minRPM);
+            cooler.setMaxRPM(maxRPM);
+            
+            boolean succesful = cooler.saveCooler();
+            if(succesful){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+            new AdminMenu().setVisible(true);
+            }
+        } 
 
-        
-        boolean succesful = cooler.saveCooler();
-        if(succesful){
-       this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-       new AdminMenu().setVisible(true);
-        }else{
-         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
-       new AdminMenu().setVisible(true);
-        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
