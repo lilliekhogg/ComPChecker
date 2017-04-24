@@ -11,7 +11,7 @@ import java.sql.SQLException;
  */
 
 /**
- *
+ *This class represents an accessory. An accessory is a type of component in a PC.
  * @author Lillie Hogg
  */
 public class Accessory {
@@ -23,24 +23,44 @@ public class Accessory {
    
     
     //setting inputs
+
+    /**
+     *Sets the attribute make.
+     * @param make
+     */
     public void setMake(String make){
         this.make = make;
     }
     
+    /**
+     *Sets the attribute model
+     * @param model
+     */
     public void setModel(String model){
         this.model = model;
     }
     
+    /**
+     *This method sets the price attribute.
+     * @param price a double representing a price.
+     */
     public void setPrice (double price){
         this.price = price;
     }
     
+    /**
+     *This method sets the description attribute. 
+     * @param description  a String representing desciption. 
+     */
     public void setDesc (String description){
         this.description = description;
     }
     
-    
-     public boolean saveAccessory() {
+    /**
+     *This method saves a new accessory to the database.
+     * @return  returns if the saving was successful.
+     */
+    public boolean saveAccessory() {
         
         
         Connection con = DatabaseConnection.establishConnection();

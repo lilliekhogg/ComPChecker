@@ -151,8 +151,6 @@ public class EditAccounts extends javax.swing.JDialog {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         int column1 = 0;
-        //int column2 = 1;  //unused?
-        //int partID = 0;
         int row = jTable.getSelectedRow();
         String username = jTable.getModel().getValueAt(row, column1).toString();
         String[] options = new String[]{"Edit", "Delete", "Make Admin", "Reset Password", "Cancel"};

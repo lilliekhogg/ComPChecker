@@ -1,11 +1,4 @@
 
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Thomas Chate
@@ -21,14 +14,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+ *This class represents the connection to the remote database.
  * @author Tom
  */
 public class DatabaseConnection {
 
     /**
-     *
-     * @return
+     *Establishes the connection to the remote database
+     * @return connection to the database.
      */
     public static Connection establishConnection() {    //This method connects to the database and returns the connection.
 
@@ -48,8 +41,8 @@ public class DatabaseConnection {
     }
     
     /**
-     *
-     * @param con
+     *Closes a given database connection.
+     * @param con a database connection.
      */
     public void closeConnection(Connection con){
     //end of connection

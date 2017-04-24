@@ -211,7 +211,7 @@ public class EditAccount extends javax.swing.JFrame {
         user.setFname(fname);
         user.setSname(sname);
         user.setEmail(email);
-
+        
         type = comboboxType.toString();
         if (type == "Admin") {
             user.setType(true);

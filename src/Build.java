@@ -16,7 +16,7 @@ import java.sql.Statement;
  */
 public class Build {
 
-    int CPU;
+    int CPU; //These attributes represents the INT ID's of the components.
     int motherboard;
     int RAM;
     int GPU;
@@ -30,60 +30,80 @@ public class Build {
 
     /**
      *
-     * @param cpu
+     * @param cpu sets CPU ID.
      */
     public void setCPU(int cpu) {
         CPU = cpu;
     }
     
+    /**
+     *
+     * @return gets CPU ID.
+     */
     public int getCPU() {
         return CPU;
     }
 
     /**
      *
-     * @param mobo
+     * @param mobo sets Motherboard ID.
      */
     public void setMotherboard(int mobo) {
         motherboard = mobo;
     }
     
+    /**
+     *
+     * @return gets motherboard ID.
+     */
     public int getMotherboard() {
         return motherboard;
     }
 
     /**
      *
-     * @param ram
+     * @param ram sets the RAM ID.
      */
     public void setRAM(int ram) {
         RAM = RAM;
     }
     
+    /**
+     *
+     * @return gets the RAM ID
+     */
     public int getRAM() {
         return RAM;
     }
 
     /**
      *
-     * @param gpu
+     * @param gpu sets the GPU ID.
      */
     public void setGPU(int gpu) {
         GPU = gpu;
     }
     
+    /**
+     *
+     * @return gets the GPU ID.
+     */
     public int getGPU() {
         return GPU;
     }
 
     /**
      *
-     * @param Cooler
+     * @param Cooler Sets the cooler ID.
      */
     public void setCooler(int Cooler) {
         cooler = Cooler;
     }
     
+    /**
+     *
+     * @return gets the cooler ID.
+     */
     public int getCooler() {
         return cooler;
     }
@@ -96,6 +116,10 @@ public class Build {
         storage = store;
     }
     
+    /**
+     *
+     * @return storage ID.
+     */
     public int getStorage() {
         return storage;
     }
@@ -108,6 +132,10 @@ public class Build {
         PCCase = PCcase;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getCase() {
         return PCCase;
     }
@@ -120,20 +148,32 @@ public class Build {
         accessory = access;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getAccessory() {
         return accessory;
     }
     
+    /**
+     *
+     * @param myName
+     */
     public void setName(String myName) {
         name = myName;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
     /**
-     *
+     *Saves the current build object to the database.
      */
     public void SaveBuild() {
 
@@ -141,7 +181,7 @@ public class Build {
             Connection con = DatabaseConnection.establishConnection();
             //SQL query for inserting data into account table
             String query = "INSERT INTO Build (Account, Motherboard, CPU, RAM,Storage,GPU,PSU,PCCase,Cooler,Accessory,name)"
-                    + "values (?,?,?,?,?,?,?,?,?,?,?)";
+                    + "values (?,?,?,?,?,?,?,?,?,?,?)"; //Saves build into database.
 
             PreparedStatement statement = con.prepareStatement(query);
 
@@ -163,6 +203,9 @@ public class Build {
         }
     }
     
+    /**
+     *Deletes a given build.
+     */
     public void deleteBuild() {
         Connection con = DatabaseConnection.establishConnection();
         try {
@@ -177,6 +220,11 @@ public class Build {
 
     }
 
+    /**
+     *
+     * @param user current username
+     * @return a table of user's builds.
+     */
     public ResultSet findUserBuilds(UserAccount user) {
 
         Connection con = DatabaseConnection.establishConnection();
@@ -195,6 +243,12 @@ public class Build {
         return rs;
     }
 
+    /**
+     *
+     * @param user current username
+     * @param name String build name
+     * @return returns the build.
+     */
     public Build loadBuild(UserAccount user, String name) {
         Connection con = DatabaseConnection.establishConnection();
 
