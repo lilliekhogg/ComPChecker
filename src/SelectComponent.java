@@ -154,7 +154,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     make = rs.getString("Make");
                     mdl = rs.getString("Model");
                     price = rs.getDouble("Price");
-                    int speed = rs.getInt("Speed");
+                    String speed = rs.getString("Speed");
                     int size = rs.getInt("SizeGB");
                     int sticks = rs.getInt("Sticks");
 
