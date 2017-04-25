@@ -21,6 +21,7 @@ public class EditBuilds extends javax.swing.JDialog {
      */
     public EditBuilds(UserAccount user) {
         initComponents();
+        currentUser = user;     
 
         this.setTitle("Edit Builds");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
@@ -80,7 +81,7 @@ public class EditBuilds extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         btnEdit = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -108,10 +109,10 @@ public class EditBuilds extends javax.swing.JDialog {
         }
     });
 
-    jButton1.setText("Close");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
+    btnClose.setText("Close");
+    btnClose.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton1ActionPerformed(evt);
+            btnCloseActionPerformed(evt);
         }
     });
 
@@ -121,7 +122,7 @@ public class EditBuilds extends javax.swing.JDialog {
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton1)
+            .addComponent(btnClose)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(btnEdit)
             .addGap(365, 365, 365))
@@ -137,7 +138,7 @@ public class EditBuilds extends javax.swing.JDialog {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jButton1)
+                .addComponent(btnClose)
                 .addComponent(btnEdit))
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
@@ -175,10 +176,10 @@ public class EditBuilds extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.setVisible(false);
-        //new AdminMenu(currentUser).setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        new AdminMenu(currentUser).setVisible(true);
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,8 +224,8 @@ public class EditBuilds extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
