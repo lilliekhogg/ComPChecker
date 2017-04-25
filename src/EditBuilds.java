@@ -164,7 +164,7 @@ public class EditBuilds extends javax.swing.JDialog {
             //edit
              this.setVisible(false);
              
-        EditBuild newForm = new EditBuild(currentUser);
+        EditBuild newForm = new EditBuild(currentUser, myBuild);
         newForm.setVisible(true);
         } else if (response == 1) {
             //Delete

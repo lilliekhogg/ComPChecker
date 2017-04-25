@@ -29,6 +29,7 @@ public class EditBuild extends javax.swing.JFrame {
     String username;
 
     UserAccount currentUser;
+    Build currentBuild;
 
     /**
      * Creates new form EditBuild
@@ -43,7 +44,7 @@ public class EditBuild extends javax.swing.JFrame {
     //Contructor for CreateBuild - where a build doesn't need to be passed...
     //... as the user is creating a new one
     EditBuild(UserAccount user) {
-        username = user.getUsername();
+        //username = user.getUsername();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame - need this to change bassed on option
         setLocationRelativeTo(null);
@@ -53,11 +54,15 @@ public class EditBuild extends javax.swing.JFrame {
     //Contructor for EditBuild & Viewbuild - where a build needs to be passed...
     //... as the user is referencing an existing one
     EditBuild(UserAccount user, Build myBuild) {
-        username = user.getUsername();
+        //username = user.getUsername();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
         currentUser = user;
+        currentBuild = myBuild;
+        System.out.println(currentUser + "" + currentBuild);
+        build.loadBuild(user, myBuild.getName());
+        btnProcessor.setText(Integer.toString(build.getCPU()));
     }
 
     private EditBuild() {

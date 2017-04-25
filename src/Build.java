@@ -93,7 +93,7 @@ public class Build {
     }
 
     /**
-     *
+   *
      * @param Cooler Sets the cooler ID.
      */
     public void setCooler(int Cooler) {
@@ -107,6 +107,22 @@ public class Build {
     public int getCooler() {
         return cooler;
     }
+    
+     /**
+   *
+     * @param psu Sets the PSU ID.
+     */
+    public void setPSU(int psu) {
+        PSU = psu;
+    }
+    
+    /**
+     *
+     * @return gets the PSU ID.
+     */
+    public int getPSU() {
+        return PSU;
+    }  
 
     /**
      *
@@ -259,6 +275,7 @@ public class Build {
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
                 this.CPU = rs.getInt("CPU");
+                System.out.println(CPU);
                 this.motherboard = rs.getInt("Motherboard");
                 this.RAM = rs.getInt("RAM");
                 this.GPU = rs.getInt("GPU");

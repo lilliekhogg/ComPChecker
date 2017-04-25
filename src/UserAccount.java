@@ -330,23 +330,15 @@ public class UserAccount {
             String query = "SELECT * FROM Account WHERE ID = '" + this.username + "'";
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
-            
              while (rs.next()) {
                     fName = rs.getString("Fname");
                     sName = rs.getString("sName");
                     email = rs.getString("Email");
                     type = rs.getBoolean("accountType");
-
-               
-
                 }
-
         } catch (SQLException err) {
             System.out.println(err.getMessage());
         }
-    
-    
-    
     }
     
     public void editUser(){
