@@ -63,6 +63,15 @@ public class EditBuild extends javax.swing.JFrame {
         System.out.println(currentUser + "" + currentBuild);
         build.loadBuild(user, myBuild.getName());
         btnProcessor.setText(Integer.toString(build.getCPU()));
+        btnMotherboard.setText(Integer.toString(build.getMotherboard()));
+        btnRAM.setText(Integer.toString(build.getRAM()));
+        btnGraphics.setText(Integer.toString(build.getGPU()));
+        btnStorage.setText(Integer.toString(build.getStorage()));
+        btnCase.setText(Integer.toString(build.getCase()));
+        btnPowerSup.setText(Integer.toString(build.getPSU()));
+        btnCooling.setText(Integer.toString(build.getCooler()));
+        btnAccessories.setText(Integer.toString(build.getAccessory()));
+        
     }
 
     private EditBuild() {
