@@ -222,56 +222,56 @@ public class AdminMenu extends javax.swing.JFrame {
 
             case "Accessory":
                 myPart = "Accessory";
-                frm = new EditComponent(myPart, 0, currentUser); //
+                frm = new EditComponent(myPart, 0, currentUser, null); //
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
 
             case "CPU":
                 myPart = "CPU";
-                frm = new EditComponent(myPart, 0, currentUser);
+                frm = new EditComponent(myPart, 0, currentUser, null);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Motherboard":
                 myPart = "Motherboard";
-                frm = new EditComponent(myPart, 0, currentUser);
+                frm = new EditComponent(myPart, 0, currentUser, null);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "RAM":
                 myPart = "RAM";
-                frm = new EditComponent(myPart, 0, currentUser);
+                frm = new EditComponent(myPart, 0, currentUser, null);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "PSU":
                 myPart = "PSU";
-                frm = new EditComponent(myPart, 0, currentUser);
+                frm = new EditComponent(myPart, 0, currentUser, null);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Cooler":
                 myPart = "Cooler";
-                frm = new EditComponent(myPart, 0, currentUser);
+                frm = new EditComponent(myPart, 0, currentUser, null);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "GPU":
                 myPart = "GPU";
-                frm = new EditComponent(myPart, 0, currentUser);
+                frm = new EditComponent(myPart, 0, currentUser, null);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Case":
                 myPart = "Case";
-                frm = new EditComponent(myPart, 0, currentUser);
+                frm = new EditComponent(myPart, 0, currentUser, null);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Storage":
                 myPart = "Storage";
-                frm = new EditComponent(myPart, 0, currentUser);
+                frm = new EditComponent(myPart, 0, currentUser, null);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;

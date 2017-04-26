@@ -49,7 +49,7 @@ public class EditComponent extends javax.swing.JDialog {
      * @param type
      * @param form1
      */
-    public EditComponent(String type, int mySelectedPart, UserAccount user) {
+    public EditComponent(String type, int mySelectedPart, UserAccount user, Issue issue) {
         partType = type;
         initComponents();
         this.setTitle("Select Component");     //Adds a title to the frame
@@ -57,6 +57,7 @@ public class EditComponent extends javax.swing.JDialog {
         currentUser = user;
 
         selectedPart = mySelectedPart;
+        myIssue = issue;
 
         TableColumn col = new TableColumn();
         ArrayList<String> columns = new ArrayList<>();
@@ -420,6 +421,7 @@ public class EditComponent extends javax.swing.JDialog {
         if (selectedPart == 1) {
             ID1 = myID;
             myIssue.setID1(ID1);
+            
 
         }
         if (selectedPart == 2) {

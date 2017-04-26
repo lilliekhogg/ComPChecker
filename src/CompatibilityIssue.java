@@ -15,6 +15,8 @@ public class CompatibilityIssue extends javax.swing.JFrame {
     
     UserAccount currentUser;
     int ID1, ID2;
+    
+    Issue myIssue = new Issue();
 
     /**
      * Creates new form CompatibilityCheck
@@ -36,18 +38,11 @@ public class CompatibilityIssue extends javax.swing.JFrame {
         this.setTitle("Compatibility");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         currentUser = user;
-       
-        btnPart1.setText(Integer.toString(issue.getID1()));
-        btnPart2.setText(Integer.toString(issue.getID2()));
+        myIssue = issue;
+        btnPart1.setText(Integer.toString(myIssue.getID1()));
+        btnPart2.setText(Integer.toString(myIssue.getID2()));
     }
-    
-    public void setID1(int myID1) {
-        ID1 = myID1;
-    }
-    
-    public void setID2(int myID2) {
-        ID2 = myID2;
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,56 +129,56 @@ public class CompatibilityIssue extends javax.swing.JFrame {
 
             case "Accessory":
                 myPart = "Accessory";
-                frm = new EditComponent(myPart, 1, currentUser); //
+                frm = new EditComponent(myPart, 1, currentUser, myIssue); //
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
 
             case "CPU":
                 myPart = "CPU";
-                frm = new EditComponent(myPart, 1, currentUser);
+                frm = new EditComponent(myPart, 1, currentUser, myIssue);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Motherboard":
                 myPart = "Motherboard";
-                frm = new EditComponent(myPart, 1, currentUser);
+                frm = new EditComponent(myPart, 1, currentUser, myIssue);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "RAM":
                 myPart = "RAM";
-                frm = new EditComponent(myPart, 1, currentUser);
+                frm = new EditComponent(myPart, 1, currentUser, myIssue);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "PSU":
                 myPart = "PSU";
-                frm = new EditComponent(myPart, 1, currentUser);
+                frm = new EditComponent(myPart, 1, currentUser, myIssue);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Cooler":
                 myPart = "Cooler";
-                frm = new EditComponent(myPart, 1, currentUser);
+                frm = new EditComponent(myPart, 1, currentUser, myIssue);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "GPU":
                 myPart = "GPU";
-                frm = new EditComponent(myPart, 1, currentUser);
+                frm = new EditComponent(myPart, 1, currentUser, myIssue);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Case":
                 myPart = "Case";
-                frm = new EditComponent(myPart, 1, currentUser);
+                frm = new EditComponent(myPart, 1, currentUser, myIssue);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Storage":
                 myPart = "Storage";
-                frm = new EditComponent(myPart, 1, currentUser);
+                frm = new EditComponent(myPart, 1, currentUser, myIssue);
                 this.setVisible(false);
                 frm.setVisible(true);
                 break;
@@ -205,48 +200,57 @@ public class CompatibilityIssue extends javax.swing.JFrame {
 
             case "Accessory":
                 myPart = "Accessory";
-                frm = new EditComponent(myPart, 2, currentUser); //
+                frm = new EditComponent(myPart, 2, currentUser, myIssue); //
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
 
             case "CPU":
                 myPart = "CPU";
-                frm = new EditComponent(myPart, 2, currentUser);
+                frm = new EditComponent(myPart, 2, currentUser, myIssue);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Motherboard":
                 myPart = "Motherboard";
-                frm = new EditComponent(myPart, 2, currentUser);
+                frm = new EditComponent(myPart, 2, currentUser, myIssue);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "RAM":
                 myPart = "RAM";
-                frm = new EditComponent(myPart, 2, currentUser);
+                frm = new EditComponent(myPart, 2, currentUser, myIssue);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "PSU":
                 myPart = "PSU";
-                frm = new EditComponent(myPart, 2, currentUser);
+                frm = new EditComponent(myPart, 2, currentUser, myIssue);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Cooler":
                 myPart = "Cooler";
-                frm = new EditComponent(myPart, 2, currentUser);
+                frm = new EditComponent(myPart, 2, currentUser, myIssue);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "GPU":
                 myPart = "GPU";
-                frm = new EditComponent(myPart, 2, currentUser);
+                frm = new EditComponent(myPart, 2, currentUser, myIssue);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Case":
                 myPart = "Case";
-                frm = new EditComponent(myPart, 2, currentUser);
+                frm = new EditComponent(myPart, 2, currentUser, myIssue);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Storage":
                 myPart = "Storage";
-                frm = new EditComponent(myPart, 2, currentUser);
+                frm = new EditComponent(myPart, 2, currentUser, myIssue);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
         }
