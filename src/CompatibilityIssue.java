@@ -78,6 +78,11 @@ public class CompatibilityIssue extends javax.swing.JFrame {
         });
 
         btnStore.setText("Store Incompatibility");
+        btnStore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStoreActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -255,6 +260,11 @@ public class CompatibilityIssue extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_btnPart2ActionPerformed
+
+    private void btnStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStoreActionPerformed
+        // TODO add your handling code here:
+        myIssue.saveIssue(myIssue.getID1(),myIssue.getID2());
+    }//GEN-LAST:event_btnStoreActionPerformed
 
     /**
      * @param args the command line arguments
