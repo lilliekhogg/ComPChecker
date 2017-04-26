@@ -34,11 +34,9 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="lblMake" min="-2" max="-2" attributes="0"/>
                           <Component id="lblWattage" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="lblPrice" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblModel" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblPrice" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="lblModular" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblModel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -116,7 +114,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrice">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Price:"/>
+        <Property name="text" type="java.lang.String" value="Price (&#xa3;):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblWattage">

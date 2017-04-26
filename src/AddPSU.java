@@ -80,7 +80,7 @@ public class AddPSU extends javax.swing.JFrame {
 
         lblModel.setText("Model:");
 
-        lblPrice.setText("Price:");
+        lblPrice.setText("Price (£):");
 
         lblWattage.setText("Wattage:");
 
@@ -118,10 +118,9 @@ public class AddPSU extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblMake)
                             .addComponent(lblWattage)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblPrice)
-                                .addComponent(lblModel))
-                            .addComponent(lblModular))
+                            .addComponent(lblPrice)
+                            .addComponent(lblModular)
+                            .addComponent(lblModel))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(comboMake, 0, 78, Short.MAX_VALUE)
