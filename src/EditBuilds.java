@@ -21,7 +21,7 @@ public class EditBuilds extends javax.swing.JDialog {
      */
     public EditBuilds(UserAccount user) {
         initComponents();
-        currentUser = user;     
+        currentUser = user;
 
         this.setTitle("Edit Builds");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
@@ -44,34 +44,58 @@ public class EditBuilds extends javax.swing.JDialog {
             Statement stmt = (Statement) con.createStatement();
             boolean Admin = user.getType();
             String query;
-            if(Admin){
-             query = ("Select name,CPU,Motherboard,RAM,GPU,Storage,PCCase,PSU,Cooler,Accessory From Build ORDER BY ID ASC"); //If admin return all builds 
-        }else{
-            String username = user.getUsername();
-            query = ("Select name,CPU,Motherboard,RAM,GPU,Storage,PCCase,PSU,Cooler,Accessory From Build Where Account = '" + username +"'ORDER BY ID ASC"); //Else return own builds.
-            
+            if (Admin) {
+                query = ("Select name,CPU,Motherboard,RAM,GPU,Storage,PCCase,PSU,Cooler,Accessory From Build ORDER BY ID ASC"); //If admin return all builds 
+            } else {
+                String username = user.getUsername();
+                query = ("Select name,CPU,Motherboard,RAM,GPU,Storage,PCCase,PSU,Cooler,Accessory From Build Where Account = '" + username + "'ORDER BY ID ASC"); //Else return own builds.
+
             }
-            
+
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
                 String buildname = rs.getString("name");
-                String cpu = rs.getString("CPU");
-                String motherboard = rs.getString("Motherboard");
-                String ram = rs.getString("RAM");
-                String gpu = rs.getString("GPU");
-                String storage = rs.getString("Storage");
-                String pccase = rs.getString("PCCase");
-                String psu = rs.getString("PSU");
-                String cooler = rs.getString("Cooler");
-                String accessory = rs.getString("Accessory");
-                
+                String cpu = getMakeModel(rs.getInt("CPU"));
+                String motherboard = getMakeModel(rs.getInt("Motherboard"));
+                String ram = getMakeModel(rs.getInt("RAM"));
+                String gpu = getMakeModel(rs.getInt("GPU"));
+                String storage = getMakeModel(rs.getInt("Storage"));
+                String pccase = getMakeModel(rs.getInt("PCCase"));
+                String psu = getMakeModel(rs.getInt("PSU"));
+                String cooler = getMakeModel(rs.getInt("Cooler"));
+                String accessory = getMakeModel(rs.getInt("Accessory"));
+
                 model.addRow(new Object[]{buildname, cpu, motherboard, ram, gpu, storage, pccase, psu, cooler, accessory});
             }
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
 
+    }
+
+    private String getMakeModel(int ID) {
+        Connection con = DatabaseConnection.establishConnection();
+        
+        String make = null;
+        String model= null;
+        try {
+            Statement stmt = (Statement) con.createStatement();
+            String query = ("SELECT * FROM Part Where PartID ='" + ID + "'");
+            stmt.executeQuery(query);
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                make = rs.getString("Make");
+                model = rs.getString("Model");
+
+            }
+            String makeModel = (make + " " + model);
+
+            return makeModel;
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());   //Prints out SQL error 
+        }
+        return null;
     }
 
     private EditBuilds() {
@@ -171,10 +195,10 @@ public class EditBuilds extends javax.swing.JDialog {
         myBuild.setName(buildname);
         if (response == 0) {
             //edit
-             this.setVisible(false);
-             
-        EditBuild newForm = new EditBuild(currentUser, myBuild);
-        newForm.setVisible(true);
+            this.setVisible(false);
+
+            EditBuild newForm = new EditBuild(currentUser, myBuild);
+            newForm.setVisible(true);
         } else if (response == 1) {
             //Delete
             myBuild.deleteBuild();
