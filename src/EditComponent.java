@@ -21,12 +21,16 @@ public class EditComponent extends javax.swing.JDialog {
     /**
      * Creates new form SelectComponent
      */
+    UserAccount currentUser;
     int cpuID;
     int motherboardID;
     String thismake;
     String thismodel;
     String partType;
     CreateBuild form;
+    int selectedPart, ID1, ID2;
+    
+    Issue myIssue = new Issue();
 
     /**
      *
@@ -45,11 +49,15 @@ public class EditComponent extends javax.swing.JDialog {
      * @param type
      * @param form1
      */
-    public EditComponent(String type) {
+    public EditComponent(String type, int mySelectedPart, UserAccount user) {
         partType = type;
         initComponents();
         this.setTitle("Select Component");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        currentUser = user;
+
+        selectedPart = mySelectedPart;
+
         TableColumn col = new TableColumn();
         ArrayList<String> columns = new ArrayList<>();
         columns.add("Make");
@@ -405,9 +413,26 @@ public class EditComponent extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableMouseClicked
 
+    private void compatibilityID(int myID) {
+        
+        
+        
+        if (selectedPart == 1) {
+            ID1 = myID;
+            myIssue.setID1(ID1);
+
+        }
+        if (selectedPart == 2) {
+            ID2 = myID;
+            myIssue.setID2(ID2);
+        }
+        // else if 0 then "parent" form was menu
+    }
+
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         //temp save part, change button label to part text
         int ID = getID();
+        compatibilityID(ID);
         int row = jTable.getSelectedRow();
         System.out.println(ID);
         if (partType == "CPU") {
@@ -438,6 +463,13 @@ public class EditComponent extends javax.swing.JDialog {
         }
 
         this.setVisible(false);
+        // if selectedPart is 1 or 2, then the "parent" form was the CompatibilityIssue form
+        if (selectedPart == 1 || selectedPart == 2) {
+            new CompatibilityIssue(currentUser, myIssue).setVisible(true);
+        // else the "parent" form was simply a menu
+        } else {
+            new AdminMenu(currentUser).setVisible(true);
+        }
 
     }//GEN-LAST:event_btnConfirmActionPerformed
 

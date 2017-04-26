@@ -11,23 +11,42 @@ import javax.swing.JOptionPane;
  *
  * @author Luke
  */
-public class CompatibilityCheck extends javax.swing.JFrame {
+public class CompatibilityIssue extends javax.swing.JFrame {
     
-    UserAccount user; 
+    UserAccount currentUser;
+    int ID1, ID2;
 
     /**
      * Creates new form CompatibilityCheck
      */
-    public CompatibilityCheck() {
+    public CompatibilityIssue() {
         initComponents();
     }
 
-    CompatibilityCheck(UserAccount currentUser) {
+    CompatibilityIssue(UserAccount user) {
         initComponents();
         this.setTitle("Compatibility");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         currentUser = user;
 
+    }
+    
+    CompatibilityIssue(UserAccount user, Issue issue) {
+        initComponents();
+        this.setTitle("Compatibility");     //Adds a title to the frame
+        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        currentUser = user;
+       
+        btnPart1.setText(Integer.toString(issue.getID1()));
+        btnPart2.setText(Integer.toString(issue.getID2()));
+    }
+    
+    public void setID1(int myID1) {
+        ID1 = myID1;
+    }
+    
+    public void setID2(int myID2) {
+        ID2 = myID2;
     }
 
     /**
@@ -42,8 +61,7 @@ public class CompatibilityCheck extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
         btnPart1 = new javax.swing.JButton();
         btnPart2 = new javax.swing.JButton();
-        btnCheck = new javax.swing.JButton();
-        lblResult = new javax.swing.JLabel();
+        btnStore = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,10 +82,7 @@ public class CompatibilityCheck extends javax.swing.JFrame {
             }
         });
 
-        btnCheck.setText("Check Compatibility!");
-
-        lblResult.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblResult.setText("Result");
+        btnStore.setText("Store Incompatibility");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,14 +96,11 @@ public class CompatibilityCheck extends javax.swing.JFrame {
                             .addComponent(btnPart2)
                             .addComponent(btnPart1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(276, 276, 276)
-                        .addComponent(lblResult))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(btnCheck)))
+                        .addGap(242, 242, 242)
+                        .addComponent(btnStore)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,16 +112,14 @@ public class CompatibilityCheck extends javax.swing.JFrame {
                 .addComponent(btnPart1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPart2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCheck)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblResult)
-                .addGap(0, 70, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(btnStore)
+                .addGap(0, 86, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnPart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPart1ActionPerformed
         String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
         String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being editted?",
@@ -124,48 +134,57 @@ public class CompatibilityCheck extends javax.swing.JFrame {
 
             case "Accessory":
                 myPart = "Accessory";
-                frm = new EditComponent(myPart); //
+                frm = new EditComponent(myPart, 1, currentUser); //
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
 
             case "CPU":
                 myPart = "CPU";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 1, currentUser);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Motherboard":
                 myPart = "Motherboard";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 1, currentUser);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "RAM":
                 myPart = "RAM";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 1, currentUser);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "PSU":
                 myPart = "PSU";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 1, currentUser);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Cooler":
                 myPart = "Cooler";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 1, currentUser);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "GPU":
                 myPart = "GPU";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 1, currentUser);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Case":
                 myPart = "Case";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 1, currentUser);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
             case "Storage":
                 myPart = "Storage";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 1, currentUser);
+                this.setVisible(false);
                 frm.setVisible(true);
                 break;
         }
@@ -186,48 +205,48 @@ public class CompatibilityCheck extends javax.swing.JFrame {
 
             case "Accessory":
                 myPart = "Accessory";
-                frm = new EditComponent(myPart); //
+                frm = new EditComponent(myPart, 2, currentUser); //
                 frm.setVisible(true);
                 break;
 
             case "CPU":
                 myPart = "CPU";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 2, currentUser);
                 frm.setVisible(true);
                 break;
             case "Motherboard":
                 myPart = "Motherboard";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 2, currentUser);
                 frm.setVisible(true);
                 break;
             case "RAM":
                 myPart = "RAM";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 2, currentUser);
                 frm.setVisible(true);
                 break;
             case "PSU":
                 myPart = "PSU";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 2, currentUser);
                 frm.setVisible(true);
                 break;
             case "Cooler":
                 myPart = "Cooler";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 2, currentUser);
                 frm.setVisible(true);
                 break;
             case "GPU":
                 myPart = "GPU";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 2, currentUser);
                 frm.setVisible(true);
                 break;
             case "Case":
                 myPart = "Case";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 2, currentUser);
                 frm.setVisible(true);
                 break;
             case "Storage":
                 myPart = "Storage";
-                frm = new EditComponent(myPart);
+                frm = new EditComponent(myPart, 2, currentUser);
                 frm.setVisible(true);
                 break;
         }
@@ -250,29 +269,29 @@ public class CompatibilityCheck extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CompatibilityCheck.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompatibilityIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CompatibilityCheck.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompatibilityIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CompatibilityCheck.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompatibilityIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CompatibilityCheck.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CompatibilityIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CompatibilityCheck().setVisible(true);
+                new CompatibilityIssue().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCheck;
     private javax.swing.JButton btnPart1;
     private javax.swing.JButton btnPart2;
+    private javax.swing.JButton btnStore;
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JLabel lblResult;
     // End of variables declaration//GEN-END:variables
 }
