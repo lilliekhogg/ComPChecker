@@ -58,6 +58,11 @@ public class CompatibilityCheck extends javax.swing.JFrame {
         });
 
         btnPart2.setText("Choose Part 2");
+        btnPart2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPart2ActionPerformed(evt);
+            }
+        });
 
         btnCheck.setText("Check Compatibility!");
 
@@ -166,6 +171,67 @@ public class CompatibilityCheck extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnPart1ActionPerformed
+
+    private void btnPart2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPart2ActionPerformed
+        String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
+        String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being editted?",
+                "Edit Component", JOptionPane.QUESTION_MESSAGE, null, // Use
+                // default
+                // icon
+                choices, // Array of choices
+                choices[0]); // Initial choice
+        String myPart;
+        EditComponent frm; //
+        switch (input) {
+
+            case "Accessory":
+                myPart = "Accessory";
+                frm = new EditComponent(myPart); //
+                frm.setVisible(true);
+                break;
+
+            case "CPU":
+                myPart = "CPU";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Motherboard":
+                myPart = "Motherboard";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "RAM":
+                myPart = "RAM";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "PSU":
+                myPart = "PSU";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Cooler":
+                myPart = "Cooler";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "GPU":
+                myPart = "GPU";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Case":
+                myPart = "Case";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Storage":
+                myPart = "Storage";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+        }
+    }//GEN-LAST:event_btnPart2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -89,9 +89,9 @@ public class EditComponent extends javax.swing.JDialog {
             columns.add("Min RPM");
             columns.add("Max RPM");
 
-        } else if (type == "Accessory"){
-          columns.add("Description");
-        
+        } else if (type == "Accessory") {
+            columns.add("Description");
+
         }
 
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
@@ -290,8 +290,7 @@ public class EditComponent extends javax.swing.JDialog {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -408,32 +407,29 @@ public class EditComponent extends javax.swing.JDialog {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         //temp save part, change button label to part text
- int ID = getID();
- int row = jTable.getSelectedRow();
+        int ID = getID();
+        int row = jTable.getSelectedRow();
         System.out.println(ID);
         if (partType == "CPU") {
-           AddCPU form = new AddCPU(cpuID);
-          form.btnSave.hide();
-          form.txtboxModel.setText(jTable.getModel().getValueAt(row, 1).toString());
-          form.txtboxPrice.setText(jTable.getModel().getValueAt(row, 2).toString());
-          form.txtboxSpeed.setText(jTable.getModel().getValueAt(row, 3).toString());
-          form.txtboxCores.setText(jTable.getModel().getValueAt(row, 4).toString());
-          form.setVisible(true);
-          
+            AddCPU form = new AddCPU(cpuID);
+            form.btnSave.hide();
+            form.txtboxModel.setText(jTable.getModel().getValueAt(row, 1).toString());
+            form.txtboxPrice.setText(jTable.getModel().getValueAt(row, 2).toString());
+            form.txtboxSpeed.setText(jTable.getModel().getValueAt(row, 3).toString());
+            form.txtboxCores.setText(jTable.getModel().getValueAt(row, 4).toString());
+            form.setVisible(true);
 
         } else if (partType == "Motherboard") {
 
         } else if (partType == "RAM") {
- 
+
         } else if (partType == "GPU") {
 
         } else if (partType == "Storage") {
 
-
         } else if (partType == "Case") {
 
         } else if (partType == "PSU") {
-
 
         } else if (partType == "Cooler") {
 
