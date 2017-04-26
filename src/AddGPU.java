@@ -14,7 +14,7 @@ import static javax.xml.bind.DatatypeConverter.parseString;
 
 /**
  *
- * @author Lillie Hogg
+ * @author Lillie
  */
 public class AddGPU extends javax.swing.JFrame {
     
@@ -210,7 +210,7 @@ public class AddGPU extends javax.swing.JFrame {
         int memory = Integer.parseInt(txtFieldMemory.getText());
         float coreclock = Float.parseFloat(txtFieldcClock.getText());
         
-        
+        //setting specified makes
         gpu.setMake(make);
         gpu.setModel(model);
         gpu.setPrice(price);
@@ -219,7 +219,7 @@ public class AddGPU extends javax.swing.JFrame {
         gpu.setMemory(memory);
         gpu.setCoreClock(coreclock);
         
-        
+        //validation for GPU
         boolean validated = gpu.saveGPU();
         if(validated){
         this.setVisible(false);

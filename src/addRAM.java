@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author User
+ * @author Lillie Hogg
  */
 public class addRAM extends javax.swing.JDialog {
     
@@ -259,7 +259,7 @@ public class addRAM extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelActionPerformed
 
      private void populateMakes() {
-
+         //adding makes to the database.
         comboMake.removeAllItems();
         ResultSet rs;
         Make make = new Make();

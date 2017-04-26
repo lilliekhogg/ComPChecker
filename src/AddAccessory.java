@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Lillie Hogg
+ * @author Lillie
  */
 public class AddAccessory extends javax.swing.JFrame {
 
@@ -185,6 +185,7 @@ public class AddAccessory extends javax.swing.JFrame {
         }else{ //when input boxes are not empty
             double price = Double.parseDouble(pricetest);
 
+            //setting the input fields
             accessory.setMake(make);
             accessory.setModel(model);
             accessory.setPrice(price);

@@ -219,12 +219,14 @@ public class AddCPU extends javax.swing.JDialog {
             double price = Double.parseDouble(pricetest);
             float speed = Float.parseFloat(speedtest);
             int cores = Integer.parseInt(corecheck);
+            //setting the input fields
             cpu.make = make;
             cpu.model = model;
             cpu.speed = speed;
             cpu.cores = cores;
             cpu.price = price;
             
+            //checking if validation is successful
             boolean succesful = cpu.saveCPU();
             if(succesful){
             JOptionPane.showMessageDialog(null, "CPU added", "CPU Added", JOptionPane.INFORMATION_MESSAGE);
@@ -269,7 +271,7 @@ public class AddCPU extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void populateMakes() {
-
+        //adding make to the database
         cmboxMake.removeAllItems();
         ResultSet rs;
         Make make = new Make();

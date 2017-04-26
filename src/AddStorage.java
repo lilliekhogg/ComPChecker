@@ -16,7 +16,7 @@ import static javax.xml.bind.DatatypeConverter.parseString;
 
 /**
  *
- * @author User
+ * @author Lillie Hogg
  */
 public class AddStorage extends javax.swing.JFrame {
 
@@ -205,7 +205,7 @@ public class AddStorage extends javax.swing.JFrame {
         String HHDtest = cmBoxHHD.getSelectedItem().toString();
 
         
-
+        //checking for empty input fields
         if(model.isEmpty()){
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
             }else if (pricetest.isEmpty()){
@@ -225,6 +225,7 @@ public class AddStorage extends javax.swing.JFrame {
             int capacity = Integer.parseInt(capacitytest);
             boolean HHD = Boolean.parseBoolean(HHDtest);
             
+            //setting the specified fields
             storage.make = make;
             storage.model = model;
             storage.speed = speed;
@@ -233,6 +234,7 @@ public class AddStorage extends javax.swing.JFrame {
             storage.series = series;
             storage.price = price;
             
+            //components are added to the database if validation passes
             boolean validated = storage.saveStorage();
             if(validated){
             this.setVisible(false);

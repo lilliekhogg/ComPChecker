@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Lillie Hogg
+ * @author Lillie
  */
 public class AddPCCase extends javax.swing.JFrame {
     
@@ -253,6 +253,7 @@ public class AddPCCase extends javax.swing.JFrame {
             pccase.setColour(colour);
             pccase.setMotherboard(motherboard);
             
+            //if validation is successful, print the following 
             boolean succesful = pccase.savePCCase();
             if(succesful){
             this.setVisible(false);
@@ -288,7 +289,7 @@ public class AddPCCase extends javax.swing.JFrame {
         }
 
     }
-    
+    //return the user to menu
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin

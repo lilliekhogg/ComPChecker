@@ -235,7 +235,8 @@ public class AddPSU extends javax.swing.JFrame {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
         
-        
+        //making a drop down menu for modular - easier to allow user to enter
+        //true or false rather than trying to enter strings
         cmboxModular.removeAllItems();
         ArrayList<String> modular = new ArrayList<String>();
         modular.add("True");
@@ -248,7 +249,7 @@ public class AddPSU extends javax.swing.JFrame {
  
 
     }  
-    
+    //return user to main menu
    private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin

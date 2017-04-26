@@ -269,6 +269,7 @@ public class AddMotherboard extends javax.swing.JDialog {
             int slots = Integer.parseInt(slotscheck);
             int maxRAM = Integer.parseInt(maxRAMcheck);
             
+            //setting specified inputs
             motherboard.setMake(make);
             motherboard.setModel(model);
             motherboard.setPrice(price);
@@ -325,6 +326,8 @@ public class AddMotherboard extends javax.swing.JDialog {
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
+        //adding drop down menus for certain input fields
+        //drop down for socket
         cmboxSocket.removeAllItems();
         ArrayList<String> sockets = new ArrayList<String>();
         sockets.add("LGA1151");
@@ -336,6 +339,7 @@ public class AddMotherboard extends javax.swing.JDialog {
         for (int i = 0; i < sockets.size(); i++) {
             cmboxSocket.addItem(sockets.get(i));
         }
+        //drop down for form factor
         cmboxFormFactor.removeAllItems();
         ArrayList<String> formfactor = new ArrayList<String>();
         formfactor.add("ATX");

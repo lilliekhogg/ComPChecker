@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Lillie Hogg
+ * @author Lillie
  */
 public class AddCooler extends javax.swing.JFrame {
         
@@ -172,6 +172,7 @@ public class AddCooler extends javax.swing.JFrame {
         String minRPMcheck = txtFieldMinRPM.getText();
         String maxRPMcheck = txtFieldMaxRPM.getText();
         
+        //validation - error message if wrong
         if(model.isEmpty()){
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
         }else if (pricetest.isEmpty()){
@@ -185,12 +186,14 @@ public class AddCooler extends javax.swing.JFrame {
             int minRPM = Integer.parseInt(minRPMcheck);
             int maxRPM = Integer.parseInt(maxRPMcheck);
             
+            //setting specified inputs
             cooler.setMake(make);
             cooler.setModel(model);
             cooler.setPrice(price);
             cooler.setMinRPM(minRPM);
             cooler.setMaxRPM(maxRPM);
             
+            //checking if validation is successful
             boolean succesful = cooler.saveCooler();
             if(succesful){
             this.setVisible(false);
