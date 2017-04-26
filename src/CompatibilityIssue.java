@@ -98,6 +98,7 @@ public class CompatibilityIssue extends javax.swing.JFrame {
         btnPart1 = new javax.swing.JButton();
         btnPart2 = new javax.swing.JButton();
         btnStore = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,6 +126,13 @@ public class CompatibilityIssue extends javax.swing.JFrame {
             }
         });
 
+        btnReturn.setText("Return");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReturnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,7 +149,10 @@ public class CompatibilityIssue extends javax.swing.JFrame {
                         .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(242, 242, 242)
-                        .addComponent(btnStore)))
+                        .addComponent(btnStore))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnReturn)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -155,7 +166,9 @@ public class CompatibilityIssue extends javax.swing.JFrame {
                 .addComponent(btnPart2)
                 .addGap(30, 30, 30)
                 .addComponent(btnStore)
-                .addGap(0, 86, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(btnReturn)
+                .addContainerGap())
         );
 
         pack();
@@ -307,6 +320,11 @@ public class CompatibilityIssue extends javax.swing.JFrame {
         myIssue.saveIssue(myIssue.getID1(),myIssue.getID2());
     }//GEN-LAST:event_btnStoreActionPerformed
 
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
+        this.setVisible(false);
+        new AdminMenu(currentUser).setVisible(true);
+    }//GEN-LAST:event_btnReturnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -346,6 +364,7 @@ public class CompatibilityIssue extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPart1;
     private javax.swing.JButton btnPart2;
+    private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnStore;
     private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
