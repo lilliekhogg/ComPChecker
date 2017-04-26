@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,10 +14,15 @@
 public class CompatibilityCheck extends javax.swing.JFrame {
 
     /**
-     * Creates new form compatibilityCheck
+     * Creates new form CompatibilityCheck
      */
     public CompatibilityCheck() {
         initComponents();
+    }
+
+    CompatibilityCheck(UserAccount currentUser) {
+        initComponents();
+
     }
 
     /**
@@ -38,13 +46,17 @@ public class CompatibilityCheck extends javax.swing.JFrame {
         lblLogo.setText("jLabel1");
 
         btnPart1.setText("Choose Part 1");
+        btnPart1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPart1ActionPerformed(evt);
+            }
+        });
 
         btnPart2.setText("Choose Part 2");
 
         btnCheck.setText("Check Compatibility!");
 
         lblResult.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lblResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblResult.setText("Result");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -53,40 +65,105 @@ public class CompatibilityCheck extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnPart2)
-                            .addComponent(btnPart1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(256, 256, 256)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnPart2)
+                                    .addComponent(btnPart1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(276, 276, 276)
+                                .addComponent(lblResult)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(245, 245, 245)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblResult, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCheck))
-                .addContainerGap(251, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCheck)
+                .addGap(241, 241, 241))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addComponent(lblLogo)
+                .addGap(34, 34, 34)
                 .addComponent(btnPart1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPart2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCheck)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblResult)
-                .addGap(0, 35, Short.MAX_VALUE))
+                .addGap(0, 70, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPart1ActionPerformed
+        String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
+        String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being editted?",
+                "Edit Component", JOptionPane.QUESTION_MESSAGE, null, // Use
+                // default
+                // icon
+                choices, // Array of choices
+                choices[0]); // Initial choice
+        String myPart;
+        EditComponent frm; //
+        switch (input) {
+
+            case "Accessory":
+                myPart = "Accessory";
+                frm = new EditComponent(myPart); //
+                frm.setVisible(true);
+                break;
+
+            case "CPU":
+                myPart = "CPU";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Motherboard":
+                myPart = "Motherboard";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "RAM":
+                myPart = "RAM";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "PSU":
+                myPart = "PSU";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Cooler":
+                myPart = "Cooler";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "GPU":
+                myPart = "GPU";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Case":
+                myPart = "Case";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+            case "Storage":
+                myPart = "Storage";
+                frm = new EditComponent(myPart);
+                frm.setVisible(true);
+                break;
+        }
+
+    }//GEN-LAST:event_btnPart1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,7 +190,6 @@ public class CompatibilityCheck extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(CompatibilityCheck.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
