@@ -9,7 +9,7 @@
  * @author Luke
  */
 public class MainMenu extends javax.swing.JFrame {
-    
+
     UserAccount user;
 
     /**
@@ -184,6 +184,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnViewBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new EditBuilds(user).setVisible(true);
     }//GEN-LAST:event_btnViewBuildActionPerformed
 
     private void btnCreateBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBuildActionPerformed

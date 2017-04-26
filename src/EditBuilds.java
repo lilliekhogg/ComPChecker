@@ -42,7 +42,16 @@ public class EditBuilds extends javax.swing.JDialog {
 
         try {
             Statement stmt = (Statement) con.createStatement();
-            String query = ("Select name,CPU,Motherboard,RAM,GPU,Storage,PCCase,PSU,Cooler,Accessory From Build ORDER BY ID ASC");
+            boolean Admin = user.getType();
+            String query;
+            if(Admin){
+             query = ("Select name,CPU,Motherboard,RAM,GPU,Storage,PCCase,PSU,Cooler,Accessory From Build ORDER BY ID ASC"); //If admin return all builds 
+        }else{
+            String username = user.getUsername();
+            query = ("Select name,CPU,Motherboard,RAM,GPU,Storage,PCCase,PSU,Cooler,Accessory From Build Where Account = '" + username +"'ORDER BY ID ASC"); //Else return own builds.
+            
+            }
+            
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
