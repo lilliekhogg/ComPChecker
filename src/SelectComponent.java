@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,6 +28,7 @@ public class SelectComponent extends javax.swing.JDialog {
     String thismodel;
     String partType;
     CreateBuild form;
+    ArrayList<Integer> Parts = new ArrayList<Integer>();
 
     /**
      *
@@ -46,6 +48,7 @@ public class SelectComponent extends javax.swing.JDialog {
      * @param form1
      */
     public SelectComponent(String type, CreateBuild form1) {
+        Parts = form1.Parts;
         partType = type;
         form = form1;
         initComponents();
@@ -90,9 +93,9 @@ public class SelectComponent extends javax.swing.JDialog {
             columns.add("Min RPM");
             columns.add("Max RPM");
 
-        } else if (type == "Accessory"){
-          columns.add("Description");
-        
+        } else if (type == "Accessory") {
+            columns.add("Description");
+
         }
 
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
@@ -104,6 +107,8 @@ public class SelectComponent extends javax.swing.JDialog {
         }
 
         Connection con = DatabaseConnection.establishConnection();
+        boolean issue = false;
+        Issue comptability = new Issue();
         try {
             Statement stmt = (Statement) con.createStatement();
             String query;
@@ -123,9 +128,23 @@ public class SelectComponent extends javax.swing.JDialog {
                     double speed = rs.getDouble("Speed");
                     int cores = rs.getInt("Cores");
                     boolean graphics = rs.getBoolean("Graphics");
-                    model.addRow(new Object[]{make, mdl, price, speed, cores, graphics});
+                    int ID = rs.getInt("PartID");
 
+                    for (int i = 0; i < Parts.size(); i++) {
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                    }
+
+                    model.addRow(new Object[]{make, mdl, price, speed, cores, graphics});
+                    if (issue) {
+                        model.removeRow((model.getRowCount()) - 1);
+
+                    }
                 }
+                /**
+                 * model.addRow(new Object[]{make, mdl, price, speed, cores,
+                 * graphics});
+                 *
+                 */
             } else if (type == "Motherboard") {
                 query = ("Select P.PartID, P.Make, P.Model, P.Price, Socket, Form_Factor, RAM_Slots,MAX_RAM FROM Motherboard JOIN Part AS P on Motherboard.ID=P.PartID");
 
@@ -140,8 +159,14 @@ public class SelectComponent extends javax.swing.JDialog {
                     String size = rs.getString("Form_Factor");
                     int slots = rs.getInt("RAM_Slots");
                     int maxRAM = rs.getInt("MAX_RAM");
-
+                    int ID = rs.getInt("PartID");
+                    for (int i = 0; i < Parts.size(); i++) {
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                    }
                     model.addRow(new Object[]{make, mdl, price, socket, size, slots, maxRAM});
+                    if (issue) {
+                        model.removeRow((model.getRowCount()) - 1);
+                    }
                 }
             } else if (type == "RAM") {
 
@@ -157,9 +182,14 @@ public class SelectComponent extends javax.swing.JDialog {
                     String speed = rs.getString("Speed");
                     int size = rs.getInt("SizeGB");
                     int sticks = rs.getInt("Sticks");
-
+                    int ID = rs.getInt("PartID");
+                    for (int i = 0; i < Parts.size(); i++) {
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                    }
                     model.addRow(new Object[]{make, mdl, price, speed, size, sticks});
-
+                    if (issue) {
+                        model.removeRow((model.getRowCount()) - 1);
+                    }
                 }
             } else if (type == "GPU") {
 
@@ -176,9 +206,14 @@ public class SelectComponent extends javax.swing.JDialog {
                     String chipset = rs.getString("Chipset");
                     int memory = rs.getInt("Memory");
                     double clock = rs.getFloat("CoreClock");
-
+                    int ID = rs.getInt("PartID");
+                    for (int i = 0; i < Parts.size(); i++) {
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                    }
                     model.addRow(new Object[]{make, mdl, price, series, chipset, memory, clock});
-
+                    if (issue) {
+                        model.removeRow((model.getRowCount()) - 1);
+                    }
                 }
             } else if (type == "Storage") {
                 query = ("Select P.PartID, P.Make, P.Model, P.Price, Series, HHD, Speed, CapacityGB FROM Storage JOIN Part AS P on Storage.ID=P.PartID");
@@ -194,7 +229,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     boolean HHD = rs.getBoolean("HHD");
                     int speed = rs.getInt("Speed");
                     int capacity = rs.getInt("CapacityGB");
-
+                    int ID = rs.getInt("PartID");
                     String storageType;
                     if (HHD == true) {
                         storageType = "HDD";
@@ -202,9 +237,13 @@ public class SelectComponent extends javax.swing.JDialog {
                     } else {
                         storageType = "SSD";
                     }
-
+                    for (int i = 0; i < Parts.size(); i++) {
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                    }
                     model.addRow(new Object[]{make, mdl, price, series, storageType, speed, capacity});
-
+                    if (issue) {
+                        model.removeRow((model.getRowCount()) - 1);
+                    }
                 }
 
             } else if (type == "Case") {
@@ -223,9 +262,14 @@ public class SelectComponent extends javax.swing.JDialog {
                     int CDepth = rs.getInt("CDepth");
                     String colour = rs.getString("Colour");
                     String motherboard = rs.getString("Motherboard");
-
+                    int ID = rs.getInt("PartID");
+                    for (int i = 0; i < Parts.size(); i++) {
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                    }
                     model.addRow(new Object[]{make, mdl, price, height, width, CDepth, colour, motherboard});
-
+                    if (issue) {
+                        model.removeRow((model.getRowCount()) - 1);
+                    }
                 }
 
             } else if (type == "PSU") {
@@ -238,7 +282,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     price = rs.getDouble("Price");
                     int wattage = rs.getInt("Wattage");
                     boolean modular = rs.getBoolean("Modular");
-
+                    int ID = rs.getInt("PartID");
                     String modularity;
 
                     if (modular == true) {
@@ -248,9 +292,13 @@ public class SelectComponent extends javax.swing.JDialog {
                         modularity = "No";
 
                     }
-
+                    for (int i = 0; i < Parts.size(); i++) {
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                    }
                     model.addRow(new Object[]{make, mdl, price, wattage, modularity});
-
+                    if (issue) {
+                        model.removeRow((model.getRowCount()) - 1);
+                    }
                 }
 
             } else if (type == "Cooler") {
@@ -265,9 +313,14 @@ public class SelectComponent extends javax.swing.JDialog {
                     price = rs.getDouble("Price");
                     int MinRPM = rs.getInt("MinRPM");
                     int MaxRPM = rs.getInt("MaxRPM");
-
+                    int ID = rs.getInt("PartID");
+                    for (int i = 0; i < Parts.size(); i++) {
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                    }
                     model.addRow(new Object[]{make, mdl, price, MinRPM, MaxRPM});
-
+                    if (issue) {
+                        model.removeRow((model.getRowCount()) - 1);
+                    }
                 }
             } else if (type == "Accessory") {
                 query = ("Select P.PartID, P.Make, P.Model, P.Price, Description FROM Accessory JOIN Part AS P on Accessory.ID=P.PartID");
@@ -280,9 +333,14 @@ public class SelectComponent extends javax.swing.JDialog {
                     mdl = rs.getString("Model");
                     price = rs.getDouble("Price");
                     String description = rs.getString("Description");
-
+                    int ID = rs.getInt("PartID");
+                    for (int i = 0; i < Parts.size(); i++) {
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                    }
                     model.addRow(new Object[]{make, mdl, price, description});
-
+                    if (issue) {
+                        model.removeRow((model.getRowCount()) - 1);
+                    }
                 }
 
             }
@@ -295,8 +353,7 @@ public class SelectComponent extends javax.swing.JDialog {
     SelectComponent(String myPart, EditBuild aThis) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -418,33 +475,40 @@ public class SelectComponent extends javax.swing.JDialog {
         if (partType == "CPU") {
             form.CPU = ID;
             form.btnProcessor.setText(thismake + " " + thismodel);
-
+            form.refreshParts();
         } else if (partType == "Motherboard") {
             form.motherboard = ID;
             form.btnMotherboard.setText(thismake + " " + thismodel);
+            form.refreshParts();
         } else if (partType == "RAM") {
             form.RAM = ID;
             form.btnRAM.setText(thismake + " " + thismodel);
+            form.refreshParts();
         } else if (partType == "GPU") {
             form.GPU = ID;
             form.btnGraphics.setText(thismake + " " + thismodel);
+            form.refreshParts();
         } else if (partType == "Storage") {
             form.storage = ID;
             form.btnStorage.setText(thismake + " " + thismodel);
-
+            form.refreshParts();
         } else if (partType == "Case") {
             form.PCCase = ID;
             form.btnCase.setText(thismake + " " + thismodel);
+            form.refreshParts();
         } else if (partType == "PSU") {
             form.PSU = ID;
             form.btnPowerSup.setText(thismake + " " + thismodel);
+            form.refreshParts();
 
         } else if (partType == "Cooler") {
             form.cooler = ID;
             form.btnCooling.setText(thismake + " " + thismodel);
+            form.refreshParts();
         } else if (partType == "Accessory") {
             form.accessory = ID;
             form.btnAccessories.setText(thismake + " " + thismodel);
+            form.refreshParts();
 
         }
 

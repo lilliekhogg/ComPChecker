@@ -28,7 +28,7 @@ public class CreateBuild extends javax.swing.JFrame {
     int accessory;
     String name;
     String username;
-
+    ArrayList<Integer> Parts = new ArrayList<Integer>();
     UserAccount currentUser;
 
     /**
@@ -357,20 +357,21 @@ public class CreateBuild extends javax.swing.JFrame {
             for (int i = 0; i < IDs.size(); i++) {
                 for (int j = i + 1; j < IDs.size(); j++) {
                     boolean result = check.compatbilityIssue(IDs.get(i), IDs.get(j));
-                    if(result){
-                    issues = true;
+                    if (result) {
+                        issues = true;
+
                     }
-                    
+
                 }
             }
             JOptionPane.showMessageDialog(null, "We will now check your components are compatable. Please wait..", "Please wait.", JOptionPane.INFORMATION_MESSAGE);
-            if(issues){
-            System.out.println("Issues");
-            }else{
-            saveBuild();
-            //Maybe make uneditable?
-            this.setVisible(false);
-            new CreateBuild(currentUser).setVisible(true);       //Resets components when build is saved
+            if (issues) {
+                JOptionPane.showMessageDialog(null, "WARNING. Issues have been deceted between the selected parts. Please chose different parts..", "WARNING", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                saveBuild();
+                //Maybe make uneditable?
+                this.setVisible(false);
+                new CreateBuild(currentUser).setVisible(true);       //Resets components when build is saved
             }
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
@@ -459,6 +460,39 @@ public class CreateBuild extends javax.swing.JFrame {
                 new CreateBuild().setVisible(true);
             }
         });
+    }
+
+    public void refreshParts() {
+        
+        Parts.clear();
+        if(CPU != 0){
+        Parts.add(CPU);
+        }
+        if(motherboard != 0){
+        Parts.add(motherboard);
+        }
+        if(RAM != 0){
+        Parts.add(RAM);
+        }
+        if(storage != 0){
+        Parts.add(storage);
+        }
+        if(GPU != 0){
+        Parts.add(GPU);
+        }
+        if(PSU != 0){
+        Parts.add(PSU);
+        }
+        if(PCCase != 0){
+        Parts.add(PCCase);
+        }
+        if(cooler != 0){
+        Parts.add(cooler);
+        }
+        if(accessory != 0){
+        Parts.add(accessory);}
+        System.out.println(Parts);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
