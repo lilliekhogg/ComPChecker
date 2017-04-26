@@ -18,7 +18,7 @@ import java.sql.Statement;
 public class UserAccount {
 
     private String username;
-    private String password;
+    private String password;    //Only used for saving a user due to security reasons.
     private String fName;
     private String sName;
     private String email;
@@ -35,9 +35,9 @@ public class UserAccount {
 
     /**
      *
-     * @param enteredUname
-     * @param enteredPass
-     * @return
+     * @param enteredUname the username from user input.
+     * @param enteredPass the password from user input.
+     * @return if true, login is successfully. If false login has not been completed.
      */
     public boolean LogInService(String enteredUname, String enteredPass) {
         //Checks entered username and password against ones stored in database.
@@ -120,7 +120,6 @@ public class UserAccount {
      *
      * @param username
      * @param newPassword
-     * @return
      */
     public void changePassword(String username, String newPassword) {
         Connection con = DatabaseConnection.establishConnection();
@@ -140,15 +139,15 @@ public class UserAccount {
     }
 
     /**
-     *
-     * @param username
+     *This method sets the username of the object.
+     * @param username the passed String username.
      */
     public void setUsername(String username) {
         this.username = username;
     }
 
     /**
-     *
+     *This method sets the password of the object.
      * @param password
      */
     public void setPassword(String password) {
@@ -195,21 +194,33 @@ public class UserAccount {
         return type;
     }
 
-    
+    /**
+     * 
+     * @return user's first name.
+     */
      public String getFName() {
         return fName;
     }
-     
-     public String getSName() {
+
+    /**
+     *
+     * @return user's surname.
+     */
+    public String getSName() {
         return sName;
-    }
-     
-      public String getEmail() {
-        return email;
     }
      
     /**
      *
+     * @return user's email.
+     */
+    public String getEmail() {
+        return email;
+    }
+     
+    /**
+     *System method.
+     * (Don't know what this does but we need it)
      * @param args
      */
     public static void main(String[] args) {
@@ -254,7 +265,7 @@ public class UserAccount {
     }
 
     /**
-     * saves the users details into the database
+     * saves the users details into the database.
      */
     public void saveUser() {
 
@@ -280,7 +291,10 @@ public class UserAccount {
         }
 
     }
-
+    /**
+     * Promotes current user, or passed user, to admin.
+     * @return this value represents if the process has been completed.
+     */
     public boolean promoteToAdmin() {
         Connection con = DatabaseConnection.establishConnection();
 
@@ -297,10 +311,18 @@ public class UserAccount {
         }
         return false;
     }
+    /*
+    This method deletes the user from the database.
+    */
+
+    /**
+     *
+     */
 
     public void deleteUser() {
         Connection con = DatabaseConnection.establishConnection();
         try {
+            //All builds the user has created must be deleted due to referential integrity. 
             String query = "DELETE FROM Build WHERE Account = ?";
             PreparedStatement statement = con.prepareStatement(query);
             statement.setString(1, this.username);
@@ -322,7 +344,9 @@ public class UserAccount {
         }
 
     }
-    
+    /**
+     * This method populates the userAccount object from a given username.
+     */
     public void populateUser(){
     Connection con = DatabaseConnection.establishConnection();
        try {
@@ -340,7 +364,10 @@ public class UserAccount {
             System.out.println(err.getMessage());
         }
     }
-    
+    /**
+     * This method edits a users details.
+     * It uses the current object to access the attributes.
+     */
     public void editUser(){
     Connection con = DatabaseConnection.establishConnection();
     try{
