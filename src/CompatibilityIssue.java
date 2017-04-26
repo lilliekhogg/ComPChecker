@@ -1,4 +1,8 @@
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /*
@@ -41,8 +45,45 @@ public class CompatibilityIssue extends javax.swing.JFrame {
         myIssue = issue;
         btnPart1.setText(Integer.toString(myIssue.getID1()));
         btnPart2.setText(Integer.toString(myIssue.getID2()));
+        
+        if(myIssue.getID1() != 0){
+            btnPart1.setText(getMakeModel(myIssue.getID1()));
+            
+        }else{
+            btnPart1.setText("Select Part");
+        }
+        
+         if(myIssue.getID2() != 0){
+            btnPart2.setText(getMakeModel(myIssue.getID2()));
+            
+        }else{
+         btnPart2.setText("Select Part");
+         }
+        
     }
-   
+     private String getMakeModel(int ID) {
+        Connection con = DatabaseConnection.establishConnection();
+        
+        String make = null; //Intialise variables
+        String model= null;
+        try {
+            Statement stmt = (Statement) con.createStatement();
+            String query = ("SELECT * FROM Part Where PartID ='" + ID + "'");       //Selet part from database
+            stmt.executeQuery(query);
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                make = rs.getString("Make");            //Get data
+                model = rs.getString("Model");
+
+            }
+            String makeModel = (make + " " + model);
+
+            return makeModel;   //Return string to be displayed on form.
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());   //Prints out SQL error 
+        }
+        return null;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
