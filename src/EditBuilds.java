@@ -8,16 +8,19 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 /**
- *
+ *This class represents the Edit Build Form.
  * @author Luke
  * @author Tom
+ * @author Lillie
  */
 public class EditBuilds extends javax.swing.JDialog {
 
     UserAccount currentUser;
 
     /**
-     * Creates new form EditBuilds
+     * Creates new form EditBuilds.
+     * This is all run on start of form.
+     * @param user
      */
     public EditBuilds(UserAccount user) {
         initComponents();
@@ -73,25 +76,29 @@ public class EditBuilds extends javax.swing.JDialog {
         }
 
     }
-
+/**
+ * 
+ * @param ID takes an int part ID.
+ * @return the make and model of the given ID.
+ */
     private String getMakeModel(int ID) {
         Connection con = DatabaseConnection.establishConnection();
         
-        String make = null;
+        String make = null; //Intialise variables
         String model= null;
         try {
             Statement stmt = (Statement) con.createStatement();
-            String query = ("SELECT * FROM Part Where PartID ='" + ID + "'");
+            String query = ("SELECT * FROM Part Where PartID ='" + ID + "'");       //Selet part from database
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
-                make = rs.getString("Make");
+                make = rs.getString("Make");            //Get data
                 model = rs.getString("Model");
 
             }
             String makeModel = (make + " " + model);
 
-            return makeModel;
+            return makeModel;   //Return string to be displayed on form.
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
@@ -211,7 +218,7 @@ public class EditBuilds extends javax.swing.JDialog {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.setVisible(false);
-        new AdminMenu(currentUser).setVisible(true);
+        new AdminMenu(currentUser).setVisible(true); //Returns to admin menu
     }//GEN-LAST:event_btnCloseActionPerformed
 
     /**

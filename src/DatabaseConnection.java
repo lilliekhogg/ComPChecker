@@ -56,7 +56,9 @@ public class DatabaseConnection {
     
    }
     
-    
+    /**
+     * This method was used to stress test the system for the testing submission.
+     */
     public void stressTest(){
         int counter = 0;
      while(true){

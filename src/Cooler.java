@@ -22,28 +22,51 @@ public class Cooler {
     int minRPM;
     int maxRPM;
     
-    
+    /**
+     *
+     * @param make
+     */
     public void setMake(String make){
         this.make = make;
     }
     
+    /**
+     *
+     * @param model
+     */
     public void setModel(String model){
         this.model = model;
     }
     
+    /**
+     *
+     * @param price
+     */
     public void setPrice (double price){
         this.price = price;
     }
     
+    /**
+     *
+     * @param minRPM
+     */
     public void setMinRPM (int minRPM){
         this.minRPM = minRPM;
     }
   
+    /**
+     *
+     * @param maxRPM
+     */
     public void setMaxRPM (int maxRPM){
         this.maxRPM = maxRPM;
     }
     
-     public boolean saveCooler() {
+    /**
+     *
+     * @return
+     */
+    public boolean saveCooler() {
         //saving user inputs to the database
         
         Connection con = DatabaseConnection.establishConnection();
