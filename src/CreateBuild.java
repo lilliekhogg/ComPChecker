@@ -2,6 +2,7 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /*
@@ -335,16 +336,42 @@ public class CreateBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccessoriesActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+
         String buildName = txtboxName.getText();
-        
-        if(buildName.isEmpty()){
-        JOptionPane.showMessageDialog(null, "Please complete the build name field.", "Please complete fields", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            
-        saveBuild();
-        //Maybe make uneditable?
-        this.setVisible(false);
-        new CreateBuild(currentUser).setVisible(true);       //Resets components when build is saved
+
+        if (buildName.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please complete the build name field.", "Please complete fields", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            ArrayList<Integer> IDs = new ArrayList<Integer>();
+            IDs.add(motherboard);
+            IDs.add(CPU);
+            IDs.add(RAM);
+            IDs.add(storage);
+            IDs.add(GPU);
+            IDs.add(PSU);
+            IDs.add(PCCase);
+            IDs.add(cooler);
+            IDs.add(accessory);
+            Issue check = new Issue();
+            boolean issues = false;
+            for (int i = 0; i < IDs.size(); i++) {
+                for (int j = i + 1; j < IDs.size(); j++) {
+                    boolean result = check.compatbilityIssue(IDs.get(i), IDs.get(j));
+                    if(result){
+                    issues = true;
+                    }
+                    
+                }
+            }
+            JOptionPane.showMessageDialog(null, "We will now check your components are compatable. Please wait..", "Please wait.", JOptionPane.INFORMATION_MESSAGE);
+            if(issues){
+            System.out.println("Issues");
+            }else{
+            saveBuild();
+            //Maybe make uneditable?
+            this.setVisible(false);
+            new CreateBuild(currentUser).setVisible(true);       //Resets components when build is saved
+            }
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
@@ -365,7 +392,7 @@ public class CreateBuild extends javax.swing.JFrame {
 
         myBuild.SaveBuild();
     }
-    
+
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin

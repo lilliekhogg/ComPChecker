@@ -1,7 +1,9 @@
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -64,23 +66,47 @@ public class Issue {
         return ID2;
     }
 
+    /**
+     * Saves the new compatability issue to the database.
+     *
+     * @param ID1 first part ID
+     * @param ID2 second part ID
+     */
     public void saveIssue(int ID1, int ID2) {
 
         Connection con = DatabaseConnection.establishConnection();
         try {
 
-            String query = "INSERT INTO Compatibility VALUES (?,?,?)";
+            String query = "INSERT INTO Compatibility VALUES (?,?,?)";  //Inserts into database
             PreparedStatement statement = con.prepareStatement(query);
             statement.setInt(1, ID1);
             statement.setInt(2, ID2);
             statement.setBoolean(3, false);
-             statement.execute();
-             System.out.println("works");
+            statement.execute();
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
 
         }
 
     }
-}
 
+    public boolean compatbilityIssue(int ID1, int ID2) {
+        Connection con = DatabaseConnection.establishConnection();
+        boolean issue = false;
+        try {
+            Statement stmt = (Statement) con.createStatement();
+            String query = ("SELECT * From Compatibility Where (Part1 = '" + ID1 + "' && Part2 ='" + ID2 + "') OR (Part1 = '" + ID2 + "' && Part2 ='" + ID1 + "')");
+
+            stmt.executeQuery(query);
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                issue = true;
+            }
+            return issue;
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());   //Prints out SQL error 
+        }
+        return issue;
+    }
+
+}
