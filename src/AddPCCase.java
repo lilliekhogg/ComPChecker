@@ -52,6 +52,7 @@ public class AddPCCase extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblMotherboard1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblMake = new javax.swing.JLabel();
         lblModel = new javax.swing.JLabel();
@@ -71,6 +72,9 @@ public class AddPCCase extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         txtFieldMotherboard = new javax.swing.JTextField();
+        lblMotherboard2 = new javax.swing.JLabel();
+
+        lblMotherboard1.setText("Motherboard:");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,13 +84,13 @@ public class AddPCCase extends javax.swing.JFrame {
 
         lblModel.setText("Model:");
 
-        lblPrice.setText("Price:");
+        lblPrice.setText("Price (£):");
 
-        lblHeight.setText("Height:");
+        lblHeight.setText("Height (mm):");
 
-        lblWidth.setText("Width:");
+        lblWidth.setText("Width (mm):");
 
-        lblCDepth.setText("CDepth:");
+        lblCDepth.setText("CDepth (mm):");
 
         lblColour.setText("Colour:");
 
@@ -108,43 +112,50 @@ public class AddPCCase extends javax.swing.JFrame {
             }
         });
 
+        lblMotherboard2.setText("E.g. ATX, MicroATX");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(166, 166, 166))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnSave)
+                .addGap(157, 157, 157))
             .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblMotherboard)
-                    .addComponent(lblColour)
-                    .addComponent(lblCDepth)
-                    .addComponent(lblHeight)
-                    .addComponent(lblPrice)
-                    .addComponent(lblModel)
-                    .addComponent(lblMake)
-                    .addComponent(lblWidth))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(comboMake, 0, 85, Short.MAX_VALUE)
-                    .addComponent(txtFieldModel)
-                    .addComponent(txtFieldPrice)
-                    .addComponent(txtFieldHeight)
-                    .addComponent(txtFieldWidth)
-                    .addComponent(txtFieldCDepth)
-                    .addComponent(txtFieldColour)
-                    .addComponent(txtFieldMotherboard)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(btnSave))
-                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addContainerGap(143, Short.MAX_VALUE))
+                                .addGap(88, 88, 88)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblMotherboard)
+                                    .addComponent(lblColour)
+                                    .addComponent(lblCDepth)
+                                    .addComponent(lblHeight)
+                                    .addComponent(lblPrice)
+                                    .addComponent(lblModel)
+                                    .addComponent(lblMake)
+                                    .addComponent(lblWidth)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(lblMotherboard2)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(comboMake, 0, 76, Short.MAX_VALUE)
+                                .addComponent(txtFieldModel)
+                                .addComponent(txtFieldPrice)
+                                .addComponent(txtFieldHeight)
+                                .addComponent(txtFieldWidth)
+                                .addComponent(txtFieldColour)
+                                .addComponent(txtFieldMotherboard)
+                                .addComponent(txtFieldCDepth)))))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,11 +194,15 @@ public class AddPCCase extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblMotherboard)
                     .addComponent(txtFieldMotherboard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(btnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancel)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMotherboard2)
+                .addGap(120, 120, 120))
         );
 
         pack();
@@ -329,6 +344,8 @@ public class AddPCCase extends javax.swing.JFrame {
     private javax.swing.JLabel lblMake;
     private javax.swing.JLabel lblModel;
     private javax.swing.JLabel lblMotherboard;
+    private javax.swing.JLabel lblMotherboard1;
+    private javax.swing.JLabel lblMotherboard2;
     private javax.swing.JLabel lblPrice;
     private javax.swing.JLabel lblWidth;
     private javax.swing.JTextField txtFieldCDepth;

@@ -27,6 +27,11 @@
         <Property name="text" type="java.lang.String" value="RAM Slots:"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="jLabel11">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Form Factor:"/>
+      </Properties>
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -194,7 +199,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Price:"/>
+        <Property name="text" type="java.lang.String" value="Price (&#xa3;):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtboxPrice">
@@ -273,7 +278,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Max RAM:"/>
+        <Property name="text" type="java.lang.String" value="Max No. RAM:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtboxmaxRAM">

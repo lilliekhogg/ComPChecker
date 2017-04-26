@@ -74,11 +74,11 @@ public class AddCooler extends javax.swing.JFrame {
 
         lblModel.setText("Model:");
 
-        lblPrice.setText("Price:");
+        lblPrice.setText("Price (£):");
 
-        lblMinRPM.setText("MinRPM:");
+        lblMinRPM.setText("Min Fan RPM:");
 
-        lblMaxRPM.setText("MaxRPM:");
+        lblMaxRPM.setText("Max Fan RPM:");
 
         comboMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -125,7 +125,7 @@ public class AddCooler extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(btnSave)
                                     .addGap(12, 12, 12))))))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -141,12 +141,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblMemory">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Memory:"/>
+        <Property name="text" type="java.lang.String" value="Memory (GB):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCoreclock">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Core Clock:"/>
+        <Property name="text" type="java.lang.String" value="Core Clock (GHz):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="comboMake">
@@ -179,7 +179,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrice">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Price:"/>
+        <Property name="text" type="java.lang.String" value="Price (&#xa3;):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFieldPrice">

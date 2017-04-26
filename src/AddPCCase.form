@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JLabel" name="lblMotherboard1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Motherboard:"/>
+      </Properties>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -24,45 +31,59 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="lblMotherboard" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblColour" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblCDepth" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblHeight" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblPrice" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblModel" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblMake" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblWidth" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="comboMake" pref="85" max="32767" attributes="0"/>
-                  <Component id="txtFieldModel" max="32767" attributes="0"/>
-                  <Component id="txtFieldPrice" max="32767" attributes="0"/>
-                  <Component id="txtFieldHeight" max="32767" attributes="0"/>
-                  <Component id="txtFieldWidth" max="32767" attributes="0"/>
-                  <Component id="txtFieldCDepth" max="32767" attributes="0"/>
-                  <Component id="txtFieldColour" max="32767" attributes="0"/>
-                  <Component id="txtFieldMotherboard" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btnCancel" min="-2" pref="75" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblMotherboard" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblColour" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCDepth" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblHeight" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPrice" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblModel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMake" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblWidth" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                              <Component id="lblMotherboard2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnCancel" min="-2" pref="75" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="comboMake" pref="76" max="32767" attributes="0"/>
+                              <Component id="txtFieldModel" max="32767" attributes="0"/>
+                              <Component id="txtFieldPrice" max="32767" attributes="0"/>
+                              <Component id="txtFieldHeight" max="32767" attributes="0"/>
+                              <Component id="txtFieldWidth" max="32767" attributes="0"/>
+                              <Component id="txtFieldColour" max="32767" attributes="0"/>
+                              <Component id="txtFieldMotherboard" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtFieldCDepth" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace pref="143" max="32767" attributes="0"/>
+              <EmptySpace pref="146" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -105,11 +126,16 @@
                   <Component id="lblMotherboard" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtFieldMotherboard" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
               <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="lblMotherboard2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -132,22 +158,22 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrice">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Price:"/>
+        <Property name="text" type="java.lang.String" value="Price (&#xa3;):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblHeight">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Height:"/>
+        <Property name="text" type="java.lang.String" value="Height (mm):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblWidth">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Width:"/>
+        <Property name="text" type="java.lang.String" value="Width (mm):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblCDepth">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CDepth:"/>
+        <Property name="text" type="java.lang.String" value="CDepth (mm):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblColour">
@@ -201,6 +227,11 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFieldMotherboard">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblMotherboard2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="E.g. ATX, MicroATX"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

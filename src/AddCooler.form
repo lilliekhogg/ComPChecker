@@ -55,7 +55,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="166" max="32767" attributes="0"/>
+              <EmptySpace pref="142" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -116,17 +116,17 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblPrice">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Price:"/>
+        <Property name="text" type="java.lang.String" value="Price (&#xa3;):"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMinRPM">
       <Properties>
-        <Property name="text" type="java.lang.String" value="MinRPM:"/>
+        <Property name="text" type="java.lang.String" value="Min Fan RPM:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMaxRPM">
       <Properties>
-        <Property name="text" type="java.lang.String" value="MaxRPM:"/>
+        <Property name="text" type="java.lang.String" value="Max Fan RPM:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="comboMake">

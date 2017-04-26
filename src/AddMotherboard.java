@@ -54,10 +54,11 @@ public class AddMotherboard extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmboxSocket1 = new javax.swing.JComboBox<>();
+        cmboxSocket1 = new javax.swing.JComboBox<String>();
         txtboxSlots1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        cmboxMake = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
+        cmboxMake = new javax.swing.JComboBox<String>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -67,17 +68,17 @@ public class AddMotherboard extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtboxPrice = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cmboxSocket = new javax.swing.JComboBox<>();
-        cmboxFormFactor = new javax.swing.JComboBox<>();
+        cmboxSocket = new javax.swing.JComboBox<String>();
+        cmboxFormFactor = new javax.swing.JComboBox<String>();
         txtboxSlots = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        cmboxRAMType = new javax.swing.JComboBox<>();
+        cmboxRAMType = new javax.swing.JComboBox<String>();
         jLabel10 = new javax.swing.JLabel();
         txtboxmaxRAM = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
 
-        cmboxSocket1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmboxSocket1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmboxSocket1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmboxSocket1ActionPerformed(evt);
@@ -86,9 +87,11 @@ public class AddMotherboard extends javax.swing.JDialog {
 
         jLabel8.setText("RAM Slots:");
 
+        jLabel11.setText("Form Factor:");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        cmboxMake.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmboxMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmboxMake.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmboxMakeActionPerformed(evt);
@@ -110,19 +113,19 @@ public class AddMotherboard extends javax.swing.JDialog {
 
         jLabel5.setText("Model:");
 
-        jLabel6.setText("Price:");
+        jLabel6.setText("Price (£):");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Add Motherboard");
 
-        cmboxSocket.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmboxSocket.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmboxSocket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmboxSocketActionPerformed(evt);
             }
         });
 
-        cmboxFormFactor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmboxFormFactor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmboxFormFactor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmboxFormFactorActionPerformed(evt);
@@ -133,14 +136,14 @@ public class AddMotherboard extends javax.swing.JDialog {
 
         jLabel9.setText("Ram Type:");
 
-        cmboxRAMType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmboxRAMType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmboxRAMType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmboxRAMTypeActionPerformed(evt);
             }
         });
 
-        jLabel10.setText("Max RAM:");
+        jLabel10.setText("Max No. RAM:");
 
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -172,17 +175,16 @@ public class AddMotherboard extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                        .addComponent(cmboxMake, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtboxModel)
-                        .addComponent(txtboxPrice)
-                        .addComponent(cmboxSocket, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmboxFormFactor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmboxRAMType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtboxSlots)
-                        .addComponent(txtboxmaxRAM, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(cmboxMake, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtboxModel)
+                    .addComponent(txtboxPrice)
+                    .addComponent(cmboxSocket, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmboxFormFactor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmboxRAMType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtboxSlots)
+                    .addComponent(txtboxmaxRAM, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(135, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -419,6 +421,7 @@ public class AddMotherboard extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cmboxSocket1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

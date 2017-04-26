@@ -64,7 +64,7 @@ public class AddGPU extends javax.swing.JFrame {
         lblChipset = new javax.swing.JLabel();
         lblMemory = new javax.swing.JLabel();
         lblCoreclock = new javax.swing.JLabel();
-        comboMake = new javax.swing.JComboBox<>();
+        comboMake = new javax.swing.JComboBox<String>();
         txtFieldModel = new javax.swing.JTextField();
         txtFieldSeries = new javax.swing.JTextField();
         txtFieldChipset = new javax.swing.JTextField();
@@ -87,11 +87,11 @@ public class AddGPU extends javax.swing.JFrame {
 
         lblChipset.setText("Chipset:");
 
-        lblMemory.setText("Memory:");
+        lblMemory.setText("Memory (GB):");
 
-        lblCoreclock.setText("Core Clock:");
+        lblCoreclock.setText("Core Clock (GHz):");
 
-        comboMake.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txtFieldSeries.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +99,7 @@ public class AddGPU extends javax.swing.JFrame {
             }
         });
 
-        lblPrice.setText("Price:");
+        lblPrice.setText("Price (£):");
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
