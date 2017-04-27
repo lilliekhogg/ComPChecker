@@ -59,15 +59,15 @@ public class EditBuilds extends javax.swing.JDialog {
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
                 String buildname = rs.getString("name");
-                String cpu = getMakeModel(rs.getInt("CPU"));
-                String motherboard = getMakeModel(rs.getInt("Motherboard"));
-                String ram = getMakeModel(rs.getInt("RAM"));
-                String gpu = getMakeModel(rs.getInt("GPU"));
-                String storage = getMakeModel(rs.getInt("Storage"));
-                String pccase = getMakeModel(rs.getInt("PCCase"));
-                String psu = getMakeModel(rs.getInt("PSU"));
-                String cooler = getMakeModel(rs.getInt("Cooler"));
-                String accessory = getMakeModel(rs.getInt("Accessory"));
+                String cpu = getMakeModel(rs.getInt("CPU"), con);
+                String motherboard = getMakeModel(rs.getInt("Motherboard"), con);
+                String ram = getMakeModel(rs.getInt("RAM"), con);
+                String gpu = getMakeModel(rs.getInt("GPU"), con);
+                String storage = getMakeModel(rs.getInt("Storage"), con);
+                String pccase = getMakeModel(rs.getInt("PCCase"), con);
+                String psu = getMakeModel(rs.getInt("PSU"), con);
+                String cooler = getMakeModel(rs.getInt("Cooler"), con);
+                String accessory = getMakeModel(rs.getInt("Accessory"), con);
 
                 model.addRow(new Object[]{buildname, cpu, motherboard, ram, gpu, storage, pccase, psu, cooler, accessory});
             }
@@ -81,13 +81,12 @@ public class EditBuilds extends javax.swing.JDialog {
  * @param ID takes an int part ID.
  * @return the make and model of the given ID.
  */
-    private String getMakeModel(int ID) {
-        Connection con = DatabaseConnection.establishConnection();
-        
+    private String getMakeModel(int ID, Connection myCon) {
+        //Connection con = DatabaseConnection.establishConnection();
         String make = null; //Intialise variables
         String model= null;
         try {
-            Statement stmt = (Statement) con.createStatement();
+            Statement stmt = (Statement) myCon.createStatement();
             String query = ("SELECT * FROM Part Where PartID ='" + ID + "'");       //Selet part from database
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
