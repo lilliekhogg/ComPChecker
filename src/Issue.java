@@ -90,10 +90,10 @@ public class Issue {
 
     }
 
-    public boolean compatbilityIssue(int ID1, int ID2) {
-        Connection con = DatabaseConnection.establishConnection();
+    public boolean compatbilityIssue(int ID1, int ID2, Connection con) {
         boolean issue = false;
         try {
+            
             Statement stmt = (Statement) con.createStatement();
             String query = ("SELECT * From Compatibility Where (Part1 = '" + ID1 + "' && Part2 ='" + ID2 + "') OR (Part1 = '" + ID2 + "' && Part2 ='" + ID1 + "')");
 

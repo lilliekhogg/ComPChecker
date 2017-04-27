@@ -354,9 +354,11 @@ public class CreateBuild extends javax.swing.JFrame {
             IDs.add(accessory);
             Issue check = new Issue();
             boolean issues = false;
+
+            Connection con = DatabaseConnection.establishConnection();
             for (int i = 0; i < IDs.size(); i++) {
                 for (int j = i + 1; j < IDs.size(); j++) {
-                    boolean result = check.compatbilityIssue(IDs.get(i), IDs.get(j));
+                    boolean result = check.compatbilityIssue(IDs.get(i), IDs.get(j), con);
                     if (result) {
                         issues = true;
 
@@ -364,6 +366,7 @@ public class CreateBuild extends javax.swing.JFrame {
 
                 }
             }
+
             JOptionPane.showMessageDialog(null, "We will now check your components are compatable. Please wait..", "Please wait.", JOptionPane.INFORMATION_MESSAGE);
             if (issues) {
                 JOptionPane.showMessageDialog(null, "WARNING. Issues have been deceted between the selected parts. Please chose different parts..", "WARNING", JOptionPane.INFORMATION_MESSAGE);
@@ -463,34 +466,35 @@ public class CreateBuild extends javax.swing.JFrame {
     }
 
     public void refreshParts() {
-        
+
         Parts.clear();
-        if(CPU != 0){
-        Parts.add(CPU);
+        if (CPU != 0) {
+            Parts.add(CPU);
         }
-        if(motherboard != 0){
-        Parts.add(motherboard);
+        if (motherboard != 0) {
+            Parts.add(motherboard);
         }
-        if(RAM != 0){
-        Parts.add(RAM);
+        if (RAM != 0) {
+            Parts.add(RAM);
         }
-        if(storage != 0){
-        Parts.add(storage);
+        if (storage != 0) {
+            Parts.add(storage);
         }
-        if(GPU != 0){
-        Parts.add(GPU);
+        if (GPU != 0) {
+            Parts.add(GPU);
         }
-        if(PSU != 0){
-        Parts.add(PSU);
+        if (PSU != 0) {
+            Parts.add(PSU);
         }
-        if(PCCase != 0){
-        Parts.add(PCCase);
+        if (PCCase != 0) {
+            Parts.add(PCCase);
         }
-        if(cooler != 0){
-        Parts.add(cooler);
+        if (cooler != 0) {
+            Parts.add(cooler);
         }
-        if(accessory != 0){
-        Parts.add(accessory);}
+        if (accessory != 0) {
+            Parts.add(accessory);
+        }
         System.out.println(Parts);
 
     }

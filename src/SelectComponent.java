@@ -131,7 +131,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     int ID = rs.getInt("PartID");
 
                     for (int i = 0; i < Parts.size(); i++) {
-                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i), con);
                     }
 
                     model.addRow(new Object[]{make, mdl, price, speed, cores, graphics});
@@ -161,7 +161,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     int maxRAM = rs.getInt("MAX_RAM");
                     int ID = rs.getInt("PartID");
                     for (int i = 0; i < Parts.size(); i++) {
-                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, socket, size, slots, maxRAM});
                     if (issue) {
@@ -184,7 +184,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     int sticks = rs.getInt("Sticks");
                     int ID = rs.getInt("PartID");
                     for (int i = 0; i < Parts.size(); i++) {
-                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, speed, size, sticks});
                     if (issue) {
@@ -208,7 +208,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     double clock = rs.getFloat("CoreClock");
                     int ID = rs.getInt("PartID");
                     for (int i = 0; i < Parts.size(); i++) {
-                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                       issue = comptability.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, series, chipset, memory, clock});
                     if (issue) {
@@ -238,7 +238,7 @@ public class SelectComponent extends javax.swing.JDialog {
                         storageType = "SSD";
                     }
                     for (int i = 0; i < Parts.size(); i++) {
-                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, series, storageType, speed, capacity});
                     if (issue) {
@@ -264,7 +264,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     String motherboard = rs.getString("Motherboard");
                     int ID = rs.getInt("PartID");
                     for (int i = 0; i < Parts.size(); i++) {
-                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                       issue = comptability.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, height, width, CDepth, colour, motherboard});
                     if (issue) {
@@ -293,7 +293,7 @@ public class SelectComponent extends javax.swing.JDialog {
 
                     }
                     for (int i = 0; i < Parts.size(); i++) {
-                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, wattage, modularity});
                     if (issue) {
@@ -315,7 +315,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     int MaxRPM = rs.getInt("MaxRPM");
                     int ID = rs.getInt("PartID");
                     for (int i = 0; i < Parts.size(); i++) {
-                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                        issue = comptability.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, MinRPM, MaxRPM});
                     if (issue) {
@@ -335,7 +335,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     String description = rs.getString("Description");
                     int ID = rs.getInt("PartID");
                     for (int i = 0; i < Parts.size(); i++) {
-                        issue = comptability.compatbilityIssue(ID, Parts.get(i));
+                      issue = comptability.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, description});
                     if (issue) {
