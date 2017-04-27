@@ -182,7 +182,7 @@ public class Build {
     
     /**
      *
-     * @return
+     * @return name
      */
     public String getName() {
         return name;
