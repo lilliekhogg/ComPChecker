@@ -57,6 +57,8 @@ public class ChangePassword extends javax.swing.JDialog {
         lbloldpassword = new javax.swing.JLabel();
         oldpasswordfield = new javax.swing.JPasswordField();
         buttonChange = new javax.swing.JButton();
+        txtFieldUsername = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -76,6 +78,8 @@ public class ChangePassword extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setText("Username:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,31 +87,38 @@ public class ChangePassword extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbloldpassword)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbloldpassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lblPassword)
                                 .addGap(3, 3, 3))
-                            .addComponent(lblConfPassword))
+                            .addComponent(lblConfPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFieldUsername)
                             .addComponent(passwordfield)
-                            .addComponent(passwordconfirmfield, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(oldpasswordfield))
+                            .addComponent(passwordconfirmfield, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(oldpasswordfield, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
                         .addGap(71, 71, 71)
                         .addComponent(buttonChange)
-                        .addGap(52, 52, 52))
-                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(66, 66, 66))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(lblLogo)
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbloldpassword)
                     .addComponent(oldpasswordfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -120,7 +131,7 @@ public class ChangePassword extends javax.swing.JDialog {
                     .addComponent(lblConfPassword)
                     .addComponent(passwordconfirmfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonChange))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -133,6 +144,7 @@ public class ChangePassword extends javax.swing.JDialog {
     
     private void buttonChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeActionPerformed
         // TODO add your handling code here:
+        String username = String.valueOf(txtFieldUsername.getText());
         String oldPassword = String.valueOf(oldpasswordfield.getPassword());
         String password = String.valueOf(passwordfield.getPassword());
         String passwordConfirm = String.valueOf(passwordconfirmfield.getPassword());
@@ -142,7 +154,7 @@ public class ChangePassword extends javax.swing.JDialog {
             //netbeans connection to database vm
         } else if (password == passwordConfirm) {
             Connection con = DatabaseConnection.establishConnection();
-            String username = currentUser.getUsername();
+            username = currentUser.getUsername();
             //checks if passwords entered are the same as the old pw
             boolean passwordSame = currentUser.checkPassword(username, oldPassword);
             //will change the password into the database
@@ -208,6 +220,7 @@ public class ChangePassword extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonChange;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblConfPassword;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblPassword;
@@ -216,5 +229,6 @@ public class ChangePassword extends javax.swing.JDialog {
     private javax.swing.JPasswordField passwordconfirmfield;
     private javax.swing.JPasswordField passwordfield;
     private javax.swing.JPasswordField passwordfield1;
+    private javax.swing.JTextField txtFieldUsername;
     // End of variables declaration//GEN-END:variables
 }
