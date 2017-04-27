@@ -418,7 +418,7 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void saveBuild() {
         getPart();
-        Build myBuild = new Build();
+        //Build myBuild = new Build();
 //        myBuild.CPU = CPU;
 //        myBuild.motherboard = motherboard;
 //        myBuild.RAM = RAM;
@@ -430,19 +430,19 @@ public class EditBuild extends javax.swing.JFrame {
 //        myBuild.name = txtboxName.getText();
 //        myBuild.storage = storage;
 //        myBuild.user = username;
-          myBuild.setCPU(CPU);
-          myBuild.setMotherboard(motherboard);
-          myBuild.setRAM(RAM);
-          myBuild.setGPU(GPU);
-          myBuild.setCase(PCCase);
-          myBuild.setPSU(PSU);
-          myBuild.setCooler(cooler);
-          myBuild.setAccessory(accessory);
-          myBuild.setName(txtboxName.getText());
-          myBuild.setStorage(storage);
-          myBuild.setUser(username);
+          currentBuild.setCPU(CPU);
+          currentBuild.setMotherboard(motherboard);
+          currentBuild.setRAM(RAM);
+          currentBuild.setGPU(GPU);
+          currentBuild.setCase(PCCase);
+          currentBuild.setPSU(PSU);
+          currentBuild.setCooler(cooler);
+          currentBuild.setAccessory(accessory);
+          currentBuild.setName(txtboxName.getText());
+          currentBuild.setStorage(storage);
+          currentBuild.setUser(username);
           
-        myBuild.editBuild();
+        currentBuild.editBuild();
     }
 
     private void returnToMenu() {

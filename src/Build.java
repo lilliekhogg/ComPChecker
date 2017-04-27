@@ -318,26 +318,26 @@ public class Build {
      * @param name String build name
      * @return returns the build.
      */
-    public Build loadBuild(UserAccount user, String name) {
+    public Build loadBuild(UserAccount theUser, String name) {
         Connection con = DatabaseConnection.establishConnection();
 
         try {
             Statement stmt = (Statement) con.createStatement();
-            String query = ("SELECT * From Build WHERE Account = '" + user.getUsername() + "'" + " AND name ='" + name + "'");
+            String query = ("SELECT * From Build WHERE Account = '" + theUser.getUsername() + "'" + " AND name ='" + name + "'");
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
-                this.CPU = rs.getInt("CPU");
-                this.motherboard = rs.getInt("Motherboard");
-                this.RAM = rs.getInt("RAM");
-                this.GPU = rs.getInt("GPU");
-                this.cooler = rs.getInt("Cooler");
-                this.PSU = rs.getInt("PSU");
-                this.storage = rs.getInt("Storage");
-                this.PCCase = rs.getInt("PCCase");
-                this.accessory = rs.getInt("Accessory");
-                this.user = user.getUsername();
-                this.name = name;
+                CPU = rs.getInt("CPU");
+                motherboard = rs.getInt("Motherboard");
+                RAM = rs.getInt("RAM");
+                GPU = rs.getInt("GPU");
+                cooler = rs.getInt("Cooler");
+                PSU = rs.getInt("PSU");
+                storage = rs.getInt("Storage");
+                PCCase = rs.getInt("PCCase");
+                accessory = rs.getInt("Accessory");
+                user = rs.getString("Account");
+                name = name;
                 return this;
             }
         } catch (SQLException err) {
