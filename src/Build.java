@@ -141,8 +141,8 @@ public class Build {
     }
 
     /**
-     *
-     * @param PCcase
+     *This method sets the case.
+     * @param PCcase sets Case ID.
      */
     public void setCase(int PCcase) {
         PCCase = PCcase;
@@ -150,7 +150,7 @@ public class Build {
     
     /**
      *
-     * @return
+     * @return case ID.
      */
     public int getCase() {
         return PCCase;
@@ -158,7 +158,7 @@ public class Build {
 
     /**
      *
-     * @param access
+     * @param access sets accessory ID.
      */
     public void setAccessory(int access) {
         accessory = access;

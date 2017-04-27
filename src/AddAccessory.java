@@ -21,6 +21,8 @@ public class AddAccessory extends javax.swing.JFrame {
     
     /**
      * Creates new form AddAccessory
+     * @param parent parent form
+     * @param modal system modal.
      */
     public AddAccessory(java.awt.Frame parent, boolean modal) {
         initComponents();
@@ -29,6 +31,9 @@ public class AddAccessory extends javax.swing.JFrame {
         populateMakes();
     }
 
+    /**
+     *
+     */
     public AddAccessory() {
         initComponents();
         populateMakes();

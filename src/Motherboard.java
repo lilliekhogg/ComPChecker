@@ -24,8 +24,8 @@ public class Motherboard {
     int maxRAM;
 
     /**
-     *
-     * @param make
+     *Sets the make of the object
+     * @param make the make 
      */
     public void setMake(String make) {
 
@@ -33,16 +33,16 @@ public class Motherboard {
     }
 
     /**
-     *
-     * @param socket
+     *Sets the socket of the object.
+     * @param socket String type of the socket.
      */
     public void setSocket(String socket) {
         this.socket = socket;
     }
 
     /**
-     *
-     * @param model
+     *Sets the model of the object.
+     * @param model String value of model
      */
     public void setModel(String model) {
         this.model = model;
@@ -50,8 +50,8 @@ public class Motherboard {
     }
 
     /**
-     *
-     * @param price
+     *Sets the price of the object.
+     * @param price sets the double value of price.
      */
     public void setPrice(double price) {
         this.price = price;
@@ -59,24 +59,24 @@ public class Motherboard {
     }
 
     /**
-     *
-     * @param size
+     *Sets the size pf the object.
+     * @param size the size of the object.
      */
     public void setSize(String size) {
         this.size = size;
     }
 
     /**
-     *
-     * @param slots
+     *Set ram slots of object.
+     * @param slots an int value representing max ram slots.
      */
     public void setRamSlots(int slots) {
         this.ramSlots = slots;
     }
 
     /**
-     *
-     * @param max
+     *Set MAX Ram of object.
+     * @param max an int value representing the maximum amout of ram.
      */
     public void setMaxRAM(int max) {
         this.maxRAM = max;

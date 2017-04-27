@@ -17,6 +17,8 @@ public class EditAccount extends javax.swing.JFrame {
 
     /**
      * Creates new form CreateAccount
+     * @param thisCurrentUser object representing the current logged in user.
+     * @param selectedUser object representing the user who is being eddited.
      */
     public EditAccount(UserAccount thisCurrentUser, UserAccount selectedUser) {
         initComponents();

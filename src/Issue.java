@@ -11,7 +11,7 @@ import java.sql.Statement;
  * and open the template in the editor.
  */
 /**
- *
+ *This class represents an issue between two components. 
  * @author Luke
  */
 public class Issue {
@@ -89,13 +89,19 @@ public class Issue {
         }
 
     }
-
+/**
+ * Checks if two parts work with one another.
+ * @param ID1 ID of a part
+ * @param ID2   ID of a part
+ * @param con  database connection
+ * @return a boolean to represent if the two IDs have a compatability Issue.
+ */
     public boolean compatbilityIssue(int ID1, int ID2, Connection con) {
         boolean issue = false;
         try {
             
             Statement stmt = (Statement) con.createStatement();
-            String query = ("SELECT * From Compatibility Where (Part1 = '" + ID1 + "' && Part2 ='" + ID2 + "') OR (Part1 = '" + ID2 + "' && Part2 ='" + ID1 + "')");
+            String query = ("SELECT * From Compatibility Where (Part1 = '" + ID1 + "' && Part2 ='" + ID2 + "') OR (Part1 = '" + ID2 + "' && Part2 ='" + ID1 + "')");    //Have to use an OR as it depends on how it was saved in the database,
 
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();

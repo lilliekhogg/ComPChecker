@@ -26,7 +26,7 @@ public class UserAccount {
 
     /**
      *
-     * @return
+     * @return returns username.
      */
     public String getUsername() {
 
@@ -78,9 +78,9 @@ public class UserAccount {
      * checks whether password entered into GUI is equal to password stored in
      * the database.
      *
-     * @param username
-     * @param password
-     * @return
+     * @param username a pass username
+     * @param password  a passed password
+     * @return if true password is correct.
      */
     public boolean checkPassword(String username, String password) {
         // this statement establishes the connection between netbeans and the vm
@@ -118,8 +118,8 @@ public class UserAccount {
      * Enables user to change password in the GUI and new password is then
      * accepted through connected database.
      *
-     * @param username
-     * @param newPassword
+     * @param username username of user
+     * @param newPassword the new password to save.
      */
     public void changePassword(String username, String newPassword) {
         Connection con = DatabaseConnection.establishConnection();
@@ -148,7 +148,7 @@ public class UserAccount {
 
     /**
      *This method sets the password of the object.
-     * @param password
+     * @param password sets password
      */
     public void setPassword(String password) {
         this.password = password;
@@ -156,7 +156,7 @@ public class UserAccount {
 
     /**
      *
-     * @param fname
+     * @param fname  firstname
      */
     public void setFname(String fname) {
         this.fName = fname;
@@ -164,7 +164,7 @@ public class UserAccount {
 
     /**
      *
-     * @param sname
+     * @param sname surname
      */
     public void setSname(String sname) {
         this.sName = sname;
@@ -172,7 +172,7 @@ public class UserAccount {
 
     /**
      *
-     * @param email
+     * @param email email
      */
     public void setEmail(String email) {
         this.email = email;
@@ -180,7 +180,7 @@ public class UserAccount {
 
     /**
      *
-     * @param type
+     * @param type represents the type of user (True = Admin, false = General user)
      */
     public void setType(boolean type) {
         this.type = type;
@@ -188,7 +188,7 @@ public class UserAccount {
 
     /**
      *
-     * @return
+     * @return identifies the type of user.
      */
     public boolean getType() {
         return type;
@@ -221,7 +221,7 @@ public class UserAccount {
     /**
      *System method.
      * (Don't know what this does but we need it)
-     * @param args
+     * @param args system arguements. 
      */
     public static void main(String[] args) {
         // TODO code application logic here
@@ -233,8 +233,8 @@ public class UserAccount {
     /**
      * checking the availability of a username in the database.
      *
-     * @param username
-     * @return
+     * @param username a string username
+     * @return if true username is available. 
      */
     public boolean usernameAvailability(String username) {
         Connection con = DatabaseConnection.establishConnection();
@@ -316,7 +316,7 @@ public class UserAccount {
     */
 
     /**
-     *
+     *Deletes current UserAccount object
      */
 
     public void deleteUser() {

@@ -26,7 +26,7 @@ public class Accessory {
 
     /**
      *Sets the attribute make.
-     * @param make
+     * @param make the make of the part
      */
     public void setMake(String make){
         this.make = make;
@@ -34,7 +34,7 @@ public class Accessory {
     
     /**
      *Sets the attribute model
-     * @param model
+     * @param model the model of the part
      */
     public void setModel(String model){
         this.model = model;

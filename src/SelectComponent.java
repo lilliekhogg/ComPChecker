@@ -32,8 +32,8 @@ public class SelectComponent extends javax.swing.JDialog {
 
     /**
      *
-     * @param parent
-     * @param modal
+     * @param parent parent form
+     * @param modal modal
      */
     public SelectComponent(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -44,8 +44,8 @@ public class SelectComponent extends javax.swing.JDialog {
 
     /**
      *
-     * @param type
-     * @param form1
+     * @param type type of form this form was opened from.
+     * @param form1 parent form
      */
     public SelectComponent(String type, CreateBuild form1) {
         Parts = form1.Parts;
@@ -434,8 +434,8 @@ public class SelectComponent extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     *
-     * @return
+     *Returns the ID of the selected row,
+     * @return ID returns the ID of the selected row
      */
     public int getID() {
         int column1 = 0;

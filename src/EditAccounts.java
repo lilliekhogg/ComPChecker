@@ -22,6 +22,7 @@ public class EditAccounts extends javax.swing.JDialog {
 
     /**
      * Creates new form EditAccounts
+     * @user represents the user to be edited. 
      */
     public EditAccounts(UserAccount user) {
         initComponents();
