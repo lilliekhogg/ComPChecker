@@ -126,7 +126,7 @@ public class Build {
 
     /**
      *
-     * @param store
+     * @param store sets Storage ID
      */
     public void setStorage(int store) {
         storage = store;
@@ -174,7 +174,7 @@ public class Build {
     
     /**
      *
-     * @param myName
+     * @param myName BUILD NAME
      */
     public void setName(String myName) {
         name = myName;
