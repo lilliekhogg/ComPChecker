@@ -333,7 +333,6 @@ public class CreateBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccessoriesActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-
         String buildName = txtboxName.getText();
 
         if (buildName.isEmpty()) {
@@ -367,7 +366,6 @@ public class CreateBuild extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "WARNING. Issues have been deceted between the selected parts. Please chose different parts..", "WARNING", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 saveBuild();
-                //Maybe make uneditable?
                 this.setVisible(false);
                 new CreateBuild(currentUser).setVisible(true);       //Resets components when build is saved
             }

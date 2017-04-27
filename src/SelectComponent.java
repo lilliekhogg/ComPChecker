@@ -477,7 +477,7 @@ public class SelectComponent extends javax.swing.JDialog {
     private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableMouseClicked
-
+    
     private void createConfirm() {
         //temp save part, change button label to part text
         int ID = getID();

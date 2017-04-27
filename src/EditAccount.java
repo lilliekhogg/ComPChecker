@@ -27,7 +27,9 @@ public class EditAccount extends javax.swing.JFrame {
         this.setTitle("Edit Account - Admin");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         txtboxUsername.setEditable(false);
+        
         user.populateUser();
+        
         txtboxUsername.setText(user.getUsername());
         txtboxName.setText(user.getFName());
         txtboxSurname.setText(user.getSName());
