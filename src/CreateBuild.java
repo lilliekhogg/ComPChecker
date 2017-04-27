@@ -361,9 +361,7 @@ public class CreateBuild extends javax.swing.JFrame {
                     boolean result = check.compatbilityIssue(IDs.get(i), IDs.get(j), con);
                     if (result) {
                         issues = true;
-
                     }
-
                 }
             }
 

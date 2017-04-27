@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tom/Documents/GitHub/ComPChecker/src/EditComponent.java</file>
-            <file>file:/C:/Users/Tom/Documents/GitHub/ComPChecker/src/CompatibilityIssue.java</file>
-            <file>file:/C:/Users/Tom/Documents/GitHub/ComPChecker/src/EditBuilds.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/EditBuilds.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/EditAccount.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/AdminMenu.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/ChangePassword.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/EditComponent.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/CreateBuild.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/CompatibilityIssue.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/Build.java</file>
         </group>
     </open-files>
 </project-private>
