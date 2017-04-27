@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.function.Function;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -27,8 +28,10 @@ public class SelectComponent extends javax.swing.JDialog {
     String thismake;
     String thismodel;
     String partType;
-    CreateBuild form;
+    CreateBuild createForm;
+    EditBuild editForm;
     ArrayList<Integer> Parts = new ArrayList<Integer>();
+    CreateBuild form;
 
     /**
      *
@@ -47,10 +50,16 @@ public class SelectComponent extends javax.swing.JDialog {
      * @param type type of form this form was opened from.
      * @param form1 parent form
      */
-    public SelectComponent(String type, CreateBuild form1) {
-        Parts = form1.Parts;
+    public SelectComponent(String type, CreateBuild create, EditBuild edit) {
+        if (create != null) {
+            createForm = create;
+            Parts = createForm.Parts;
+        } else if (edit != null) {
+            editForm = edit;
+            Parts = editForm.Parts;
+        }
+        form = create;
         partType = type;
-        form = form1;
         initComponents();
         this.setTitle("Select Component");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
@@ -208,7 +217,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     double clock = rs.getFloat("CoreClock");
                     int ID = rs.getInt("PartID");
                     for (int i = 0; i < Parts.size(); i++) {
-                       issue = compatibility.compatbilityIssue(ID, Parts.get(i), con);
+                        issue = compatibility.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, series, chipset, memory, clock});
                     if (issue) {
@@ -264,7 +273,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     String motherboard = rs.getString("Motherboard");
                     int ID = rs.getInt("PartID");
                     for (int i = 0; i < Parts.size(); i++) {
-                       issue = compatibility.compatbilityIssue(ID, Parts.get(i), con);
+                        issue = compatibility.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, height, width, CDepth, colour, motherboard});
                     if (issue) {
@@ -335,7 +344,7 @@ public class SelectComponent extends javax.swing.JDialog {
                     String description = rs.getString("Description");
                     int ID = rs.getInt("PartID");
                     for (int i = 0; i < Parts.size(); i++) {
-                      issue = compatibility.compatbilityIssue(ID, Parts.get(i), con);
+                        issue = compatibility.compatbilityIssue(ID, Parts.get(i), con);
                     }
                     model.addRow(new Object[]{make, mdl, price, description});
                     if (issue) {
@@ -434,7 +443,8 @@ public class SelectComponent extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     *Returns the ID of the selected row,
+     * Returns the ID of the selected row,
+     *
      * @return ID returns the ID of the selected row
      */
     public int getID() {
@@ -468,52 +478,101 @@ public class SelectComponent extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableMouseClicked
 
-    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+    private void createConfirm() {
         //temp save part, change button label to part text
         int ID = getID();
         System.out.println(ID);
         if (partType == "CPU") {
-            form.CPU = ID;
-            form.btnProcessor.setText(thismake + " " + thismodel);
-            form.refreshParts();
+            createForm.CPU = ID;
+            createForm.btnProcessor.setText(thismake + " " + thismodel);
+            createForm.refreshParts();
         } else if (partType == "Motherboard") {
-            form.motherboard = ID;
-            form.btnMotherboard.setText(thismake + " " + thismodel);
-            form.refreshParts();
+            createForm.motherboard = ID;
+            createForm.btnMotherboard.setText(thismake + " " + thismodel);
+            createForm.refreshParts();
         } else if (partType == "RAM") {
-            form.RAM = ID;
-            form.btnRAM.setText(thismake + " " + thismodel);
-            form.refreshParts();
+            createForm.RAM = ID;
+            createForm.btnRAM.setText(thismake + " " + thismodel);
+            createForm.refreshParts();
         } else if (partType == "GPU") {
-            form.GPU = ID;
-            form.btnGraphics.setText(thismake + " " + thismodel);
-            form.refreshParts();
+            createForm.GPU = ID;
+            createForm.btnGraphics.setText(thismake + " " + thismodel);
+            createForm.refreshParts();
         } else if (partType == "Storage") {
-            form.storage = ID;
-            form.btnStorage.setText(thismake + " " + thismodel);
-            form.refreshParts();
+            createForm.storage = ID;
+            createForm.btnStorage.setText(thismake + " " + thismodel);
+            createForm.refreshParts();
         } else if (partType == "Case") {
-            form.PCCase = ID;
-            form.btnCase.setText(thismake + " " + thismodel);
-            form.refreshParts();
+            createForm.PCCase = ID;
+            createForm.btnCase.setText(thismake + " " + thismodel);
+            createForm.refreshParts();
         } else if (partType == "PSU") {
-            form.PSU = ID;
-            form.btnPowerSup.setText(thismake + " " + thismodel);
-            form.refreshParts();
-
+            createForm.PSU = ID;
+            createForm.btnPowerSup.setText(thismake + " " + thismodel);
+            createForm.refreshParts();
         } else if (partType == "Cooler") {
-            form.cooler = ID;
-            form.btnCooling.setText(thismake + " " + thismodel);
-            form.refreshParts();
+            createForm.cooler = ID;
+            createForm.btnCooling.setText(thismake + " " + thismodel);
+            createForm.refreshParts();
         } else if (partType == "Accessory") {
-            form.accessory = ID;
-            form.btnAccessories.setText(thismake + " " + thismodel);
-            form.refreshParts();
-
+            createForm.accessory = ID;
+            createForm.btnAccessories.setText(thismake + " " + thismodel);
+            createForm.refreshParts();
         }
-
         this.setVisible(false);
+    }
 
+    private void editConfirm() {
+        //temp save part, change button label to part text
+        int ID = getID();
+        System.out.println(ID);
+        if (partType == "CPU") {
+            editForm.CPU = ID;
+            editForm.btnProcessor.setText(thismake + " " + thismodel);
+            editForm.refreshParts();
+        } else if (partType == "Motherboard") {
+            editForm.motherboard = ID;
+            editForm.btnMotherboard.setText(thismake + " " + thismodel);
+            editForm.refreshParts();
+        } else if (partType == "RAM") {
+            editForm.RAM = ID;
+            editForm.btnRAM.setText(thismake + " " + thismodel);
+            editForm.refreshParts();
+        } else if (partType == "GPU") {
+            editForm.GPU = ID;
+            editForm.btnGraphics.setText(thismake + " " + thismodel);
+            editForm.refreshParts();
+        } else if (partType == "Storage") {
+            editForm.storage = ID;
+            editForm.btnStorage.setText(thismake + " " + thismodel);
+            editForm.refreshParts();
+        } else if (partType == "Case") {
+            editForm.PCCase = ID;
+            editForm.btnCase.setText(thismake + " " + thismodel);
+            editForm.refreshParts();
+        } else if (partType == "PSU") {
+            editForm.PSU = ID;
+            editForm.btnPowerSup.setText(thismake + " " + thismodel);
+            editForm.refreshParts();
+        } else if (partType == "Cooler") {
+            editForm.cooler = ID;
+            editForm.btnCooling.setText(thismake + " " + thismodel);
+            editForm.refreshParts();
+        } else if (partType == "Accessory") {
+            editForm.accessory = ID;
+            editForm.btnAccessories.setText(thismake + " " + thismodel);
+            editForm.refreshParts();
+        }
+        this.setVisible(false);
+    }
+
+
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        if (createForm != null) {
+            createConfirm();
+        } else if (editForm != null) {
+            editConfirm();
+        }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

@@ -36,11 +36,11 @@ public class CreateBuild extends javax.swing.JFrame {
      */
     Build build = new Build();
 
-//    public CreateBuild() {
-//        initComponents();
-//        this.setTitle("Edit Build");     //Adds a title to the frame
-//        setLocationRelativeTo(null);
-//    }
+    CreateBuild() {
+        initComponents();
+        this.setTitle("Edit Build");     //Adds a title to the frame
+        setLocationRelativeTo(null);
+    }
     //Contructor for CreateBuild - where a build doesn't need to be passed...
     //... as the user is creating a new one
     CreateBuild(UserAccount user) {
@@ -59,10 +59,6 @@ public class CreateBuild extends javax.swing.JFrame {
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
         currentUser = user;
-    }
-
-    private CreateBuild() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -274,7 +270,7 @@ public class CreateBuild extends javax.swing.JFrame {
 
     private void btnProcessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessorActionPerformed
         myPart = "CPU";
-        SelectComponent frm = new SelectComponent(myPart, this); //
+        SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
 
 
@@ -283,55 +279,56 @@ public class CreateBuild extends javax.swing.JFrame {
     private void btnRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAMActionPerformed
         // TODO add your handling code here
         myPart = "RAM";
-        SelectComponent frm = new SelectComponent(myPart, this); //
+        SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
 
     }//GEN-LAST:event_btnRAMActionPerformed
 
     private void btnMotherboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMotherboardActionPerformed
         myPart = "Motherboard";
-        new SelectComponent(myPart, this).setVisible(true);
+        SelectComponent frm = new SelectComponent(myPart, this, null); //
+        frm.setVisible(true);
     }//GEN-LAST:event_btnMotherboardActionPerformed
 
     private void btnGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraphicsActionPerformed
         // TODO add your handling code here:
         myPart = "GPU";
-        SelectComponent frm = new SelectComponent(myPart, this); //
+        SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnGraphicsActionPerformed
 
     private void btnStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStorageActionPerformed
         // TODO add your handling code here:
         myPart = "Storage";
-        SelectComponent frm = new SelectComponent(myPart, this); //
+        SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnStorageActionPerformed
 
     private void btnCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaseActionPerformed
         // TODO add your handling code here:
         myPart = "Case";
-        SelectComponent frm = new SelectComponent(myPart, this); //
+        SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnCaseActionPerformed
 
     private void btnPowerSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPowerSupActionPerformed
         // TODO add your handling code here:
         myPart = "PSU";
-        SelectComponent frm = new SelectComponent(myPart, this); //
+        SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnPowerSupActionPerformed
 
     private void btnCoolingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoolingActionPerformed
         // TODO add your handling code here:
         myPart = "Cooler";
-        SelectComponent frm = new SelectComponent(myPart, this); //
+        SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnCoolingActionPerformed
 
     private void btnAccessoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessoriesActionPerformed
         // TODO add your handling code here:
         myPart = "Accessory";
-        SelectComponent frm = new SelectComponent(myPart, this); //
+        SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnAccessoriesActionPerformed
 
