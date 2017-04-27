@@ -201,36 +201,58 @@ public class AddGPU extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // sets the users inputs when the save button is actioned
         
-        GPU gpu = new GPU();
+       GPU gpu = new GPU();
+
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
-        double price = Double.parseDouble(txtFieldPrice.getText());
+        String pricetest = txtFieldPrice.getText();
         String series = txtFieldSeries.getText();
         String chipset = txtFieldChipset.getText();
-        int memory = Integer.parseInt(txtFieldMemory.getText());
-        float coreclock = Float.parseFloat(txtFieldcClock.getText());
+        String memoryCheck = txtFieldMemory.getText();
+        String coreClockTest = txtFieldcClock.getText();
         
-        //setting specified makes
-        gpu.setMake(make);
-        gpu.setModel(model);
-        gpu.setPrice(price);
-        gpu.setSeries(series);
-        gpu.setChipset(chipset);
-        gpu.setMemory(memory);
-        gpu.setCoreClock(coreclock);
         
-        //validation for GPU
-        boolean validated = gpu.saveGPU();
-        if(validated){
-        this.setVisible(false);
-        JOptionPane.showMessageDialog(null, "Component Created", "GPU Added", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-         }else{
-         JOptionPane.showMessageDialog(null, "Error, please try again", "Error", JOptionPane.INFORMATION_MESSAGE);
-        new AdminMenu().setVisible(true);
-        }
        
-                            
+        
+        
+        //validation - error message if wrong
+        if(model.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (pricetest.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (series.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter a Series", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (chipset.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter a chipset", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (memoryCheck.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter the memory size", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else if (coreClockTest.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Error, please enter the core clock", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        }else{ //when input boxes are not empty
+            double price = Double.parseDouble(pricetest);
+             int memory = Integer.parseInt(memoryCheck);
+        float coreclock = Float.parseFloat(coreClockTest);
+            
+            //setting specified makes
+            gpu.setMake(make);
+            gpu.setModel(model);
+            gpu.setPrice(price);
+            gpu.setSeries(series);
+            gpu.setChipset(chipset);
+            gpu.setMemory(memory);
+            gpu.setCoreClock(coreclock);
+            
+            //checking if validation is successful
+            boolean succesful = gpu.saveGPU();
+            if(succesful){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "GPU Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+            new AdminMenu().setVisible(true);
+            }
+        } 
+        
+        
+                         
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
