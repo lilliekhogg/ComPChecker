@@ -205,11 +205,6 @@ public class CreateAccount extends javax.swing.JFrame {
         String surname = txtboxSurname.getText();
         String email = txtboxEmail.getText();
         
-     
-        
-        
-        
-        
         boolean confirm = true;
         
         if((username.isEmpty()|| password.isEmpty()) || passwordConfirm.isEmpty() || name.isEmpty() || surname.isEmpty() || email.isEmpty()){

@@ -229,7 +229,7 @@ public class EditAccount extends javax.swing.JFrame {
             newUser.setType(false);
         }
         System.out.println(fname  + sname + email + type);
-        newUser.editUser();
+        //newUser.editUser();
 
 
     }//GEN-LAST:event_btnSubmitActionPerformed

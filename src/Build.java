@@ -35,7 +35,7 @@ public class Build {
     public void setCPU(int cpu) {
         CPU = cpu;
     }
-    
+
     /**
      *
      * @return gets CPU ID.
@@ -51,7 +51,7 @@ public class Build {
     public void setMotherboard(int mobo) {
         motherboard = mobo;
     }
-    
+
     /**
      *
      * @return gets motherboard ID.
@@ -67,7 +67,7 @@ public class Build {
     public void setRAM(int ram) {
         RAM = RAM;
     }
-    
+
     /**
      *
      * @return gets the RAM ID
@@ -83,7 +83,7 @@ public class Build {
     public void setGPU(int gpu) {
         GPU = gpu;
     }
-    
+
     /**
      *
      * @return gets the GPU ID.
@@ -93,13 +93,13 @@ public class Build {
     }
 
     /**
-   *
+     *
      * @param Cooler Sets the cooler ID.
      */
     public void setCooler(int Cooler) {
         cooler = Cooler;
     }
-    
+
     /**
      *
      * @return gets the cooler ID.
@@ -107,22 +107,22 @@ public class Build {
     public int getCooler() {
         return cooler;
     }
-    
-     /**
-   *
+
+    /**
+     *
      * @param psu Sets the PSU ID.
      */
     public void setPSU(int psu) {
         PSU = psu;
     }
-    
+
     /**
      *
      * @return gets the PSU ID.
      */
     public int getPSU() {
         return PSU;
-    }  
+    }
 
     /**
      *
@@ -131,7 +131,7 @@ public class Build {
     public void setStorage(int store) {
         storage = store;
     }
-    
+
     /**
      *
      * @return storage ID.
@@ -141,13 +141,14 @@ public class Build {
     }
 
     /**
-     *This method sets the case.
+     * This method sets the case.
+     *
      * @param PCcase sets Case ID.
      */
     public void setCase(int PCcase) {
         PCCase = PCcase;
     }
-    
+
     /**
      *
      * @return case ID.
@@ -157,21 +158,23 @@ public class Build {
     }
 
     /**
-     *Sets accessory ID.
+     * Sets accessory ID.
+     *
      * @param access sets accessory ID.
      */
     public void setAccessory(int access) {
         accessory = access;
     }
-    
+
     /**
-     *Returns accessory ID
+     * Returns accessory ID
+     *
      * @return accessory ID
      */
     public int getAccessory() {
         return accessory;
     }
-    
+
     /**
      *
      * @param myName BUILD NAME
@@ -179,7 +182,7 @@ public class Build {
     public void setName(String myName) {
         name = myName;
     }
-    
+
     /**
      *
      * @return name
@@ -189,7 +192,7 @@ public class Build {
     }
 
     /**
-     *Saves the current build object to the database.
+     * Saves the current build object to the database.
      */
     public void SaveBuild() {
 
@@ -218,9 +221,9 @@ public class Build {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
     }
-    
+
     /**
-     *Deletes a given build.
+     * Deletes a given build.
      */
     public void deleteBuild() {
         Connection con = DatabaseConnection.establishConnection();
@@ -257,6 +260,35 @@ public class Build {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
         return rs;
+    }
+
+    public void editBuild() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            String query = "UPDATE Build SET Motherboard = ?, CPU = ?, RAM = ?, "
+                    + "Storage = ?, GPU = ?, PSU = ?, PCCase = ?, Cooler = ? , "
+                    + "Accessory = ?, name = ? WHERE ID = ?";
+            PreparedStatement statement = con.prepareStatement(query);
+            //statement.setString(1, this.user);
+            //careful this doesnt overwrite build author.
+            statement.setInt(1, this.motherboard);
+            statement.setInt(2, this.CPU);
+            statement.setInt(3, this.RAM);
+            statement.setInt(4, this.storage);
+            statement.setInt(5, this.GPU);
+            statement.setInt(6, this.PSU);
+            statement.setInt(7, this.PCCase);
+            statement.setInt(8, this.cooler);
+            statement.setInt(8, this.accessory);
+            statement.setString(10, this.name);
+
+            statement.executeUpdate();
+            statement.close();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+
+        }
     }
 
     /**

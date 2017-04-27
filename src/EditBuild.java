@@ -30,7 +30,7 @@ public class EditBuild extends javax.swing.JFrame {
     int accessory;
     String name;
     String username;
-    
+
     ArrayList<Integer> Parts = new ArrayList<Integer>();
 
     UserAccount currentUser;
@@ -46,6 +46,7 @@ public class EditBuild extends javax.swing.JFrame {
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
     }
+
     //Contructor for CreateBuild - where a build doesn't need to be passed...
     //... as the user is creating a new one
     EditBuild(UserAccount user) {
@@ -68,6 +69,8 @@ public class EditBuild extends javax.swing.JFrame {
         currentBuild = myBuild;
         System.out.println(currentUser + "" + currentBuild);
         build.loadBuild(user, myBuild.getName());
+        txtboxName.setText(build.getName());
+        //txtboxName.setEditable(false);
         btnProcessor.setText(getMakeModel(build.getCPU(), con));
         btnMotherboard.setText(getMakeModel(build.getMotherboard(), con));
         btnRAM.setText(getMakeModel(build.getRAM(), con));
@@ -77,13 +80,13 @@ public class EditBuild extends javax.swing.JFrame {
         btnPowerSup.setText(getMakeModel(build.getPSU(), con));
         btnCooling.setText(getMakeModel(build.getCooler(), con));
         btnAccessories.setText(getMakeModel(build.getAccessory(), con));
-        
+
     }
-    
+
     private String getMakeModel(int ID, Connection myCon) {
         //Connection con = DatabaseConnection.establishConnection();
         String make = null; //Intialise variables
-        String model= null;
+        String model = null;
         try {
             Statement stmt = (Statement) myCon.createStatement();
             String query = ("SELECT * FROM Part Where PartID ='" + ID + "'");       //Selet part from database
@@ -376,15 +379,56 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         String buildName = txtboxName.getText();
-        
-        if(buildName.isEmpty()){
-        JOptionPane.showMessageDialog(null, "Please complete the build name field.", "Please complete fields", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            
-        saveBuild();
-        //Maybe make uneditable?
-        this.setVisible(false);
-        new CreateBuild(currentUser).setVisible(true);       //Resets components when build is saved
+
+        if (buildName.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please complete the build name field.", "Please complete fields", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            ArrayList<Integer> IDs = new ArrayList<Integer>();
+            IDs.add(motherboard);
+            IDs.add(CPU);
+            IDs.add(RAM);
+            IDs.add(storage);
+            IDs.add(GPU);
+            IDs.add(PSU);
+            IDs.add(PCCase);
+            IDs.add(cooler);
+            IDs.add(accessory);
+            Issue check = new Issue();
+            boolean issues = false;
+
+            Connection con = DatabaseConnection.establishConnection();
+            for (int i = 0; i < IDs.size(); i++) {
+                for (int j = i + 1; j < IDs.size(); j++) {
+                    boolean result = check.compatbilityIssue(IDs.get(i), IDs.get(j), con);
+                    if (result) {
+                        issues = true;
+                    }
+                }
+            }
+
+            JOptionPane.showMessageDialog(null, "We will now check your components are compatable. Please wait..", "Please wait.", JOptionPane.INFORMATION_MESSAGE);
+            if (issues) {
+                JOptionPane.showMessageDialog(null, "WARNING. Issues have been deceted between the selected parts. Please chose different parts..", "WARNING", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                getPart();
+                Build newBuild = new Build();
+                newBuild.CPU = CPU;
+                newBuild.motherboard = motherboard;
+                newBuild.RAM = RAM;
+                newBuild.GPU = GPU;
+                newBuild.PCCase = PCCase;
+                newBuild.PSU = PSU;
+                newBuild.cooler = cooler;
+                newBuild.accessory = accessory;
+                newBuild.name = txtboxName.getText();
+                newBuild.storage = storage;
+                newBuild.user = username;
+                
+                newBuild.editBuild();
+                //Maybe make uneditable?
+                this.setVisible(false);
+                new EditBuilds(currentUser).setVisible(true);       //Resets components when build is saved
+            }
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
@@ -405,7 +449,7 @@ public class EditBuild extends javax.swing.JFrame {
 
         myBuild.SaveBuild();
     }
-    
+
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
@@ -452,7 +496,7 @@ public class EditBuild extends javax.swing.JFrame {
         System.out.println(Parts);
 
     }
-    
+
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
 
         String message = "Do you wish to cancel without saving?";
