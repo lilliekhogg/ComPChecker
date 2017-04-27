@@ -20,6 +20,8 @@ public class AddMotherboard extends javax.swing.JDialog {
 
     /**
      * Creates new form AddCPU
+     * @param parent parent form
+     * @param modal model
      */
     public AddMotherboard(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

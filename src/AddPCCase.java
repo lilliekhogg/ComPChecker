@@ -20,7 +20,7 @@ public class AddPCCase extends javax.swing.JFrame {
     /**
      * Creates new form PCCases
      * @param parent parentform 
-     * @param model model
+     * @param modal model
      */
      public AddPCCase(java.awt.Frame parent, boolean modal) {
         initComponents();

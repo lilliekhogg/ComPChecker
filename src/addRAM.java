@@ -21,9 +21,9 @@ public class addRAM extends javax.swing.JDialog {
 
     /**
      *
-     * @param parent
-     * @param modal
-     * @param user
+     * @param parent parent form
+     * @param modal modal
+     * @param user current user.
      */
     public addRAM(java.awt.Frame parent, boolean modal, UserAccount user) {
         super(parent, modal);

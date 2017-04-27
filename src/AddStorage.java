@@ -21,7 +21,10 @@ import static javax.xml.bind.DatatypeConverter.parseString;
 public class AddStorage extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddStorage
+     * Creates new form AddStora
+     * @param parent parent form
+     * @param modal modal 
+     * @param user currentUser
      */
      public AddStorage(java.awt.Frame parent, boolean modal, UserAccount user) {
         initComponents();
