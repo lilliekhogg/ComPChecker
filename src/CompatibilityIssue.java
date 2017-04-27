@@ -43,8 +43,8 @@ public class CompatibilityIssue extends javax.swing.JFrame {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         currentUser = user;
         myIssue = issue;
-        btnPart1.setText(Integer.toString(myIssue.getID1()));
-        btnPart2.setText(Integer.toString(myIssue.getID2()));
+        //btnPart1.setText(Integer.toString(myIssue.getID1()));
+        //btnPart2.setText(Integer.toString(myIssue.getID2()));
         
         if(myIssue.getID1() != 0){
             btnPart1.setText(getMakeModel(myIssue.getID1()));
