@@ -50,7 +50,6 @@ public class EditBuild extends javax.swing.JFrame {
     //Contructor for CreateBuild - where a build doesn't need to be passed...
     //... as the user is creating a new one
     EditBuild(UserAccount user) {
-        //username = user.getUsername();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame - need this to change bassed on option
         setLocationRelativeTo(null);
@@ -60,15 +59,15 @@ public class EditBuild extends javax.swing.JFrame {
     //Contructor for EditBuild & Viewbuild - where a build needs to be passed...
     //... as the user is referencing an existing one
     EditBuild(UserAccount user, Build myBuild) {
-        //username = user.getUsername();
         Connection con = DatabaseConnection.establishConnection();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
         currentUser = user;
         currentBuild = myBuild;
-        System.out.println(currentUser + "" + currentBuild);
+        
         build.loadBuild(user, myBuild.getName());
+        
         txtboxName.setText(build.getName());
         txtboxName.setEditable(false);
         btnProcessor.setText(getMakeModel(build.getCPU(), con));
@@ -410,23 +409,8 @@ public class EditBuild extends javax.swing.JFrame {
             if (issues) {
                 JOptionPane.showMessageDialog(null, "WARNING. Issues have been deceted between the selected parts. Please chose different parts..", "WARNING", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                getPart();
-                Build newBuild = new Build();
-                newBuild.setCPU(CPU);
-                newBuild.setMotherboard(motherboard);
+                saveBuild();
                 System.out.println(motherboard);
-                newBuild.setRAM(RAM);
-                newBuild.setGPU(GPU);
-                newBuild.setCase(PCCase);
-                newBuild.setPSU(PSU);
-                newBuild.setCooler(cooler);
-                newBuild.setAccessory(accessory);
-                newBuild.setName(txtboxName.getText());
-                newBuild.setStorage(storage);
-                //newBuild.setUser(this.username);
-                
-                newBuild.editBuild();
-                //Maybe make uneditable?
                 this.setVisible(false);
                 new EditBuilds(currentUser).setVisible(true);       //Resets components when build is saved
             }
@@ -435,20 +419,35 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void saveBuild() {
         getPart();
-        Build myBuild = new Build();
-        myBuild.CPU = CPU;
-        myBuild.motherboard = motherboard;
-        myBuild.RAM = RAM;
-        myBuild.GPU = GPU;
-        myBuild.PCCase = PCCase;
-        myBuild.PSU = PSU;
-        myBuild.cooler = cooler;
-        myBuild.accessory = accessory;
-        myBuild.name = txtboxName.getText();
-        myBuild.storage = storage;
-        myBuild.user = username;
+//        Build myBuild = new Build();
+//        myBuild.CPU = CPU;
+//        myBuild.motherboard = motherboard;
+//        myBuild.RAM = RAM;
+//        myBuild.GPU = GPU;
+//        myBuild.PCCase = PCCase;
+//        myBuild.PSU = PSU;
+//        myBuild.cooler = cooler;
+//        myBuild.accessory = accessory;
+//        myBuild.name = txtboxName.getText();
+//        myBuild.storage = storage;
+//        myBuild.user = username;
+//
+//        myBuild.editBuild();
 
-        myBuild.SaveBuild();
+        currentBuild.CPU = CPU;
+        currentBuild.motherboard = motherboard;
+        currentBuild.RAM = RAM;
+        currentBuild.GPU = GPU;
+        currentBuild.PCCase = PCCase;
+        currentBuild.PSU = PSU;
+        currentBuild.cooler = cooler;
+        currentBuild.accessory = accessory;
+        currentBuild.name = txtboxName.getText();
+        currentBuild.storage = storage;
+        currentBuild.user = username;
+
+        currentBuild.editBuild();
+        System.out.println(motherboard);
     }
 
     private void returnToMenu() {

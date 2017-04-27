@@ -190,6 +190,22 @@ public class Build {
     public String getName() {
         return name;
     }
+    
+    /**
+     *
+     * @param theUser user name
+     */
+    public void setUser(String theUser) {
+        this.user = theUser;
+    }
+
+    /**
+     *
+     * @return name
+     */
+    public String getUser() {
+        return user;
+    }
 
     /**
      * Saves the current build object to the database.
@@ -265,25 +281,26 @@ public class Build {
     public void editBuild() {
         Connection con = DatabaseConnection.establishConnection();
         try {
-            String query = "UPDATE Build SET Motherboard = ?, CPU = ?, RAM = ?, "
-                    + "Storage = ?, GPU = ?, PSU = ?, PCCase = ?, Cooler = ? , "
-                    + "Accessory = ? WHERE ID = ?";
+            //Saves build into database.
+            String query = "UPDATE Build SET Account = ?, Motherboard = ?, CPU = ?, RAM = ?, "
+                    + "Storage = ?, GPU = ?, PSU = ?, PCCase = ?, Cooler = ?, "
+                    + "Accessory = ?, name = ? WHERE Account = ? AND name = ?";
             PreparedStatement statement = con.prepareStatement(query);
             //statement.setString(1, this.user);
             //careful this doesnt overwrite build author.
-            statement.setInt(1, motherboard);
-            System.out.println(motherboard);
-            statement.setInt(2, CPU);
-            statement.setInt(3, RAM);
-            statement.setInt(4, storage);
-            statement.setInt(5, GPU);
-            statement.setInt(6, PSU);
-            statement.setInt(7, PCCase);
-            statement.setInt(8, cooler);
-            statement.setInt(9, accessory);
-            statement.setString(10, name);
-            //statement.setString(11, this.name);
-            
+            statement.setString(1, user);
+            statement.setInt(2, motherboard);
+            statement.setInt(3, CPU);
+            statement.setInt(4, RAM);
+            statement.setInt(5, storage);
+            statement.setInt(6, GPU);
+            statement.setInt(7, PSU);
+            statement.setInt(8, PCCase);
+            statement.setInt(9, cooler);
+            statement.setInt(10, accessory);
+            statement.setString(11, name);
+            statement.setString(12, user);
+            statement.setString(13, name);
 
             statement.executeUpdate();
             statement.close();
