@@ -57,6 +57,7 @@ public class EditBuild extends javax.swing.JFrame {
     //... as the user is referencing an existing one
     EditBuild(UserAccount user, Build myBuild) {
         //username = user.getUsername();
+        Connection con = DatabaseConnection.establishConnection();
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
@@ -64,25 +65,24 @@ public class EditBuild extends javax.swing.JFrame {
         currentBuild = myBuild;
         System.out.println(currentUser + "" + currentBuild);
         build.loadBuild(user, myBuild.getName());
-        btnProcessor.setText(getMakeModel(build.getCPU()));
-        btnMotherboard.setText(getMakeModel(build.getMotherboard()));
-        btnRAM.setText(getMakeModel(build.getRAM()));
-        btnGraphics.setText(getMakeModel(build.getGPU()));
-        btnStorage.setText(getMakeModel(build.getStorage()));
-        btnCase.setText(getMakeModel(build.getCase()));
-        btnPowerSup.setText(getMakeModel(build.getPSU()));
-        btnCooling.setText(getMakeModel(build.getCooler()));
-        btnAccessories.setText(getMakeModel(build.getAccessory()));
+        btnProcessor.setText(getMakeModel(build.getCPU(), con));
+        btnMotherboard.setText(getMakeModel(build.getMotherboard(), con));
+        btnRAM.setText(getMakeModel(build.getRAM(), con));
+        btnGraphics.setText(getMakeModel(build.getGPU(), con));
+        btnStorage.setText(getMakeModel(build.getStorage(), con));
+        btnCase.setText(getMakeModel(build.getCase(), con));
+        btnPowerSup.setText(getMakeModel(build.getPSU(), con));
+        btnCooling.setText(getMakeModel(build.getCooler(), con));
+        btnAccessories.setText(getMakeModel(build.getAccessory(), con));
         
     }
     
-    private String getMakeModel(int ID) {
-        Connection con = DatabaseConnection.establishConnection();
-        
+    private String getMakeModel(int ID, Connection myCon) {
+        //Connection con = DatabaseConnection.establishConnection();
         String make = null; //Intialise variables
         String model= null;
         try {
-            Statement stmt = (Statement) con.createStatement();
+            Statement stmt = (Statement) myCon.createStatement();
             String query = ("SELECT * FROM Part Where PartID ='" + ID + "'");       //Selet part from database
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
