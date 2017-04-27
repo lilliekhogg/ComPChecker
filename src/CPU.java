@@ -34,15 +34,15 @@ public class CPU {
 
     /**
      *
-     * @return
+     * @return the model of object.
      */
     public String getModel() {
         return model;
     }
 
     /**
-     *
-     * @param make
+     *Sets the make of the attribute.
+     * @param make make value
      */
     public void setMake(String make) {
 
@@ -50,8 +50,8 @@ public class CPU {
     }
 
     /**
-     *
-     * @param speed
+     *Sets the speed attribute.
+     * @param speed speed atrribute. 
      */
     public void setSpeed(float speed) {
         this.speed = speed;
@@ -61,7 +61,7 @@ public class CPU {
     /**
      * Sets the cores attribute of the object.
      *
-     * @param cores
+     * @param cores core values.
      */
     public void setCores(int cores) {
         this.cores = cores;
@@ -73,7 +73,7 @@ public class CPU {
      * integrated graphics. By default this attribute is set to true, as the
      * majority of CPUs have integrated graphics.
      *
-     * @param graphics
+     * @param graphics graphics value.
      */
     public void setGraphics(boolean graphics) {
         this.graphics = graphics;

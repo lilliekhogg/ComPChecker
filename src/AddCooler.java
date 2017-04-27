@@ -19,6 +19,8 @@ public class AddCooler extends javax.swing.JFrame {
 
     /**
      * Creates new form AddCooler
+     * @param parent parent form
+     * @param modal modal
      */
        public AddCooler(java.awt.Frame parent, boolean modal) {
         initComponents();

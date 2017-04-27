@@ -33,9 +33,9 @@ public class EditComponent extends javax.swing.JDialog {
     Issue myIssue = new Issue();
 
     /**
-     *
-     * @param parent
-     * @param modal
+     *Main method
+     * @param parent parent form
+     * @param modal modal
      */
     public EditComponent(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -45,9 +45,11 @@ public class EditComponent extends javax.swing.JDialog {
     }
 
     /**
-     *
-     * @param type
-     * @param form1
+     *Edit a selected component
+     * @param type the type of form
+     * @param mySelectedPart previous form
+     * @param issue  the comp issue
+     * @param user the current user.
      */
     public EditComponent(String type, int mySelectedPart, UserAccount user, Issue issue) {
         partType = type;
@@ -380,8 +382,8 @@ public class EditComponent extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     *
-     * @return
+     *Returns the ID of the selected row.
+     * @return the ID of the selected part.
      */
     public int getID() {
         int column1 = 0;

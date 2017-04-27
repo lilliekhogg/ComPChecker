@@ -23,6 +23,9 @@ public class AddPSU extends javax.swing.JFrame {
 
     /**
      * Creates new form AddPSU
+     * @param parent parent form
+     * @param modal modal
+     * @param user current user
      */
     public AddPSU(java.awt.Frame parent, boolean modal, UserAccount user) {
         initComponents();

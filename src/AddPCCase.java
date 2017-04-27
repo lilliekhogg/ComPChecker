@@ -29,6 +29,9 @@ public class AddPCCase extends javax.swing.JFrame {
         populateMakes();
     }
 
+     /**
+      * Form method.
+      */
     public AddPCCase() {
 
         initComponents();

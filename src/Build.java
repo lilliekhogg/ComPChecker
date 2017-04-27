@@ -157,7 +157,7 @@ public class Build {
     }
 
     /**
-     *
+     *Sets accessory ID.
      * @param access sets accessory ID.
      */
     public void setAccessory(int access) {
@@ -165,8 +165,8 @@ public class Build {
     }
     
     /**
-     *
-     * @return
+     *Returns accessory ID
+     * @return accessory ID
      */
     public int getAccessory() {
         return accessory;
