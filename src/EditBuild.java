@@ -410,7 +410,6 @@ public class EditBuild extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "WARNING. Issues have been deceted between the selected parts. Please chose different parts..", "WARNING", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 saveBuild();
-                System.out.println(motherboard);
                 this.setVisible(false);
                 new EditBuilds(currentUser).setVisible(true);       //Resets components when build is saved
             }
@@ -419,7 +418,7 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void saveBuild() {
         getPart();
-//        Build myBuild = new Build();
+        Build myBuild = new Build();
 //        myBuild.CPU = CPU;
 //        myBuild.motherboard = motherboard;
 //        myBuild.RAM = RAM;
@@ -431,23 +430,19 @@ public class EditBuild extends javax.swing.JFrame {
 //        myBuild.name = txtboxName.getText();
 //        myBuild.storage = storage;
 //        myBuild.user = username;
-//
-//        myBuild.editBuild();
-
-        currentBuild.CPU = CPU;
-        currentBuild.motherboard = motherboard;
-        currentBuild.RAM = RAM;
-        currentBuild.GPU = GPU;
-        currentBuild.PCCase = PCCase;
-        currentBuild.PSU = PSU;
-        currentBuild.cooler = cooler;
-        currentBuild.accessory = accessory;
-        currentBuild.name = txtboxName.getText();
-        currentBuild.storage = storage;
-        currentBuild.user = username;
-
-        currentBuild.editBuild();
-        System.out.println(motherboard);
+          myBuild.setCPU(CPU);
+          myBuild.setMotherboard(motherboard);
+          myBuild.setRAM(RAM);
+          myBuild.setGPU(GPU);
+          myBuild.setCase(PCCase);
+          myBuild.setPSU(PSU);
+          myBuild.setCooler(cooler);
+          myBuild.setAccessory(accessory);
+          myBuild.setName(txtboxName.getText());
+          myBuild.setStorage(storage);
+          myBuild.setUser(username);
+          
+        myBuild.editBuild();
     }
 
     private void returnToMenu() {

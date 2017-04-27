@@ -303,6 +303,7 @@ public class Build {
             statement.setString(13, name);
 
             statement.executeUpdate();
+            System.out.println("Edit saved");
             statement.close();
 
         } catch (SQLException err) {
@@ -327,7 +328,6 @@ public class Build {
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
                 this.CPU = rs.getInt("CPU");
-                System.out.println(CPU);
                 this.motherboard = rs.getInt("Motherboard");
                 this.RAM = rs.getInt("RAM");
                 this.GPU = rs.getInt("GPU");
