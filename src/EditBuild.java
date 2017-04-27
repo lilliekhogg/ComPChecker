@@ -1,7 +1,9 @@
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /*
@@ -62,16 +64,40 @@ public class EditBuild extends javax.swing.JFrame {
         currentBuild = myBuild;
         System.out.println(currentUser + "" + currentBuild);
         build.loadBuild(user, myBuild.getName());
-        btnProcessor.setText(Integer.toString(build.getCPU()));
-        btnMotherboard.setText(Integer.toString(build.getMotherboard()));
-        btnRAM.setText(Integer.toString(build.getRAM()));
-        btnGraphics.setText(Integer.toString(build.getGPU()));
-        btnStorage.setText(Integer.toString(build.getStorage()));
-        btnCase.setText(Integer.toString(build.getCase()));
-        btnPowerSup.setText(Integer.toString(build.getPSU()));
-        btnCooling.setText(Integer.toString(build.getCooler()));
-        btnAccessories.setText(Integer.toString(build.getAccessory()));
+        btnProcessor.setText(getMakeModel(build.getCPU()));
+        btnMotherboard.setText(getMakeModel(build.getMotherboard()));
+        btnRAM.setText(getMakeModel(build.getRAM()));
+        btnGraphics.setText(getMakeModel(build.getGPU()));
+        btnStorage.setText(getMakeModel(build.getStorage()));
+        btnCase.setText(getMakeModel(build.getCase()));
+        btnPowerSup.setText(getMakeModel(build.getPSU()));
+        btnCooling.setText(getMakeModel(build.getCooler()));
+        btnAccessories.setText(getMakeModel(build.getAccessory()));
         
+    }
+    
+    private String getMakeModel(int ID) {
+        Connection con = DatabaseConnection.establishConnection();
+        
+        String make = null; //Intialise variables
+        String model= null;
+        try {
+            Statement stmt = (Statement) con.createStatement();
+            String query = ("SELECT * FROM Part Where PartID ='" + ID + "'");       //Selet part from database
+            stmt.executeQuery(query);
+            ResultSet rs = stmt.getResultSet();
+            while (rs.next()) {
+                make = rs.getString("Make");            //Get data
+                model = rs.getString("Model");
+
+            }
+            String makeModel = (make + " " + model);
+
+            return makeModel;   //Return string to be displayed on form.
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());   //Prints out SQL error 
+        }
+        return null;
     }
 
     private EditBuild() {
