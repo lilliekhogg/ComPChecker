@@ -20,7 +20,7 @@ public class EditBuilds extends javax.swing.JDialog {
     /**
      * Creates new form EditBuilds.
      * This is all run on start of form.
-     * @param user
+     * @param user the current user which build is being edited..
      */
     public EditBuilds(UserAccount user) {
         initComponents();

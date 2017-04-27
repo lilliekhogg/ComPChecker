@@ -18,7 +18,9 @@ public class AddPCCase extends javax.swing.JFrame {
     UserAccount currentUser;
 
     /**
-     * Creates new form PCCase
+     * Creates new form PCCases
+     * @param parent parentform 
+     * @param model model
      */
      public AddPCCase(java.awt.Frame parent, boolean modal) {
         initComponents();

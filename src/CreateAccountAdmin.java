@@ -16,6 +16,7 @@ public class CreateAccountAdmin extends javax.swing.JFrame {
 
     /**
      * Creates new form CreateAccount
+     * @param user the current user.
      */
     public CreateAccountAdmin(UserAccount user) {
         initComponents();
