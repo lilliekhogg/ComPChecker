@@ -1,9 +1,11 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Luke
@@ -184,20 +186,24 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnViewBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
+       this.setVisible(false);
         new EditBuilds(user).setVisible(true);
     }//GEN-LAST:event_btnViewBuildActionPerformed
 
     private void btnCreateBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBuildActionPerformed
         // TODO add your handling code here:
+        this.setVisible(false);
+        new CreateAccountAdmin(user).setVisible(true);
     }//GEN-LAST:event_btnCreateBuildActionPerformed
 
     private void btnShareBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShareBuildActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "This feature hasn't been implemented yet, come back later!", "Share Build", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnShareBuildActionPerformed
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "This feature hasn't been implemented yet, come back later!", "Share Build", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnRequestActionPerformed
 
     private void btnEditMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformed
