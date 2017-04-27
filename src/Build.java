@@ -33,7 +33,7 @@ public class Build {
      * @param cpu sets CPU ID.
      */
     public void setCPU(int cpu) {
-        CPU = cpu;
+        this.CPU = cpu;
     }
 
     /**
@@ -49,7 +49,7 @@ public class Build {
      * @param mobo sets Motherboard ID.
      */
     public void setMotherboard(int mobo) {
-        motherboard = mobo;
+        this.motherboard = mobo;
     }
 
     /**
@@ -65,7 +65,7 @@ public class Build {
      * @param ram sets the RAM ID.
      */
     public void setRAM(int ram) {
-        RAM = RAM;
+        this.RAM = RAM;
     }
 
     /**
@@ -81,7 +81,7 @@ public class Build {
      * @param gpu sets the GPU ID.
      */
     public void setGPU(int gpu) {
-        GPU = gpu;
+        this.GPU = gpu;
     }
 
     /**
@@ -97,7 +97,7 @@ public class Build {
      * @param Cooler Sets the cooler ID.
      */
     public void setCooler(int Cooler) {
-        cooler = Cooler;
+        this.cooler = Cooler;
     }
 
     /**
@@ -113,7 +113,7 @@ public class Build {
      * @param psu Sets the PSU ID.
      */
     public void setPSU(int psu) {
-        PSU = psu;
+        this.PSU = psu;
     }
 
     /**
@@ -129,7 +129,7 @@ public class Build {
      * @param store sets Storage ID
      */
     public void setStorage(int store) {
-        storage = store;
+        this.storage = store;
     }
 
     /**
@@ -146,7 +146,7 @@ public class Build {
      * @param PCcase sets Case ID.
      */
     public void setCase(int PCcase) {
-        PCCase = PCcase;
+        this.PCCase = PCcase;
     }
 
     /**
@@ -163,7 +163,7 @@ public class Build {
      * @param access sets accessory ID.
      */
     public void setAccessory(int access) {
-        accessory = access;
+        this.accessory = access;
     }
 
     /**
@@ -180,7 +180,7 @@ public class Build {
      * @param myName BUILD NAME
      */
     public void setName(String myName) {
-        name = myName;
+        this.name = myName;
     }
 
     /**
@@ -267,20 +267,23 @@ public class Build {
         try {
             String query = "UPDATE Build SET Motherboard = ?, CPU = ?, RAM = ?, "
                     + "Storage = ?, GPU = ?, PSU = ?, PCCase = ?, Cooler = ? , "
-                    + "Accessory = ?, name = ? WHERE ID = ?";
+                    + "Accessory = ? WHERE ID = ?";
             PreparedStatement statement = con.prepareStatement(query);
             //statement.setString(1, this.user);
             //careful this doesnt overwrite build author.
-            statement.setInt(1, this.motherboard);
-            statement.setInt(2, this.CPU);
-            statement.setInt(3, this.RAM);
-            statement.setInt(4, this.storage);
-            statement.setInt(5, this.GPU);
-            statement.setInt(6, this.PSU);
-            statement.setInt(7, this.PCCase);
-            statement.setInt(8, this.cooler);
-            statement.setInt(8, this.accessory);
-            statement.setString(10, this.name);
+            statement.setInt(1, motherboard);
+            System.out.println(motherboard);
+            statement.setInt(2, CPU);
+            statement.setInt(3, RAM);
+            statement.setInt(4, storage);
+            statement.setInt(5, GPU);
+            statement.setInt(6, PSU);
+            statement.setInt(7, PCCase);
+            statement.setInt(8, cooler);
+            statement.setInt(9, accessory);
+            statement.setString(10, name);
+            //statement.setString(11, this.name);
+            
 
             statement.executeUpdate();
             statement.close();

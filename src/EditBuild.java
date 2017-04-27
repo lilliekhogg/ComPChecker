@@ -70,7 +70,7 @@ public class EditBuild extends javax.swing.JFrame {
         System.out.println(currentUser + "" + currentBuild);
         build.loadBuild(user, myBuild.getName());
         txtboxName.setText(build.getName());
-        //txtboxName.setEditable(false);
+        txtboxName.setEditable(false);
         btnProcessor.setText(getMakeModel(build.getCPU(), con));
         btnMotherboard.setText(getMakeModel(build.getMotherboard(), con));
         btnRAM.setText(getMakeModel(build.getRAM(), con));
@@ -412,17 +412,18 @@ public class EditBuild extends javax.swing.JFrame {
             } else {
                 getPart();
                 Build newBuild = new Build();
-                newBuild.CPU = CPU;
-                newBuild.motherboard = motherboard;
-                newBuild.RAM = RAM;
-                newBuild.GPU = GPU;
-                newBuild.PCCase = PCCase;
-                newBuild.PSU = PSU;
-                newBuild.cooler = cooler;
-                newBuild.accessory = accessory;
-                newBuild.name = txtboxName.getText();
-                newBuild.storage = storage;
-                newBuild.user = username;
+                newBuild.setCPU(CPU);
+                newBuild.setMotherboard(motherboard);
+                System.out.println(motherboard);
+                newBuild.setRAM(RAM);
+                newBuild.setGPU(GPU);
+                newBuild.setCase(PCCase);
+                newBuild.setPSU(PSU);
+                newBuild.setCooler(cooler);
+                newBuild.setAccessory(accessory);
+                newBuild.setName(txtboxName.getText());
+                newBuild.setStorage(storage);
+                //newBuild.setUser(this.username);
                 
                 newBuild.editBuild();
                 //Maybe make uneditable?
