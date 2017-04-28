@@ -5,30 +5,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Luke
  */
 public class CompatibilityIssue extends javax.swing.JFrame {
-    
+
     UserAccount currentUser;
     int ID1, ID2;
-    
+
     Issue myIssue = new Issue();
 
     /**
-     * Creates new form CompatibilityCheck
+     * Default constructor for CompatibilityIssue.
      */
     public CompatibilityIssue() {
         initComponents();
     }
 
+    /**
+     * Constructor for CompatibilityIssue taking user parameter. This is the
+     * constructor called when the form is called from the menu initially.
+     *
+     * @param user The constructor is passed the user parameter which
+     * currentUser is then set to which allows it to be accessed throughout the
+     * form.
+     */
     CompatibilityIssue(UserAccount user) {
         initComponents();
         this.setTitle("Compatibility");     //Adds a title to the frame
@@ -36,36 +38,50 @@ public class CompatibilityIssue extends javax.swing.JFrame {
         currentUser = user;
 
     }
-    
+
+    /**
+     * Constructor for CompatibilityIssue taking user parameter. This is the
+     * constructor called when the form is called again internally along with
+     * the first issue object.
+     *
+     * @param issue This is the first 'issue' which is an incompatible part.
+     * @param user The constructor is passed the user parameter which
+     * currentUser is then set to which allows it to be accessed throughout the
+     * form.
+     */
     CompatibilityIssue(UserAccount user, Issue issue) {
         initComponents();
         this.setTitle("Compatibility");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         currentUser = user;
         myIssue = issue;
-        //btnPart1.setText(Integer.toString(myIssue.getID1()));
-        //btnPart2.setText(Integer.toString(myIssue.getID2()));
-        
-        if(myIssue.getID1() != 0){
+
+        if (myIssue.getID1() != 0) {
             btnPart1.setText(getMakeModel(myIssue.getID1()));
-            
-        }else{
+
+        } else {
             btnPart1.setText("Select Part");
         }
-        
-         if(myIssue.getID2() != 0){
+
+        if (myIssue.getID2() != 0) {
             btnPart2.setText(getMakeModel(myIssue.getID2()));
-            
-        }else{
-         btnPart2.setText("Select Part");
-         }
-        
+
+        } else {
+            btnPart2.setText("Select Part");
+        }
+
     }
-     private String getMakeModel(int ID) {
+
+    /**
+     * This method gets the makes and models to display from the part IDs.
+     *
+     * @param ID The ID of the part to be formatted.
+     */
+    private String getMakeModel(int ID) {
         Connection con = DatabaseConnection.establishConnection();
-        
+
         String make = null; //Intialise variables
-        String model= null;
+        String model = null;
         try {
             Statement stmt = (Statement) con.createStatement();
             String query = ("SELECT * FROM Part Where PartID ='" + ID + "'");       //Selet part from database
@@ -173,7 +189,11 @@ public class CompatibilityIssue extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
+    /**
+     * Prompts the user to select a type of part. From here they then select the
+     * part (part1) they want to make incompatible with the other part (part2).
+     */
     private void btnPart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPart1ActionPerformed
         String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
         String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being editted?",
@@ -245,12 +265,16 @@ public class CompatibilityIssue extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnPart1ActionPerformed
 
+    /**
+     * Prompts the user to select a type of part. From here they then select the
+     * other part (part2) they wanted to make incompatible with the first part
+     * (part1).
+     */
     private void btnPart2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPart2ActionPerformed
         String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
         String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being editted?",
-                "Edit Component", JOptionPane.QUESTION_MESSAGE, null, // Use
-                // default
-                // icon
+                "Edit Component", JOptionPane.QUESTION_MESSAGE, 
+                null, // Use default icon
                 choices, // Array of choices
                 choices[0]); // Initial choice
         String myPart;
@@ -315,51 +339,17 @@ public class CompatibilityIssue extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPart2ActionPerformed
 
+    /**
+     * Saves the part incompatibility (or 'issue') in the database.
+     */
     private void btnStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStoreActionPerformed
-        // TODO add your handling code here:
-        myIssue.saveIssue(myIssue.getID1(),myIssue.getID2());
+        myIssue.saveIssue(myIssue.getID1(), myIssue.getID2());
     }//GEN-LAST:event_btnStoreActionPerformed
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         this.setVisible(false);
         new AdminMenu(currentUser).setVisible(true);
     }//GEN-LAST:event_btnReturnActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CompatibilityIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CompatibilityIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CompatibilityIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CompatibilityIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CompatibilityIssue().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPart1;

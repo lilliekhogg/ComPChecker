@@ -18,14 +18,16 @@ public class CPU {
     boolean graphics;
 
     /**
-     * @return Returns the make of the CPU.
+     * Returns the make of the CPU.
+     * @return CPU make
      */
     public String getMake() {
         return make;
     }
 
     /**
-     * @return Returns the model of the CPU.
+     * Returns the model of the CPU.
+     * @return CPU model
      */
     public String getModel() {
         return model;

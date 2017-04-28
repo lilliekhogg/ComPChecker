@@ -5,11 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *This class represents an issue between two components. 
  * @author Luke
@@ -19,48 +14,48 @@ public class Issue {
     int selectedPart, ID1, ID2;
 
     /**
-     *
-     * @param part sets selectedPart.
+     * Sets the selected part.
+     * @param part integer id aka part value
      */
     public void setSelectedPart(int part) {
         selectedPart = part;
     }
 
     /**
-     *
-     * @return gets selectedPart.
+     * Get the selected part
+     * @return Returns selectedPart.
      */
     public int getSelectedPart() {
         return selectedPart;
     }
 
     /**
-     *
-     * @param id1 sets ID1.
+     * Sets the ID of the first incompatible part.
+     * @param id1 integer ID of part1.
      */
     public void setID1(int id1) {
         ID1 = id1;
     }
 
     /**
-     *
-     * @return gets ID1.
+     * Gets the integer ID of part 1.
+     * @return Returns int ID1.
      */
     public int getID1() {
         return ID1;
     }
 
     /**
-     *
-     * @param id2 sets ID2.
+     * Sets the ID of the second incompatible part.
+     * @param id2 integer ID of part2.
      */
     public void setID2(int id2) {
         ID2 = id2;
     }
 
     /**
-     *
-     * @return gets ID2.
+     * Gets the integer ID of part 2.
+     * @return Returns int ID2.
      */
     public int getID2() {
         return ID2;

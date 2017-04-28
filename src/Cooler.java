@@ -4,12 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Lillie Hogg
@@ -92,7 +86,7 @@ public class Cooler {
             while (rs.next()) {
                 partID = rs.getInt("PartID");
             }
-//Inserts data in Motherboard table.
+            //Inserts data in Motherboard table.
             query = "INSERT INTO Cooler values (?,?,?)";
              statement = con.prepareStatement(query);
             statement.setInt(1, partID);

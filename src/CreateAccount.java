@@ -1,32 +1,29 @@
 
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Tom
  * @author Lillie
  */
 public class CreateAccount extends javax.swing.JFrame {
-    
+
     UserAccount currentUser;
 
-     /**
-     * Creates new form CreateAccount
+    /**
+     * Default constructor for CreateAccount.
      */
     public CreateAccount() {
         initComponents();
         this.setTitle("Create Account");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-    }   
-    
+    }
+
     /**
-     * Creates new form CreateAccount
-     * @param user which is being created.(or admin user account if creating account)
+     * Constructor for CreateAccount with user parameter.
+     *
+     * @param user The constructor is passed the user argument which currentUser
+     * is then set to which allows it to be accessed throughout the form
      */
     public CreateAccount(UserAccount user) {
         initComponents();
@@ -59,7 +56,7 @@ public class CreateAccount extends javax.swing.JFrame {
         passwordfield = new javax.swing.JPasswordField();
         passwordconfirmfield = new javax.swing.JPasswordField();
         lblCreate = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnReturn = new javax.swing.JButton();
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -84,12 +81,6 @@ public class CreateAccount extends javax.swing.JFrame {
 
         lblEmail.setText("Email:");
 
-        txtboxName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtboxNameActionPerformed(evt);
-            }
-        });
-
         btnSubmit.setText("Create Account");
         btnSubmit.setActionCommand("CreateAccount");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -102,10 +93,10 @@ public class CreateAccount extends javax.swing.JFrame {
 
         lblCreate.setText("Create Account:");
 
-        jButton1.setText("Return to Menu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnReturn.setText("Return to Menu");
+        btnReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnReturnActionPerformed(evt);
             }
         });
 
@@ -149,7 +140,7 @@ public class CreateAccount extends javax.swing.JFrame {
                                 .addComponent(lblCreate)
                                 .addGap(274, 274, 274))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnReturn)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -184,17 +175,16 @@ public class CreateAccount extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSubmit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnReturn)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtboxNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtboxNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtboxNameActionPerformed
-
+    /**
+     * The user information is submitted and a new account is created.
+     */
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         //gets all user inputs from create account form
         String username = txtboxUsername.getText();
@@ -204,14 +194,14 @@ public class CreateAccount extends javax.swing.JFrame {
         String name = txtboxName.getText();
         String surname = txtboxSurname.getText();
         String email = txtboxEmail.getText();
-        
+
         boolean confirm = true;
-        
-        if((username.isEmpty()|| password.isEmpty()) || passwordConfirm.isEmpty() || name.isEmpty() || surname.isEmpty() || email.isEmpty()){
-          
-        confirm = false;
+
+        if ((username.isEmpty() || password.isEmpty()) || passwordConfirm.isEmpty() || name.isEmpty() || surname.isEmpty() || email.isEmpty()) {
+
+            confirm = false;
         }
-        
+
         // validation process, sets lenths and types needed to validate form
         if (confirm) { //Checks to see all fields are complete.
             int emailValidation = email.indexOf('@');
@@ -231,16 +221,16 @@ public class CreateAccount extends javax.swing.JFrame {
                             user.setEmail(email);
                             user.setType(false);
                             user.saveUser();
-                            
+
                             //if valid the account is created in database 
                             JOptionPane.showMessageDialog(null, "Account Created. You will be returned to the Log In Page", "Account Created", JOptionPane.INFORMATION_MESSAGE);
                             LogIn frm = new LogIn();
                             this.setVisible(false);
                             frm.setVisible(true);
 
-                        }else{ //error messages for validation
-                         JOptionPane.showMessageDialog(null, "Account in use, ","", JOptionPane.INFORMATION_MESSAGE);
-                        
+                        } else { //error messages for validation
+                            JOptionPane.showMessageDialog(null, "Account in use, ", "", JOptionPane.INFORMATION_MESSAGE);
+
                         }
 
                     } else {
@@ -266,50 +256,18 @@ public class CreateAccount extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnSubmitActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
+    /**
+     * User is returned to login form.
+     */
+    private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
         this.setVisible(false);
         new LogIn().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CreateAccount().setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_btnReturnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReturn;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel lblConfPassword;
     private javax.swing.JLabel lblCreate;
