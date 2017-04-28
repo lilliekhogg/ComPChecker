@@ -59,7 +59,7 @@ public class Make {
     }
 
     /**
-     *
+     * saves the make to the database
      */
     public void saveMake(){
     
@@ -82,7 +82,7 @@ public class Make {
     
     /**
      *
-     * @param name
+     * @param name sets name of make
      */
     public void setName(String name) {
         this.name = name; 
@@ -90,7 +90,7 @@ public class Make {
        
     /**
      *
-     * @param website
+     * @param website sets the website url
      */
     public void setWebsite(String website) {
         this.website = website;
@@ -98,7 +98,7 @@ public class Make {
 
     /**
      *
-     * @return
+     * @return the list of makes to the user from the database
      */
     public ResultSet  getMakes(){ //returns the make to user
               Connection con = DatabaseConnection.establishConnection();
