@@ -155,8 +155,8 @@ public class AddCooler extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * When the user saves a cooler, the new data is inserted and saved into the
-     * database.
+     * When the user saves an this part, the new data is inserted and saved into
+     * the database.
      */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // retrieves the users inputs when and sets them when save button is actioned
@@ -200,14 +200,14 @@ public class AddCooler extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
-     * Returns the user to the menu.
+     * Clicking calls returnToMenu() to return the user to the menu.
      */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
-     * Populates the make combo with makes.
+     * Populates the make combobox with the different makes.
      */
     private void populateMakes() {
 

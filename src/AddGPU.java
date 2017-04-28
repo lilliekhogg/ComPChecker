@@ -12,7 +12,7 @@ public class AddGPU extends javax.swing.JFrame {
     UserAccount currentUser;
 
     /**
-     * Creates new form AddGPU
+     * Default constructor for addGPU.
      */
     public AddGPU() {
         initComponents();
@@ -45,7 +45,7 @@ public class AddGPU extends javax.swing.JFrame {
         lblChipset = new javax.swing.JLabel();
         lblMemory = new javax.swing.JLabel();
         lblCoreclock = new javax.swing.JLabel();
-        comboMake = new javax.swing.JComboBox<String>();
+        comboMake = new javax.swing.JComboBox<>();
         txtFieldModel = new javax.swing.JTextField();
         txtFieldSeries = new javax.swing.JTextField();
         txtFieldChipset = new javax.swing.JTextField();
@@ -72,13 +72,7 @@ public class AddGPU extends javax.swing.JFrame {
 
         lblCoreclock.setText("Core Clock (GHz):");
 
-        comboMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        txtFieldSeries.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldSeriesActionPerformed(evt);
-            }
-        });
+        comboMake.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblPrice.setText("Price (£):");
 
@@ -175,10 +169,10 @@ public class AddGPU extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFieldSeriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSeriesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldSeriesActionPerformed
-
+    /**
+     * When the user saves an this part, the new data is inserted and saved into
+     * the database.
+     */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // sets the users inputs when the save button is actioned
 
@@ -231,13 +225,16 @@ public class AddGPU extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    /**
+     * Clicking calls returnToMenu() to return the user to the menu.
+     */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // cancels the form and returns to admin menu when button is actioned
-        this.setVisible(false);
-        new AdminMenu().setVisible(true);
+        returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    //adds make types to the form combo box
+    /**
+     * Populates the make combobox with the different makes.
+     */
     private void populateMakes() {
 
         comboMake.removeAllItems();
@@ -255,7 +252,10 @@ public class AddGPU extends javax.swing.JFrame {
         }
 
     }
-
+    
+    /**
+     * Returns the user to the appropriate menu based on their user type.
+     */
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin

@@ -178,8 +178,11 @@ public class AddCPU extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * When the user saves an this part, the new data is inserted and saved into
+     * the database.
+     */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
         CPU cpu = new CPU();
 
         String make = cmboxMake.getSelectedItem().toString();
@@ -222,7 +225,7 @@ public class AddCPU extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
-     * Returns user to the menu.
+     * Clicking calls returnToMenu() to return the user to the menu.
      */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         returnToMenu();
@@ -258,7 +261,7 @@ public class AddCPU extends javax.swing.JDialog {
     }//GEN-LAST:event_btnEditActionPerformed
 
     /**
-     * Populates the make combo with makes.
+     * Populates the make combobox with the different makes.
      */
     private void populateMakes() {
         //adding make to the database
@@ -279,7 +282,7 @@ public class AddCPU extends javax.swing.JDialog {
     }
 
     /**
-     * Returns user to the appropriate menu based on their user type.
+     * Returns the user to the appropriate menu based on their user type.
      */
     private void returnToMenu() {
         this.setVisible(false);

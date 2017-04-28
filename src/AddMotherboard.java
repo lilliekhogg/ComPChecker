@@ -185,8 +185,11 @@ public class AddMotherboard extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * When the user saves an this part, the new data is inserted and saved into
+     * the database.
+     */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
 
         Motherboard motherboard = new Motherboard();
 
@@ -236,10 +239,16 @@ public class AddMotherboard extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    /**
+     * Clicking calls returnToMenu() to return the user to the menu.
+     */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    /**
+     * Populates the comboboxes with the appropriate data.
+     */
     private void populateComboBoxes() {
 
         cmboxMake.removeAllItems();
@@ -291,7 +300,10 @@ public class AddMotherboard extends javax.swing.JDialog {
         cmboxRAMType.addItem("DDR3");
         cmboxRAMType.addItem("DDR4");
     }
-
+    
+    /**
+     * Returns the user to the appropriate menu based on their user type.
+     */
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin

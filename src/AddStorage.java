@@ -175,6 +175,10 @@ public class AddStorage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * When the user saves an this part, the new data is inserted and saved into
+     * the database.
+     */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // sets inputs to the form when the save button is actioned
         Storage storage = new Storage();
@@ -228,11 +232,17 @@ public class AddStorage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    /**
+     * Clicking calls returnToMenu() to return the user to the menu.
+     */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         returnToMenu();
 
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    /**
+     * Populates the make combobox with the different makes.
+     */
     private void populateMakes() {
         //method provides make types within combobox
         comboMake.removeAllItems();
@@ -260,7 +270,9 @@ public class AddStorage extends javax.swing.JFrame {
 
     }
 
-    //return user to main menu
+    /**
+     * Returns the user to the appropriate menu based on their user type.
+     */
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin

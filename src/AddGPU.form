@@ -167,9 +167,6 @@
     <Component class="javax.swing.JTextField" name="txtFieldModel">
     </Component>
     <Component class="javax.swing.JTextField" name="txtFieldSeries">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFieldSeriesActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFieldChipset">
     </Component>

@@ -158,7 +158,7 @@ public class AddAccessory extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * When the user saves an accessory, the new data is inserted and saved into
+     * When the user saves an this part, the new data is inserted and saved into
      * the database.
      */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -195,7 +195,7 @@ public class AddAccessory extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
-     * Returns the user to the appropriate menu on button click.
+     * Clicking calls returnToMenu() to return the user to the menu.
      */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         returnToMenu();
@@ -223,7 +223,7 @@ public class AddAccessory extends javax.swing.JFrame {
     }
 
     /**
-     * Returns the user to the appropriate menu based on user type.
+     * Returns the user to the appropriate menu based on their user type.
      */
     private void returnToMenu() {
         this.setVisible(false);
