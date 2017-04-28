@@ -21,6 +21,12 @@ public class AddStorage extends javax.swing.JFrame {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
     }
+    
+    /**
+     * Constructor for Storage
+     @param user This determines who the user is so they can be returned to
+     * the correct menu with the appropriate options.
+     */
 
     AddStorage(UserAccount user) {
         initComponents();

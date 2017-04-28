@@ -190,9 +190,6 @@ public class AddCPU extends javax.swing.JDialog {
         String pricetest = txtboxPrice.getText();
         String speedtest = txtboxSpeed.getText();
         String corecheck = txtboxCores.getText();
-        //double price
-        //float speed
-        //int core
 
         if (model.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);

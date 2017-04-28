@@ -13,7 +13,7 @@ public class AddPSU extends javax.swing.JFrame {
     UserAccount currentUser;
 
     /**
-     * Creates new form addPSU
+     * Creates new form AddPSU
      */
     public AddPSU() {
         initComponents();
@@ -23,8 +23,9 @@ public class AddPSU extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @param user
+     * Constructor for PSU
+     @param user This determines who the user is so they can be returned to
+     * the correct menu with the appropriate options.
      */
     public AddPSU(UserAccount user) {
         initComponents();

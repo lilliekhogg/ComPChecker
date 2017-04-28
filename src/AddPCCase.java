@@ -12,7 +12,7 @@ public class AddPCCase extends javax.swing.JFrame {
     UserAccount currentUser;
 
     /**
-     * Form method.
+     * Default Form method constructor.
      */
     public AddPCCase() {
 
@@ -21,7 +21,12 @@ public class AddPCCase extends javax.swing.JFrame {
         this.setTitle("Add PCCase");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
-
+    /**
+     * Constructor for PC case
+     @param user This determines who the user is so they can be returned to
+     * the correct menu with the appropriate options.
+     */
+  
     AddPCCase(UserAccount user) {
         initComponents();
         populateMakes();
