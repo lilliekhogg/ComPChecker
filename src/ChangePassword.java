@@ -2,19 +2,38 @@
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 /**
  *
  * @author Tom
+ * @author Lillie
  */
 public class ChangePassword extends javax.swing.JDialog {
 
+    /**
+     * Creates new form ChangePassword
+     */
     UserAccount currentUser;
+   
+    /**
+     *
+     * @param parent
+     * @param modal
+     */
+    public ChangePassword(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        this.setTitle("Change Password");     //Adds a title to the frame
+        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+    }
 
     /**
-     * Constructor for ChangePassword with user parameter.
-     *
-     * @param user The constructor is passed the user argument which currentUser
-     * is then set to which allows it to be accessed throughout the form.
+     * constructor determines the current user to return them to the correct screen
+     * @param user
      */
     public ChangePassword(UserAccount user) {
         initComponents();
@@ -22,11 +41,12 @@ public class ChangePassword extends javax.swing.JDialog {
         this.setTitle("Change Password");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
+    // constructor set to reference login
 
     /**
-     * Default constructor for ChangePassword.
+     * constructor to create the change password form
      */
-    public ChangePassword() {
+    public ChangePassword(){
         initComponents();
         this.setTitle("Change Password");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
@@ -52,6 +72,7 @@ public class ChangePassword extends javax.swing.JDialog {
         buttonChange = new javax.swing.JButton();
         txtFieldUsername = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -73,6 +94,13 @@ public class ChangePassword extends javax.swing.JDialog {
 
         jLabel1.setText("Username:");
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,14 +112,21 @@ public class ChangePassword extends javax.swing.JDialog {
                         .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbloldpassword, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblPassword)
-                                .addGap(3, 3, 3))
-                            .addComponent(lblConfPassword, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(22, 22, 22)
+                        .addComponent(jButton1)
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbloldpassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(lblPassword)
+                                        .addGap(3, 3, 3))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblConfPassword)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtFieldUsername)
@@ -123,18 +158,19 @@ public class ChangePassword extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblConfPassword)
                     .addComponent(passwordconfirmfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonChange))
+                    .addComponent(buttonChange)
+                    .addComponent(jButton1))
                 .addGap(40, 40, 40))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     /**
-     * This method is used to validate the user inputs of the password change
-     * form. If all details are valid, the password is changed.
+     * This method is used to validate the user inputs of the password change form
      */
-
+    
     private void buttonChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeActionPerformed
         // TODO add your handling code here:
         String username = String.valueOf(txtFieldUsername.getText());
@@ -152,9 +188,12 @@ public class ChangePassword extends javax.swing.JDialog {
             boolean passwordSame = currentUser.checkPassword(username, oldPassword);
             //will change the password into the database
             if (passwordSame) {
-                currentUser.changePassword(username, password);
-                JOptionPane.showMessageDialog(null, "Password Changed", "Successful", JOptionPane.INFORMATION_MESSAGE);
-
+                currentUser.changePassword(username,password);
+                  JOptionPane.showMessageDialog(null, "Password Changed", "Successful", JOptionPane.INFORMATION_MESSAGE);
+                
+                
+                
+                
             } else {
                 //print error
                 JOptionPane.showMessageDialog(null, "The entered password does not match the password stored.", "Password Error", JOptionPane.INFORMATION_MESSAGE);
@@ -163,10 +202,60 @@ public class ChangePassword extends javax.swing.JDialog {
 
         }
 
+
     }//GEN-LAST:event_buttonChangeActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Returns the user to the log in page:
+        this.setVisible(false);
+        new LogIn().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ChangePassword.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the dialog */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                ChangePassword dialog = new ChangePassword(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonChange;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblConfPassword;
     private javax.swing.JLabel lblLogo;
