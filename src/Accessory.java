@@ -8,7 +8,7 @@ import java.sql.SQLException;
  * This class represents an accessory. An accessory is a type of component in a
  * PC.
  *
- * @author Lillie Hogg
+ * @author Lillie
  */
 public class Accessory {
 
@@ -84,7 +84,7 @@ public class Accessory {
             while (rs.next()) {
                 partID = rs.getInt("PartID");
             }
-            //Inserts data in Motherboard table.
+            //Inserts data in Accessory table.
             query = "INSERT INTO Accessory values (?,?)";
             statement = con.prepareStatement(query);
             statement.setInt(1, partID);
