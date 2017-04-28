@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -29,26 +30,39 @@ public class EditComponent extends javax.swing.JDialog {
     String partType;
     CreateBuild form;
     int selectedPart, ID1, ID2;
-    
+
     Issue myIssue = new Issue();
 
     /**
-     *Main method
-     * @param parent parent form
-     * @param modal modal
+     * Default constructor for EditComponent
      */
-    public EditComponent(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public EditComponent() {
         initComponents();
         this.setTitle("Select Component");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
     /**
-     *Edit a selected component
+     * Constructor with user parameter
+     *
+     * @param user The user account being passed.
+     */
+    public EditComponent(UserAccount user) {
+        initComponents();
+        this.setTitle("Select Component");     //Adds a title to the frame
+        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
+        currentUser = user;
+//        if (currentUser.getType() == false) {
+//            btnConfirm.setEnabled(false);
+//        }
+    }
+
+    /**
+     * Edit a selected component
+     *
      * @param type the type of form
      * @param mySelectedPart previous form
-     * @param issue  the comp issue
+     * @param issue the comp issue
      * @param user the current user.
      */
     public EditComponent(String type, int mySelectedPart, UserAccount user, Issue issue) {
@@ -382,7 +396,8 @@ public class EditComponent extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     *Returns the ID of the selected row.
+     * Returns the ID of the selected row.
+     *
      * @return the ID of the selected part.
      */
     public int getID() {
@@ -417,13 +432,10 @@ public class EditComponent extends javax.swing.JDialog {
     }//GEN-LAST:event_jTableMouseClicked
 
     private void compatibilityID(int myID) {
-        
-        
-        
+
         if (selectedPart == 1) {
             ID1 = myID;
             myIssue.setID1(ID1);
-            
 
         }
         if (selectedPart == 2) {
@@ -434,47 +446,53 @@ public class EditComponent extends javax.swing.JDialog {
     }
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
-        //temp save part, change button label to part text
-        int ID = getID();
-        compatibilityID(ID);
-        int row = jTable.getSelectedRow();
-        System.out.println(ID);
-        if (partType == "CPU") {
-            AddCPU form = new AddCPU(cpuID);
-            form.btnSave.hide();
-            form.txtboxModel.setText(jTable.getModel().getValueAt(row, 1).toString());
-            form.txtboxPrice.setText(jTable.getModel().getValueAt(row, 2).toString());
-            form.txtboxSpeed.setText(jTable.getModel().getValueAt(row, 3).toString());
-            form.txtboxCores.setText(jTable.getModel().getValueAt(row, 4).toString());
-            form.setVisible(true);
+        if (currentUser.getType() == true) {
+            int ID = getID();
+            compatibilityID(ID);
+            int row = jTable.getSelectedRow();
+            System.out.println(ID);
+            if (partType == "CPU") {
+                AddCPU form = new AddCPU(cpuID);
+                form.btnSave.hide();
+                form.txtboxModel.setText(jTable.getModel().getValueAt(row, 1).toString());
+                form.txtboxPrice.setText(jTable.getModel().getValueAt(row, 2).toString());
+                form.txtboxSpeed.setText(jTable.getModel().getValueAt(row, 3).toString());
+                form.txtboxCores.setText(jTable.getModel().getValueAt(row, 4).toString());
+                form.setVisible(true);
 
-        } else if (partType == "Motherboard") {
+            } else if (partType == "Motherboard") {
 
-        } else if (partType == "RAM") {
+            } else if (partType == "RAM") {
 
-        } else if (partType == "GPU") {
+            } else if (partType == "GPU") {
 
-        } else if (partType == "Storage") {
+            } else if (partType == "Storage") {
 
-        } else if (partType == "Case") {
+            } else if (partType == "Case") {
 
-        } else if (partType == "PSU") {
+            } else if (partType == "PSU") {
 
-        } else if (partType == "Cooler") {
+            } else if (partType == "Cooler") {
 
-        } else if (partType == "Accessory") {
+            } else if (partType == "Accessory") {
 
-        }
+            }
 
-        this.setVisible(false);
-        // if selectedPart is 1 or 2, then the "parent" form was the CompatibilityIssue form
-        if (selectedPart == 1 || selectedPart == 2) {
-            new CompatibilityIssue(currentUser, myIssue).setVisible(true);
-        // else the "parent" form was simply a menu
+            this.setVisible(false);
+            // if selectedPart is 1 or 2, then the "parent" form was the CompatibilityIssue form
+            if (selectedPart == 1 || selectedPart == 2) {
+                new CompatibilityIssue(currentUser, myIssue).setVisible(true);
+                // else the "parent" form was simply a menu
+            } else {
+                new AdminMenu(currentUser).setVisible(true);
+            }
         } else {
-            new AdminMenu(currentUser).setVisible(true);
+            JOptionPane.showMessageDialog(this,
+                    "You don't have permission to edit.",
+                    "Denied!",
+                    JOptionPane.ERROR_MESSAGE);
+            new MainMenu(currentUser).setVisible(true);
         }
-
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

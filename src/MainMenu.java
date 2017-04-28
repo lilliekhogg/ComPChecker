@@ -190,20 +190,23 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnShareBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShareBuildActionPerformed
         JOptionPane.showMessageDialog(this,
-          "The code for sharing builds is incomplete.",
-          "Not finished!",
-          JOptionPane.ERROR_MESSAGE);
+                "The code for sharing builds is incomplete.",
+                "Not finished!",
+                JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnShareBuildActionPerformed
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         JOptionPane.showMessageDialog(this,
-          "The code for requesting components is incomplete.",
-          "Not finished!",
-          JOptionPane.ERROR_MESSAGE);
+                "The code for requesting components is incomplete.",
+                "Not finished!",
+                JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnRequestActionPerformed
 
     private void btnEditMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,
+                "The code for editing own account is incomplete.",
+                "Not finished!",
+                JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnEditMyAccActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
@@ -212,14 +215,80 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogOutActionPerformed
 
     private void btnViewComponentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewComponentsActionPerformed
-        // TODO add your handling code here:
+        String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
+        String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being editted?",
+                "Edit Component", JOptionPane.QUESTION_MESSAGE,
+                null, // Use default icon
+                choices, // Array of choices
+                choices[0]); // Initial choice
+        String myPart;
+        EditComponent frm;
+
+        switch (input) {
+
+            case "Accessory":
+                myPart = "Accessory";
+                frm = new EditComponent(myPart, 0, currentUser, null); //
+                this.setVisible(false);
+                frm.setVisible(true);
+                break;
+
+            case "CPU":
+                myPart = "CPU";
+                frm = new EditComponent(myPart, 0, currentUser, null);
+                this.setVisible(false);
+                frm.setVisible(true);
+                break;
+            case "Motherboard":
+                myPart = "Motherboard";
+                frm = new EditComponent(myPart, 0, currentUser, null);
+                this.setVisible(false);
+                frm.setVisible(true);
+                break;
+            case "RAM":
+                myPart = "RAM";
+                frm = new EditComponent(myPart, 0, currentUser, null);
+                this.setVisible(false);
+                frm.setVisible(true);
+                break;
+            case "PSU":
+                myPart = "PSU";
+                frm = new EditComponent(myPart, 0, currentUser, null);
+                this.setVisible(false);
+                frm.setVisible(true);
+                break;
+            case "Cooler":
+                myPart = "Cooler";
+                frm = new EditComponent(myPart, 0, currentUser, null);
+                this.setVisible(false);
+                frm.setVisible(true);
+                break;
+            case "GPU":
+                myPart = "GPU";
+                frm = new EditComponent(myPart, 0, currentUser, null);
+                this.setVisible(false);
+                frm.setVisible(true);
+                break;
+            case "Case":
+                myPart = "Case";
+                frm = new EditComponent(myPart, 0, currentUser, null);
+                this.setVisible(false);
+                frm.setVisible(true);
+                break;
+            case "Storage":
+                myPart = "Storage";
+                frm = new EditComponent(myPart, 0, currentUser, null);
+                this.setVisible(false);
+                frm.setVisible(true);
+                break;
+        }
     }//GEN-LAST:event_btnViewComponentsActionPerformed
 
     private void btnCompareBuildsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompareBuildsActionPerformed
         JOptionPane.showMessageDialog(this,
-          "The code for comparing builds is incomplete.",
-          "Not finished!",
-          JOptionPane.ERROR_MESSAGE);
+                "The code for comparing builds is incomplete.",
+                "Not finished!",
+                JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnCompareBuildsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

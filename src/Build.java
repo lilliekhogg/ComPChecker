@@ -306,7 +306,7 @@ public class Build {
     /**
      *
      * @param theUser current user.
-     * @param theName the user of the build to load.
+     * @param otherUserBuild the user of the build to load.
      * @return returns the build.
      */
     public Build loadBuild(UserAccount theUser, Build otherUserBuild) {

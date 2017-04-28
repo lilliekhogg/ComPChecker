@@ -134,11 +134,6 @@ public class EditBuilds extends javax.swing.JDialog {
         )
         {public boolean isCellEditable(int row, int column){return false;}}
     );
-    jTable.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            jTableMouseClicked(evt);
-        }
-    });
     jScrollPane1.setViewportView(jTable);
 
     btnEdit.setText("Edit");
@@ -184,10 +179,6 @@ public class EditBuilds extends javax.swing.JDialog {
 
     pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableMouseClicked
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
