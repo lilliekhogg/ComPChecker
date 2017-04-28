@@ -32,6 +32,9 @@ public class AddCPU extends javax.swing.JDialog {
         populateMakes();
     }
 
+    /**
+     *
+     */
     public AddCPU() {
 
         initComponents();
@@ -40,6 +43,10 @@ public class AddCPU extends javax.swing.JDialog {
         populateMakes();
     }
 
+    /**
+     *
+     * @param ID
+     */
     public AddCPU(int ID) {
 
         initComponents();

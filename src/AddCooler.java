@@ -29,6 +29,9 @@ public class AddCooler extends javax.swing.JFrame {
         populateMakes();
     }
 
+    /**
+     *
+     */
     public AddCooler() {
 
         initComponents();

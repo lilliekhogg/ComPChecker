@@ -44,6 +44,10 @@ public class AddPSU extends javax.swing.JFrame {
         populateMakes();
     }
 
+    /**
+     *
+     * @param user
+     */
     public AddPSU(UserAccount user) {
         initComponents();
         this.setTitle("Add PSU");     //Adds a title to the frame

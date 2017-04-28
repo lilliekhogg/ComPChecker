@@ -24,38 +24,67 @@ public class Storage {
     int speed;
     int capacityGB;
   
-    
-    
- public void setMake (String make){
+    /**
+     *
+     * @param make
+     */
+    public void setMake (String make){
     this.make = make;
  }
  
- public void setModel (String model){
+    /**
+     *
+     * @param model
+     */
+    public void setModel (String model){
      this.model = model;
  }
  
- public void setPrice (double price){
+    /**
+     *
+     * @param price
+     */
+    public void setPrice (double price){
      this.price = price;
  }
  
- public void setSeries (String series){
+    /**
+     *
+     * @param series
+     */
+    public void setSeries (String series){
      this.series = series;
  }
  
- public void setHHD (boolean HHD){
+    /**
+     *
+     * @param HHD
+     */
+    public void setHHD (boolean HHD){
      this.HHD = HHD;
  }
  
- public void setSpeed (int speed){
+    /**
+     *
+     * @param speed
+     */
+    public void setSpeed (int speed){
      this.speed = speed;
  }
  
- public void setCapacityGB (int capacityGB){
+    /**
+     *
+     * @param capacityGB
+     */
+    public void setCapacityGB (int capacityGB){
      this.capacityGB = capacityGB;
  }
  
- 
-  public boolean saveStorage() {
+    /**
+     *
+     * @return
+     */
+    public boolean saveStorage() {
 
         Connection con = DatabaseConnection.establishConnection();
 

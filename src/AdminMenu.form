@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="javax.swing.JButton" name="btnAddMake1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Add New Make"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddMake1ActionPerformed"/>
-      </Events>
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="resizable" type="boolean" value="false"/>
@@ -50,20 +40,20 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnCreateAcc" max="32767" attributes="0"/>
                           <Component id="btnViewAccs" alignment="1" max="32767" attributes="0"/>
-                          <Component id="btnViewAccs1" alignment="1" max="32767" attributes="0"/>
+                          <Component id="btnStressTest" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btnNewComponent" max="32767" attributes="0"/>
                           <Component id="lblAdminMenu" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btnAddComp" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnEditComp" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnAddMake" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="btnCreateBuild" max="32767" attributes="0"/>
                           <Component id="btnEditBuild" pref="149" max="32767" attributes="0"/>
-                          <Component id="jButton1" max="32767" attributes="0"/>
+                          <Component id="btnCompatibility" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -90,17 +80,17 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnEditBuild" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="btnViewAccs" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnAddComp" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnEditComp" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnAddMake" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="btnViewAccs1" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnStressTest" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="btnCompatibility" min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="8" max="32767" attributes="0"/>
@@ -127,12 +117,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateAccActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnAddComp">
+    <Component class="javax.swing.JButton" name="btnEditComp">
       <Properties>
         <Property name="text" type="java.lang.String" value="View &amp; Edit Components"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddCompActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditCompActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCreateBuild">
@@ -190,20 +180,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewAccsActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnViewAccs1">
+    <Component class="javax.swing.JButton" name="btnStressTest">
       <Properties>
         <Property name="text" type="java.lang.String" value="Stress Test"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewAccs1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStressTestActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnCompatibility">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Compatibility"/>
+        <Property name="text" type="java.lang.String" value="Add Incompatibility"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCompatibilityActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

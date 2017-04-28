@@ -41,6 +41,9 @@ public class EditBuild extends javax.swing.JFrame {
      */
     Build build = new Build();
 
+    /**
+     *
+     */
     public EditBuild() {
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
@@ -320,6 +323,10 @@ public class EditBuild extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     *
+     * @return
+     */
     public String getPart() {
         System.out.println(myPart);
         return myPart;
@@ -459,6 +466,9 @@ public class EditBuild extends javax.swing.JFrame {
         //returnToMenu();
     }//GEN-LAST:event_lblReturnActionPerformed
 
+    /**
+     *
+     */
     public void refreshParts() {
 
         Parts.clear();

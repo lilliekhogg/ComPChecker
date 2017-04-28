@@ -21,36 +21,64 @@ public class RAM {
     int size;
     int sticks;
     
+    /**
+     *
+     * @param make
+     */
     public void setMake(String make) {
 
         this.make = make;
     }
  
+    /**
+     *
+     * @param model
+     */
     public void setModel(String model) {
 
         this.model = model;
     }
     
+    /**
+     *
+     * @param price
+     */
     public void setPrice(double price) {
 
         this.price = price;
     }
+
+    /**
+     *
+     * @param speed
+     */
     public void setSpeed(String speed) {
         this.speed = speed;
 
     }
 
+    /**
+     *
+     * @param size
+     */
     public void setSize(int size) {
         this.size = size;
 
     }
     
+    /**
+     *
+     * @param sticks
+     */
     public void setSticks(int sticks){
         this.sticks = sticks;
     
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public boolean saveRAM() {
 
         Connection con = DatabaseConnection.establishConnection();

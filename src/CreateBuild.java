@@ -263,6 +263,10 @@ public class CreateBuild extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     *
+     * @return
+     */
     public String getPart() {
         System.out.println(myPart);
         return myPart;
@@ -458,6 +462,9 @@ public class CreateBuild extends javax.swing.JFrame {
         });
     }
 
+    /**
+     *
+     */
     public void refreshParts() {
 
         Parts.clear();

@@ -32,6 +32,12 @@ public class AddGPU extends javax.swing.JFrame {
         populateMakes();
     }
     
+    /**
+     *
+     * @param parent
+     * @param modal
+     * @param user
+     */
     public AddGPU(java.awt.Frame parent, boolean modal, UserAccount user) {
         initComponents();    //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen

@@ -18,7 +18,11 @@ public class ChangePassword extends javax.swing.JDialog {
      */
     UserAccount currentUser;
    
-
+    /**
+     *
+     * @param parent
+     * @param modal
+     */
     public ChangePassword(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -26,6 +30,10 @@ public class ChangePassword extends javax.swing.JDialog {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
+    /**
+     *
+     * @param user
+     */
     public ChangePassword(UserAccount user) {
         initComponents();
         currentUser = user;
@@ -33,6 +41,10 @@ public class ChangePassword extends javax.swing.JDialog {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
     // constructor set to reference login
+
+    /**
+     *
+     */
     public ChangePassword(){
         initComponents();
         this.setTitle("Change Password");     //Adds a title to the frame

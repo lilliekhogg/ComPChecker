@@ -48,7 +48,8 @@ public class SelectComponent extends javax.swing.JDialog {
     /**
      *
      * @param type type of form this form was opened from.
-     * @param form1 parent form
+     * @param create
+     * @param edit
      */
     public SelectComponent(String type, CreateBuild create, EditBuild edit) {
         if (create != null) {

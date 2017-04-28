@@ -82,6 +82,10 @@ public class Motherboard {
         this.maxRAM = max;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean saveMotherboard() {
         
         

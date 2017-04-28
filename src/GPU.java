@@ -24,42 +24,73 @@ public class GPU {
     int memory;
     float coreClock;
     
+    /**
+     *
+     * @param make
+     */
     public void setMake (String make){
     
         this.make = make;
     }
     
+    /**
+     *
+     * @param series
+     */
     public void setSeries (String series){
         
         this.series = series;
     }
     
+    /**
+     *
+     * @param chipset
+     */
     public void setChipset (String chipset){
     
         this.chipset = chipset;
     }
     
+    /**
+     *
+     * @param memory
+     */
     public void setMemory (int memory){
     
         this.memory = memory;
     }
     
+    /**
+     *
+     * @param coreClock
+     */
     public void setCoreClock(float coreClock){
     
         this.coreClock = coreClock;
     } 
     
+    /**
+     *
+     * @param model
+     */
     public void setModel(String model){
     
         this.model = model;
     } 
     
+    /**
+     *
+     * @param price
+     */
     public void setPrice(Double price){
     
         this.price = price;
     } 
     
-    
+    /**
+     *
+     * @return
+     */
     public boolean saveGPU() {
         //saving user inputs to the database
         Connection con = DatabaseConnection.establishConnection();

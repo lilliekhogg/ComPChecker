@@ -31,6 +31,9 @@ public class AddMotherboard extends javax.swing.JDialog {
         populateComboBoxes();
     }
 
+    /**
+     *
+     */
     public AddMotherboard() {
 
         initComponents();

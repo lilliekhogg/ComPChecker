@@ -278,6 +278,9 @@ public class Build {
         return rs;
     }
 
+    /**
+     *
+     */
     public void editBuild() {
         Connection con = DatabaseConnection.establishConnection();
         try {
@@ -315,7 +318,7 @@ public class Build {
     /**
      *
      * @param theUser current username
-     * @param name String build name
+     * @param theName
      * @return returns the build.
      */
     public Build loadBuild(UserAccount theUser, String theName) {

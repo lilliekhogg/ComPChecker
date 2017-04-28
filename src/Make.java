@@ -16,11 +16,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Luke
+ */
 public class Make {
 
     private String name;
     private String website;
 
+    /**
+     *
+     * @param make
+     * @return
+     */
     public boolean checkMakes(String make) {
 
         Connection con = DatabaseConnection.establishConnection(); //connects to datbase
@@ -49,7 +58,10 @@ public class Make {
         return false;
     }
 
-     public void saveMake(){
+    /**
+     *
+     */
+    public void saveMake(){
     
     Connection con = DatabaseConnection.establishConnection();
     
@@ -68,15 +80,27 @@ public class Make {
     
      }
     
-       public void setName(String name) {
+    /**
+     *
+     * @param name
+     */
+    public void setName(String name) {
         this.name = name; 
     }
        
-       public void setWebsite(String website) {
+    /**
+     *
+     * @param website
+     */
+    public void setWebsite(String website) {
         this.website = website;
     }
 
-       public ResultSet  getMakes(){ //returns the make to user
+    /**
+     *
+     * @return
+     */
+    public ResultSet  getMakes(){ //returns the make to user
               Connection con = DatabaseConnection.establishConnection();
        try {
             int availability;

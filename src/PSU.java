@@ -23,28 +23,52 @@ public class PSU {
     boolean modular;
     
     //sets inputs into the form
+
+    /**
+     *
+     * @param make
+     */
 public void setMake (String make){
     this.make = make;
 }
 
-public void setModel(String model){
+    /**
+     *
+     * @param model
+     */
+    public void setModel(String model){
     this.model = model;
 }
 
-public void setPrice(double price ){
+    /**
+     *
+     * @param price
+     */
+    public void setPrice(double price ){
     this.price = price;
 }
 
-public void setWattage (int wattage){
+    /**
+     *
+     * @param wattage
+     */
+    public void setWattage (int wattage){
     this.wattage = wattage;
 }
 
-public void setModular (boolean modular){
+    /**
+     *
+     * @param modular
+     */
+    public void setModular (boolean modular){
     this.modular = modular;
 }
 
-
- public boolean savePSU() {
+    /**
+     *
+     * @return
+     */
+    public boolean savePSU() {
         
         
         Connection con = DatabaseConnection.establishConnection();

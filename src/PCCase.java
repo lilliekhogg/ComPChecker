@@ -27,40 +27,76 @@ public class PCCase {
     
     
     //sets inputs into the database
+
+    /**
+     *
+     * @param make
+     */
     public void setMake(String make){
         this.make = make;
     }
     
+    /**
+     *
+     * @param model
+     */
     public void setModel (String model){
         this.model = model;
     }
     
+    /**
+     *
+     * @param price
+     */
     public void setPrice(Double price){
         this.price = price;
     }
     
+    /**
+     *
+     * @param height
+     */
     public void setHeight(int height){
         this.height = height;
     }
     
+    /**
+     *
+     * @param width
+     */
     public void setWidth(int width){
         this.width = width;
     }
     
+    /**
+     *
+     * @param CDepth
+     */
     public void setCDepth(int CDepth){
         this.CDepth = CDepth;
     }
     
+    /**
+     *
+     * @param colour
+     */
     public void setColour(String colour){
         this.colour = colour;
     }
     
+    /**
+     *
+     * @param motherboard
+     */
     public void setMotherboard (String motherboard){
         this.motherboard = motherboard;
     }
     
-    
-     public boolean savePCCase() {
+    /**
+     *
+     * @return
+     */
+    public boolean savePCCase() {
         
         //saving user inputs to the database
         Connection con = DatabaseConnection.establishConnection();
