@@ -21,6 +21,13 @@ public class AddGPU extends javax.swing.JFrame {
         populateMakes();
     }
 
+    /**
+     * Constructor for AddGPU
+     *
+     * @param user This determines who the user is so they can be returned to
+     * the correct menu with the appropriate options.
+     */
+    
     AddGPU(UserAccount user) {
         initComponents();
         this.setTitle("Add GPU");     //Adds a title to the frame

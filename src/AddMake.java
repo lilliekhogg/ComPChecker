@@ -18,6 +18,12 @@ public class AddMake extends javax.swing.JFrame {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
+    /**
+     * Constructor for AddMake
+     *
+     * @param user This determines who the user is so they can be returned to
+     * the correct menu with the appropriate options.
+     */
     AddMake(UserAccount user) {
         initComponents();
         this.setTitle("Add Make");     //Adds a title to the frame

@@ -13,7 +13,7 @@ public class AddMotherboard extends javax.swing.JDialog {
     UserAccount currentUser;
 
     /**
-     *
+     * Constructor for motherboard
      */
     public AddMotherboard() {
 
@@ -23,6 +23,12 @@ public class AddMotherboard extends javax.swing.JDialog {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
 
+    /**
+     * Constructor for AddMotherboard
+     *
+     * @param user This determines who the user is so they can be returned to
+     * the correct menu with the appropriate options.
+     */
     AddMotherboard(UserAccount user) {
         initComponents();
         populateComboBoxes();
