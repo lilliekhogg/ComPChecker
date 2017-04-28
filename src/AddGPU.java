@@ -193,7 +193,7 @@ public class AddGPU extends javax.swing.JFrame {
         String memoryCheck = txtFieldMemory.getText();
         String coreClockTest = txtFieldcClock.getText();
 
-        //validation - error message if wrong
+        //validation - error message if inputs are wrong 
         if (model.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
         } else if (pricetest.isEmpty()) {
@@ -206,7 +206,7 @@ public class AddGPU extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error, please enter the memory size", "Error!", JOptionPane.INFORMATION_MESSAGE);
         } else if (coreClockTest.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter the core clock", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        } else { //when input boxes are not empty
+        } else { //when input boxes are not empty - Parse values
             double price = Double.parseDouble(pricetest);
             int memory = Integer.parseInt(memoryCheck);
             float coreclock = Float.parseFloat(coreClockTest);
