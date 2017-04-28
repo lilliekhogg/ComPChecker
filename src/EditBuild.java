@@ -64,7 +64,7 @@ public class EditBuild extends javax.swing.JFrame {
         currentBuild = myBuild;
         
 
-        currentBuild.loadBuild(currentUser, currentBuild.getName());
+        currentBuild.loadBuild(currentUser, currentBuild);
         
         motherboard = currentBuild.getMotherboard();
         CPU = currentBuild.getCPU();

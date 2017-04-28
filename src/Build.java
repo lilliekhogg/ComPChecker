@@ -309,12 +309,13 @@ public class Build {
      * @param theName the user of the build to load.
      * @return returns the build.
      */
-    public Build loadBuild(UserAccount theUser, String theName) {
+    public Build loadBuild(UserAccount theUser, Build otherUserBuild) {
         Connection con = DatabaseConnection.establishConnection();
 
         try {
             Statement stmt = (Statement) con.createStatement();
-            String query = ("SELECT * FROM Build WHERE Account = '" + (theUser.getUsername()) + "'" + " AND name ='" + theName + "'");
+            String query = ("SELECT * FROM Build WHERE Account = '" + (theUser.getUsername()) 
+                    + "'" + " AND name ='" + otherUserBuild.getName() + "'");
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
@@ -328,7 +329,7 @@ public class Build {
                 PCCase = rs.getInt("PCCase");
                 accessory = rs.getInt("Accessory");
                 username = rs.getString("Account");
-                name = theName;
+                name = otherUserBuild.getName();
                 //name = rs.getString("name");
                 return this;
             }
