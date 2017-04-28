@@ -1,18 +1,15 @@
 
+/*
+ * Setting imports of the class
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author Lillie Hogg
+ * @author Lillie
  */
 public class PCCase {
  
@@ -29,7 +26,7 @@ public class PCCase {
     //sets inputs into the database
 
     /**
-     *
+     *sets the make of the component
      * @param make
      */
     public void setMake(String make){
@@ -37,7 +34,7 @@ public class PCCase {
     }
     
     /**
-     *
+     *setting the model of the component
      * @param model
      */
     public void setModel (String model){
@@ -45,7 +42,7 @@ public class PCCase {
     }
     
     /**
-     *
+     *sets the price of the Pccase 
      * @param price
      */
     public void setPrice(Double price){
@@ -53,7 +50,7 @@ public class PCCase {
     }
     
     /**
-     *
+     *Sets the height of the pc case
      * @param height
      */
     public void setHeight(int height){
@@ -61,7 +58,7 @@ public class PCCase {
     }
     
     /**
-     *
+     *sets the width of the pc case
      * @param width
      */
     public void setWidth(int width){
@@ -69,7 +66,7 @@ public class PCCase {
     }
     
     /**
-     *
+     * sets the depth of the pc case
      * @param CDepth
      */
     public void setCDepth(int CDepth){
@@ -77,7 +74,7 @@ public class PCCase {
     }
     
     /**
-     *
+     * setting the colour of the pc case
      * @param colour
      */
     public void setColour(String colour){
@@ -85,7 +82,7 @@ public class PCCase {
     }
     
     /**
-     *
+     * setting the motherboard type compatible with pc case
      * @param motherboard
      */
     public void setMotherboard (String motherboard){
@@ -93,8 +90,8 @@ public class PCCase {
     }
     
     /**
-     *
-     * @return
+     * saving the pc case to the database
+     * @return PCCase
      */
     public boolean savePCCase() {
         

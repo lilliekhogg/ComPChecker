@@ -12,6 +12,7 @@ import java.sql.SQLException;
 /**
  *
  * @author Tom
+ * @author Lillie
  */
 public class Motherboard {
 
@@ -84,7 +85,7 @@ public class Motherboard {
 
     /**
      *
-     * @return
+     * @return the motherboard from database
      */
     public boolean saveMotherboard() {
         
