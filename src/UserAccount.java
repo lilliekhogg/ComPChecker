@@ -37,7 +37,8 @@ public class UserAccount {
      *
      * @param enteredUname the username from user input.
      * @param enteredPass the password from user input.
-     * @return if true, login is successfully. If false login has not been completed.
+     * @return if true, login is successfully. If false login has not been
+     * completed.
      */
     public boolean LogInService(String enteredUname, String enteredPass) {
         //Checks entered username and password against ones stored in database.
@@ -79,7 +80,7 @@ public class UserAccount {
      * the database.
      *
      * @param username a pass username
-     * @param password  a passed password
+     * @param password a passed password
      * @return if true password is correct.
      */
     public boolean checkPassword(String username, String password) {
@@ -139,7 +140,8 @@ public class UserAccount {
     }
 
     /**
-     *This method sets the username of the object.
+     * This method sets the username of the object.
+     *
      * @param username the passed String username.
      */
     public void setUsername(String username) {
@@ -147,7 +149,8 @@ public class UserAccount {
     }
 
     /**
-     *This method sets the password of the object.
+     * This method sets the password of the object.
+     *
      * @param password sets password
      */
     public void setPassword(String password) {
@@ -156,7 +159,7 @@ public class UserAccount {
 
     /**
      *
-     * @param fname  firstname
+     * @param fname firstname
      */
     public void setFname(String fname) {
         this.fName = fname;
@@ -180,7 +183,8 @@ public class UserAccount {
 
     /**
      *
-     * @param type represents the type of user (True = Admin, false = General user)
+     * @param type represents the type of user (True = Admin, false = General
+     * user)
      */
     public void setType(boolean type) {
         this.type = type;
@@ -195,10 +199,10 @@ public class UserAccount {
     }
 
     /**
-     * 
+     *
      * @return user's first name.
      */
-     public String getFName() {
+    public String getFName() {
         return fName;
     }
 
@@ -209,7 +213,7 @@ public class UserAccount {
     public String getSName() {
         return sName;
     }
-     
+
     /**
      *
      * @return user's email.
@@ -217,11 +221,11 @@ public class UserAccount {
     public String getEmail() {
         return email;
     }
-     
+
     /**
-     *System method.
-     * (Don't know what this does but we need it)
-     * @param args system arguements. 
+     * System method. (Don't know what this does but we need it)
+     *
+     * @param args system arguements.
      */
     public static void main(String[] args) {
         // TODO code application logic here
@@ -234,7 +238,7 @@ public class UserAccount {
      * checking the availability of a username in the database.
      *
      * @param username a string username
-     * @return if true username is available. 
+     * @return if true username is available.
      */
     public boolean usernameAvailability(String username) {
         Connection con = DatabaseConnection.establishConnection();
@@ -291,8 +295,10 @@ public class UserAccount {
         }
 
     }
+
     /**
      * Promotes current user, or passed user, to admin.
+     *
      * @return this value represents if the process has been completed.
      */
     public boolean promoteToAdmin() {
@@ -311,14 +317,14 @@ public class UserAccount {
         }
         return false;
     }
+
     /*
     This method deletes the user from the database.
-    */
-
-    /**
-     *Deletes current UserAccount object
      */
 
+    /**
+     * Deletes current UserAccount object
+     */
     public void deleteUser() {
         Connection con = DatabaseConnection.establishConnection();
         try {
@@ -344,34 +350,36 @@ public class UserAccount {
         }
 
     }
+
     /**
      * This method populates the userAccount object from a given username.
      */
-    public void populateUser(){
-    Connection con = DatabaseConnection.establishConnection();
-       try {
-           Statement stmt = (Statement) con.createStatement();
+    public void populateUser() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            Statement stmt = (Statement) con.createStatement();
             String query = "SELECT * FROM Account WHERE ID = '" + this.username + "'";
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
-             while (rs.next()) {
-                    fName = rs.getString("Fname");
-                    sName = rs.getString("sName");
-                    email = rs.getString("Email");
-                    type = rs.getBoolean("accountType");
-                }
+            while (rs.next()) {
+                fName = rs.getString("Fname");
+                sName = rs.getString("sName");
+                email = rs.getString("Email");
+                type = rs.getBoolean("accountType");
+            }
         } catch (SQLException err) {
             System.out.println(err.getMessage());
         }
     }
+
     /**
-     * This method edits a users details.
-     * It uses the current object to access the attributes.
+     * This method edits a users details. It uses the current object to access
+     * the attributes.
      */
-    public void editUser(){
-    Connection con = DatabaseConnection.establishConnection();
-    try{
-    String query = "UPDATE Account SET fName = ?, sName = ?, Email = ?, accountType = ? WHERE ID = ?";
+    public void editUser() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            String query = "UPDATE Account SET fName = ?, sName = ?, Email = ?, accountType = ? WHERE ID = ?";
             PreparedStatement statement = con.prepareStatement(query);
             statement.setString(1, this.fName);
             statement.setString(2, this.sName);
@@ -380,15 +388,13 @@ public class UserAccount {
             statement.setString(5, this.username);
             statement.executeUpdate();
             statement.close();
-            System.out.println(fName  + sName + email + type);
-            
-            
-    }catch(SQLException err){
-      System.out.println(err.getMessage());
-    
-    }
-    
-    
+            System.out.println(fName + sName + email + type);
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+
+        }
+
     }
 
 }

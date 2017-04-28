@@ -25,7 +25,7 @@ public class Build {
     int storage;
     int PCCase;
     int accessory;
-    String user;
+    String username;
     String name;
 
     /**
@@ -196,7 +196,7 @@ public class Build {
      * @param theUser user name
      */
     public void setUser(String theUser) {
-        this.user = theUser;
+        this.username = theUser;
     }
 
     /**
@@ -204,7 +204,7 @@ public class Build {
      * @return name
      */
     public String getUser() {
-        return user;
+        return username;
     }
 
     /**
@@ -221,7 +221,7 @@ public class Build {
             PreparedStatement statement = con.prepareStatement(query);
 
             //setting user inputs into sql query
-            statement.setString(1, user);
+            statement.setString(1, username);
             statement.setInt(2, motherboard);
             statement.setInt(3, CPU);
             statement.setInt(4, RAM);
@@ -288,7 +288,7 @@ public class Build {
             PreparedStatement statement = con.prepareStatement(query);
             //statement.setString(1, this.user);
             //careful this doesnt overwrite build author.
-            statement.setString(1, user);
+            statement.setString(1, username);
             statement.setInt(2, motherboard);
             statement.setInt(3, CPU);
             statement.setInt(4, RAM);
@@ -299,7 +299,7 @@ public class Build {
             statement.setInt(9, cooler);
             statement.setInt(10, accessory);
             statement.setString(11, name);
-            statement.setString(12, user);
+            statement.setString(12, username);
             statement.setString(13, name);
 
             statement.executeUpdate();
@@ -314,16 +314,16 @@ public class Build {
 
     /**
      *
-     * @param user current username
+     * @param theUser current username
      * @param name String build name
      * @return returns the build.
      */
-    public Build loadBuild(UserAccount theUser, String name) {
+    public Build loadBuild(UserAccount theUser, String theName) {
         Connection con = DatabaseConnection.establishConnection();
 
         try {
             Statement stmt = (Statement) con.createStatement();
-            String query = ("SELECT * From Build WHERE Account = '" + theUser.getUsername() + "'" + " AND name ='" + name + "'");
+            String query = ("SELECT * FROM Build WHERE Account = '" + (theUser.getUsername()) + "'" + " AND name ='" + theName + "'");
             stmt.executeQuery(query);
             ResultSet rs = stmt.getResultSet();
             while (rs.next()) {
@@ -336,8 +336,10 @@ public class Build {
                 storage = rs.getInt("Storage");
                 PCCase = rs.getInt("PCCase");
                 accessory = rs.getInt("Accessory");
-                user = rs.getString("Account");
-                name = name;
+                
+                username = rs.getString("Account");
+                name = theName;
+                //name = rs.getString("name");
                 return this;
             }
         } catch (SQLException err) {

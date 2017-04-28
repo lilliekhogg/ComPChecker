@@ -385,7 +385,7 @@ public class CreateBuild extends javax.swing.JFrame {
         myBuild.accessory = accessory;
         myBuild.name = txtboxName.getText();
         myBuild.storage = storage;
-        myBuild.user = username;
+        myBuild.username = username;
 
         myBuild.SaveBuild();
     }

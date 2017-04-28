@@ -66,19 +66,20 @@ public class EditBuild extends javax.swing.JFrame {
         currentUser = user;
         currentBuild = myBuild;
         
-        build.loadBuild(user, myBuild.getName());
+        currentBuild.loadBuild(currentUser, currentBuild.getName());
+        System.out.println("user"+currentBuild.getUser());
         
-        txtboxName.setText(build.getName());
+        txtboxName.setText(currentBuild.getName());
         txtboxName.setEditable(false);
-        btnProcessor.setText(getMakeModel(build.getCPU(), con));
-        btnMotherboard.setText(getMakeModel(build.getMotherboard(), con));
-        btnRAM.setText(getMakeModel(build.getRAM(), con));
-        btnGraphics.setText(getMakeModel(build.getGPU(), con));
-        btnStorage.setText(getMakeModel(build.getStorage(), con));
-        btnCase.setText(getMakeModel(build.getCase(), con));
-        btnPowerSup.setText(getMakeModel(build.getPSU(), con));
-        btnCooling.setText(getMakeModel(build.getCooler(), con));
-        btnAccessories.setText(getMakeModel(build.getAccessory(), con));
+        btnProcessor.setText(getMakeModel(currentBuild.getCPU(), con));
+        btnMotherboard.setText(getMakeModel(currentBuild.getMotherboard(), con));
+        btnRAM.setText(getMakeModel(currentBuild.getRAM(), con));
+        btnGraphics.setText(getMakeModel(currentBuild.getGPU(), con));
+        btnStorage.setText(getMakeModel(currentBuild.getStorage(), con));
+        btnCase.setText(getMakeModel(currentBuild.getCase(), con));
+        btnPowerSup.setText(getMakeModel(currentBuild.getPSU(), con));
+        btnCooling.setText(getMakeModel(currentBuild.getCooler(), con));
+        btnAccessories.setText(getMakeModel(currentBuild.getAccessory(), con));
 
     }
 
@@ -410,15 +411,15 @@ public class EditBuild extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "WARNING. Issues have been deceted between the selected parts. Please chose different parts..", "WARNING", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 saveBuild();
-                this.setVisible(false);
-                new EditBuilds(currentUser).setVisible(true);       //Resets components when build is saved
+                //this.setVisible(false);
+                //new EditBuilds(currentUser).setVisible(true);       //Resets components when build is saved
             }
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void saveBuild() {
-        getPart();
-        //Build myBuild = new Build();
+//        getPart();
+//        Build myBuild = new Build();
 //        myBuild.CPU = CPU;
 //        myBuild.motherboard = motherboard;
 //        myBuild.RAM = RAM;
@@ -429,18 +430,18 @@ public class EditBuild extends javax.swing.JFrame {
 //        myBuild.accessory = accessory;
 //        myBuild.name = txtboxName.getText();
 //        myBuild.storage = storage;
-//        myBuild.user = username;
-          currentBuild.setCPU(CPU);
-          currentBuild.setMotherboard(motherboard);
-          currentBuild.setRAM(RAM);
-          currentBuild.setGPU(GPU);
-          currentBuild.setCase(PCCase);
-          currentBuild.setPSU(PSU);
-          currentBuild.setCooler(cooler);
-          currentBuild.setAccessory(accessory);
-          currentBuild.setName(txtboxName.getText());
-          currentBuild.setStorage(storage);
-          currentBuild.setUser(username);
+        //myBuild.user = username;
+          currentBuild.setCPU(currentBuild.getCPU());
+          currentBuild.setMotherboard(currentBuild.getMotherboard());
+          currentBuild.setRAM(currentBuild.getRAM());
+          currentBuild.setGPU(currentBuild.getGPU());
+          currentBuild.setCase(currentBuild.getCase());
+          currentBuild.setPSU(currentBuild.getPSU());
+          currentBuild.setCooler(currentBuild.getCooler());
+          currentBuild.setAccessory(currentBuild.getAccessory());
+          currentBuild.setName(currentBuild.getName());
+          currentBuild.setStorage(currentBuild.getStorage());
+          currentBuild.setUser(currentBuild.getUser());
           
         currentBuild.editBuild();
     }
@@ -455,7 +456,8 @@ public class EditBuild extends javax.swing.JFrame {
     }
 
     private void lblReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblReturnActionPerformed
-        returnToMenu();
+        this.setVisible(false);
+        //returnToMenu();
     }//GEN-LAST:event_lblReturnActionPerformed
 
     public void refreshParts() {

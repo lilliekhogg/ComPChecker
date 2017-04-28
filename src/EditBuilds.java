@@ -217,7 +217,7 @@ public class EditBuilds extends javax.swing.JDialog {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.setVisible(false);
-        new AdminMenu(currentUser).setVisible(true); //Returns to admin menu
+        //new AdminMenu(currentUser).setVisible(true); //Returns to admin menu
     }//GEN-LAST:event_btnCloseActionPerformed
 
     /**

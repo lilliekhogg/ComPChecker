@@ -229,7 +229,8 @@ public class EditAccount extends javax.swing.JFrame {
             newUser.setType(false);
         }
         System.out.println(fname  + sname + email + type);
-
+        //this.setVisible(false);
+        //new AdminMenu(currentUser).setVisible(true);
 
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -238,7 +239,8 @@ public class EditAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_comboboxTypeActionPerformed
 
     private void btnReturnToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnToMenuActionPerformed
-        returnToMenu();
+        this.setVisible(false);
+        //returnToMenu();
     }//GEN-LAST:event_btnReturnToMenuActionPerformed
 
     private void returnToMenu() {
