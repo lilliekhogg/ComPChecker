@@ -22,7 +22,7 @@ public class RAM {
     int sticks;
     
     /**
-     *
+     * Setting the make of RAM
      * @param make
      */
     public void setMake(String make) {
@@ -31,7 +31,7 @@ public class RAM {
     }
  
     /**
-     *
+     *Setting the model of the RAM
      * @param model
      */
     public void setModel(String model) {
@@ -40,7 +40,7 @@ public class RAM {
     }
     
     /**
-     *
+     *Setting the price of the RAM
      * @param price
      */
     public void setPrice(double price) {
@@ -49,7 +49,7 @@ public class RAM {
     }
 
     /**
-     *
+     *Setting the speed of the RAM
      * @param speed
      */
     public void setSpeed(String speed) {
@@ -58,7 +58,7 @@ public class RAM {
     }
 
     /**
-     *
+     *Setting the size of the RAM
      * @param size
      */
     public void setSize(int size) {
@@ -67,7 +67,7 @@ public class RAM {
     }
     
     /**
-     *
+     *Setting the number of sticks the RAM has
      * @param sticks
      */
     public void setSticks(int sticks){
@@ -76,8 +76,8 @@ public class RAM {
     }
     
     /**
-     *
-     * @return
+     * Saving the RAM to the database
+     * @return RAM
      */
     public boolean saveRAM() {
 

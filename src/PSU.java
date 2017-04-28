@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Lillie Hogg
+ * @author Lillie
  */
 public class PSU {
     
@@ -25,7 +25,7 @@ public class PSU {
     //sets inputs into the form
 
     /**
-     *
+     *Setting the make of the PSU
      * @param make
      */
 public void setMake (String make){
@@ -33,7 +33,7 @@ public void setMake (String make){
 }
 
     /**
-     *
+     *Setting the model of the PSU
      * @param model
      */
     public void setModel(String model){
@@ -41,7 +41,7 @@ public void setMake (String make){
 }
 
     /**
-     *
+     *Setting the price of the PSU
      * @param price
      */
     public void setPrice(double price ){
@@ -49,7 +49,7 @@ public void setMake (String make){
 }
 
     /**
-     *
+     *Setting the wattage of the PSU
      * @param wattage
      */
     public void setWattage (int wattage){
@@ -57,7 +57,7 @@ public void setMake (String make){
 }
 
     /**
-     *
+     *Setting the PSU modular
      * @param modular
      */
     public void setModular (boolean modular){
@@ -65,8 +65,8 @@ public void setMake (String make){
 }
 
     /**
-     *
-     * @return
+     * Saving the power supply to the database
+     * @return PSU
      */
     public boolean savePSU() {
         
@@ -74,7 +74,7 @@ public void setMake (String make){
         Connection con = DatabaseConnection.establishConnection();
 
         try {
-//Inserts data into part table.
+            //Inserts data into part table.
             String query = "INSERT INTO Part  (Price,Model,Make,PartType) VALUES (?,?,?,?)";
 
             PreparedStatement statement = con.prepareStatement(query);
@@ -94,7 +94,7 @@ public void setMake (String make){
             while (rs.next()) {
                 partID = rs.getInt("PartID");
             }
-//Inserts data in Motherboard table.
+            //Inserts data in Motherboard table.
             query = "INSERT INTO PSU values (?,?,?)";
              statement = con.prepareStatement(query);
             statement.setInt(1, partID);

@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author Lillie
  */
 public class Storage {
     
@@ -25,7 +25,7 @@ public class Storage {
     int capacityGB;
   
     /**
-     *
+     * Setting the make of the Storage
      * @param make
      */
     public void setMake (String make){
@@ -33,7 +33,7 @@ public class Storage {
  }
  
     /**
-     *
+     *Setting the model of the storage
      * @param model
      */
     public void setModel (String model){
@@ -41,7 +41,7 @@ public class Storage {
  }
  
     /**
-     *
+     *Setting the price of storage
      * @param price
      */
     public void setPrice (double price){
@@ -49,7 +49,7 @@ public class Storage {
  }
  
     /**
-     *
+     *Setting the storages series
      * @param series
      */
     public void setSeries (String series){
@@ -57,7 +57,7 @@ public class Storage {
  }
  
     /**
-     *
+     *Setting Whether Storage is HHD
      * @param HHD
      */
     public void setHHD (boolean HHD){
@@ -65,7 +65,7 @@ public class Storage {
  }
  
     /**
-     *
+     *Setting speed of storage
      * @param speed
      */
     public void setSpeed (int speed){
@@ -73,7 +73,7 @@ public class Storage {
  }
  
     /**
-     *
+     * Setting storage capacity
      * @param capacityGB
      */
     public void setCapacityGB (int capacityGB){
@@ -81,14 +81,14 @@ public class Storage {
  }
  
     /**
-     *
-     * @return
+     * saving the storage to the database
+     * @return Storage
      */
     public boolean saveStorage() {
 
         Connection con = DatabaseConnection.establishConnection();
 
-        try {
+        try { //inserting the Storage into part table
             String query = "INSERT INTO Part (Price,Model,Make,PartType) VALUES (?,?,?,?)";
 
             PreparedStatement statement = con.prepareStatement(query);
@@ -107,11 +107,11 @@ public class Storage {
             while (rs.next()) {
                 partID = rs.getInt("PartID");
             }
-
+            //inserting fields into the storage table in database
             query = "INSERT INTO Storage values (?,?,?,?,?)";
 
             statement = con.prepareStatement(query);
-
+            //order in which these are entered
             statement.setInt(1, partID);
             statement.setString(2, this.series);
             statement.setBoolean(3, this.HHD);
