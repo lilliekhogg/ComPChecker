@@ -65,21 +65,34 @@ public class EditBuild extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         currentUser = user;
         currentBuild = myBuild;
+        
 
         currentBuild.loadBuild(currentUser, currentBuild.getName());
-        System.out.println("user" + currentBuild.getUser());
+        
+        motherboard = currentBuild.getMotherboard();
+        System.out.println("1"+motherboard);
+        CPU = currentBuild.getCPU();
+        RAM = currentBuild.getRAM();
+        storage = currentBuild.getStorage();
+        GPU = currentBuild.getGPU();
+        PSU = currentBuild.getPSU();
+        PCCase = currentBuild.getCase();
+        cooler = currentBuild.getCooler();
+        accessory = currentBuild.getAccessory();
+        name = currentBuild.getName();
+        username = currentBuild.getUser();
 
-        txtboxName.setText(currentBuild.getName());
+        txtboxName.setText(name);
         txtboxName.setEditable(false);
-        btnProcessor.setText(getMakeModel(currentBuild.getCPU(), con));
-        btnMotherboard.setText(getMakeModel(currentBuild.getMotherboard(), con));
-        btnRAM.setText(getMakeModel(currentBuild.getRAM(), con));
-        btnGraphics.setText(getMakeModel(currentBuild.getGPU(), con));
-        btnStorage.setText(getMakeModel(currentBuild.getStorage(), con));
-        btnCase.setText(getMakeModel(currentBuild.getCase(), con));
-        btnPowerSup.setText(getMakeModel(currentBuild.getPSU(), con));
-        btnCooling.setText(getMakeModel(currentBuild.getCooler(), con));
-        btnAccessories.setText(getMakeModel(currentBuild.getAccessory(), con));
+        btnProcessor.setText(getMakeModel(CPU, con));
+        btnMotherboard.setText(getMakeModel(motherboard, con));
+        btnRAM.setText(getMakeModel(RAM, con));
+        btnGraphics.setText(getMakeModel(GPU, con));
+        btnStorage.setText(getMakeModel(storage, con));
+        btnCase.setText(getMakeModel(PCCase, con));
+        btnPowerSup.setText(getMakeModel(PSU, con));
+        btnCooling.setText(getMakeModel(cooler, con));
+        btnAccessories.setText(getMakeModel(accessory, con));
 
     }
 
@@ -418,37 +431,23 @@ public class EditBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void saveBuild() {
-//        getPart();
-//        Build myBuild = new Build();
-//        myBuild.CPU = CPU;
-//        myBuild.motherboard = motherboard;
-//        myBuild.RAM = RAM;
-//        myBuild.GPU = GPU;
-//        myBuild.PCCase = PCCase;
-//        myBuild.PSU = PSU;
-//        myBuild.cooler = cooler;
-//        myBuild.accessory = accessory;
-//        myBuild.name = txtboxName.getText();
-//        myBuild.storage = storage;
-        //myBuild.user = username;
-
+        
         //BUG IS HERE
         
         currentBuild.setCPU(CPU);
         currentBuild.setMotherboard(motherboard);
-        currentBuild.setRAM(currentBuild.getRAM());
-        currentBuild.setGPU(currentBuild.getGPU());
-        currentBuild.setCase(currentBuild.getCase());
-        currentBuild.setPSU(currentBuild.getPSU());
-        currentBuild.setCooler(currentBuild.getCooler());
-        currentBuild.setAccessory(currentBuild.getAccessory());
-        currentBuild.setName(currentBuild.getName());
-        currentBuild.setStorage(currentBuild.getStorage());
-        currentBuild.setUser(currentBuild.getUser());
-
-        System.out.println("motherboard" + currentBuild.getMotherboard());
-        System.out.println("name" + currentBuild.getName());
-        System.out.println("user" + currentBuild.getUser());
+        System.out.println("2"+motherboard);
+        currentBuild.setRAM(RAM);
+        currentBuild.setGPU(GPU);
+        currentBuild.setCase(PCCase);
+        currentBuild.setPSU(PSU);
+        currentBuild.setCooler(cooler);
+        currentBuild.setAccessory(accessory);
+        currentBuild.setName(name);
+        System.out.println("name"+name);
+        currentBuild.setStorage(storage);
+        currentBuild.setUser(username);
+        System.out.println("user"+username);
 
         currentBuild.editBuild();
     }
