@@ -290,7 +290,6 @@ public class Build {
             //careful this doesnt overwrite build author.
             statement.setString(1, username);
             statement.setInt(2, motherboard);
-            System.out.println("3"+motherboard);
             statement.setInt(3, CPU);
             statement.setInt(4, RAM);
             statement.setInt(5, storage);
@@ -337,7 +336,6 @@ public class Build {
                 storage = rs.getInt("Storage");
                 PCCase = rs.getInt("PCCase");
                 accessory = rs.getInt("Accessory");
-                
                 username = rs.getString("Account");
                 name = theName;
                 //name = rs.getString("name");

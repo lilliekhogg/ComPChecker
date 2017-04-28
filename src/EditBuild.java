@@ -70,7 +70,6 @@ public class EditBuild extends javax.swing.JFrame {
         currentBuild.loadBuild(currentUser, currentBuild.getName());
         
         motherboard = currentBuild.getMotherboard();
-        System.out.println("1"+motherboard);
         CPU = currentBuild.getCPU();
         RAM = currentBuild.getRAM();
         storage = currentBuild.getStorage();
@@ -431,12 +430,8 @@ public class EditBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void saveBuild() {
-        
-        //BUG IS HERE
-        
         currentBuild.setCPU(CPU);
         currentBuild.setMotherboard(motherboard);
-        System.out.println("2"+motherboard);
         currentBuild.setRAM(RAM);
         currentBuild.setGPU(GPU);
         currentBuild.setCase(PCCase);
@@ -444,10 +439,8 @@ public class EditBuild extends javax.swing.JFrame {
         currentBuild.setCooler(cooler);
         currentBuild.setAccessory(accessory);
         currentBuild.setName(name);
-        System.out.println("name"+name);
         currentBuild.setStorage(storage);
         currentBuild.setUser(username);
-        System.out.println("user"+username);
 
         currentBuild.editBuild();
     }
@@ -496,7 +489,7 @@ public class EditBuild extends javax.swing.JFrame {
         if (accessory != 0) {
             Parts.add(accessory);
         }
-        System.out.println(Parts);
+        //System.out.println(Parts);
 
     }
 
