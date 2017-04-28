@@ -78,8 +78,18 @@ public class MainMenu extends javax.swing.JFrame {
         });
 
         btnCompareBuilds.setText("Compare Builds");
+        btnCompareBuilds.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompareBuildsActionPerformed(evt);
+            }
+        });
 
         btnViewComponents.setText("View Components");
+        btnViewComponents.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewComponentsActionPerformed(evt);
+            }
+        });
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo.png"))); // NOI18N
 
@@ -209,6 +219,14 @@ public class MainMenu extends javax.swing.JFrame {
         this.setVisible(false);
         new LogIn().setVisible(true);
     }//GEN-LAST:event_btnLogOutActionPerformed
+
+    private void btnViewComponentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewComponentsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnViewComponentsActionPerformed
+
+    private void btnCompareBuildsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompareBuildsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCompareBuildsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCompareBuilds;

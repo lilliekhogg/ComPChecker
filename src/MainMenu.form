@@ -145,11 +145,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Compare Builds"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCompareBuildsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnViewComponents">
       <Properties>
         <Property name="text" type="java.lang.String" value="View Components"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewComponentsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblLogo">
       <Properties>
