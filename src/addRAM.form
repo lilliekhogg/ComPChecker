@@ -133,9 +133,6 @@
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboMakeActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMake">
       <Properties>
@@ -155,9 +152,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtFieldSpeed">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFieldSpeedActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSize">
       <Properties>

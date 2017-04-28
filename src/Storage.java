@@ -4,18 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Lillie
  */
 public class Storage {
-    
+
     String make;
     String model;
     double price;
@@ -23,65 +17,73 @@ public class Storage {
     boolean HHD;
     int speed;
     int capacityGB;
-  
+
     /**
      * Setting the make of the Storage
+     *
      * @param make
      */
-    public void setMake (String make){
-    this.make = make;
- }
- 
+    public void setMake(String make) {
+        this.make = make;
+    }
+
     /**
-     *Setting the model of the storage
+     * Setting the model of the storage
+     *
      * @param model
      */
-    public void setModel (String model){
-     this.model = model;
- }
- 
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     /**
-     *Setting the price of storage
+     * Setting the price of storage
+     *
      * @param price
      */
-    public void setPrice (double price){
-     this.price = price;
- }
- 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     /**
-     *Setting the storages series
+     * Setting the storages series
+     *
      * @param series
      */
-    public void setSeries (String series){
-     this.series = series;
- }
- 
+    public void setSeries(String series) {
+        this.series = series;
+    }
+
     /**
-     *Setting Whether Storage is HHD
+     * Setting Whether Storage is HHD
+     *
      * @param HHD
      */
-    public void setHHD (boolean HHD){
-     this.HHD = HHD;
- }
- 
+    public void setHHD(boolean HHD) {
+        this.HHD = HHD;
+    }
+
     /**
-     *Setting speed of storage
+     * Setting speed of storage
+     *
      * @param speed
      */
-    public void setSpeed (int speed){
-     this.speed = speed;
- }
- 
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
     /**
      * Setting storage capacity
+     *
      * @param capacityGB
      */
-    public void setCapacityGB (int capacityGB){
-     this.capacityGB = capacityGB;
- }
- 
+    public void setCapacityGB(int capacityGB) {
+        this.capacityGB = capacityGB;
+    }
+
     /**
      * saving the storage to the database
+     *
      * @return Storage
      */
     public boolean saveStorage() {
@@ -119,7 +121,6 @@ public class Storage {
             statement.setInt(5, this.capacityGB);
             statement.execute();
 
-
             return true;
 
         } catch (SQLException err) {
@@ -127,7 +128,5 @@ public class Storage {
 
         }
 
- 
- 
-  } 
+    }
 }

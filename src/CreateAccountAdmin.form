@@ -70,11 +70,9 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnSubmit" pref="178" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtboxName" max="32767" attributes="0"/>
-                              <Component id="txtboxSurname" max="32767" attributes="0"/>
-                              <Component id="txtboxEmail" pref="178" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="txtboxName" max="32767" attributes="0"/>
+                          <Component id="txtboxSurname" max="32767" attributes="0"/>
+                          <Component id="txtboxEmail" pref="178" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -174,9 +172,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtboxName">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtboxNameActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtboxSurname">
     </Component>

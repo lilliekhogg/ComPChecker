@@ -3,36 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.awt.Frame;
-import static java.lang.Double.parseDouble;
-import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
 
 /**
  *
  * @author Lillie Hogg
  */
 public class addRAM extends javax.swing.JDialog {
-    
+
     UserAccount currentUser;
 
-    /**
-     *
-     * @param parent parent form
-     * @param modal modal
-     * @param user current user.
-     */
-    public addRAM(java.awt.Frame parent, boolean modal, UserAccount user) {
-        super(parent, modal);
-        initComponents();
-        this.setTitle("Add RAM");     //Adds a title to the frame
-        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-        populateMakes();
-        //System.out.println(user);
-    }
     /**
      * Creates new form addRAM
      */
@@ -50,8 +32,6 @@ public class addRAM extends javax.swing.JDialog {
         populateMakes();
         currentUser = user;
     }
-
-   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,23 +59,12 @@ public class addRAM extends javax.swing.JDialog {
         btnCancel = new javax.swing.JButton();
 
         comboMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboMake.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboMakeActionPerformed(evt);
-            }
-        });
 
         lblMake.setText("Make:");
 
         jLabel1.setText("Model:");
 
         lblSpeed.setText("RAM Type:");
-
-        txtFieldSpeed.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFieldSpeedActionPerformed(evt);
-            }
-        });
 
         lblSize.setText("Size(GB):");
 
@@ -203,17 +172,8 @@ public class addRAM extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMakeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboMakeActionPerformed
-
-    private void txtFieldSpeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFieldSpeedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFieldSpeedActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-          // retrieves the users inputs when and sets them when save button is actioned
+        // retrieves the users inputs when and sets them when save button is actioned
         RAM ram = new RAM();
 
         String make = comboMake.getSelectedItem().toString();
@@ -222,49 +182,47 @@ public class addRAM extends javax.swing.JDialog {
         String speed = txtFieldSpeed.getText();
         String sizecheck = txtFieldSize.getText();
         String stickscheck = txtFieldSticks.getText();
-        
-      
-        if(model.isEmpty()){
+
+        if (model.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (pricetest.isEmpty()){
+        } else if (pricetest.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (sizecheck.isEmpty()){
+        } else if (sizecheck.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter the RAM size", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (stickscheck.isEmpty()){
+        } else if (stickscheck.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, the number of sticks provided", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (speed.isEmpty()){
+        } else if (speed.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter the speed of RAM", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else{ //when input boxes are not empty
+        } else { //when input boxes are not empty
             //parsing variables from strings to required values
             double price = Double.parseDouble(pricetest);
             int size = Integer.parseInt(sizecheck);
             int sticks = Integer.parseInt(stickscheck);
-            
+
             ram.setMake(make);
             ram.setModel(model);
             ram.setPrice(price);
             ram.setSpeed(speed);
             ram.setSize(size);
             ram.setSticks(sticks);
-            
+
             boolean succesful = ram.saveRAM();
-            if(succesful){
-            this.setVisible(false);
-            JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-            new AdminMenu().setVisible(true);
+            if (succesful) {
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+                new AdminMenu().setVisible(true);
             }
-        
-        }  
-        
+
+        }
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        this.setVisible(false);
-        new AdminMenu(currentUser).setVisible(true);
+        returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-     private void populateMakes() {
-         //adding makes to the database.
+    private void populateMakes() {
+        //adding makes to the database.
         comboMake.removeAllItems();
         ResultSet rs;
         Make make = new Make();
@@ -280,8 +238,8 @@ public class addRAM extends javax.swing.JDialog {
         }
 
     }
-    
-     private void returnToMenu() {
+
+    private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
             new AdminMenu(currentUser).setVisible(true);
@@ -289,45 +247,7 @@ public class addRAM extends javax.swing.JDialog {
             new MainMenu(currentUser).setVisible(true);
         }
     }
-     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(addRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(addRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(addRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(addRAM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new addRAM().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

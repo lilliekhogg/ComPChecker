@@ -1,4 +1,5 @@
- /*
+
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,40 +8,43 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 /**
  *
  * @author Lillie
  */
 public class RAM {
-    
+
     String make;
     String model;
     double price;
     String speed;
     int size;
     int sticks;
-    
+
     /**
      * Setting the make of RAM
+     *
      * @param make
      */
     public void setMake(String make) {
 
         this.make = make;
     }
- 
+
     /**
-     *Setting the model of the RAM
+     * Setting the model of the RAM
+     *
      * @param model
      */
     public void setModel(String model) {
 
         this.model = model;
     }
-    
+
     /**
-     *Setting the price of the RAM
+     * Setting the price of the RAM
+     *
      * @param price
      */
     public void setPrice(double price) {
@@ -49,7 +53,8 @@ public class RAM {
     }
 
     /**
-     *Setting the speed of the RAM
+     * Setting the speed of the RAM
+     *
      * @param speed
      */
     public void setSpeed(String speed) {
@@ -58,25 +63,28 @@ public class RAM {
     }
 
     /**
-     *Setting the size of the RAM
+     * Setting the size of the RAM
+     *
      * @param size
      */
     public void setSize(int size) {
         this.size = size;
 
     }
-    
+
     /**
-     *Setting the number of sticks the RAM has
+     * Setting the number of sticks the RAM has
+     *
      * @param sticks
      */
-    public void setSticks(int sticks){
+    public void setSticks(int sticks) {
         this.sticks = sticks;
-    
+
     }
-    
+
     /**
      * Saving the RAM to the database
+     *
      * @return RAM
      */
     public boolean saveRAM() {
@@ -119,5 +127,5 @@ public class RAM {
 
         }
 
- 
-}}
+    }
+}

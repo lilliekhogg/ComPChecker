@@ -5,11 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Tom
@@ -223,18 +218,6 @@ public class UserAccount {
     }
 
     /**
-     * System method. (Don't know what this does but we need it)
-     *
-     * @param args system arguements.
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        LogIn frm = new LogIn();
-        frm.setVisible(true);
-
-    }
-
-    /**
      * checking the availability of a username in the database.
      *
      * @param username a string username
@@ -321,7 +304,6 @@ public class UserAccount {
     /*
     This method deletes the user from the database.
      */
-
     /**
      * Deletes current UserAccount object
      */

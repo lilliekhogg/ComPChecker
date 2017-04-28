@@ -4,73 +4,71 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Lillie
  */
 public class PSU {
-    
+
     String make;
     String model;
     double price;
     int wattage;
     boolean modular;
-    
-    //sets inputs into the form
 
+    //sets inputs into the form
     /**
-     *Setting the make of the PSU
+     * Setting the make of the PSU
+     *
      * @param make
      */
-public void setMake (String make){
-    this.make = make;
-}
+    public void setMake(String make) {
+        this.make = make;
+    }
 
     /**
-     *Setting the model of the PSU
+     * Setting the model of the PSU
+     *
      * @param model
      */
-    public void setModel(String model){
-    this.model = model;
-}
+    public void setModel(String model) {
+        this.model = model;
+    }
 
     /**
-     *Setting the price of the PSU
+     * Setting the price of the PSU
+     *
      * @param price
      */
-    public void setPrice(double price ){
-    this.price = price;
-}
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     /**
-     *Setting the wattage of the PSU
+     * Setting the wattage of the PSU
+     *
      * @param wattage
      */
-    public void setWattage (int wattage){
-    this.wattage = wattage;
-}
+    public void setWattage(int wattage) {
+        this.wattage = wattage;
+    }
 
     /**
-     *Setting the PSU modular
+     * Setting the PSU modular
+     *
      * @param modular
      */
-    public void setModular (boolean modular){
-    this.modular = modular;
-}
+    public void setModular(boolean modular) {
+        this.modular = modular;
+    }
 
     /**
      * Saving the power supply to the database
+     *
      * @return PSU
      */
     public boolean savePSU() {
-        
-        
+
         Connection con = DatabaseConnection.establishConnection();
 
         try {
@@ -96,7 +94,7 @@ public void setMake (String make){
             }
             //Inserts data in Motherboard table.
             query = "INSERT INTO PSU values (?,?,?)";
-             statement = con.prepareStatement(query);
+            statement = con.prepareStatement(query);
             statement.setInt(1, partID);
             statement.setInt(2, wattage);
             statement.setBoolean(3, modular);
@@ -111,5 +109,4 @@ public void setMake (String make){
 
     }
 
-    
 }
