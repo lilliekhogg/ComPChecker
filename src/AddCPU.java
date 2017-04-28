@@ -25,7 +25,8 @@ public class AddCPU extends javax.swing.JDialog {
     }
 
     /**
-     * Constructor for AddCPU.
+     * Constructor for AddCPU used in editing.
+     *
      * @param ID sets the CPU ID.
      */
     public AddCPU(int ID) {
@@ -37,9 +38,10 @@ public class AddCPU extends javax.swing.JDialog {
         CPUID = ID;
 
     }
-    
+
     /**
      * Constructor for AddCPU.
+     *
      * @param user passes the current user.
      */
     AddCPU(UserAccount user) {
@@ -178,7 +180,7 @@ public class AddCPU extends javax.swing.JDialog {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-           CPU cpu = new CPU();
+        CPU cpu = new CPU();
 
         String make = cmboxMake.getSelectedItem().toString();
         String model = txtboxModel.getText();
@@ -188,17 +190,17 @@ public class AddCPU extends javax.swing.JDialog {
         //double price
         //float speed
         //int core
- 
-        if(model.isEmpty()){
+
+        if (model.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (pricetest.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (speedtest.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter the speed of CPU in GHz", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (corecheck.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, the number of cores", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else{ //when input boxes are not empty
-                //parsing variables from strings to required values
+        } else if (pricetest.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (speedtest.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, please enter the speed of CPU in GHz", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (corecheck.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, the number of cores", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else { //when input boxes are not empty
+            //parsing variables from strings to required values
             double price = Double.parseDouble(pricetest);
             float speed = Float.parseFloat(speedtest);
             int cores = Integer.parseInt(corecheck);
@@ -208,24 +210,24 @@ public class AddCPU extends javax.swing.JDialog {
             cpu.speed = speed;
             cpu.cores = cores;
             cpu.price = price;
-            
+
             //checking if validation is successful
             boolean succesful = cpu.saveCPU();
-            if(succesful){
-            JOptionPane.showMessageDialog(null, "CPU added", "CPU Added", JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
-            new AdminMenu().setVisible(true);
+            if (succesful) {
+                JOptionPane.showMessageDialog(null, "CPU added", "CPU Added", JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(false);
+                new AdminMenu().setVisible(true);
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
-    
+
     /**
      * Returns user to the menu.
      */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
-    
+
     /**
      * Returns user to the menu.
      */
@@ -275,7 +277,7 @@ public class AddCPU extends javax.swing.JDialog {
         }
 
     }
-   
+
     /**
      * Returns user to the appropriate menu based on their user type.
      */

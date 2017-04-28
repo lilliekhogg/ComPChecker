@@ -3,35 +3,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Lillie
  */
 public class AddPCCase extends javax.swing.JFrame {
-    
+
     UserAccount currentUser;
 
     /**
-     * Creates new form PCCases
-     * @param parent parentform 
-     * @param modal model
+     * Form method.
      */
-     public AddPCCase(java.awt.Frame parent, boolean modal) {
-        initComponents();
-        this.setTitle("Add PCCase");     //Adds a title to the frame
-        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-        populateMakes();
-    }
-
-     /**
-      * Form method.
-      */
     public AddPCCase() {
 
         initComponents();
@@ -227,27 +209,27 @@ public class AddPCCase extends javax.swing.JFrame {
         String motherboard = txtFieldMotherboard.getText();
 
         //validation of each text box - to ensure data is entered correctly
-         if(model.isEmpty()){
+        if (model.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (pricetest.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (heightcheck.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter the Height of the case", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (widthcheck.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, the width of the case", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (CDepthcheck.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter the depth of the case", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (colour.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter the colour of case", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (motherboard.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter the compatable motherboard types", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else{ //when input boxes are not empty
+        } else if (pricetest.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (heightcheck.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, please enter the Height of the case", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (widthcheck.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, the width of the case", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (CDepthcheck.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, please enter the depth of the case", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (colour.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, please enter the colour of case", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (motherboard.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, please enter the compatable motherboard types", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else { //when input boxes are not empty
             //parsing variables from strings to required values
             double price = Double.parseDouble(pricetest);
             int height = Integer.parseInt(heightcheck);
             int width = Integer.parseInt(widthcheck);
             int CDepth = Integer.parseInt(CDepthcheck);
-            
+
             //setting the variables so it can be entered into database
             pccase.setMake(make);
             pccase.setModel(model);
@@ -257,26 +239,23 @@ public class AddPCCase extends javax.swing.JFrame {
             pccase.setCDepth(CDepth);
             pccase.setColour(colour);
             pccase.setMotherboard(motherboard);
-            
+
             //if validation is successful, print the following 
             boolean succesful = pccase.savePCCase();
-            if(succesful){
-            this.setVisible(false);
-            JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-            new AdminMenu().setVisible(true);
-             }
-        
+            if (succesful) {
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+                new AdminMenu().setVisible(true);
+            }
+
         }
-        
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // cancels form and returns to admin menu when button is actioned
-        this.setVisible(false);
-        new AdminMenu().setVisible(true);
+        returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    
     private void populateMakes() {
         //method provides make types within combobox
         comboMake.removeAllItems();
@@ -294,6 +273,7 @@ public class AddPCCase extends javax.swing.JFrame {
         }
 
     }
+
     //return the user to menu
     private void returnToMenu() {
         this.setVisible(false);
@@ -302,41 +282,6 @@ public class AddPCCase extends javax.swing.JFrame {
         } else {
             new MainMenu(currentUser).setVisible(true);
         }
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PCCase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PCCase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PCCase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PCCase.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddPCCase().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

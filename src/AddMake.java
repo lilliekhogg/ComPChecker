@@ -1,18 +1,12 @@
 
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Tom
  */
 public class AddMake extends javax.swing.JFrame {
-    
+
     UserAccount currentUser;
 
     /**
@@ -124,34 +118,32 @@ public class AddMake extends javax.swing.JFrame {
         // get user inputs:
         String name = txtboxMake.getText();
         String website = txtboxwebsite.getText();
-        
+
         // sets a new make with name of make and website
         Make make = new Make();
         make.setName(name);
         make.setWebsite(website);
-        
+
         //if input boxes are empty print error message
-       if(name.isEmpty() ||  website.isEmpty()){
-           JOptionPane.showMessageDialog(null, "Please complete all fields", "Please complete all fields", JOptionPane.INFORMATION_MESSAGE);
-       }else{
-           // check if make is already in datababse
-           boolean used = make.checkMakes(name);
-        if(used){
-            //if not used save to database
-            make.saveMake();
-        }else{
-            //print error
-        JOptionPane.showMessageDialog(null, "That make is already stored in the database.", "Make already stored", JOptionPane.INFORMATION_MESSAGE);
+        if (name.isEmpty() || website.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please complete all fields", "Please complete all fields", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // check if make is already in datababse
+            boolean used = make.checkMakes(name);
+            if (used) {
+                //if not used save to database
+                make.saveMake();
+            } else {
+                //print error
+                JOptionPane.showMessageDialog(null, "That make is already stored in the database.", "Make already stored", JOptionPane.INFORMATION_MESSAGE);
+            }
+
         }
-        
-       }
-        
+
     }//GEN-LAST:event_btnSaveActionPerformed
-    
+
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnActionPerformed
-        // show admin menu from make build
-        this.setVisible(false);
-        new AdminMenu(currentUser).setVisible(true);
+        returnToMenu();
     }//GEN-LAST:event_btnReturnActionPerformed
 
     private void returnToMenu() {
@@ -161,42 +153,6 @@ public class AddMake extends javax.swing.JFrame {
         } else {
             new MainMenu(currentUser).setVisible(true);
         }
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddMake.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddMake.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddMake.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddMake.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //show make interface
-                new AddMake().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,6 +1,4 @@
 
-
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -22,11 +20,12 @@ public class AddAccessory extends javax.swing.JFrame {
         this.setTitle("Add Accessory");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
-    
+
     /**
-     * Constructor taking user argument. 
-     * @param user This determines who the user is so they can be
-     * returned to the correct menu with the appropriate options.
+     * Constructor taking user argument.
+     *
+     * @param user This determines who the user is so they can be returned to
+     * the correct menu with the appropriate options.
      */
     AddAccessory(UserAccount user) {
         initComponents();
@@ -157,45 +156,44 @@ public class AddAccessory extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     /**
-     * When the user saves an accessory, the new data is inserted and saved 
-     * into the database.
+     * When the user saves an accessory, the new data is inserted and saved into
+     * the database.
      */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // method gets inputs from user and sets inputs when save button is clicked
         Accessory accessory = new Accessory();
-        
+
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
         String pricetest = txtFieldPrice.getText();
         String description = txtPaneDesc.getText();
-        
-        
-        if(model.isEmpty()){
+
+        if (model.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (pricetest.isEmpty()){
+        } else if (pricetest.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (description.isEmpty()){
+        } else if (description.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter a description of accessory", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else{ //when input boxes are not empty
+        } else { //when input boxes are not empty
             double price = Double.parseDouble(pricetest);
 
             //setting the input fields
             accessory.setMake(make);
             accessory.setModel(model);
             accessory.setPrice(price);
-            accessory.setDesc (description);
-            
+            accessory.setDesc(description);
+
             boolean validated = accessory.saveAccessory();
-            if(validated){
-            this.setVisible(false);
-            JOptionPane.showMessageDialog(null, "Component Created", "Accessory Added", JOptionPane.INFORMATION_MESSAGE);
-            new AdminMenu().setVisible(true);
-        } 
-        } 
+            if (validated) {
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Component Created", "Accessory Added", JOptionPane.INFORMATION_MESSAGE);
+                new AdminMenu().setVisible(true);
+            }
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
-    
+
     /**
      * Returns the user to the appropriate menu on button click.
      */
@@ -223,7 +221,7 @@ public class AddAccessory extends javax.swing.JFrame {
         }
 
     }
-    
+
     /**
      * Returns the user to the appropriate menu based on user type.
      */

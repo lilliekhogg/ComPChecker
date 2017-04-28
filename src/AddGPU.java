@@ -1,28 +1,17 @@
 
-import static java.lang.Double.parseDouble;
-import static java.lang.Integer.parseInt;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import static javax.xml.bind.DatatypeConverter.parseString;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
  * @author Lillie
  */
 public class AddGPU extends javax.swing.JFrame {
-    
+
     UserAccount currentUser;
 
     /**
-     * 
-     * 
      * Creates new form AddGPU
      */
     public AddGPU() {
@@ -31,28 +20,14 @@ public class AddGPU extends javax.swing.JFrame {
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
     }
-    
-    /**
-     *
-     * @param parent
-     * @param modal
-     * @param user
-     */
-    public AddGPU(java.awt.Frame parent, boolean modal, UserAccount user) {
-        initComponents();    //Adds a title to the frame
-        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-        populateMakes();
-        System.out.println(user);
-    }
-    
-    AddGPU (UserAccount user) {
+
+    AddGPU(UserAccount user) {
         initComponents();
         this.setTitle("Add GPU");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
         currentUser = user;
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -206,8 +181,8 @@ public class AddGPU extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // sets the users inputs when the save button is actioned
-        
-       GPU gpu = new GPU();
+
+        GPU gpu = new GPU();
 
         String make = comboMake.getSelectedItem().toString();
         String model = txtFieldModel.getText();
@@ -216,29 +191,25 @@ public class AddGPU extends javax.swing.JFrame {
         String chipset = txtFieldChipset.getText();
         String memoryCheck = txtFieldMemory.getText();
         String coreClockTest = txtFieldcClock.getText();
-        
-        
-       
-        
-        
+
         //validation - error message if wrong
-        if(model.isEmpty()){
+        if (model.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (pricetest.isEmpty()){
+        } else if (pricetest.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (series.isEmpty()){
+        } else if (series.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter a Series", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (chipset.isEmpty()){
+        } else if (chipset.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter a chipset", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (memoryCheck.isEmpty()){
+        } else if (memoryCheck.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter the memory size", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (coreClockTest.isEmpty()){
+        } else if (coreClockTest.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter the core clock", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else{ //when input boxes are not empty
+        } else { //when input boxes are not empty
             double price = Double.parseDouble(pricetest);
-             int memory = Integer.parseInt(memoryCheck);
-        float coreclock = Float.parseFloat(coreClockTest);
-            
+            int memory = Integer.parseInt(memoryCheck);
+            float coreclock = Float.parseFloat(coreClockTest);
+
             //setting specified makes
             gpu.setMake(make);
             gpu.setModel(model);
@@ -247,18 +218,17 @@ public class AddGPU extends javax.swing.JFrame {
             gpu.setChipset(chipset);
             gpu.setMemory(memory);
             gpu.setCoreClock(coreclock);
-            
+
             //checking if validation is successful
             boolean succesful = gpu.saveGPU();
-            if(succesful){
-            this.setVisible(false);
-            JOptionPane.showMessageDialog(null, "GPU Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-            new AdminMenu().setVisible(true);
+            if (succesful) {
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "GPU Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+                new AdminMenu().setVisible(true);
             }
-        } 
-        
-        
-                         
+        }
+
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -267,9 +237,8 @@ public class AddGPU extends javax.swing.JFrame {
         new AdminMenu().setVisible(true);
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    
     //adds make types to the form combo box
-     private void populateMakes() {
+    private void populateMakes() {
 
         comboMake.removeAllItems();
         ResultSet rs;
@@ -286,7 +255,7 @@ public class AddGPU extends javax.swing.JFrame {
         }
 
     }
-    
+
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
@@ -294,41 +263,6 @@ public class AddGPU extends javax.swing.JFrame {
         } else {
             new MainMenu(currentUser).setVisible(true);
         }
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddGPU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddGPU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddGPU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddGPU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddGPU().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,43 +3,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Lillie
  */
 public class AddCooler extends javax.swing.JFrame {
-        
+
     UserAccount currentUser;
 
     /**
-     * Creates new form AddCooler
-     * @param parent parent form
-     * @param modal modal
+     * Default constructor for AddCooler
      */
-       public AddCooler(java.awt.Frame parent, boolean modal) {
+    public AddCooler() {
         initComponents();
+        populateMakes();
         this.setTitle("Add Cooler");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-        populateMakes();
     }
 
     /**
+     * Constructor for AddCooler
      *
+     * @param user This determines who the user is so they can be returned to
+     * the correct menu with the appropriate options.
      */
-    public AddCooler() {
-
-        initComponents();
-        populateMakes();
-        this.setTitle("Add Cooler");     //Adds a title to the frame
-        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-    }
-
     AddCooler(UserAccount user) {
         initComponents();
         populateMakes();
@@ -167,6 +154,10 @@ public class AddCooler extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * When the user saves a cooler, the new data is inserted and saved into the
+     * database.
+     */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // retrieves the users inputs when and sets them when save button is actioned
         Cooler cooler = new Cooler();
@@ -176,45 +167,48 @@ public class AddCooler extends javax.swing.JFrame {
         String pricetest = txtFieldPrice.getText();
         String minRPMcheck = txtFieldMinRPM.getText();
         String maxRPMcheck = txtFieldMaxRPM.getText();
-        
+
         //validation - error message if wrong
-        if(model.isEmpty()){
+        if (model.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (pricetest.isEmpty()){
+        } else if (pricetest.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (minRPMcheck.isEmpty()){
+        } else if (minRPMcheck.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter a Minimum RPM", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else if (maxRPMcheck.isEmpty()){
+        } else if (maxRPMcheck.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, please enter a Maximum RPM", "Error!", JOptionPane.INFORMATION_MESSAGE);
-        }else{ //when input boxes are not empty
+        } else { //when input boxes are not empty
             double price = Double.parseDouble(pricetest);
             int minRPM = Integer.parseInt(minRPMcheck);
             int maxRPM = Integer.parseInt(maxRPMcheck);
-            
+
             //setting specified inputs
             cooler.setMake(make);
             cooler.setModel(model);
             cooler.setPrice(price);
             cooler.setMinRPM(minRPM);
             cooler.setMaxRPM(maxRPM);
-            
+
             //checking if validation is successful
             boolean succesful = cooler.saveCooler();
-            if(succesful){
-            this.setVisible(false);
-            JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-            new AdminMenu().setVisible(true);
+            if (succesful) {
+                this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
+                new AdminMenu().setVisible(true);
             }
-        } 
-
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    /**
+     * Returns the user to the menu.
+     */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // cancels the addcooler form and returns to admin menu
-        this.setVisible(false);
-        new AdminMenu().setVisible(true);
+        returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
 
+    /**
+     * Populates the make combo with makes.
+     */
     private void populateMakes() {
 
         comboMake.removeAllItems();
@@ -231,8 +225,11 @@ public class AddCooler extends javax.swing.JFrame {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
 
-    }  
-    
+    }
+
+    /**
+     * Returns the user to the appropriate menu based on their user type.
+     */
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
@@ -240,41 +237,6 @@ public class AddCooler extends javax.swing.JFrame {
         } else {
             new MainMenu(currentUser).setVisible(true);
         }
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddCooler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddCooler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddCooler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddCooler.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddCooler().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

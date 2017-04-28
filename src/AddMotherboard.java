@@ -1,21 +1,15 @@
 
-import static java.lang.Double.parseDouble;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Tom
  */
 public class AddMotherboard extends javax.swing.JDialog {
-    
+
     UserAccount currentUser;
 
     /**
@@ -46,11 +40,7 @@ public class AddMotherboard extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmboxSocket1 = new javax.swing.JComboBox<String>();
-        txtboxSlots1 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        cmboxMake = new javax.swing.JComboBox<String>();
+        cmboxMake = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -60,35 +50,19 @@ public class AddMotherboard extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txtboxPrice = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cmboxSocket = new javax.swing.JComboBox<String>();
-        cmboxFormFactor = new javax.swing.JComboBox<String>();
+        cmboxSocket = new javax.swing.JComboBox<>();
+        cmboxFormFactor = new javax.swing.JComboBox<>();
         txtboxSlots = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        cmboxRAMType = new javax.swing.JComboBox<String>();
+        cmboxRAMType = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         txtboxmaxRAM = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
 
-        cmboxSocket1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmboxSocket1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmboxSocket1ActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setText("RAM Slots:");
-
-        jLabel11.setText("Form Factor:");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        cmboxMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmboxMake.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmboxMakeActionPerformed(evt);
-            }
-        });
+        cmboxMake.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setText("Make:");
 
@@ -110,30 +84,15 @@ public class AddMotherboard extends javax.swing.JDialog {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Add Motherboard");
 
-        cmboxSocket.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmboxSocket.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmboxSocketActionPerformed(evt);
-            }
-        });
+        cmboxSocket.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cmboxFormFactor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmboxFormFactor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmboxFormFactorActionPerformed(evt);
-            }
-        });
+        cmboxFormFactor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel7.setText("RAM Slots:");
 
         jLabel9.setText("Ram Type:");
 
-        cmboxRAMType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmboxRAMType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmboxRAMTypeActionPerformed(evt);
-            }
-        });
+        cmboxRAMType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel10.setText("Max No. RAM:");
 
@@ -226,10 +185,6 @@ public class AddMotherboard extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmboxMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboxMakeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmboxMakeActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
 
@@ -242,25 +197,25 @@ public class AddMotherboard extends javax.swing.JDialog {
         String maxRAMcheck = txtboxmaxRAM.getText();
         String socket = cmboxSocket.getSelectedItem().toString();
         String size = cmboxFormFactor.getSelectedItem().toString();
-      
-        if(model.isEmpty()){
+
+        if (model.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error, Please specify model", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (pricetest.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (slotscheck.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, please enter the amount of RAM Slots", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (maxRAMcheck.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, Enter the max number of RAM available", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (socket.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, Enter the motherboard socket ", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else if (size.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Error, Enter the size", "Error!", JOptionPane.INFORMATION_MESSAGE);
-            }else{ //when input boxes are not empty
-                //parsing variables from strings to required values
+        } else if (pricetest.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, please enter price greater than 0", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (slotscheck.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, please enter the amount of RAM Slots", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (maxRAMcheck.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, Enter the max number of RAM available", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (socket.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, Enter the motherboard socket ", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else if (size.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error, Enter the size", "Error!", JOptionPane.INFORMATION_MESSAGE);
+        } else { //when input boxes are not empty
+            //parsing variables from strings to required values
             double price = Double.parseDouble(pricetest);
             int slots = Integer.parseInt(slotscheck);
             int maxRAM = Integer.parseInt(maxRAMcheck);
-            
+
             //setting specified inputs
             motherboard.setMake(make);
             motherboard.setModel(model);
@@ -269,38 +224,20 @@ public class AddMotherboard extends javax.swing.JDialog {
             motherboard.setSocket(socket);
             motherboard.setRamSlots(slots);
             motherboard.setMaxRAM(maxRAM);
-            
-            
+
             boolean succesful = motherboard.saveMotherboard();
-            if(succesful){
-            JOptionPane.showMessageDialog(null, "Component added", "Motherboard Added", JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
-            new AdminMenu().setVisible(true);
+            if (succesful) {
+                JOptionPane.showMessageDialog(null, "Component added", "Motherboard Added", JOptionPane.INFORMATION_MESSAGE);
+                this.setVisible(false);
+                new AdminMenu().setVisible(true);
             }
-        
-       }
+
+        }
 
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void cmboxSocketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboxSocketActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmboxSocketActionPerformed
-
-    private void cmboxSocket1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboxSocket1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmboxSocket1ActionPerformed
-
-    private void cmboxFormFactorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboxFormFactorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmboxFormFactorActionPerformed
-
-    private void cmboxRAMTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboxRAMTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmboxRAMTypeActionPerformed
-
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        this.setVisible(false);
-        new AdminMenu().setVisible(true);
+        returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void populateComboBoxes() {
@@ -354,7 +291,7 @@ public class AddMotherboard extends javax.swing.JDialog {
         cmboxRAMType.addItem("DDR3");
         cmboxRAMType.addItem("DDR4");
     }
-    
+
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
@@ -371,22 +308,18 @@ public class AddMotherboard extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cmboxMake;
     private javax.swing.JComboBox<String> cmboxRAMType;
     private javax.swing.JComboBox<String> cmboxSocket;
-    private javax.swing.JComboBox<String> cmboxSocket1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtboxModel;
     private javax.swing.JTextField txtboxPrice;
     private javax.swing.JTextField txtboxSlots;
-    private javax.swing.JTextField txtboxSlots1;
     private javax.swing.JTextField txtboxmaxRAM;
     // End of variables declaration//GEN-END:variables
 }
