@@ -65,10 +65,10 @@ public class EditBuild extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         currentUser = user;
         currentBuild = myBuild;
-        
+
         currentBuild.loadBuild(currentUser, currentBuild.getName());
-        System.out.println("user"+currentBuild.getUser());
-        
+        System.out.println("user" + currentBuild.getUser());
+
         txtboxName.setText(currentBuild.getName());
         txtboxName.setEditable(false);
         btnProcessor.setText(getMakeModel(currentBuild.getCPU(), con));
@@ -431,26 +431,25 @@ public class EditBuild extends javax.swing.JFrame {
 //        myBuild.name = txtboxName.getText();
 //        myBuild.storage = storage;
         //myBuild.user = username;
-          int motherboardx = motherboard;
-          int cpux = CPU;
+
+        //BUG IS HERE
         
-          currentBuild.setCPU(cpux);
-          currentBuild.setMotherboard(motherboardx);
-          currentBuild.setRAM(currentBuild.getRAM());
-          currentBuild.setGPU(currentBuild.getGPU());
-          currentBuild.setCase(currentBuild.getCase());
-          currentBuild.setPSU(currentBuild.getPSU());
-          currentBuild.setCooler(currentBuild.getCooler());
-          currentBuild.setAccessory(currentBuild.getAccessory());
-          currentBuild.setName(currentBuild.getName());
-          currentBuild.setStorage(currentBuild.getStorage());
-          currentBuild.setUser(currentBuild.getUser());
-          
-          System.out.println("motherboard"+currentBuild.getMotherboard());
-          System.out.println("name"+currentBuild.getName());
-          System.out.println("user"+currentBuild.getUser());
-          
-          
+        currentBuild.setCPU(CPU);
+        currentBuild.setMotherboard(motherboard);
+        currentBuild.setRAM(currentBuild.getRAM());
+        currentBuild.setGPU(currentBuild.getGPU());
+        currentBuild.setCase(currentBuild.getCase());
+        currentBuild.setPSU(currentBuild.getPSU());
+        currentBuild.setCooler(currentBuild.getCooler());
+        currentBuild.setAccessory(currentBuild.getAccessory());
+        currentBuild.setName(currentBuild.getName());
+        currentBuild.setStorage(currentBuild.getStorage());
+        currentBuild.setUser(currentBuild.getUser());
+
+        System.out.println("motherboard" + currentBuild.getMotherboard());
+        System.out.println("name" + currentBuild.getName());
+        System.out.println("user" + currentBuild.getUser());
+
         currentBuild.editBuild();
     }
 
