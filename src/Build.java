@@ -5,13 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
  * @author Tom
  */
 public class Build {
@@ -30,7 +24,7 @@ public class Build {
 
     /**
      *
-     * @param cpu sets CPU ID.
+     * @param cpu Sets the CPU ID.
      */
     public void setCPU(int cpu) {
         this.CPU = cpu;
@@ -38,7 +32,7 @@ public class Build {
 
     /**
      *
-     * @return gets CPU ID.
+     * @return Returns the CPU ID.
      */
     public int getCPU() {
         return CPU;
@@ -46,7 +40,7 @@ public class Build {
 
     /**
      *
-     * @param mobo sets Motherboard ID.
+     * @param mobo Sets the Motherboard ID.
      */
     public void setMotherboard(int mobo) {
         this.motherboard = mobo;
@@ -54,7 +48,7 @@ public class Build {
 
     /**
      *
-     * @return gets motherboard ID.
+     * @return Gets the motherboard ID.
      */
     public int getMotherboard() {
         return motherboard;
@@ -62,7 +56,7 @@ public class Build {
 
     /**
      *
-     * @param ram sets the RAM ID.
+     * @param ram Sets the RAM ID.
      */
     public void setRAM(int ram) {
         this.RAM = RAM;
@@ -70,7 +64,7 @@ public class Build {
 
     /**
      *
-     * @return gets the RAM ID
+     * @return Gets the RAM ID
      */
     public int getRAM() {
         return RAM;
@@ -78,7 +72,7 @@ public class Build {
 
     /**
      *
-     * @param gpu sets the GPU ID.
+     * @param gpu Sets the GPU ID.
      */
     public void setGPU(int gpu) {
         this.GPU = gpu;
@@ -86,7 +80,7 @@ public class Build {
 
     /**
      *
-     * @return gets the GPU ID.
+     * @return Gets the GPU ID.
      */
     public int getGPU() {
         return GPU;
@@ -102,7 +96,7 @@ public class Build {
 
     /**
      *
-     * @return gets the cooler ID.
+     * @return Gets the cooler ID.
      */
     public int getCooler() {
         return cooler;
@@ -118,7 +112,7 @@ public class Build {
 
     /**
      *
-     * @return gets the PSU ID.
+     * @return Gets the PSU ID.
      */
     public int getPSU() {
         return PSU;
@@ -126,7 +120,7 @@ public class Build {
 
     /**
      *
-     * @param store sets Storage ID
+     * @param store Sets the storage ID
      */
     public void setStorage(int store) {
         this.storage = store;
@@ -134,15 +128,13 @@ public class Build {
 
     /**
      *
-     * @return storage ID.
+     * @return Returns the storage ID.
      */
     public int getStorage() {
         return storage;
     }
 
     /**
-     * This method sets the case.
-     *
      * @param PCcase sets Case ID.
      */
     public void setCase(int PCcase) {
@@ -151,25 +143,21 @@ public class Build {
 
     /**
      *
-     * @return case ID.
+     * @return Returns the case ID.
      */
     public int getCase() {
         return PCCase;
     }
 
     /**
-     * Sets accessory ID.
-     *
-     * @param access sets accessory ID.
+     * @param access Sets the accessory ID.
      */
     public void setAccessory(int access) {
         this.accessory = access;
     }
 
     /**
-     * Returns accessory ID
-     *
-     * @return accessory ID
+     * @return Returns the accessory ID
      */
     public int getAccessory() {
         return accessory;
@@ -177,7 +165,7 @@ public class Build {
 
     /**
      *
-     * @param myName BUILD NAME
+     * @param myName Sets the build name.
      */
     public void setName(String myName) {
         this.name = myName;
@@ -185,7 +173,7 @@ public class Build {
 
     /**
      *
-     * @return name
+     * @return Returns the build name.
      */
     public String getName() {
         return name;
@@ -193,7 +181,7 @@ public class Build {
     
     /**
      *
-     * @param theUser user name
+     * @param theUser Sets the username.
      */
     public void setUser(String theUser) {
         this.username = theUser;
@@ -201,7 +189,7 @@ public class Build {
 
     /**
      *
-     * @return name
+     * @return Returns the username.
      */
     public String getUser() {
         return username;
@@ -256,8 +244,8 @@ public class Build {
     }
 
     /**
-     *
-     * @param user current username
+     * Finds a user's builds.
+     * @param user current user.
      * @return a table of user's builds.
      */
     public ResultSet findUserBuilds(UserAccount user) {
@@ -279,7 +267,7 @@ public class Build {
     }
 
     /**
-     *
+     * Edits a user's build and updates the database.
      */
     public void editBuild() {
         Connection con = DatabaseConnection.establishConnection();
@@ -317,8 +305,8 @@ public class Build {
 
     /**
      *
-     * @param theUser current username
-     * @param theName
+     * @param theUser current user.
+     * @param theName the user of the build to load.
      * @return returns the build.
      */
     public Build loadBuild(UserAccount theUser, String theName) {

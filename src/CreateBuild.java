@@ -1,15 +1,8 @@
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Luke
@@ -31,32 +24,27 @@ public class CreateBuild extends javax.swing.JFrame {
     ArrayList<Integer> Parts = new ArrayList<Integer>();
     UserAccount currentUser;
 
-    /**
-     * Creates new form EditBuild
-     */
     Build build = new Build();
 
+    /**
+     * Default constructor for CreateBuild.
+     */
     CreateBuild() {
         initComponents();
         this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
     }
-    //Contructor for CreateBuild - where a build doesn't need to be passed...
-    //... as the user is creating a new one
+
+    /**
+     * Constructor for CreateBuild with user parameter.
+     *
+     * @param user This determines who the user is so they can be returned to
+     * the correct menu with the appropriate options.
+     */
     CreateBuild(UserAccount user) {
         username = user.getUsername();
         initComponents();
         this.setTitle("Create Build");     //Adds a title to the frame - need this to change bassed on option
-        setLocationRelativeTo(null);
-        currentUser = user;
-    }
-
-    //Contructor for EditBuild & Viewbuild - where a build needs to be passed...
-    //... as the user is referencing an existing one
-    CreateBuild(UserAccount user, Build myBuild) {
-        username = user.getUsername();
-        initComponents();
-        this.setTitle("Edit Build");     //Adds a title to the frame
         setLocationRelativeTo(null);
         currentUser = user;
     }
@@ -102,12 +90,6 @@ public class CreateBuild extends javax.swing.JFrame {
         btnRAM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRAMActionPerformed(evt);
-            }
-        });
-
-        txtboxName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtboxNameActionPerformed(evt);
             }
         });
 
@@ -264,78 +246,100 @@ public class CreateBuild extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * getPart is a method used for debugging and checking the 'type' of part
+     * passed.
      *
-     * @return
+     * @return Returns the 'type' of part, e.g. CPU.
      */
     public String getPart() {
         System.out.println(myPart);
         return myPart;
     }
 
+    /**
+     * Opens new form for user to choose CPU.
+     */
     private void btnProcessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessorActionPerformed
         myPart = "CPU";
         SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
-
-
     }//GEN-LAST:event_btnProcessorActionPerformed
 
+    /**
+     * Opens new form for user to choose RAM.
+     */
     private void btnRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAMActionPerformed
-        // TODO add your handling code here
         myPart = "RAM";
         SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
-
     }//GEN-LAST:event_btnRAMActionPerformed
 
+    /**
+     * Opens new form for user to choose motherboard.
+     */
     private void btnMotherboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMotherboardActionPerformed
         myPart = "Motherboard";
         SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnMotherboardActionPerformed
 
+    /**
+     * Opens new form for user to choose GPU.
+     */
     private void btnGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraphicsActionPerformed
-        // TODO add your handling code here:
         myPart = "GPU";
         SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnGraphicsActionPerformed
 
+    /**
+     * Opens new form for user to choose storage.
+     */
     private void btnStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStorageActionPerformed
-        // TODO add your handling code here:
         myPart = "Storage";
         SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnStorageActionPerformed
 
+    /**
+     * Opens new form for user to choose a case.
+     */
     private void btnCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaseActionPerformed
-        // TODO add your handling code here:
         myPart = "Case";
         SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnCaseActionPerformed
 
+    /**
+     * Opens new form for user to choose PSU.
+     */
     private void btnPowerSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPowerSupActionPerformed
-        // TODO add your handling code here:
         myPart = "PSU";
         SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnPowerSupActionPerformed
 
+    /**
+     * Opens new form for user to choose a cooler.
+     */
     private void btnCoolingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoolingActionPerformed
-        // TODO add your handling code here:
         myPart = "Cooler";
         SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnCoolingActionPerformed
 
+    /**
+     * Opens new form for user to choose an accessory.
+     */
     private void btnAccessoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessoriesActionPerformed
-        // TODO add your handling code here:
         myPart = "Accessory";
         SelectComponent frm = new SelectComponent(myPart, this, null); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnAccessoriesActionPerformed
 
+    /**
+     * Confirms the user's part choices and saves into the database.
+     */
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         String buildName = txtboxName.getText();
 
@@ -376,6 +380,9 @@ public class CreateBuild extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
 
+    /**
+     * Sets each part to it's chosen value and saves.
+     */
     private void saveBuild() {
         getPart();
         Build myBuild = new Build();
@@ -394,6 +401,9 @@ public class CreateBuild extends javax.swing.JFrame {
         myBuild.SaveBuild();
     }
 
+    /**
+     * Returns the user to the appropriate menu based on their user type.
+     */
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
@@ -403,10 +413,17 @@ public class CreateBuild extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Clicking calls returnToMenu() to return the user to the menu.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         returnToMenu();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    /**
+     * User cancels creating a build and returns to the menu on confirmation.
+     */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
 
         String message = "Do you wish to cancel without saving?";
@@ -420,50 +437,8 @@ public class CreateBuild extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void txtboxNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtboxNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtboxNameActionPerformed
-
     /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CreateBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CreateBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CreateBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CreateBuild.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CreateBuild().setVisible(true);
-            }
-        });
-    }
-
-    /**
-     *
+     * Updates the database with the new build and refreshes the parts.
      */
     public void refreshParts() {
 

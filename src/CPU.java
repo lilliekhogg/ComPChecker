@@ -3,13 +3,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Tom
@@ -24,34 +18,30 @@ public class CPU {
     boolean graphics;
 
     /**
-     * Returns the make of the current object.
-     *
-     * @return make of the object.
+     * @return Returns the make of the CPU.
      */
     public String getMake() {
         return make;
     }
 
     /**
-     *
-     * @return the model of object.
+     * @return Returns the model of the CPU.
      */
     public String getModel() {
         return model;
     }
 
     /**
-     *Sets the make of the attribute.
-     * @param make make value
+     *Sets the make of the CPU.
+     * @param make The make of the CPU.
      */
     public void setMake(String make) {
-
         this.make = make;
     }
 
     /**
-     *Sets the speed attribute.
-     * @param speed speed atrribute. 
+     * Sets the speed of the CPU.
+     * @param speed Speed of the CPU. 
      */
     public void setSpeed(float speed) {
         this.speed = speed;
@@ -59,9 +49,9 @@ public class CPU {
     }
 
     /**
-     * Sets the cores attribute of the object.
+     * Sets how many cores the CPU has.
      *
-     * @param cores core values.
+     * @param cores Number of cores the CPU has.
      */
     public void setCores(int cores) {
         this.cores = cores;
@@ -73,7 +63,7 @@ public class CPU {
      * integrated graphics. By default this attribute is set to true, as the
      * majority of CPUs have integrated graphics.
      *
-     * @param graphics graphics value.
+     * @param graphics Integrated graphics yes[true]/no[false].
      */
     public void setGraphics(boolean graphics) {
         this.graphics = graphics;
@@ -81,7 +71,7 @@ public class CPU {
     }
 
     /**
-     *Sava a CPU
+     *Saves a CPU
      * @return a value to represent if saving has been successful. 
      */
     public boolean saveCPU() {
@@ -178,13 +168,16 @@ public class CPU {
      * @param newCores cores value
      * @param newGraphics graphics value
      */
+    
+    // NEEDS FIXING, SIMILAR TO EDITBUILD
+    
     public void updateCPU(int ID, String newMake, String newModel, double newPrice, float newSpeed, int newCores, boolean newGraphics) {
         Connection con = DatabaseConnection.establishConnection();
 
         try {
 
             String query = "UPDATE CPU SET Speed = '" + newSpeed + "' ,Cores = '" + newCores + "' , Graphics = '" + newGraphics + "' WHERE ID ='" + ID + "'"; 
-            query = "UPDATE CPU SET Speed = ?, Cores = ?, Graphics = ? WHERE ID = ?"; //What is happening here?
+            query = "UPDATE CPU SET Speed = ?, Cores = ?, Graphics = ? WHERE ID = ?";
 
             PreparedStatement statement = con.prepareStatement(query);
             statement.setFloat(1, newSpeed);
