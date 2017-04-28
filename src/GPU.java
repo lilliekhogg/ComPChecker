@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author Lillie Hogg
+ * @author Lillie 
  */
 public class GPU {
     
@@ -25,7 +25,7 @@ public class GPU {
     float coreClock;
     
     /**
-     *
+     * Setting make of GPU
      * @param make
      */
     public void setMake (String make){
@@ -34,7 +34,7 @@ public class GPU {
     }
     
     /**
-     *
+     * Setting series of GPU
      * @param series
      */
     public void setSeries (String series){
@@ -43,7 +43,7 @@ public class GPU {
     }
     
     /**
-     *
+     * Set chipset of GPU
      * @param chipset
      */
     public void setChipset (String chipset){
@@ -52,7 +52,7 @@ public class GPU {
     }
     
     /**
-     *
+     * Set GPU memory
      * @param memory
      */
     public void setMemory (int memory){
@@ -61,7 +61,7 @@ public class GPU {
     }
     
     /**
-     *
+     * set core clock of GPU
      * @param coreClock
      */
     public void setCoreClock(float coreClock){
@@ -70,7 +70,7 @@ public class GPU {
     } 
     
     /**
-     *
+     * Set the model of GPU
      * @param model
      */
     public void setModel(String model){
@@ -79,7 +79,7 @@ public class GPU {
     } 
     
     /**
-     *
+     * Set GPU price
      * @param price
      */
     public void setPrice(Double price){
@@ -88,14 +88,14 @@ public class GPU {
     } 
     
     /**
-     *
-     * @return
+     * Saving the GPU to the database
+     * @return GPU
      */
     public boolean saveGPU() {
         //saving user inputs to the database
         Connection con = DatabaseConnection.establishConnection();
 
-        try {
+        try { //adding GPU to part table in database
             String query = "INSERT INTO Part (Price,Model,Make,PartType) VALUES (?,?,?,?)";
 
             PreparedStatement statement = con.prepareStatement(query);
@@ -114,11 +114,11 @@ public class GPU {
             while (rs.next()) {
                 partID = rs.getInt("PartID");
             }
-            
+            //setting entry fields into the GPU table
             query = "INSERT INTO GPU values (?,?,?,?,?)";
 
             statement = con.prepareStatement(query);
-
+            //order in which is added into database
             statement.setInt(1, partID);
             statement.setString(2, this.series);
             statement.setString(3, this.chipset);

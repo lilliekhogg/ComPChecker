@@ -324,8 +324,8 @@ public class EditBuild extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     *
-     * @return
+     * Returning part selected to the user
+     * @return myPart
      */
     public String getPart() {
         System.out.println(myPart);
@@ -333,6 +333,7 @@ public class EditBuild extends javax.swing.JFrame {
     }
 
     private void btnProcessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessorActionPerformed
+        //opening CPU form of components
         myPart = "CPU";
         SelectComponent frm = new SelectComponent(myPart, null, this); //
         frm.setVisible(true);
@@ -341,7 +342,7 @@ public class EditBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProcessorActionPerformed
 
     private void btnRAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRAMActionPerformed
-        // TODO add your handling code here
+        // opening RAM form of components
         myPart = "RAM";
         SelectComponent frm = new SelectComponent(myPart, null, this); //
         frm.setVisible(true);
@@ -349,54 +350,56 @@ public class EditBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRAMActionPerformed
 
     private void btnMotherboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMotherboardActionPerformed
+        //opening Motherboard form of components
         myPart = "Motherboard";
         SelectComponent frm = new SelectComponent(myPart, null, this); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnMotherboardActionPerformed
 
     private void btnGraphicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGraphicsActionPerformed
-        // TODO add your handling code here:
+        // opening GPU form of components
         myPart = "GPU";
         SelectComponent frm = new SelectComponent(myPart, null, this); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnGraphicsActionPerformed
 
     private void btnStorageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStorageActionPerformed
-        // TODO add your handling code here:
+        // opening Storage form of components
         myPart = "Storage";
         SelectComponent frm = new SelectComponent(myPart, null, this); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnStorageActionPerformed
 
     private void btnCaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCaseActionPerformed
-        // TODO add your handling code here:
+        // opening Case form of components
         myPart = "Case";
         SelectComponent frm = new SelectComponent(myPart, null, this); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnCaseActionPerformed
 
     private void btnPowerSupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPowerSupActionPerformed
-        // TODO add your handling code here:
+        // opening PSU form of components
         myPart = "PSU";
         SelectComponent frm = new SelectComponent(myPart, null, this); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnPowerSupActionPerformed
 
     private void btnCoolingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCoolingActionPerformed
-        // TODO add your handling code here:
+        // opening Cooler form of components
         myPart = "Cooler";
         SelectComponent frm = new SelectComponent(myPart, null, this); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnCoolingActionPerformed
 
     private void btnAccessoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccessoriesActionPerformed
-        // TODO add your handling code here:
+        // opening Accessory form of components
         myPart = "Accessory";
         SelectComponent frm = new SelectComponent(myPart, null, this); //
         frm.setVisible(true);
     }//GEN-LAST:event_btnAccessoriesActionPerformed
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        //selecting components and adding them to build array in database
         String buildName = txtboxName.getText();
 
         if (buildName.isEmpty()) {
@@ -414,7 +417,8 @@ public class EditBuild extends javax.swing.JFrame {
             IDs.add(accessory);
             Issue check = new Issue();
             boolean issues = false;
-
+            
+            //checking the compatibility of two components in database
             Connection con = DatabaseConnection.establishConnection();
             for (int i = 0; i < IDs.size(); i++) {
                 for (int j = i + 1; j < IDs.size(); j++) {
@@ -435,7 +439,7 @@ public class EditBuild extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnConfirmActionPerformed
-
+    //saving the Build into the databse
     private void saveBuild() {
         currentBuild.setCPU(CPU);
         currentBuild.setMotherboard(motherboard);
@@ -451,7 +455,7 @@ public class EditBuild extends javax.swing.JFrame {
 
         currentBuild.editBuild();
     }
-
+    //user return to menu
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
@@ -467,7 +471,7 @@ public class EditBuild extends javax.swing.JFrame {
     }//GEN-LAST:event_lblReturnActionPerformed
 
     /**
-     *
+     *Setting parts back to 0 
      */
     public void refreshParts() {
 
@@ -504,7 +508,7 @@ public class EditBuild extends javax.swing.JFrame {
     }
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-
+        //cancelling edit build
         String message = "Do you wish to cancel without saving?";
         int answer = JOptionPane.showConfirmDialog(this, message);
         if (answer == JOptionPane.YES_OPTION) {
