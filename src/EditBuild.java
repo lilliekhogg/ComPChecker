@@ -431,8 +431,11 @@ public class EditBuild extends javax.swing.JFrame {
 //        myBuild.name = txtboxName.getText();
 //        myBuild.storage = storage;
         //myBuild.user = username;
-          currentBuild.setCPU(currentBuild.getCPU());
-          currentBuild.setMotherboard(currentBuild.getMotherboard());
+          int motherboardx = motherboard;
+          int cpux = CPU;
+        
+          currentBuild.setCPU(cpux);
+          currentBuild.setMotherboard(motherboardx);
           currentBuild.setRAM(currentBuild.getRAM());
           currentBuild.setGPU(currentBuild.getGPU());
           currentBuild.setCase(currentBuild.getCase());
@@ -442,6 +445,11 @@ public class EditBuild extends javax.swing.JFrame {
           currentBuild.setName(currentBuild.getName());
           currentBuild.setStorage(currentBuild.getStorage());
           currentBuild.setUser(currentBuild.getUser());
+          
+          System.out.println("motherboard"+currentBuild.getMotherboard());
+          System.out.println("name"+currentBuild.getName());
+          System.out.println("user"+currentBuild.getUser());
+          
           
         currentBuild.editBuild();
     }
