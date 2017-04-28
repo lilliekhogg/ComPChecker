@@ -33,36 +33,42 @@
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="lblLogo" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="1" groupAlignment="2" attributes="0">
-                              <Component id="lblAdminMenu" alignment="2" min="-2" pref="183" max="-2" attributes="0"/>
-                              <Group type="102" alignment="2" attributes="0">
-                                  <Component id="btnCreateBuild" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                  <Component id="btnEditBuilds" min="-2" pref="107" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnViewBuild" min="-2" pref="107" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="btnCreateBuild" min="-2" pref="158" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="btnEditBuilds" min="-2" pref="158" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnEditMyAcc" alignment="1" min="-2" pref="334" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="btnCompareBuilds" min="-2" pref="158" max="-2" attributes="0"/>
+                                      <Component id="btnShareBuild" min="-2" pref="158" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnRequest" min="-2" pref="158" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="btnViewComponents" min="-2" pref="158" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btnCompareBuilds" min="-2" pref="158" max="-2" attributes="0"/>
-                                  <Component id="btnShareBuild" min="-2" pref="158" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnRequest" min="-2" pref="158" max="-2" attributes="0"/>
-                                  <Component id="btnViewComponents" min="-2" pref="158" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="btnEditMyAcc" alignment="1" min="-2" pref="334" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnLogOut" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+                      <Component id="lblAdminMenu" min="-2" pref="183" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="39" max="32767" attributes="0"/>
@@ -74,15 +80,14 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblLogo" min="-2" pref="97" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-              <Component id="lblAdminMenu" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnEditBuilds" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnCreateBuild" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="btnViewBuild" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="lblAdminMenu" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="btnEditBuilds" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnCreateBuild" alignment="1" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCompareBuilds" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnViewComponents" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
@@ -94,7 +99,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnEditMyAcc" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
               <Component id="btnLogOut" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -121,7 +126,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnEditBuilds">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Build"/>
+        <Property name="text" type="java.lang.String" value="View/Edit My Builds"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[107, 23]"/>
         </Property>
@@ -131,14 +136,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditBuildsActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnViewBuild">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View Build"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewBuildActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCompareBuilds">

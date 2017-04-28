@@ -232,29 +232,31 @@ public class AddCPU extends javax.swing.JDialog {
      * Returns user to the menu.
      */
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        CPU cpu = new CPU();
-        String make = cmboxMake.getSelectedItem().toString();
-        String text = txtboxSpeed.getText();
-        String model = txtboxModel.getText();
-        double price = 0;
-
-        float speed = 0;
-        int cores = 0;
-
-        if (text != null && !text.isEmpty()) {
-            speed = Float.parseFloat(text);
-        }
-        text = txtboxCores.getText();
-        if (text != null && !text.isEmpty()) {
-            cores = Integer.parseInt(text);
-        }
-        text = txtboxPrice.getText();
-        if (text != null && !text.isEmpty()) {
-            price = parseDouble(text);
-        }
-        cpu.updateCPU(CPUID, make, model, price, speed, cores, true);
-
-
+          JOptionPane.showMessageDialog(this,
+          "The code for editing components is incomplete.",
+          "Not finished!",
+          JOptionPane.ERROR_MESSAGE);
+//        CPU cpu = new CPU();
+//        String make = cmboxMake.getSelectedItem().toString();
+//        String text = txtboxSpeed.getText();
+//        String model = txtboxModel.getText();
+//        double price = 0;
+//
+//        float speed = 0;
+//        int cores = 0;
+//
+//        if (text != null && !text.isEmpty()) {
+//            speed = Float.parseFloat(text);
+//        }
+//        text = txtboxCores.getText();
+//        if (text != null && !text.isEmpty()) {
+//            cores = Integer.parseInt(text);
+//        }
+//        text = txtboxPrice.getText();
+//        if (text != null && !text.isEmpty()) {
+//            price = parseDouble(text);
+//        }
+//        cpu.updateCPU(CPUID, make, model, price, speed, cores, true);
     }//GEN-LAST:event_btnEditActionPerformed
 
     /**

@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    UserAccount user;
+    UserAccount currentUser;
 
     /**
      * Creates new form AdminMenu
@@ -22,7 +22,7 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Main Menu");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-        //user = user;     //Assigns the user variable passed to this method to a new var
+        currentUser = user;     //Assigns the user variable passed to this method to a new var
     }
 
     /**
@@ -37,7 +37,6 @@ public class MainMenu extends javax.swing.JFrame {
         lblAdminMenu = new javax.swing.JLabel();
         btnCreateBuild = new javax.swing.JButton();
         btnEditBuilds = new javax.swing.JButton();
-        btnViewBuild = new javax.swing.JButton();
         btnCompareBuilds = new javax.swing.JButton();
         btnViewComponents = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
@@ -61,19 +60,12 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
-        btnEditBuilds.setText("Edit Build");
+        btnEditBuilds.setText("View/Edit My Builds");
         btnEditBuilds.setMaximumSize(new java.awt.Dimension(107, 23));
         btnEditBuilds.setMinimumSize(new java.awt.Dimension(107, 23));
         btnEditBuilds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditBuildsActionPerformed(evt);
-            }
-        });
-
-        btnViewBuild.setText("View Build");
-        btnViewBuild.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewBuildActionPerformed(evt);
             }
         });
 
@@ -133,26 +125,29 @@ public class MainMenu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(lblAdminMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnCreateBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(7, 7, 7)
-                                    .addComponent(btnEditBuilds, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnViewBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnCompareBuilds, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnShareBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnCreateBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnViewComponents, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(btnEditMyAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnEditBuilds, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnEditMyAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnCompareBuilds, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnShareBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(btnRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnViewComponents, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnLogOut)))
+                        .addComponent(btnLogOut))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(lblAdminMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -160,14 +155,13 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(lblAdminMenu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblAdminMenu)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEditBuilds, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCreateBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnViewBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(btnCreateBuild, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCompareBuilds, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnViewComponents, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -177,7 +171,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(btnShareBuild, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEditMyAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btnLogOut)
                 .addContainerGap())
         );
@@ -186,29 +180,26 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditBuildsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBuildsActionPerformed
-        // TODO add your handling code here:
+        new EditBuilds(currentUser).setVisible(true);
     }//GEN-LAST:event_btnEditBuildsActionPerformed
 
-    private void btnViewBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBuildActionPerformed
-        // TODO add your handling code here:
-       this.setVisible(false);
-        new EditBuilds(user).setVisible(true);
-    }//GEN-LAST:event_btnViewBuildActionPerformed
-
     private void btnCreateBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateBuildActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
-        new CreateAccountAdmin(user).setVisible(true);
+        new CreateAccountAdmin(currentUser).setVisible(true);
     }//GEN-LAST:event_btnCreateBuildActionPerformed
 
     private void btnShareBuildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShareBuildActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "This feature hasn't been implemented yet, come back later!", "Share Build", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+          "The code for sharing builds is incomplete.",
+          "Not finished!",
+          JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnShareBuildActionPerformed
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "This feature hasn't been implemented yet, come back later!", "Share Build", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this,
+          "The code for requesting components is incomplete.",
+          "Not finished!",
+          JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnRequestActionPerformed
 
     private void btnEditMyAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditMyAccActionPerformed
@@ -225,7 +216,10 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewComponentsActionPerformed
 
     private void btnCompareBuildsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompareBuildsActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,
+          "The code for comparing builds is incomplete.",
+          "Not finished!",
+          JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnCompareBuildsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -236,7 +230,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JToggleButton btnLogOut;
     private javax.swing.JButton btnRequest;
     private javax.swing.JButton btnShareBuild;
-    private javax.swing.JButton btnViewBuild;
     private javax.swing.JButton btnViewComponents;
     private javax.swing.JLabel lblAdminMenu;
     private javax.swing.JLabel lblLogo;

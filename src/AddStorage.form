@@ -23,6 +23,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="232" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -41,34 +46,19 @@
               </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="txtFieldCapacity" max="32767" attributes="0"/>
-                  <Component id="comboMake" max="32767" attributes="0"/>
-                  <Component id="txtFieldModel" max="32767" attributes="0"/>
-                  <Component id="txtFieldSeries" alignment="0" max="32767" attributes="0"/>
-                  <Component id="txtFieldSpeed" max="32767" attributes="0"/>
-                  <Component id="txtFieldPrice" max="32767" attributes="0"/>
-                  <Component id="cmBoxHHD" min="-2" pref="92" max="-2" attributes="0"/>
+                  <Component id="btnCancel" pref="92" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnSave" max="32767" attributes="0"/>
+                      <Component id="txtFieldCapacity" max="32767" attributes="0"/>
+                      <Component id="comboMake" max="32767" attributes="0"/>
+                      <Component id="txtFieldModel" max="32767" attributes="0"/>
+                      <Component id="txtFieldSeries" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtFieldSpeed" max="32767" attributes="0"/>
+                      <Component id="txtFieldPrice" max="32767" attributes="0"/>
+                      <Component id="cmBoxHHD" pref="92" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="0" pref="137" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="btnCancel" alignment="1" min="-2" pref="74" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -117,11 +107,11 @@
                   <Component id="txtFieldCapacity" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Component id="btnSave" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -194,7 +194,7 @@ public class EditBuilds extends javax.swing.JDialog {
         int row = jTable.getSelectedRow();
         String buildname = jTable.getModel().getValueAt(row, 0).toString(); // 0 for the column because that's the name column
         String[] options = new String[]{"Edit", "Delete", "Compare Build", "Share Build", "Cancel"};
-        int response = JOptionPane.showOptionDialog(null, "What would you like to do with this build " + currentUser + "?", "Title",
+        int response = JOptionPane.showOptionDialog(null, "What would you like to do with this build " + currentUser.getFName() + "?", "Title",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, options[0]);
         Build myBuild = new Build();
