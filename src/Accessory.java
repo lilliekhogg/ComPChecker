@@ -4,69 +4,67 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *This class represents an accessory. An accessory is a type of component in a PC.
+ * This class represents an accessory. An accessory is a type of component in a
+ * PC.
+ *
  * @author Lillie Hogg
  */
 public class Accessory {
-    
+
     String make;
     String model;
     double price;
     String description;
-   
-    
-    //setting inputs
 
+    //setting inputs
     /**
-     *Sets the attribute make.
+     * Sets the attribute make.
+     *
      * @param make the make of the part
      */
-    public void setMake(String make){
+    public void setMake(String make) {
         this.make = make;
     }
-    
+
     /**
-     *Sets the attribute model
+     * Sets the attribute model
+     *
      * @param model the model of the part
      */
-    public void setModel(String model){
+    public void setModel(String model) {
         this.model = model;
     }
-    
+
     /**
-     *This method sets the price attribute.
+     * This method sets the price attribute.
+     *
      * @param price a double representing a price.
      */
-    public void setPrice (double price){
+    public void setPrice(double price) {
         this.price = price;
     }
-    
+
     /**
-     *This method sets the description attribute. 
-     * @param description  a String representing desciption. 
+     * This method sets the description attribute.
+     *
+     * @param description a String representing desciption.
      */
-    public void setDesc (String description){
+    public void setDesc(String description) {
         this.description = description;
     }
-    
+
     /**
-     *This method saves a new accessory to the database.
-     * @return  returns if the saving was successful.
+     * This method saves a new accessory to the database.
+     *
+     * @return returns if the saving was successful.
      */
     public boolean saveAccessory() {
-        
-        
+
         Connection con = DatabaseConnection.establishConnection();
 
         try {
-//Inserts data into part table.
+            //Inserts data into part table.
             String query = "INSERT INTO Part  (Price,Model,Make,PartType) VALUES (?,?,?,?)";
 
             PreparedStatement statement = con.prepareStatement(query);
@@ -86,12 +84,12 @@ public class Accessory {
             while (rs.next()) {
                 partID = rs.getInt("PartID");
             }
-//Inserts data in Motherboard table.
+            //Inserts data in Motherboard table.
             query = "INSERT INTO Accessory values (?,?)";
-             statement = con.prepareStatement(query);
+            statement = con.prepareStatement(query);
             statement.setInt(1, partID);
             statement.setString(2, description);
- 
+
             statement.execute();
             con.close();
             return true;
@@ -102,6 +100,5 @@ public class Accessory {
         }
 
     }
-    
-    
+
 }

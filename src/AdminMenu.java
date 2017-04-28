@@ -1,7 +1,4 @@
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,8 +28,8 @@ public class AdminMenu extends javax.swing.JFrame {
     }
 
     /**
-     *
-     * @param user The constructor is passed the user variable which currentUser
+     * AdminMenu constructor taking UserAccount parameter.
+     * @param user The constructor is passed the user argument which currentUser
      * is then set to which allows it to be accessed throughout the form
      */
     public AdminMenu(UserAccount user) {

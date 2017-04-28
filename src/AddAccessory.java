@@ -5,12 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Lillie
@@ -18,21 +12,9 @@ import javax.swing.JOptionPane;
 public class AddAccessory extends javax.swing.JFrame {
 
     UserAccount currentUser;
-    
-    /**
-     * Creates new form AddAccessory
-     * @param parent parent form
-     * @param modal system modal.
-     */
-    public AddAccessory(java.awt.Frame parent, boolean modal) {
-        initComponents();
-        this.setTitle("Add Accessory");     //Adds a title to the frame
-        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-        populateMakes();
-    }
 
     /**
-     *
+     * Default constructor for AddAccessory.
      */
     public AddAccessory() {
         initComponents();
@@ -40,7 +22,12 @@ public class AddAccessory extends javax.swing.JFrame {
         this.setTitle("Add Accessory");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
     }
-
+    
+    /**
+     * Constructor taking user argument. 
+     * @param user This determines who the user is so they can be
+     * returned to the correct menu with the appropriate options.
+     */
     AddAccessory(UserAccount user) {
         initComponents();
         populateMakes();
@@ -170,7 +157,11 @@ public class AddAccessory extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * When the user saves an accessory, the new data is inserted and saved 
+     * into the database.
+     */
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // method gets inputs from user and sets inputs when save button is clicked
         Accessory accessory = new Accessory();
@@ -202,34 +193,19 @@ public class AddAccessory extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Component Created", "Accessory Added", JOptionPane.INFORMATION_MESSAGE);
             new AdminMenu().setVisible(true);
         } 
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-      
-        
-
-      
+        } 
     }//GEN-LAST:event_btnSaveActionPerformed
-
+    
+    /**
+     * Returns the user to the appropriate menu on button click.
+     */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // cancels the form and returns to admin menu
         returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    
-    //provides the make types in the make combo box
+    /**
+     * Populates the make combobox with the different makes.
+     */
     private void populateMakes() {
 
         comboMake.removeAllItems();
@@ -248,6 +224,9 @@ public class AddAccessory extends javax.swing.JFrame {
 
     }
     
+    /**
+     * Returns the user to the appropriate menu based on user type.
+     */
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
@@ -255,41 +234,6 @@ public class AddAccessory extends javax.swing.JFrame {
         } else {
             new MainMenu(currentUser).setVisible(true);
         }
-    }
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddAccessory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddAccessory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddAccessory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddAccessory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AddAccessory().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,11 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author Tom
@@ -19,21 +14,7 @@ public class AddCPU extends javax.swing.JDialog {
     int CPUID;
 
     /**
-     * Creates new form AddCPU
-     *
-     * @param parent parent 
-     * @param modal modal 
-     */
-    public AddCPU(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        this.setTitle("Add CPU");     //Adds a title to the frame
-        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-        populateMakes();
-    }
-
-    /**
-     *
+     * Default constructor for AddCPU.
      */
     public AddCPU() {
 
@@ -44,8 +25,8 @@ public class AddCPU extends javax.swing.JDialog {
     }
 
     /**
-     *
-     * @param ID
+     * Constructor for AddCPU.
+     * @param ID sets the CPU ID.
      */
     public AddCPU(int ID) {
 
@@ -56,7 +37,11 @@ public class AddCPU extends javax.swing.JDialog {
         CPUID = ID;
 
     }
-
+    
+    /**
+     * Constructor for AddCPU.
+     * @param user passes the current user.
+     */
     AddCPU(UserAccount user) {
         initComponents();
         this.setTitle("Add CPU");     //Adds a title to the frame
@@ -74,7 +59,7 @@ public class AddCPU extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmboxMake = new javax.swing.JComboBox<String>();
+        cmboxMake = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -91,12 +76,7 @@ public class AddCPU extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        cmboxMake.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmboxMake.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmboxMakeActionPerformed(evt);
-            }
-        });
+        cmboxMake.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setText("Make:");
 
@@ -196,10 +176,6 @@ public class AddCPU extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmboxMakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboxMakeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmboxMakeActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
            CPU cpu = new CPU();
@@ -240,18 +216,20 @@ public class AddCPU extends javax.swing.JDialog {
             this.setVisible(false);
             new AdminMenu().setVisible(true);
             }
-        
-        
         }
     }//GEN-LAST:event_btnSaveActionPerformed
-
+    
+    /**
+     * Returns user to the menu.
+     */
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        this.setVisible(false);
-        new AdminMenu().setVisible(true);
+        returnToMenu();
     }//GEN-LAST:event_btnCancelActionPerformed
-
+    
+    /**
+     * Returns user to the menu.
+     */
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // TODO add your handling code here:
         CPU cpu = new CPU();
         String make = cmboxMake.getSelectedItem().toString();
         String text = txtboxSpeed.getText();
@@ -277,6 +255,9 @@ public class AddCPU extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnEditActionPerformed
 
+    /**
+     * Populates the make combo with makes.
+     */
     private void populateMakes() {
         //adding make to the database
         cmboxMake.removeAllItems();
@@ -294,7 +275,10 @@ public class AddCPU extends javax.swing.JDialog {
         }
 
     }
-    
+   
+    /**
+     * Returns user to the appropriate menu based on their user type.
+     */
     private void returnToMenu() {
         this.setVisible(false);
         if (currentUser.getType() == true) {        //User is admin
@@ -302,50 +286,6 @@ public class AddCPU extends javax.swing.JDialog {
         } else {
             new MainMenu(currentUser).setVisible(true);
         }
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddCPU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddCPU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddCPU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddCPU.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                AddCPU dialog = new AddCPU(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
