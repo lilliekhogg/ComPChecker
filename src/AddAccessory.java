@@ -189,7 +189,7 @@ public class AddAccessory extends javax.swing.JFrame {
             if (validated) {
                 this.setVisible(false);
                 JOptionPane.showMessageDialog(null, "Component Created", "Accessory Added", JOptionPane.INFORMATION_MESSAGE);
-                new AdminMenu().setVisible(true);
+                new AdminMenu(currentUser).setVisible(true);
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed

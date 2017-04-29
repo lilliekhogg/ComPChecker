@@ -29,6 +29,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
     /**
      * AdminMenu constructor taking UserAccount parameter.
+     *
      * @param user The constructor is passed the user argument which currentUser
      * is then set to which allows it to be accessed throughout the form
      */
@@ -220,63 +221,65 @@ public class AdminMenu extends javax.swing.JFrame {
         String myPart;
         EditComponent frm;
 
-        switch (input) {
+        if (input != null) {
+            switch (input) {
 
-            case "Accessory":
-                myPart = "Accessory";
-                frm = new EditComponent(myPart, 0, currentUser, null); //
-                this.setVisible(false);
-                frm.setVisible(true);
-                break;
+                case "Accessory":
+                    myPart = "Accessory";
+                    frm = new EditComponent(myPart, 0, currentUser, null); //
+                    this.setVisible(false);
+                    frm.setVisible(true);
+                    break;
 
-            case "CPU":
-                myPart = "CPU";
-                frm = new EditComponent(myPart, 0, currentUser, null);
-                this.setVisible(false);
-                frm.setVisible(true);
-                break;
-            case "Motherboard":
-                myPart = "Motherboard";
-                frm = new EditComponent(myPart, 0, currentUser, null);
-                this.setVisible(false);
-                frm.setVisible(true);
-                break;
-            case "RAM":
-                myPart = "RAM";
-                frm = new EditComponent(myPart, 0, currentUser, null);
-                this.setVisible(false);
-                frm.setVisible(true);
-                break;
-            case "PSU":
-                myPart = "PSU";
-                frm = new EditComponent(myPart, 0, currentUser, null);
-                this.setVisible(false);
-                frm.setVisible(true);
-                break;
-            case "Cooler":
-                myPart = "Cooler";
-                frm = new EditComponent(myPart, 0, currentUser, null);
-                this.setVisible(false);
-                frm.setVisible(true);
-                break;
-            case "GPU":
-                myPart = "GPU";
-                frm = new EditComponent(myPart, 0, currentUser, null);
-                this.setVisible(false);
-                frm.setVisible(true);
-                break;
-            case "Case":
-                myPart = "Case";
-                frm = new EditComponent(myPart, 0, currentUser, null);
-                this.setVisible(false);
-                frm.setVisible(true);
-                break;
-            case "Storage":
-                myPart = "Storage";
-                frm = new EditComponent(myPart, 0, currentUser, null);
-                this.setVisible(false);
-                frm.setVisible(true);
-                break;
+                case "CPU":
+                    myPart = "CPU";
+                    frm = new EditComponent(myPart, 0, currentUser, null);
+                    this.setVisible(false);
+                    frm.setVisible(true);
+                    break;
+                case "Motherboard":
+                    myPart = "Motherboard";
+                    frm = new EditComponent(myPart, 0, currentUser, null);
+                    this.setVisible(false);
+                    frm.setVisible(true);
+                    break;
+                case "RAM":
+                    myPart = "RAM";
+                    frm = new EditComponent(myPart, 0, currentUser, null);
+                    this.setVisible(false);
+                    frm.setVisible(true);
+                    break;
+                case "PSU":
+                    myPart = "PSU";
+                    frm = new EditComponent(myPart, 0, currentUser, null);
+                    this.setVisible(false);
+                    frm.setVisible(true);
+                    break;
+                case "Cooler":
+                    myPart = "Cooler";
+                    frm = new EditComponent(myPart, 0, currentUser, null);
+                    this.setVisible(false);
+                    frm.setVisible(true);
+                    break;
+                case "GPU":
+                    myPart = "GPU";
+                    frm = new EditComponent(myPart, 0, currentUser, null);
+                    this.setVisible(false);
+                    frm.setVisible(true);
+                    break;
+                case "Case":
+                    myPart = "Case";
+                    frm = new EditComponent(myPart, 0, currentUser, null);
+                    this.setVisible(false);
+                    frm.setVisible(true);
+                    break;
+                case "Storage":
+                    myPart = "Storage";
+                    frm = new EditComponent(myPart, 0, currentUser, null);
+                    this.setVisible(false);
+                    frm.setVisible(true);
+                    break;
+            }
         }
     }//GEN-LAST:event_btnEditCompActionPerformed
 
@@ -315,55 +318,57 @@ public class AdminMenu extends javax.swing.JFrame {
         String[] choices = {"Accessory", "CPU", "Cooler", "GPU", "Motherboard", "Case", "PSU", "RAM", "Storage"};
         String input = (String) JOptionPane.showInputDialog(null, "Which type of part is being added?",
                 "New Part", JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
-        switch (input) {
+        if (input != null) {
+            switch (input) {
 
-            case "Accessory":
-                this.setVisible(false);
-                new AddAccessory(currentUser).setVisible(true);
-                break;
+                case "Accessory":
+                    this.setVisible(false);
+                    new AddAccessory(currentUser).setVisible(true);
+                    break;
 
-            case "CPU":
-                AddCPU form = new AddCPU();
-                form.btnEdit.hide();        //Hides button as saving new component.
-                form.setVisible(true);
-                this.setVisible(false);
-                break;
+                case "CPU":
+                    AddCPU form = new AddCPU();
+                    form.btnEdit.hide();        //Hides button as saving new component.
+                    form.setVisible(true);
+                    this.setVisible(false);
+                    break;
 
-            case "Motherboard":
-                this.setVisible(false);
-                new AddMotherboard(currentUser).setVisible(true);
-                break;
+                case "Motherboard":
+                    this.setVisible(false);
+                    new AddMotherboard(currentUser).setVisible(true);
+                    break;
 
-            case "RAM":
-                this.setVisible(false);
-                new AddRAM(currentUser).setVisible(true);
-                break;
+                case "RAM":
+                    this.setVisible(false);
+                    new addRAM(currentUser).setVisible(true);
+                    break;
 
-            case "PSU":
-                this.setVisible(false);
-                new AddPSU(currentUser).setVisible(true);
-                break;
+                case "PSU":
+                    this.setVisible(false);
+                    new AddPSU(currentUser).setVisible(true);
+                    break;
 
-            case "Cooler":
-                this.setVisible(false);
-                new AddCooler(currentUser).setVisible(true);
-                break;
+                case "Cooler":
+                    this.setVisible(false);
+                    new AddCooler(currentUser).setVisible(true);
+                    break;
 
-            case "GPU":
-                this.setVisible(false);
-                new AddGPU(currentUser).setVisible(true);
-                break;
+                case "GPU":
+                    this.setVisible(false);
+                    new AddGPU(currentUser).setVisible(true);
+                    break;
 
-            case "Case":
-                this.setVisible(false);
-                new AddPCCase(currentUser).setVisible(true);
-                break;
+                case "Case":
+                    this.setVisible(false);
+                    new AddPCCase(currentUser).setVisible(true);
+                    break;
 
-            case "Storage":
-                this.setVisible(false);
-                new AddStorage(currentUser).setVisible(true);
-                break;
+                case "Storage":
+                    this.setVisible(false);
+                    new AddStorage(currentUser).setVisible(true);
+                    break;
 
+            }
         }
     }//GEN-LAST:event_btnNewComponentActionPerformed
 

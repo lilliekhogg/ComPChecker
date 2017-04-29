@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-
 /**
  *
  * @author Tom
@@ -18,7 +17,8 @@ public class EditAccounts extends javax.swing.JDialog {
 
     /**
      * Creates new form EditAccounts
-     * @param user represents the user to be edited. 
+     *
+     * @param user represents the user to be edited.
      */
     public EditAccounts(UserAccount user) {
         initComponents();
@@ -158,17 +158,15 @@ public class EditAccounts extends javax.swing.JDialog {
         user.setUsername(username);
         if (response == 0) {
             //edit
-             this.setVisible(false);
-             
-        EditAccount newForm = new EditAccount(currentUser, user);
-        // would you need to pass another var of currentUser too?
-        // atm if you're an admin and you edit a gen user then you become
-        // logged in as that gen user?
-        newForm.setVisible(true);
+            this.setVisible(false);
+
+            EditAccount newForm = new EditAccount(currentUser, user);
+
+            newForm.setVisible(true);
         } else if (response == 1) {
             //Delete
             user.deleteUser();
- 
+
         } else if (response == 2) {
             //Make Admin
             user.setType(true);
