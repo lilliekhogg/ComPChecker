@@ -340,7 +340,7 @@ public class AdminMenu extends javax.swing.JFrame {
 
                 case "RAM":
                     this.setVisible(false);
-                    new addRAM(currentUser).setVisible(true);
+                    new AddRAM(currentUser).setVisible(true);
                     break;
 
                 case "PSU":
