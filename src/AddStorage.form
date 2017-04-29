@@ -47,16 +47,14 @@
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnCancel" pref="92" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="btnSave" max="32767" attributes="0"/>
-                      <Component id="txtFieldCapacity" max="32767" attributes="0"/>
-                      <Component id="comboMake" max="32767" attributes="0"/>
-                      <Component id="txtFieldModel" max="32767" attributes="0"/>
-                      <Component id="txtFieldSeries" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtFieldSpeed" max="32767" attributes="0"/>
-                      <Component id="txtFieldPrice" max="32767" attributes="0"/>
-                      <Component id="cmBoxHHD" pref="92" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="btnSave" max="32767" attributes="0"/>
+                  <Component id="txtFieldCapacity" max="32767" attributes="0"/>
+                  <Component id="comboMake" max="32767" attributes="0"/>
+                  <Component id="txtFieldModel" max="32767" attributes="0"/>
+                  <Component id="txtFieldSeries" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtFieldSpeed" max="32767" attributes="0"/>
+                  <Component id="txtFieldPrice" max="32767" attributes="0"/>
+                  <Component id="cmBoxHHD" pref="92" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="137" max="32767" attributes="0"/>
           </Group>

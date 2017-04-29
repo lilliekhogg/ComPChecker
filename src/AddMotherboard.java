@@ -238,7 +238,7 @@ public class AddMotherboard extends javax.swing.JDialog {
             if (succesful) {
                 JOptionPane.showMessageDialog(null, "Component added", "Motherboard Added", JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
-                new AdminMenu().setVisible(true);
+                new AdminMenu(currentUser).setVisible(true);
             }
 
         }

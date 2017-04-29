@@ -192,7 +192,7 @@ public class AddCooler extends javax.swing.JFrame {
             if (succesful) {
                 this.setVisible(false);
                 JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-                new AdminMenu().setVisible(true);
+                new AdminMenu(currentUser).setVisible(true);
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed

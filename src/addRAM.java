@@ -11,21 +11,21 @@ import javax.swing.JOptionPane;
  *
  * @author Lillie Hogg
  */
-public class addRAM extends javax.swing.JDialog {
+public class AddRAM extends javax.swing.JDialog {
 
     UserAccount currentUser;
 
     /**
      * Creates new form addRAM
      */
-    public addRAM() {
+    public AddRAM() {
         initComponents();
         this.setTitle("Add RAM");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
     }
 
-    addRAM(UserAccount user) {
+    AddRAM(UserAccount user) {
         initComponents();
         this.setTitle("Add RAM");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
@@ -210,7 +210,7 @@ public class addRAM extends javax.swing.JDialog {
             if (succesful) {
                 this.setVisible(false);
                 JOptionPane.showMessageDialog(null, "Component Created", "Added", JOptionPane.INFORMATION_MESSAGE);
-                new AdminMenu().setVisible(true);
+                new AdminMenu(currentUser).setVisible(true);
             }
 
         }

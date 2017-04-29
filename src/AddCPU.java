@@ -216,7 +216,7 @@ public class AddCPU extends javax.swing.JDialog {
             if (succesful) {
                 JOptionPane.showMessageDialog(null, "CPU added", "CPU Added", JOptionPane.INFORMATION_MESSAGE);
                 this.setVisible(false);
-                new AdminMenu().setVisible(true);
+                new AdminMenu(currentUser).setVisible(true);
             }
         }
     }//GEN-LAST:event_btnSaveActionPerformed
