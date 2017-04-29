@@ -16,7 +16,7 @@ public class AddRAM extends javax.swing.JDialog {
     UserAccount currentUser;
 
     /**
-     * Creates new form addRAM
+     * Creates new form AddRAM
      */
     public AddRAM() {
         initComponents();
