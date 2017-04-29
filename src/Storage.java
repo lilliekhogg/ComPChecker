@@ -100,8 +100,7 @@ public class Storage {
             statement.setString(3, this.make);
             statement.setString(4, "Storage");
             statement.execute();
-            String model = this.model;
-            query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'Storage'";
+            query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'Storage'";
 
             statement.executeQuery(query);
             ResultSet rs = statement.getResultSet();

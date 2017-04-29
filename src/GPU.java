@@ -105,8 +105,7 @@ public class GPU {
             statement.setString(3, this.make);
             statement.setString(4, "GPU");
             statement.execute();
-            String model = this.model;
-            query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'GPU'";
+            query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'GPU'";
 
             statement.executeQuery(query);
             ResultSet rs = statement.getResultSet();
@@ -151,7 +150,6 @@ public class GPU {
             while (rs.next()) {
                 partID = rs.getInt("PartID");
             }
-            
             query = "DELETE FROM GPU WHERE ID = ?";
             statement = con.prepareStatement(query);
             statement.setInt(1, partID);

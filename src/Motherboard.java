@@ -98,9 +98,8 @@ public class Motherboard {
             statement.setString(3, this.make);
             statement.setString(4, "Motherboard");
             statement.execute();
-            String model = this.model;
             //Gets ID of inserted Item.
-            query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'Motherboard'";
+            query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'Motherboard'";
             statement.executeQuery(query);
 
             ResultSet rs = statement.getResultSet();

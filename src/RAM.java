@@ -101,8 +101,7 @@ public class RAM {
             statement.setString(3, this.make);
             statement.setString(4, "RAM");
             statement.execute();
-            String model = this.model;
-            query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'RAM'";
+            query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'RAM'";
 
             statement.executeQuery(query);
             ResultSet rs = statement.getResultSet();

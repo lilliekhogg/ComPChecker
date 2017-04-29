@@ -431,6 +431,7 @@ public class EditComponent extends javax.swing.JDialog {
     }
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+
         if (currentUser.getType() == true) {
             int row = jTable.getSelectedRow();
             String compMake = jTable.getModel().getValueAt(row, 0).toString(); // 0 for the column because that's the make column
@@ -565,14 +566,15 @@ public class EditComponent extends javax.swing.JDialog {
                     new EditComponent(partType, 0, currentUser, null).setVisible(true);
                 }
             }
-            else {
-                JOptionPane.showMessageDialog(this,
-                        "You don't have permission to edit.",
-                        "Denied!",
-                        JOptionPane.ERROR_MESSAGE);
-                new MainMenu(currentUser).setVisible(true);
-            }
+
     }//GEN-LAST:event_btnConfirmActionPerformed
+    else {
+            JOptionPane.showMessageDialog(this,
+                    "You don't have permission to edit.",
+                    "Denied!",
+                    JOptionPane.ERROR_MESSAGE);
+            new MainMenu(currentUser).setVisible(true);
+        }
     }
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

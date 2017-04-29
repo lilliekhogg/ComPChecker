@@ -116,9 +116,8 @@ public class PCCase {
             statement.setString(3, this.make);
             statement.setString(4, "PCCase");
             statement.execute();
-            String model = this.model;
             //Gets ID of inserted Item.
-            query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'PCCase'";
+            query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'PCCase'";
             statement.executeQuery(query);
 
             ResultSet rs = statement.getResultSet();

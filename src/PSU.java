@@ -82,9 +82,8 @@ public class PSU {
             statement.setString(3, this.make);
             statement.setString(4, "PSU");
             statement.execute();
-            String model = this.model;
             //Gets ID of inserted Item.
-            query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'PSU'";
+            query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'PSU'";
             statement.executeQuery(query);
 
             ResultSet rs = statement.getResultSet();
