@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/MainMenu.java</file>
-            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/RAM.java</file>
-            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/AdminMenu.java</file>
-            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/EditComponent.java</file>
-            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/LogIn.java</file>
-            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/AddMake.java</file>
-            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/AddGPU.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/AddAccessory.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/AddCPU.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/AddCooler.java</file>
+            <file>file:/C:/Users/Luke/Documents/GitHub/ComPChecker/src/addRAM.java</file>
         </group>
     </open-files>
 </project-private>

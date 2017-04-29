@@ -11,21 +11,21 @@ import javax.swing.JOptionPane;
  *
  * @author Lillie Hogg
  */
-public class AddRAM extends javax.swing.JDialog {
+public class addRAM extends javax.swing.JDialog {
 
     UserAccount currentUser;
 
     /**
      * Creates new form AddRAM
      */
-    public AddRAM() {
+    public addRAM() {
         initComponents();
         this.setTitle("Add RAM");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
         populateMakes();
     }
 
-    AddRAM(UserAccount user) {
+    addRAM(UserAccount user) {
         initComponents();
         this.setTitle("Add RAM");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
