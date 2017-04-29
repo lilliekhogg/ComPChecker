@@ -429,7 +429,8 @@ public class EditComponent extends javax.swing.JDialog {
         }
         // else if 0 then "parent" form was menu
     }
-
+    
+    //Code here for compatibility was accidentally overwritten.
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
 
         if (currentUser.getType() == true) {

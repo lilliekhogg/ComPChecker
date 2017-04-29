@@ -1,5 +1,4 @@
 
-import static java.lang.Double.parseDouble;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
