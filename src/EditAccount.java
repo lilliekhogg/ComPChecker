@@ -105,7 +105,7 @@ public class EditAccount extends javax.swing.JFrame {
 
         comboboxType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "General User", "Admin" }));
 
-        btnReturnToMenu.setText("Return to Menu");
+        btnReturnToMenu.setText("Return");
         btnReturnToMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReturnToMenuActionPerformed(evt);
@@ -224,6 +224,7 @@ public class EditAccount extends javax.swing.JFrame {
 
     private void btnReturnToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReturnToMenuActionPerformed
         this.setVisible(false);
+        new EditAccounts(currentUser).setVisible(true);
         //returnToMenu();
     }//GEN-LAST:event_btnReturnToMenuActionPerformed
 

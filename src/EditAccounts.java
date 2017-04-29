@@ -25,17 +25,22 @@ public class EditAccounts extends javax.swing.JDialog {
         currentUser = user;
         this.setTitle("Edit Accounts");     //Adds a title to the frame
         setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-        TableColumn col = new TableColumn();
-        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        jTable.addColumn(col);
-        model.addColumn("Username");
-        model.addColumn("First Name");
-        model.addColumn("Surname");
-        model.addColumn("Email");
-        model.addColumn("Account Type");
-        Connection con = DatabaseConnection.establishConnection();
 
+        fillTable();
+
+    }
+
+    private void fillTable() {
         try {
+            TableColumn col = new TableColumn();
+            DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+            jTable.addColumn(col);
+            model.addColumn("Username");
+            model.addColumn("First Name");
+            model.addColumn("Surname");
+            model.addColumn("Email");
+            model.addColumn("Account Type");
+            Connection con = DatabaseConnection.establishConnection();
             Statement stmt = (Statement) con.createStatement();
             String query = ("Select ID,Fname,Sname,Email,accountType From Account ORDER BY ID ASC");
             stmt.executeQuery(query);
@@ -57,7 +62,6 @@ public class EditAccounts extends javax.swing.JDialog {
         } catch (SQLException err) {
             System.out.println(err.getMessage());   //Prints out SQL error 
         }
-
     }
 
     private EditAccounts() {
@@ -149,33 +153,38 @@ public class EditAccounts extends javax.swing.JDialog {
         // TODO add your handling code here:
         int column1 = 0;
         int row = jTable.getSelectedRow();
-        String username = jTable.getModel().getValueAt(row, column1).toString();
-        String[] options = new String[]{"Edit", "Delete", "Make Admin", "Reset Password", "Cancel"};
-        int response = JOptionPane.showOptionDialog(null, "What would you like to do with the account " + username + "?", "Title",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, options, options[0]);
-        UserAccount user = new UserAccount();
-        user.setUsername(username);
-        if (response == 0) {
-            //edit
-            this.setVisible(false);
+        if (row != -1) {
+            String username = jTable.getModel().getValueAt(row, column1).toString();
 
-            EditAccount newForm = new EditAccount(currentUser, user);
+            String[] options = new String[]{"Edit", "Delete", "Make Admin", "Reset Password", "Cancel"};
+            int response = JOptionPane.showOptionDialog(null, "What would you like to do with the account " + username + "?", "Title",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options, options[0]);
+            UserAccount user = new UserAccount();
+            user.setUsername(username);
+            if (response != -1) {
+                if (response == 0) {
+                    //edit
+                    this.setVisible(false);
+                    new EditAccount(currentUser, user).setVisible(true);
+                } else if (response == 1) {
+                    //Delete
+                    user.deleteUser();
+                    this.setVisible(false);
+                    new EditAccounts(currentUser).setVisible(true);
 
-            newForm.setVisible(true);
-        } else if (response == 1) {
-            //Delete
-            user.deleteUser();
+                } else if (response == 2) {
+                    //Make Admin
+                    user.setType(true);
+                    user.promoteToAdmin();
+                    this.setVisible(false);
+                    new EditAccounts(currentUser).setVisible(true);
 
-        } else if (response == 2) {
-            //Make Admin
-            user.setType(true);
-            user.promoteToAdmin();
-
-        } else {
-            //Cancel
+                } else {
+                    //Cancel
+                }
+            }
         }
-
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

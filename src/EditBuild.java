@@ -454,6 +454,7 @@ public class EditBuild extends javax.swing.JFrame {
 
     private void lblReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblReturnActionPerformed
         this.setVisible(false);
+        new EditBuilds(currentUser).setVisible(true);
         //returnToMenu();
     }//GEN-LAST:event_lblReturnActionPerformed
 

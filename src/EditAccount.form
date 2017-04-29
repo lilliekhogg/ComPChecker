@@ -207,7 +207,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnReturnToMenu">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Return to Menu"/>
+        <Property name="text" type="java.lang.String" value="Return"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReturnToMenuActionPerformed"/>
