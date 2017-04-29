@@ -40,6 +40,14 @@ public class CPU {
     public void setMake(String make) {
         this.make = make;
     }
+    
+    /**
+     *Sets the model of the CPU.
+     * @param model The make of the CPU.
+     */
+    public void setModel(String model) {
+        this.model = model;
+    }
 
     /**
      * Sets the speed of the CPU.
@@ -90,8 +98,7 @@ public class CPU {
             statement.setString(3, this.make);
             statement.setString(4, "CPU");
             statement.execute();
-            String model = this.model;
-            query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'CPU'";
+            query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'CPU'";
 
             statement.executeQuery(query);
             ResultSet rs = statement.getResultSet();
@@ -171,7 +178,7 @@ public class CPU {
      * @param newGraphics graphics value
      */
     
-    // NEEDS FIXING, SIMILAR TO EDITBUILD
+    // NEEDS FIXING
     
     public void updateCPU(int ID, String newMake, String newModel, double newPrice, float newSpeed, int newCores, boolean newGraphics) {
         Connection con = DatabaseConnection.establishConnection();
@@ -187,6 +194,33 @@ public class CPU {
             statement.setBoolean(3, newGraphics);
             statement.setInt(4, ID);
             statement.executeUpdate(query);
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+
+    }
+    
+    /**
+     * Deletes a given CPU.
+     */
+    public void deleteCPU() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            String query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'CPU'";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.executeQuery(query);
+
+            ResultSet rs = statement.getResultSet();
+            int partID = 0;
+            while (rs.next()) {
+                partID = rs.getInt("PartID");
+            }
+            
+            query = "DELETE FROM CPU WHERE ID = ?";
+            statement = con.prepareStatement(query);
+            statement.setInt(1, partID);
+            statement.execute();
+
         } catch (SQLException err) {
             System.out.println(err.getMessage());
         }

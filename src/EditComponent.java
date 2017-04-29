@@ -451,9 +451,121 @@ public class EditComponent extends javax.swing.JDialog {
                     myAccessory.deleteAccessory();
                     this.setVisible(false);
                     new EditComponent(partType, 0, currentUser, null).setVisible(true);
-
                 }
-            } else {
+            }
+            if (partType == "CPU") {
+                CPU myCPU = new CPU();
+                myCPU.setMake(compMake);
+                myCPU.setModel(compModel);
+
+                if (response == 0) {
+                    //edit
+                } else if (response == 1) {
+                    //Delete
+                    myCPU.deleteCPU();
+                    this.setVisible(false);
+                    new EditComponent(partType, 0, currentUser, null).setVisible(true);
+                }
+            }
+            if (partType == "Cooler") {
+                Cooler myCooler = new Cooler();
+                myCooler.setMake(compMake);
+                myCooler.setModel(compModel);
+
+                if (response == 0) {
+                    //edit
+                } else if (response == 1) {
+                    //Delete
+                    myCooler.deleteCooler();
+                    this.setVisible(false);
+                    new EditComponent(partType, 0, currentUser, null).setVisible(true);
+                }
+            }
+            if (partType == "GPU") {
+                GPU myGPU = new GPU();
+                myGPU.setMake(compMake);
+                myGPU.setModel(compModel);
+
+                if (response == 0) {
+                    //edit
+                } else if (response == 1) {
+                    //Delete
+                    myGPU.deleteGPU();
+                    this.setVisible(false);
+                    new EditComponent(partType, 0, currentUser, null).setVisible(true);
+                }
+            }
+            if (partType == "Motherboard") {
+                Motherboard myMotherboard = new Motherboard();
+                myMotherboard.setMake(compMake);
+                myMotherboard.setModel(compModel);
+
+                if (response == 0) {
+                    //edit
+                } else if (response == 1) {
+                    //Delete
+                    myMotherboard.deleteMotherboard();
+                    this.setVisible(false);
+                    new EditComponent(partType, 0, currentUser, null).setVisible(true);
+                }
+            }
+            if (partType == "Case") {
+                PCCase myCase = new PCCase();
+                myCase.setMake(compMake);
+                myCase.setModel(compModel);
+
+                if (response == 0) {
+                    //edit
+                } else if (response == 1) {
+                    //Delete
+                    myCase.deletePCCase();
+                    this.setVisible(false);
+                    new EditComponent(partType, 0, currentUser, null).setVisible(true);
+                }
+            }
+            if (partType == "PSU") {
+                PSU myPSU = new PSU();
+                myPSU.setMake(compMake);
+                myPSU.setModel(compModel);
+
+                if (response == 0) {
+                    //edit
+                } else if (response == 1) {
+                    //Delete
+                    myPSU.deletePSU();
+                    this.setVisible(false);
+                    new EditComponent(partType, 0, currentUser, null).setVisible(true);
+                }
+            }
+            if (partType == "RAM") {
+                RAM myRAM = new RAM();
+                myRAM.setMake(compMake);
+                myRAM.setModel(compModel);
+
+                if (response == 0) {
+                    //edit
+                } else if (response == 1) {
+                    //Delete
+                    myRAM.deleteRAM();
+                    this.setVisible(false);
+                    new EditComponent(partType, 0, currentUser, null).setVisible(true);
+                }
+            }
+            if (partType == "Storage") {
+                Storage myStorage = new Storage();
+                myStorage.setMake(compMake);
+                myStorage.setModel(compModel);
+
+                if (response == 0) {
+                    //edit
+                } else if (response == 1) {
+                    //Delete
+                    myStorage.deleteStorage();
+                    this.setVisible(false);
+                    new EditComponent(partType, 0, currentUser, null).setVisible(true);
+                }
+            }
+            else {
                 JOptionPane.showMessageDialog(this,
                         "You don't have permission to edit.",
                         "Denied!",

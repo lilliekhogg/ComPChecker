@@ -136,4 +136,31 @@ public class GPU {
         
     }
     
+    /**
+     * Deletes a given GPU.
+     */
+    public void deleteGPU() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            String query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'GPU'";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.executeQuery(query);
+
+            ResultSet rs = statement.getResultSet();
+            int partID = 0;
+            while (rs.next()) {
+                partID = rs.getInt("PartID");
+            }
+            
+            query = "DELETE FROM GPU WHERE ID = ?";
+            statement = con.prepareStatement(query);
+            statement.setInt(1, partID);
+            statement.execute();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+
+    }
+    
 }

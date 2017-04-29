@@ -76,9 +76,8 @@ public class Cooler {
             statement.setString(3, this.make);
             statement.setString(4, "Cooler");
             statement.execute();
-            String model = this.model;
             //Gets ID of inserted Item.
-            query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'Cooler'";
+            query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'Cooler'";
             statement.executeQuery(query);
 
             ResultSet rs = statement.getResultSet();
@@ -99,6 +98,33 @@ public class Cooler {
             System.out.println(err.getMessage());   //Prints out SQL error 
             return false;
 
+        }
+
+    }
+    
+    /**
+     * Deletes a given cooler.
+     */
+    public void deleteCooler() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            String query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'Cooler'";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.executeQuery(query);
+
+            ResultSet rs = statement.getResultSet();
+            int partID = 0;
+            while (rs.next()) {
+                partID = rs.getInt("PartID");
+            }
+            
+            query = "DELETE FROM Cooler WHERE ID = ?";
+            statement = con.prepareStatement(query);
+            statement.setInt(1, partID);
+            statement.execute();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
         }
 
     }

@@ -74,9 +74,8 @@ public class Accessory {
             statement.setString(3, this.make);
             statement.setString(4, "Accessory");
             statement.execute();
-            String model = this.model;
             //Gets ID of inserted Item.
-            query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'Accessory'";
+            query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'Accessory'";
             statement.executeQuery(query);
 
             ResultSet rs = statement.getResultSet();
@@ -102,13 +101,12 @@ public class Accessory {
     }
     
     /**
-     * Deletes a given build.
+     * Deletes a given accessory.
      */
     public void deleteAccessory() {
         Connection con = DatabaseConnection.establishConnection();
         try {
-            String model = this.model;
-            String query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'Accessory'";
+            String query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'Accessory'";
             PreparedStatement statement = con.prepareStatement(query);
             statement.executeQuery(query);
 

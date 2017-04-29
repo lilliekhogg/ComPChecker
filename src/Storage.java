@@ -129,4 +129,31 @@ public class Storage {
         }
 
     }
+    
+    /**
+     * Deletes a given storage.
+     */
+    public void deleteStorage() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            String query = "SELECT * FROM Part WHERE Model ='" + this.model + "' && PartType = 'Storage'";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.executeQuery(query);
+
+            ResultSet rs = statement.getResultSet();
+            int partID = 0;
+            while (rs.next()) {
+                partID = rs.getInt("PartID");
+            }
+            
+            query = "DELETE FROM Storage WHERE ID = ?";
+            statement = con.prepareStatement(query);
+            statement.setInt(1, partID);
+            statement.execute();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+
+    }
 }
