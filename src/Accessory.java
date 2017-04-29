@@ -100,5 +100,33 @@ public class Accessory {
         }
 
     }
+    
+    /**
+     * Deletes a given build.
+     */
+    public void deleteAccessory() {
+        Connection con = DatabaseConnection.establishConnection();
+        try {
+            String model = this.model;
+            String query = "SELECT * FROM Part WHERE Model ='" + model + "' && PartType = 'Accessory'";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.executeQuery(query);
+
+            ResultSet rs = statement.getResultSet();
+            int partID = 0;
+            while (rs.next()) {
+                partID = rs.getInt("PartID");
+            }
+            
+            query = "DELETE FROM Accessory WHERE ID = ?";
+            statement = con.prepareStatement(query);
+            statement.setInt(1, partID);
+            statement.execute();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+
+    }
 
 }

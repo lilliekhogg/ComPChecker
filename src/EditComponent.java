@@ -43,21 +43,6 @@ public class EditComponent extends javax.swing.JDialog {
     }
 
     /**
-     * Constructor with user parameter
-     *
-     * @param user The user account being passed.
-     */
-    public EditComponent(UserAccount user) {
-        initComponents();
-        this.setTitle("Select Component");     //Adds a title to the frame
-        setLocationRelativeTo(null);    //Centers the frame in the middle of ths screen
-        currentUser = user;
-//        if (currentUser.getType() == false) {
-//            btnConfirm.setEnabled(false);
-//        }
-    }
-
-    /**
      * Edit a selected component
      *
      * @param type the type of form
@@ -350,7 +335,7 @@ public class EditComponent extends javax.swing.JDialog {
     jScrollPane1.setViewportView(jTable);
 
     btnConfirm.setBackground(new java.awt.Color(0, 255, 0));
-    btnConfirm.setText("✔");
+    btnConfirm.setText("Edit");
     btnConfirm.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             btnConfirmActionPerformed(evt);
@@ -358,7 +343,7 @@ public class EditComponent extends javax.swing.JDialog {
     });
 
     btnCancel.setBackground(new java.awt.Color(255, 0, 0));
-    btnCancel.setText("✘");
+    btnCancel.setText("Return");
     btnCancel.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             btnCancelActionPerformed(evt);
@@ -375,21 +360,21 @@ public class EditComponent extends javax.swing.JDialog {
             .addContainerGap())
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(390, 390, 390))
+            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(354, 354, 354))
     );
     layout.setVerticalGroup(
         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(layout.createSequentialGroup()
             .addContainerGap()
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGap(18, 18, 18)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnConfirm)
+                .addComponent(btnCancel))
+            .addContainerGap(29, Short.MAX_VALUE))
     );
 
     pack();
@@ -447,53 +432,36 @@ public class EditComponent extends javax.swing.JDialog {
 
     private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
         if (currentUser.getType() == true) {
-            int ID = getID();
-            compatibilityID(ID);
             int row = jTable.getSelectedRow();
-            System.out.println(ID);
-            if (partType == "CPU") {
-                AddCPU form = new AddCPU(cpuID);
-                form.btnSave.hide();
-                form.txtboxModel.setText(jTable.getModel().getValueAt(row, 1).toString());
-                form.txtboxPrice.setText(jTable.getModel().getValueAt(row, 2).toString());
-                form.txtboxSpeed.setText(jTable.getModel().getValueAt(row, 3).toString());
-                form.txtboxCores.setText(jTable.getModel().getValueAt(row, 4).toString());
-                form.setVisible(true);
+            String compMake = jTable.getModel().getValueAt(row, 0).toString(); // 0 for the column because that's the make column
+            String compModel = jTable.getModel().getValueAt(row, 1).toString(); // 1 for the column because that's the model column
+            String[] options = new String[]{"Edit", "Delete", "Cancel"};
+            int response = JOptionPane.showOptionDialog(null, "What would you like to do with this component " + currentUser.getFName() + "?", "Options",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options, options[0]);
+            if (partType == "Accessory") {
+                Accessory myAccessory = new Accessory();
+                myAccessory.setMake(compMake);
+                myAccessory.setModel(compModel);
 
-            } else if (partType == "Motherboard") {
+                if (response == 0) {
+                    //edit
+                } else if (response == 1) {
+                    //Delete
+                    myAccessory.deleteAccessory();
+                    this.setVisible(false);
+                    new EditComponent(partType, 0, currentUser, null).setVisible(true);
 
-            } else if (partType == "RAM") {
-
-            } else if (partType == "GPU") {
-
-            } else if (partType == "Storage") {
-
-            } else if (partType == "Case") {
-
-            } else if (partType == "PSU") {
-
-            } else if (partType == "Cooler") {
-
-            } else if (partType == "Accessory") {
-
-            }
-
-            this.setVisible(false);
-            // if selectedPart is 1 or 2, then the "parent" form was the CompatibilityIssue form
-            if (selectedPart == 1 || selectedPart == 2) {
-                new CompatibilityIssue(currentUser, myIssue).setVisible(true);
-                // else the "parent" form was simply a menu
+                }
             } else {
-                new AdminMenu(currentUser).setVisible(true);
+                JOptionPane.showMessageDialog(this,
+                        "You don't have permission to edit.",
+                        "Denied!",
+                        JOptionPane.ERROR_MESSAGE);
+                new MainMenu(currentUser).setVisible(true);
             }
-        } else {
-            JOptionPane.showMessageDialog(this,
-                    "You don't have permission to edit.",
-                    "Denied!",
-                    JOptionPane.ERROR_MESSAGE);
-            new MainMenu(currentUser).setVisible(true);
-        }
     }//GEN-LAST:event_btnConfirmActionPerformed
+    }
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         this.setVisible(false);
