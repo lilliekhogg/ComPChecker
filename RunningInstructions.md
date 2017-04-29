@@ -40,12 +40,12 @@ or some may not work as intended.
 
 Via the admin menu, you have more features at your disposal:
 
-⋅⋅*You can create accounts that have admin privileges.
-⋅⋅*You can view, edit or delete user accounts.
-⋅⋅*You can add a new component make.
-⋅⋅*You can add a new component.
-⋅⋅*You can delete a component (current some errors due to erroneous database tuples)
-⋅⋅*You can view all components.
-⋅⋅*You can create a new build.
-⋅⋅*You can edit or delete a build.
-⋅⋅*You can add a new part incompatibility (may have broken in the last update)
+* You can create accounts that have admin privileges.
+* You can view, edit or delete user accounts.
+* You can add a new component make.
+* You can add a new component.
+* You can delete a component (current some errors due to erroneous database tuples)
+* You can view all components.
+* You can create a new build.
+* You can edit or delete a build.
+* You can add a new part incompatibility (may have broken in the last update)
